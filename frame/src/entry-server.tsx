@@ -57,12 +57,7 @@ const handleButtons = (_ctx) => {
 
 const hiImage = (_ctx) => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-            }}
-        >
+        <div tw="w-full h-full flex justify-center items-center bg-purple-800 text-white">
             Hi there!
         </div>
     )
@@ -70,19 +65,22 @@ const hiImage = (_ctx) => {
 
 const gmImage = (_ctx) => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-            }}
-        >
-            GM, {_ctx.message.requesterUserData?.displayName}! Your FID is{" "}
-            {_ctx.message.requesterFid}
-            {", "}
-            {_ctx.message.requesterFid < 20_000
-                ? "you're OG!"
-                : "welcome to the Farcaster!"
-            }
+        <div tw="w-full h-full flex flex-col justify-center items-center bg-rose-100">
+            <div tw="flex text-7xl text-sky-500 font-light italic">
+                GM, {_ctx.message.requesterUserData?.displayName}!
+            </div>
+
+            <div tw="mt-6 flex text-slate-800 font-bold tracking-widest uppercase">
+                Your FID is{" "}
+                {_ctx.message.requesterFid}
+            </div>
+
+            <div tw="mt-3 flex text-4xl text-slate-500 font-medium">
+                {_ctx.message.requesterFid < 20_000
+                    ? "You're OG!"
+                    : "Welcome to the Farcaster!"
+                }
+            </div>
         </div>
     )
 }
