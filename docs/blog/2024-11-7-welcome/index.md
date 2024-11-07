@@ -1,13 +1,19 @@
 ---
 slug: welcome
 title: Welcome
-authors: [slorber, yangshun]
-tags: [facebook, hello, docusaurus]
+authors: [shomari]
+tags: [farcaster]
 ---
 
 [Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
 
 Here are a few tips you might find useful.
+
+:::tip
+
+Use the power of React to create interactive blog posts.
+
+:::
 
 <!-- truncate -->
 
