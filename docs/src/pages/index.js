@@ -38,8 +38,8 @@ export default function Home() {
 
     return (
         <Layout
-            title={siteConfig.title}
-            description="Cast Poker for Farcaster."
+            title={`Read The Docs`}
+            description="A casual poker game for the Farcaster community."
         >
             <HomepageHeader />
 
