@@ -86,9 +86,13 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'How-to-Play',
+            label: 'Learn How-to-Play',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            to: '/blog',
+            label: 'Read Our Blog',
+            position: 'left',
+          },
           {
             href: 'https://github.com/nyusternie/cast-poker',
             label: 'GitHub',
@@ -103,8 +107,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'How-To-Play',
-                to: '/docs/intro',
+                label: 'Learn How-To-Play',
+                to: '/docs/welcome',
               },
             ],
           },
@@ -129,7 +133,7 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
+                label: 'Read Our Blog',
                 to: '/blog',
               },
               {

@@ -2,13 +2,9 @@
 sidebar_position: 1
 ---
 
-# Create a Page
+# Create a Game
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
-
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
+Cast Poker games are __FREE & Simple__ to create and share with your community.
 
 ## Create your first React Page
 
@@ -29,6 +25,12 @@ export default function MyReactPage() {
 ```
 
 A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
+
+Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+
+- `src/pages/index.js` → `localhost:3000/`
+- `src/pages/foo.md` → `localhost:3000/foo`
+- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
 
 ## Create your first Markdown Page
 
