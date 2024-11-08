@@ -101,7 +101,7 @@ const config = {
             items: [
               {
                 label: 'Learn How-To-Play',
-                to: '/docs/welcome',
+                to: '/welcome',
               },
             ],
           },
