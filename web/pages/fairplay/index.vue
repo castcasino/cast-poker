@@ -43,16 +43,16 @@ const load = async () => {
 
 <template>
     <main class="max-w-5xl mx-auto my-10 px-3">
-        <h1 class="text-5xl text-slate-600 font-medium tracking-wider">
+        <h1 class="text-7xl text-slate-600 font-light tracking-wider">
             Fairplay
         </h1>
 
-        <h3 class="my-5 text-2xl lg:text-3xl lg:w-3/4 font-medium text-sky-600 lg:leading-[50px] italic">
+        <h3 class="mt-10 text-2xl lg:text-3xl lg:w-3/4 font-medium text-sky-600 lg:leading-[50px] italic">
             <span class="text-3xl lg:text-4xl font-bold uppercase">Every</span> card is dealt using the <span class="text-3xl lg:text-4xl font-bold uppercase">next</span> block hash as a randomizer — making it <span class="text-3xl lg:text-4xl font-bold uppercase">impossible</span> for anyone (including the House) to cheat.
         </h3>
 
         <div class="flex flex-col lg:flex-row items-start gap-4">
-            <div class="order-2 lg:order-none">
+            <section class="order-2 lg:order-none text-slate-700 text-lg leading-9">
                 <p class="my-5">
                     We all want to play at fair, trustworthy online gaming sites.
                 </p>
@@ -90,53 +90,9 @@ const load = async () => {
                     We all want to play at fair, trustworthy online gaming sites.
 
                 </p>
+            </section>
 
-                <section class="hidden">
-                    <h2 class="text-xl font-medium">
-                        Hashes Lists <em>(by Epoch)</em>
-                    </h2>
-
-                    <blockquote class="text-sm text-gray-500 w-1/2">
-                        Hashes and attestations may be independently verified by ANY available <span class="text-indigo-500 font-medium">SHA-512</span> or <span class="text-indigo-500 font-medium">SHA-1</span> calculators.
-                        We recommend <NuxtLink to="https://md5file.com/calculator" target="_blank" class="text-blue-500 font-medium hover:underline">https://md5file.com/calculator</NuxtLink> and <NuxtLink to="https://emn178.github.io/online-tools/sha1.html" target="_blank" class="text-blue-500 font-medium hover:underline">https://emn178.github.io/online-tools/sha1.html</NuxtLink> respectively.
-                    </blockquote>
-
-                    <ol class="mt-5">
-                        <li class="w-fit px-3 py-2 bg-purple-100 border-2 border-purple-300 rounded-lg shadow-md">
-                            <h2 class="text-base text-purple-500 font-medium uppercase">
-                                Epoch #1
-                            </h2>
-
-                            <div class="pl-5">
-                                <a href="/hashes/0001_public.txt" class="block text-blue-500 font-medium hover:underline">
-                                    0001_public.txt
-                                </a>
-
-                                <a href="/hashes/0001_public_checksum.txt" class="block text-blue-500 font-medium hover:underline">
-                                    0001_public_checksum.txt
-                                </a>
-
-                                <NuxtLink to="/epoch/1" class="block text-blue-500 font-medium hover:underline">
-                                    Attestation
-                                </NuxtLink>
-                            </div>
-
-                            <section class="mt-2 w-full lg:w-96 px-3 py-1 border-2 border-purple-900 bg-purple-700 rounded-lg shadow">
-                                <h3 class="text-purple-100 text-lg font-medium">
-                                    SHA-512 Proof
-                                </h3>
-
-                                <h3 class="text-purple-100 font-medium text-xs truncate">
-                                    6cf09a52bf6638df7f3686af6150341bc551648b50c7393bf94b2d105c78f97eca71b048d8f6d18e0e3c26f42b5a46f6e82d6db41c71f9f328c28783de600886
-                                </h3>
-                            </section>
-                        </li>
-                    </ol>
-                </section>
-
-            </div>
-
-            <div class="w-full order-1 lg:w-96 py-5 flex flex-col justify-center gap-4">
+            <section class="w-full order-1 lg:w-96 py-5 flex flex-col justify-center gap-4">
                 <input
                     type="text"
                     v-model="playid"
@@ -147,7 +103,7 @@ const load = async () => {
                 <button @click="load" class="py-2 bg-blue-200 border-2 border-blue-400 text-2xl font-medium rounded-lg shadow hover:bg-blue-300">
                     Load Play
                 </button>
-            </div>
+            </section>
         </div>
     </main>
 </template>

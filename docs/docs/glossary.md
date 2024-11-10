@@ -17,3 +17,7 @@ TBD...
 ### Raise
 
 TBD...
+
+### Rake
+
+A commission out of the winnings. (usually 5%)
