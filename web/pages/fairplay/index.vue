@@ -43,32 +43,30 @@ const load = async () => {
 
 <template>
     <main class="max-w-5xl mx-auto my-10 px-3">
-        <h1 class="text-5xl font-medium">
+        <h1 class="text-5xl text-slate-600 font-medium tracking-wider">
             Fairplay
         </h1>
 
-        <h3 class="my-5 text-2xl lg:text-3xl lg:w-3/4 font-medium text-indigo-500">
-            A fair shot at winning is everything a player wants from any gambling game.
-
+        <h3 class="my-5 text-2xl lg:text-3xl lg:w-3/4 font-medium text-sky-600 lg:leading-[50px] italic">
+            <span class="text-3xl lg:text-4xl font-bold uppercase">Every</span> card is dealt using the <span class="text-3xl lg:text-4xl font-bold uppercase">next</span> block hash as a randomizer — making it <span class="text-3xl lg:text-4xl font-bold uppercase">impossible</span> for anyone (including the House) to cheat.
         </h3>
 
         <div class="flex flex-col lg:flex-row items-start gap-4">
             <div class="order-2 lg:order-none">
                 <p class="my-5">
-                    We all want to play at fair, trustworthy online gambling sites.
-
+                    We all want to play at fair, trustworthy online gaming sites.
                 </p>
 
                 <p class="my-5">
-                    The Crypto gambling community has come up with its own way of proving that games are fair.
+                    The Crypto gaming community has come up with its own way of proving that games are fair.
                     As you might expect, with this being specific to Crypto, it doesn’t require you to trust a third party, it makes games totally transparent, and it makes use of advanced cryptography to ensure game outcomes haven’t been tampered with.
                     Using the provably fair method, you can verify the results for yourself in real time.
 
                 </p>
 
                 <p class="my-5">
-                    But what exactly is provably fair gambling? How does it work? Why does it make Crypto gambling so transparent? We’re going to explore all of that here.
-                    As you’ll see, the ramifications of provably fair gambling are revolutionary.
+                    But what exactly is provably fair gaming? How does it work? Why does it make Crypto gaming so transparent? We’re going to explore all of that here.
+                    As you’ll see, the ramifications of provably fair gaming are revolutionary.
 
                 </p>
 
@@ -89,7 +87,7 @@ const load = async () => {
                 </p>
 
                 <p class="my-5">
-                    We all want to play at fair, trustworthy online gambling sites.
+                    We all want to play at fair, trustworthy online gaming sites.
 
                 </p>
 
