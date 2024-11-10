@@ -1,6 +1,8 @@
 /* Import modules. */
 import { farcasterHubContext } from 'frames.js/middleware'
-import { createFrames, Button } from 'frames.js/express'
+import { createFrames } from 'frames.js/express'
+
+import handleButtons from './handlers/buttons.tsx'
 
 /**
  * Frames
@@ -19,41 +21,6 @@ const frames = createFrames({
     ],
 })
 
-/**
- * Landing Page Buttons
- *
- * Handles the initial buttons displayed to the user.
- */
-const btnLandingPage = () => {
-    return (
-        <Button action="post" key="1" target={{ query: { saidGm: true } }}>
-            Say GM!!
-        </Button>
-    )
-}
-
-/**
- * Handle Buttons
- *
- * Manages the Frame buttons.
- */
-const handleButtons = (_ctx) => {
-    /* Initialize locals. */
-    let buttons
-
-    /* Initialize buttons. */
-    buttons = []
-
-    /* Add buttons. */
-    buttons.push(btnLandingPage())
-
-    /* Handle search parameters. */
-    if (!_ctx.url.searchParams.has('saidGm')) {
-        return buttons
-    } else {
-        return []
-    }
-}
 
 const hiImage = (_ctx) => {
     return (
