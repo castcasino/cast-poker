@@ -1,6 +1,6 @@
 {
   "name": "cast-poker-web",
-  "version": "24.11.3",
+  "version": "24.11.10",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -14,11 +14,11 @@
     "@pinia/nuxt": "0.5.4",
     "moment": "2.29.4",
     "numeral": "2.0.6",
-    "nexajs": "24.11.1",
     "nuxt": "3.12.4",
     "pinia": "2.2.2",
     "pouchdb": "9.0.0",
-    "uuid": "10.0.0"
+    "uuid": "10.0.0",
+    "viem": "2.21.44"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "6.4.1",
