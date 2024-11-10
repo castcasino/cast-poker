@@ -1,15 +1,15 @@
+/* Import modules. */
 import express from 'express'
 
-// Constants
+/* Set constants. */
 const isProduction = process.env.NODE_ENV === 'production'
-// const port = process.env.PORT || 5173
 const port = process.env.PORT || 5000
 const base = process.env.BASE || '/'
 
-// Create http server
+/* Create http server. */
 const app = express()
 
-// Add Vite or respective production middlewares
+/* Add Vite or respective production middlewares. */
 let vite
 
 if (!isProduction) {
@@ -30,7 +30,7 @@ if (!isProduction) {
     app.use(base, sirv('./dist/client', { extensions: [] }))
 }
 
-// Serve HTML
+/* Serve HTML. */
 app.use('*', async (req, res) => {
     try {
         const url = req.originalUrl.replace(base, '')
@@ -57,7 +57,7 @@ app.use('*', async (req, res) => {
     }
 })
 
-// Start http server
+/* Start http server. */
 app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`)
+    console.log(`Cast Poker Frame started at http://localhost:${port}`)
 })
