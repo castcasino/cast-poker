@@ -1,6 +1,7 @@
 /* Import (local) modules. */
 import helpMenu from '../menus/help.tsx'
 import loungeMenu from '../menus/lounge.tsx'
+import playMenu from '../menus/play.tsx'
 import startMenu from '../menus/start.tsx'
 
 
@@ -10,7 +11,7 @@ import startMenu from '../menus/start.tsx'
  * Manages the Frame buttons.
  */
 export default (_ctx) => {
-console.log('BUTTON HANDLER (ctx)', _ctx)
+// console.log('BUTTON HANDLER (ctx)', _ctx)
 
     /* Initialize locals. */
     let menu
@@ -34,6 +35,8 @@ console.log('BUTTON HANDLER (ctx)', _ctx)
         return helpMenu()
     case 'LOUNGE':
         return loungeMenu()
+    case 'PLAY':
+        return playMenu()
     default:
         return startMenu()
     }
