@@ -3,8 +3,10 @@ import gmImage from '../screens/gmImage.tsx'
 import hiImage from '../screens/hiImage.tsx'
 import quickPlay from '../screens/quickPlay.tsx'
 
+/* Import Help & Support */
 import help from '../screens/help/index.tsx'
 import helpContactUs from '../screens/help/contactUs.tsx'
+import helpUserGuide from '../screens/help/userGuide.tsx'
 
 /**
  * Handle Image
@@ -33,15 +35,22 @@ export default (_ctx) => {
 
     /* Handle screen selection. */
     switch(screen) {
+    /* Start / Landing */
+    case 'MAIN_MENU':
+        return hiImage(_ctx)
+
+    /* Help & Support */
     case 'HELP':
         return help(_ctx)
     case 'HELP_CONTACT_US':
         return helpContactUs(_ctx)
+    case 'HELP_USER_GUIDE':
+        return helpUserGuide(_ctx)
 
-    case 'MAIN_MENU':
-        return hiImage(_ctx)
+    /* Play */
     case 'QUICK_PLAY':
         return quickPlay(_ctx)
+
     default:
         return gmImage(_ctx)
     }
