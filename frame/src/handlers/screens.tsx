@@ -1,6 +1,5 @@
-/* Import (local) modules. */
-import gmImage from '../screens/gmImage.tsx'
-import hiImage from '../screens/hiImage.tsx'
+/* Import Start. */
+import start from '../screens/start.tsx'
 
 /* Import Help & Support */
 import help from '../screens/help/index.tsx'
@@ -8,7 +7,7 @@ import helpContactUs from '../screens/help/contactUs.tsx'
 import helpUserGuide from '../screens/help/userGuide.tsx'
 
 /* Import Play */
-import quickPlay from '../screens/quickPlay.tsx'
+import quickPlay from '../screens/play/quick.tsx'
 
 /* Import Player's Lounge */
 import lounge from '../screens/lounge/index.tsx'
@@ -22,7 +21,7 @@ import profile from '../screens/profile/index.tsx'
  *
  * Manages the Frame images.
  */
-export default (_ctx) => {
+export default (_ctx: any) => {
     /* Initialize locals. */
     let message
     let params
@@ -46,7 +45,7 @@ export default (_ctx) => {
     switch(screen) {
     /* Start / Landing */
     case 'MAIN_MENU':
-        return hiImage(_ctx)
+        return start(_ctx)
 
     /* Help & Support */
     case 'HELP':
@@ -71,6 +70,6 @@ export default (_ctx) => {
         return profile(_ctx)
 
     default:
-        return gmImage(_ctx)
+        return start(_ctx)
     }
 }

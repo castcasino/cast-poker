@@ -12,7 +12,7 @@ import loungeLeaderboard from '../menus/lounge/leaderboard.tsx'
  *
  * Manages the Frame buttons.
  */
-export default (_ctx) => {
+export default (_ctx: any) => {
 // console.log('BUTTON HANDLER (ctx)', _ctx)
 
     /* Initialize locals. */

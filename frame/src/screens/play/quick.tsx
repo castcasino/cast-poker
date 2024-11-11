@@ -1,6 +1,6 @@
 
 
-export default (_ctx) => {
+export default (_ctx: any) => {
     return (
         <div tw="w-full h-full flex flex-col justify-center items-center bg-fuchsia-100 text-fuchsia-500">
             <span>
