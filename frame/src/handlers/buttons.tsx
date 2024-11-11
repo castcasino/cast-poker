@@ -1,9 +1,11 @@
 /* Import (local) modules. */
 import helpMenu from '../menus/help.tsx'
-import loungeMenu from '../menus/lounge.tsx'
 import playMenu from '../menus/play.tsx'
 import startMenu from '../menus/start.tsx'
 
+/* Player's Lounge */
+import loungeMenu from '../menus/lounge/index.tsx'
+import loungeLeaderboard from '../menus/lounge/leaderboard.tsx'
 
 /**
  * Handle Buttons
@@ -33,8 +35,13 @@ export default (_ctx) => {
     switch(menu) {
     case 'HELP':
         return helpMenu()
+
+    /* Player's Lounge */
     case 'LOUNGE':
         return loungeMenu()
+    case 'LOUNGE_LEADERBOARD':
+        return loungeLeaderboard()
+
     case 'PLAY':
         return playMenu()
     default:

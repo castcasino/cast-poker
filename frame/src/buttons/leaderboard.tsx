@@ -3,7 +3,7 @@ import { Button } from 'frames.js/express'
 
 export default () => {
     return (
-        <Button action="post" target={{ query: { screen: 'LEADERBOARD', menu: 'LEADERBOARD' } }}>
+        <Button action="post" target={{ query: { screen: 'LOUNGE_LEADERBOARD', menu: 'LOUNGE_LEADERBOARD' } }}>
             Leaderboard
         </Button>
     )

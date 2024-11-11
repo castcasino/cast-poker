@@ -1,8 +1,8 @@
 /* Import (local) modules. */
-import btnHelp from '../buttons/help.tsx'
-import btnLeaderboard from '../buttons/leaderboard.tsx'
-import btnMainMenu from '../buttons/mainMenu.tsx'
-import btnProfile from '../buttons/profile.tsx'
+import btnHelp from '../../buttons/help.tsx'
+import btnPrevious from '../../buttons/lounge/previous.tsx'
+import btnMainMenu from '../../buttons/mainMenu.tsx'
+import btnNext from '../../buttons/lounge/next.tsx'
 
 export default () => {
     /* Initialize locals. */
@@ -12,8 +12,8 @@ export default () => {
     buttons = []
 
     /* Add buttons. */
-    buttons.push(btnLeaderboard())
-    buttons.push(btnProfile())
+    buttons.push(btnPrevious())
+    buttons.push(btnNext())
     buttons.push(btnMainMenu())
     buttons.push(btnHelp())
 

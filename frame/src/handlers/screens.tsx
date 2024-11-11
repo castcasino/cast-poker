@@ -1,12 +1,21 @@
 /* Import (local) modules. */
 import gmImage from '../screens/gmImage.tsx'
 import hiImage from '../screens/hiImage.tsx'
-import quickPlay from '../screens/quickPlay.tsx'
 
 /* Import Help & Support */
 import help from '../screens/help/index.tsx'
 import helpContactUs from '../screens/help/contactUs.tsx'
 import helpUserGuide from '../screens/help/userGuide.tsx'
+
+/* Import Play */
+import quickPlay from '../screens/quickPlay.tsx'
+
+/* Import Player's Lounge */
+import lounge from '../screens/lounge/index.tsx'
+import loungeLeaderboard from '../screens/lounge/leaderboard.tsx'
+
+/* Import Player Profile */
+import profile from '../screens/profile/index.tsx'
 
 /**
  * Handle Image
@@ -47,9 +56,19 @@ export default (_ctx) => {
     case 'HELP_USER_GUIDE':
         return helpUserGuide(_ctx)
 
+    /* Player's Lounge */
+    case 'LOUNGE':
+        return lounge(_ctx)
+    case 'LOUNGE_LEADERBOARD':
+        return loungeLeaderboard(_ctx)
+
     /* Play */
     case 'QUICK_PLAY':
         return quickPlay(_ctx)
+
+    /* Player Profile */
+    case 'PROFILE':
+        return profile(_ctx)
 
     default:
         return gmImage(_ctx)
