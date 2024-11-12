@@ -3,7 +3,7 @@ import { farcasterHubContext } from 'frames.js/middleware'
 import { createFrames } from 'frames.js/express'
 
 /* Import (local) modules. */
-import handleButtons from './handlers/buttons.tsx'
+import handleMenus from './handlers/menus.tsx'
 import handleScreens from './handlers/screens.tsx'
 
 /**
@@ -32,6 +32,6 @@ export const handleRequest = frames(_ctx => {
 // console.log('CONTEXT', _ctx)
     return {
         image: handleScreens(_ctx),
-        buttons: handleButtons(_ctx),
+        buttons: handleMenus(_ctx),
     }
 })

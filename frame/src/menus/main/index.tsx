@@ -1,8 +1,8 @@
 /* Import (local) modules. */
+import btnCreateGame from '../../buttons/main/create.tsx'
 import btnHelp from '../../buttons/help/index.tsx'
-import btnLeaderboard from '../../buttons/lounge/leaderboard.tsx'
-import btnMainMenu from '../../buttons/main/index.tsx'
-import btnProfile from '../../buttons/profile/index.tsx'
+import btnJoinGame from '../../buttons/main/join.tsx'
+import btnLounge from '../../buttons/lounge/index.tsx'
 
 export default () => {
     /* Initialize locals. */
@@ -12,9 +12,9 @@ export default () => {
     buttons = []
 
     /* Add buttons. */
-    buttons.push(btnLeaderboard())
-    buttons.push(btnProfile())
-    buttons.push(btnMainMenu())
+    buttons.push(btnJoinGame())
+    buttons.push(btnCreateGame())
+    buttons.push(btnLounge())
     buttons.push(btnHelp())
 
     /* Return (menu) buttons. */

@@ -3,8 +3,8 @@ import start from '../screens/start.tsx'
 
 /* Import Help & Support */
 import help from '../screens/help/index.tsx'
-import helpContactUs from '../screens/help/contactUs.tsx'
-import helpUserGuide from '../screens/help/userGuide.tsx'
+import helpContactUs from '../screens/help/contact.tsx'
+import helpUserGuide from '../screens/help/guide.tsx'
 
 /* Import Play */
 import quickPlay from '../screens/play/quick.tsx'

@@ -1,7 +1,7 @@
 /* Import (local) modules. */
-import btnHelp from '../../buttons/help.tsx'
+import btnHelp from '../../buttons/help/index.tsx'
 import btnPrevious from '../../buttons/lounge/previous.tsx'
-import btnMainMenu from '../../buttons/mainMenu.tsx'
+import btnMainMenu from '../../buttons/main/index.tsx'
 import btnNext from '../../buttons/lounge/next.tsx'
 
 export default () => {

@@ -1,7 +1,10 @@
 /* Import (local) modules. */
-import helpMenu from '../menus/help.tsx'
-import playMenu from '../menus/play.tsx'
+import helpMenu from '../menus/help/index.tsx'
+import playQuickMenu from '../menus/play/quick.tsx'
 import startMenu from '../menus/start.tsx'
+
+/* Player's Lounge */
+import mainMenu from '../menus/main/index.tsx'
 
 /* Player's Lounge */
 import loungeMenu from '../menus/lounge/index.tsx'
@@ -33,6 +36,11 @@ export default (_ctx: any) => {
 
     /* Handle menu. */
     switch(menu) {
+    /* Main */
+    case 'MAIN_MENU':
+        return mainMenu()
+
+    /* Help & Support */
     case 'HELP':
         return helpMenu()
 
@@ -42,8 +50,10 @@ export default (_ctx: any) => {
     case 'LOUNGE_LEADERBOARD':
         return loungeLeaderboard()
 
-    case 'PLAY':
-        return playMenu()
+    /* Play */
+    case 'PLAY_QUICK':
+        return playQuickMenu()
+
     default:
         return startMenu()
     }

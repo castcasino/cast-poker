@@ -1,8 +1,8 @@
 /* Import (local) modules. */
-import btnContactUs from '../buttons/contactUs.tsx'
-import btnHelp from '../buttons/help.tsx'
-import btnMainMenu from '../buttons/mainMenu.tsx'
-import btnUserGuide from '../buttons/userGuide.tsx'
+import btnHelp from '../buttons/help/index.tsx'
+import btnPlayQuick from '../buttons/play/quick.tsx'
+import btnLounge from '../buttons/lounge/index.tsx'
+import btnMainMenu from '../buttons/main/index.tsx'
 
 export default () => {
     /* Initialize locals. */
@@ -12,9 +12,9 @@ export default () => {
     buttons = []
 
     /* Add buttons. */
-    buttons.push(btnUserGuide())
-    buttons.push(btnContactUs())
+    buttons.push(btnPlayQuick())
     buttons.push(btnMainMenu())
+    buttons.push(btnLounge())
     buttons.push(btnHelp())
 
     /* Return (menu) buttons. */

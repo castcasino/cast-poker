@@ -11,8 +11,8 @@ export default (_ctx: any) => {
                 What can I do to help you?
             </p>
 
-            <section>
-                <button tw="px-10 py-3 bg-amber-200 border border-amber-400 rounded-2xl shadow">
+            <section tw="flex flex-col">
+                <button tw="my-2 px-10 py-3 bg-amber-200 border border-amber-400 rounded-2xl shadow">
                     <span tw="text-3xl text-amber-700 font-bold tracking-widest">
                         1. Learn the Rules
                     </span>
