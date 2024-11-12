@@ -3,6 +3,7 @@ import { farcasterHubContext } from 'frames.js/middleware'
 import { createFrames } from 'frames.js/express'
 
 /* Import (local) modules. */
+import handleInputs from './handlers/inputs.tsx'
 import handleMenus from './handlers/menus.tsx'
 import handleScreens from './handlers/screens.tsx'
 
@@ -21,6 +22,7 @@ const frames = createFrames({
                 }),
         }),
     ],
+    imagesRoute: '/',
 })
 
 /**
@@ -32,6 +34,10 @@ export const handleRequest = frames(_ctx => {
 // console.log('CONTEXT', _ctx)
     return {
         image: handleScreens(_ctx),
+        imageOptions: {
+            aspectRatio: '1:1', // or 1.91:1
+        },
         buttons: handleMenus(_ctx),
+        textInput: handleInputs(_ctx),
     }
 })

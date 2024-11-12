@@ -1,6 +1,9 @@
 /* Import Start. */
 import start from '../screens/start.tsx'
 
+/* Import Main. */
+import mainMenu from '../screens/main/index.tsx'
+
 /* Import Help & Support */
 import help from '../screens/help/index.tsx'
 import helpContactUs from '../screens/help/contact.tsx'
@@ -43,9 +46,9 @@ export default (_ctx: any) => {
 
     /* Handle screen selection. */
     switch(screen) {
-    /* Start / Landing */
+    /* Main */
     case 'MAIN_MENU':
-        return start(_ctx)
+        return mainMenu(_ctx)
 
     /* Help & Support */
     case 'HELP':

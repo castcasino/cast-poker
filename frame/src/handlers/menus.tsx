@@ -3,12 +3,15 @@ import helpMenu from '../menus/help/index.tsx'
 import playQuickMenu from '../menus/play/quick.tsx'
 import startMenu from '../menus/start.tsx'
 
-/* Player's Lounge */
+/* Main */
 import mainMenu from '../menus/main/index.tsx'
 
 /* Player's Lounge */
 import loungeMenu from '../menus/lounge/index.tsx'
 import loungeLeaderboard from '../menus/lounge/leaderboard.tsx'
+
+/* Player Profile */
+import profileMenu from '../menus/profile/index.tsx'
 
 /**
  * Handle Buttons
@@ -53,6 +56,10 @@ export default (_ctx: any) => {
     /* Play */
     case 'PLAY_QUICK':
         return playQuickMenu()
+
+    /* Player Profile */
+    case 'PROFILE':
+        return profileMenu()
 
     default:
         return startMenu()

@@ -3,8 +3,8 @@ import { Button } from 'frames.js/express'
 
 export default () => {
     return (
-        <Button action="post" target={{ query: { screen: 'HELP_CONTACT', menu: 'HELP' } }}>
-            Contact Us
+        <Button action="post" target={{ query: { screen: 'PROFILE_EDIT', menu: 'PROFILE_EDIT' } }}>
+            Share
         </Button>
     )
 }
