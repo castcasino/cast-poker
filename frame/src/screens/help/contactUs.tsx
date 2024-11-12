@@ -2,7 +2,7 @@
 
 export default (_ctx: any) => {
     return (
-        <div tw="w-full h-full flex flex-col justify-center items-center bg-amber-50 text-amber-500">
+        <div tw="w-full h-full flex flex-col justify-center items-center bg-green-50">
             <span tw="text-7xl font-bold tracking-widest">
                 Contact Us
             </span>
