@@ -58,6 +58,6 @@ app.use('*', async (req, res) => {
 })
 
 /* Start http server. */
-app.listen(port, () => {
+app.listen(port, 'localhost', () => {
     console.log(`Cast Poker Frame started at http://localhost:${port}`)
 })

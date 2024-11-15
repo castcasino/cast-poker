@@ -6,6 +6,6 @@ app.get('/', (req, res) => {
     res.send('Cast Poker Mini App is running...')
 })
 
-app.listen(port, () => {
+app.listen(port, 'localhost', () => {
   console.log(`Cast Poker Mini App listening on port ${port}`)
 })
