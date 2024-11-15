@@ -1,5 +1,6 @@
 /* Import modules. */
 import { farcasterHubContext } from 'frames.js/middleware'
+// import { neynarValidate } from 'frames.js/middleware/neynar'
 import { createFrames } from 'frames.js/express'
 
 /* Import (local) modules. */
@@ -21,6 +22,9 @@ const frames = createFrames({
                     hubHttpUrl: 'http://localhost:3010/hub',
                 }),
         }),
+        // neynarValidate({
+        //     API_KEY: process.env.NEYNAR_API_KEY!,
+        // }),
     ],
     imagesRoute: '/',
 })

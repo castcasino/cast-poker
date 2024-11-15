@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /* Import modules. */
 import { binToHex } from '@nexajs/utils'
-import { decodeAddress } from '@nexajs/address'
+// import { decodeAddress } from '@nexajs/address'
 import formatPosition from './_formatPosition.js'
 import moment from 'moment'
 import numeral from 'numeral'

@@ -1,6 +1,6 @@
 /* Import modules. */
 // import { getAddressBalance } from '@nexajs/rostrum'
-import { listUnspent } from '@nexajs/address'
+// import { listUnspent } from '@nexajs/address'
 import moment from 'moment'
 import PouchDB from 'pouchdb'
 import { getHmac } from '@nexajs/crypto'
