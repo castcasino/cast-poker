@@ -12,7 +12,6 @@
   "dependencies": {
     "@farcaster/auth-client": "^0.3.0",
     "@nexajs/crypto": "24.9.5",
-    "@nexajs/hdnode": "24.10.1",
     "@nexajs/utils": "24.7.15",
     "@nuxtjs/plausible": "0.2.1",
     "@pinia/nuxt": "0.5.4",

@@ -4,7 +4,7 @@ import {
     sha256,
 } from '@nexajs/crypto'
 
-import { entropyToMnemonic } from '@nexajs/hdnode'
+// import { entropyToMnemonic } from '@nexajs/hdnode'
 
 import {
     binToHex,

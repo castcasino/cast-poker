@@ -11,7 +11,7 @@ import {
     sha512,
 } from '@nexajs/crypto'
 
-import { entropyToMnemonic } from '@nexajs/hdnode'
+// import { entropyToMnemonic } from '@nexajs/hdnode'
 
 import moment from 'moment'
 
