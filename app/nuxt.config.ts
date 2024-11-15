@@ -19,14 +19,6 @@ export default defineNuxtConfig({
         },
     },
 
-    server: {
-        port: process.env.PORT || 6000,
-    },
-
-    devServer: {
-        port: process.env.PORT || 6000,
-    },
-
     /* Progressive Web Application Settings */
     pwa: {
         manifest: {
