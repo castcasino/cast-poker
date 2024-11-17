@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     pwa: {
         manifest: {
             name: 'Cast Poker',
-            short_name: 'Nexa Studio',
+            short_name: 'Cast Poker',
             description: `Start your next JavaScript project using Cast Poker boilerplate templates.`,
             lang: 'en',
             theme_color: '#518c96',
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
         meta: {
             name: 'Cast Poker',
             description: `Start your next JavaScript project using Cast Poker boilerplate templates.`,
-            author: `Nexa contributors`,
+            author: `Cast Casino DAO`,
         },
         // icon: false, // disables the icon module
         workbox: {

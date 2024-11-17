@@ -1,11 +1,4 @@
 <script setup lang="ts">
-useHead({
-    title: 'PROJECT_NAME — Nexa Studio',
-    meta: [
-        { name: 'description', content: 'Nexa Studio makes building your next BIG idea effortless.' }
-    ],
-})
-
 /* Initialize stores. */
 import { useProfileStore } from '@/stores/profile'
 import { useSystemStore } from '@/stores/system'
