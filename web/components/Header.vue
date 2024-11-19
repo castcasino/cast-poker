@@ -1,5 +1,81 @@
 <script setup lang="ts">
+/* Import modules. */
+import { createAppClient, viemConnector } from '@farcaster/auth-client'
+import { v4 as uuidv4 } from 'uuid'
 
+
+const props = defineProps({
+    data: {
+        type: [Object],
+    },
+    title: String,
+})
+
+const init = async () => {
+    /* Initialize locals. */
+    let appClient
+    let authResponse
+    let channel
+    let channelToken
+    let connectUri
+    let requestId
+    let status
+
+    /* Set request ID. */
+    requestId = uuidv4()
+    console.log('REQUEST ID', requestId)
+
+    /* Create app client. */
+    appClient = createAppClient({
+        relay: 'https://relay.farcaster.xyz',
+        ethereum: viemConnector(),
+    })
+
+    /* Create channel. */
+    channel = await appClient.createChannel({
+        siweUri: 'https://cast.poker/login',
+        domain: 'cast.poker',
+        requestId,
+    })
+    console.log('CHANNEL', channel)
+
+    /* Validate channel data. */
+    if (channel?.data) {
+        /* Set channel token. */
+        channelToken = channel.data.channelToken
+
+        /* Set connect URI. */
+        connectUri = channel.data.url
+    }
+    console.log('CHANNEL TOKEN', channelToken)
+    console.log('CONNECT URI', connectUri)
+
+    /* Validate channel token. */
+    if (channelToken) {
+        status = await appClient.watchStatus({
+            channelToken,
+        })
+        console.log('CHANNEL STATUS', status)
+
+        authResponse = await appClient.verifySignInMessage({
+            nonce: status.data.nonce,
+            domain: status.data.signatureParams.domain,
+            message: status.data.message,
+            signature: status.data.signature,
+        })
+        console.log('AUTH RESPONSE', authResponse)
+    }
+
+}
+
+onMounted(() => {
+    init()
+})
+
+// onBeforeUnmount(() => {
+//     console.log('Before Unmount!')
+//     // Now is the time to perform all cleanup operations.
+// })
 </script>
 
 <template>
@@ -46,11 +122,13 @@
                 </nav>
 
                 <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-                    <button
+                    <!-- <button
                         class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"
                     >
                         Connect Your Wallet
-                    </button>
+                    </button> -->
+                    button goes here ->
+                    <!-- <SignInButton /> -->
                 </div>
             </div>
 

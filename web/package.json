@@ -1,6 +1,6 @@
 {
   "name": "cast-poker-web",
-  "version": "24.11.15",
+  "version": "24.11.19",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -10,11 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@farcaster/auth-client": "^0.3.0",
+    "@farcaster/auth-client": "0.3.0",
     "@nexajs/crypto": "24.9.5",
     "@nexajs/utils": "24.7.15",
     "@nuxtjs/plausible": "0.2.1",
     "@pinia/nuxt": "0.5.4",
+    "ethers": "6.13.4",
     "moment": "2.29.4",
     "numeral": "2.0.6",
     "nuxt": "3.12.4",
