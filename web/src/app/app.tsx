@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic'
 
-const Demo = dynamic(() => import("~/components/Demo"), {
-  ssr: false,
-});
+const Lobby = dynamic(() => import('~/components/Lobby'), {
+    ssr: false,
+})
 
 export default function App(
-  { title }: { title?: string } = { title: "Frames v2 Demo" }
+    { title }: { title?: string } = { title: 'Cast Poker — 100% Provably Fair Gaming' }
 ) {
-  return <Demo title={title} />;
+    return <Lobby title={title} />
 }
