@@ -14,7 +14,7 @@ export default (_ctx: any) => {
             </p>
 
             <div tw="flex text-7xl text-sky-500 font-light italic">
-                GM, {_ctx.message.requesterUserData?.displayName}!
+                {/* GM, {_ctx.message.requesterUserData?.displayName}! */}
             </div>
 
             <div tw="mt-6 flex text-slate-800 font-bold tracking-widest uppercase">

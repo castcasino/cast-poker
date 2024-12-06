@@ -1,6 +1,7 @@
 /* Import Start. */
 // import start from '../screens/start.tsx'
 import start from '../screens/lobby.tsx'
+// import start from '../screens/profile/index.tsx'
 
 /* Import Main. */
 import mainMenu from '../screens/main/index.tsx'
