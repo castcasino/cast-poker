@@ -6,7 +6,7 @@ console.log('LOBBY CONTEXT', _ctx)
         <div tw="w-full h-full flex flex-col justify-center items-center bg-green-50">
 
             {/* Frame Header */}
-            <section tw="absolute w-full h-[250px] top-0 px-10 py-7 flex justify-between bg-lime-100 border-b-8 border-amber-500">
+            <header tw="absolute w-full h-[250px] top-0 px-10 py-7 flex justify-between bg-lime-100 border-b-8 border-amber-500">
                 <div tw="flex flex-col">
                     <div tw="flex w-[500px] bg-red-100">
                         <div tw="flex justify-end w-1/2">
@@ -51,7 +51,7 @@ console.log('LOBBY CONTEXT', _ctx)
                     </div>
                 </div>
 
-                <div tw="px-5 py-2 flex flex-col items-center rounded-lg border-2 border-lime-500 bg-lime-200">
+                <section tw="px-5 py-2 flex flex-col items-center rounded-lg border-2 border-lime-500 bg-lime-200">
                     <span tw="text-6xl font-medium text-lime-600">
                         Total Pot
                     </span>
@@ -65,52 +65,54 @@ console.log('LOBBY CONTEXT', _ctx)
                             </span>
                         </sup>
                     </span>
-                </div>
+                </section>
 
-            </section>
+            </header>
 
+            <main>
             <section tw="flex items-center">
-                <img
-                    src="https://assets.cast.casino/poker-table.png"
-                    tw="h-20 w-20"
-                />
+                    <img
+                        src="https://assets.cast.casino/poker-table.png"
+                        tw="h-20 w-20"
+                    />
 
-                <span tw="pl-10 flex items-end text-lime-600 text-5xl font-light tracking-wider italic">
-                    BUY IN for just
-                    <span tw="pl-3 pr-2 text-8xl text-rose-400">42<sup tw="text-4xl">.888</sup></span>
-                    <span tw="-ml-20 text-rose-600">$DEGEN</span>
-                </span>
-            </section>
+                    <span tw="pl-10 flex items-end text-lime-600 text-5xl font-light tracking-wider italic">
+                        BUY IN for just
+                        <span tw="pl-3 pr-2 text-8xl text-rose-400">42<sup tw="text-4xl">.888</sup></span>
+                        <span tw="-ml-20 text-rose-600">$DEGEN</span>
+                    </span>
+                </section>
 
-            <section tw="mt-10 flex">
-                <img
-                    src="https://assets.cast.casino/cards_01/AS.svg"
-                    tw="mx-5 h-48 w-36 border-2 border-slate-700"
-                />
+                <section tw="mt-10 flex">
+                    <img
+                        src="https://assets.cast.casino/cards_01/AS.svg"
+                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                    />
 
-                <img
-                    src="https://assets.cast.casino/cards_01/AD.svg"
-                    tw="mx-5 h-48 w-36 border-2 border-slate-700"
-                />
+                    <img
+                        src="https://assets.cast.casino/cards_01/AD.svg"
+                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                    />
 
-                <img
-                    src="https://assets.cast.casino/cards_01/KH.svg"
-                    tw="mx-5 h-48 w-36 border-2 border-slate-700"
-                />
+                    <img
+                        src="https://assets.cast.casino/cards_01/KH.svg"
+                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                    />
 
-                <img
-                    src="https://assets.cast.casino/cards_01/KC.svg"
-                    tw="mx-5 h-48 w-36 border-2 border-slate-700"
-                />
+                    <img
+                        src="https://assets.cast.casino/cards_01/KC.svg"
+                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                    />
 
-                <img
-                    src="https://assets.cast.casino/cards_01/2D.svg"
-                    tw="mx-5 h-48 w-36 border-2 border-slate-700"
-                />
-            </section>
+                    <img
+                        src="https://assets.cast.casino/cards_01/2D.svg"
+                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                    />
+                </section>
+            </main>
 
             {/* Frame Footer */}
-            <section tw="absolute w-full h-[200px] bottom-0 px-10 py-7 flex justify-between bg-sky-200 border-t-8 border-purple-500">
+            <footer tw="absolute w-full h-[200px] bottom-0 px-10 py-7 flex justify-between bg-sky-200 border-t-8 border-purple-500">
                 <div tw="flex flex-col">
                     <span tw="flex items-center text-2xl tracking-widest">
                         {_ctx?.message?.requesterUserData?.displayName} Stats
@@ -128,7 +130,7 @@ console.log('LOBBY CONTEXT', _ctx)
                     </span>
                 </div>
 
-                <div tw="px-5 flex flex-col items-center justify-center rounded-lg border-2 border-lime-500 bg-lime-200">
+                <section tw="px-5 flex flex-col items-center justify-center rounded-lg border-2 border-lime-500 bg-lime-200">
                     <span tw="my-2 text-4xl font-medium text-lime-600 tracking-widest">
                         Play Begins In
                     </span>
@@ -136,8 +138,8 @@ console.log('LOBBY CONTEXT', _ctx)
                     <span tw="my-2 text-5xl font-bold text-lime-800 tracking-wider">
                         ~ 11h:11m
                     </span>
-                </div>
-            </section>
+                </section>
+            </footer>
         </div>
     )
 }

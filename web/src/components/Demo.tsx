@@ -27,6 +27,126 @@ import { Button } from '~/components/ui/Button'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
+
+function SignMessage() {
+    const { isConnected } = useAccount()
+    const { connectAsync } = useConnect()
+
+    const {
+        signMessage,
+        data: signature,
+        error: signError,
+        isError: isSignError,
+        isPending: isSignPending,
+    } = useSignMessage()
+
+    const handleSignMessage = useCallback(async () => {
+        if (!isConnected) {
+            await connectAsync({
+                chainId: base.id,
+                connector: config.connectors[0],
+            })
+        }
+
+        signMessage({ message: "Hey from Cast Poker!" })
+    }, [connectAsync, isConnected, signMessage]);
+
+  return (
+        <>
+            <Button
+                onClick={handleSignMessage}
+                disabled={isSignPending}
+                isLoading={isSignPending}
+            >
+                Sign Message
+            </Button>
+
+            {isSignError && renderError(signError)}
+
+            {signature && (
+                <div className="mt-2 text-xs">
+                    <div>Signature: {signature}</div>
+                </div>
+            )}
+        </>
+    )
+}
+
+function SendEth() {
+    const { isConnected, chainId } = useAccount()
+
+    const {
+        sendTransaction,
+        data,
+        error: sendTxError,
+        isError: isSendTxError,
+        isPending: isSendTxPending,
+    } = useSendTransaction()
+
+    const { isLoading: isConfirming, isSuccess: isConfirmed } =
+        useWaitForTransactionReceipt({
+            hash: data,
+        })
+
+    const toAddr = useMemo(() => {
+        // Protocol guild address
+        return chainId === base.id
+            ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
+            : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
+    }, [ chainId ])
+
+    const handleSend = useCallback(() => {
+        sendTransaction({
+            to: toAddr,
+            value: 1n,
+        })
+    }, [ toAddr, sendTransaction ])
+
+    return (
+        <>
+            <Button
+                onClick={handleSend}
+                disabled={!isConnected || isSendTxPending}
+                isLoading={isSendTxPending}
+            >
+                Send Transaction (eth)
+            </Button>
+
+            {isSendTxError && renderError(sendTxError)}
+
+            {data && (
+                <div className="mt-2 text-xs">
+                    <div>Hash: {truncateAddress(data)}</div>
+
+                    <div>
+                        Status:{" "}
+                        {isConfirming
+                            ? "Confirming..."
+                            : isConfirmed
+                            ? "Confirmed!"
+                            : "Pending"}
+                    </div>
+                </div>
+            )}
+        </>
+    )
+}
+
+const renderError = (error: Error | null) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+        }
+    }
+
+    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+}
+
+
 export default function Demo(
     { title }: { title?: string } = { title: 'Cast Poker — 100% Provably Fair Gaming' }
 ) {
@@ -196,311 +316,236 @@ export default function Demo(
     }
 
     return (
-        <div className="w-full mx-auto py-4 px-2">
-            <h1 className="text-2xl font-bold text-center mb-4">
-                {title}
-            </h1>
-
-            <div className="mb-4">
-                <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Casino Context
-                </h2>
-
-                <button
-                    onClick={toggleContext}
-                    className="flex items-center gap-2 transition-colors"
-                >
-                    <span
-                        className={`transform transition-transform ${
-                            isContextOpen ? "rotate-90" : ""
-                        }`}
-                    >
-                        ➤
+        <>
+            <header className="fixed top-0 left-0 right-0 h-[100px] z-10 flex justify-between bg-sky-500">
+                <div className="">
+                    <span>
+                        header
                     </span>
-                    Tap to expand
-                </button>
 
-                {isContextOpen && (
-                    <div className="p-4 mt-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            {JSON.stringify(context, null, 2)}
-                        </pre>
+                    <div>
+
+                    </div>
+                </div>
+
+                <section className="m-3 px-5 py-2 flex flex-col items-center rounded-lg border-2 border-lime-500 bg-lime-200">
+                    <span className="text-2xl font-medium text-lime-600">
+                        Total Pot
+                    </span>
+
+                    <span className="-mt-2 flex flex-row text-4xl font-bold text-lime-800">
+                        $88
+                        <sup className="mt-2 flex flex-col items-end text-sm">
+                            .1337
+                            <span className="-mt-1 font-bold text-xs text-lime-600 tracking-widest">
+                                USD
+                            </span>
+                        </sup>
+                    </span>
+                </section>
+
+            </header>
+
+            <main className="pt-[100px] pb-[100px] w-full mx-auto py-4 px-2">
+                <h1 className="text-2xl font-bold text-center mb-4">
+                    {title}
+                </h1>
+
+                <div className="mb-4">
+                    <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
+                        Casino Context
+                    </h2>
+
+                    <button
+                        onClick={toggleContext}
+                        className="flex items-center gap-2 transition-colors"
+                    >
+                        <span
+                            className={`transform transition-transform ${isContextOpen ? "rotate-90" : ""}`}
+                        >
+                            ➤
+                        </span>
+                        Tap to expand
+                    </button>
+
+                    {isContextOpen && (
+                        <div className="p-4 mt-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                            <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                                {JSON.stringify(context, null, 2)}
+                            </pre>
+                        </div>
+                    )}
+                </div>
+
+                <div>
+                    <h2 className="font-2xl font-bold">Actions</h2>
+
+                    <div className="mb-4">
+                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
+                            <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                                sdk.actions.openUrl
+                            </pre>
+                        </div>
+
+                        <Button onClick={openUrl}>Open Link</Button>
+                    </div>
+
+                    <div className="mb-4">
+                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
+                            <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                                sdk.actions.openUrl
+                            </pre>
+                        </div>
+
+                        <Button onClick={openWarpcastUrl}>Open Warpcast Link</Button>
+                    </div>
+
+                    <div className="mb-4">
+                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
+                            <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                                sdk.actions.close
+                            </pre>
+                        </div>
+
+                        <Button onClick={close}>Close Frame</Button>
+                    </div>
+
+                    <div className="mb-4">
+                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
+                            <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
+                                sdk.actions.addFrame
+                            </pre>
+                        </div>
+
+                        {addFrameResult && (
+                            <div className="mb-2">Add frame result: {addFrameResult}</div>
+                        )}
+
+                        <Button onClick={addFrame}>Add frame to client</Button>
+                    </div>
+                </div>
+
+                {notificationDetails && (
+                    <div>
+                        <h2 className="font-2xl font-bold">Notify</h2>
+
+                        {sendNotificationResult && (
+                            <div className="mb-2">
+                                Send notification result: {sendNotificationResult}
+                            </div>
+                        )}
+
+                        <div className="mb-4">
+                            <Button onClick={sendNotification}>Send notification</Button>
+                        </div>
                     </div>
                 )}
-            </div>
 
-            <div>
-                <h2 className="font-2xl font-bold">Actions</h2>
+                <div>
+                    <h2 className="font-2xl font-bold">Wallet</h2>
 
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.openUrl
-                        </pre>
-                    </div>
-
-                    <Button onClick={openUrl}>Open Link</Button>
-                </div>
-
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.openUrl
-                        </pre>
-                    </div>
-
-                    <Button onClick={openWarpcastUrl}>Open Warpcast Link</Button>
-                </div>
-
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.close
-                        </pre>
-                    </div>
-
-                    <Button onClick={close}>Close Frame</Button>
-                </div>
-
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.addFrame
-                        </pre>
-                    </div>
-
-                    {addFrameResult && (
-                        <div className="mb-2">Add frame result: {addFrameResult}</div>
+                    {address && (
+                        <div className="my-2 text-xs">
+                            Address: <pre className="inline">{truncateAddress(address)}</pre>
+                        </div>
                     )}
 
-                    <Button onClick={addFrame}>Add frame to client</Button>
-                </div>
-            </div>
-
-            {notificationDetails && (
-                <div>
-                    <h2 className="font-2xl font-bold">Notify</h2>
-
-                    {sendNotificationResult && (
-                        <div className="mb-2">
-                            Send notification result: {sendNotificationResult}
+                    {chainId && (
+                        <div className="my-2 text-xs">
+                            Chain ID: <pre className="inline">{chainId}</pre>
                         </div>
                     )}
 
                     <div className="mb-4">
-                        <Button onClick={sendNotification}>Send notification</Button>
+                        <Button
+                            onClick={() =>
+                                isConnected
+                                ? disconnect()
+                                : connect({ connector: config.connectors[0] })
+                            }
+                        >
+                            {isConnected ? "Disconnect" : "Connect"}
+                        </Button>
                     </div>
-                </div>
-            )}
 
-            <div>
-                <h2 className="font-2xl font-bold">Wallet</h2>
-
-                {address && (
-                    <div className="my-2 text-xs">
-                        Address: <pre className="inline">{truncateAddress(address)}</pre>
+                    <div className="mb-4">
+                        <SignMessage />
                     </div>
-                )}
 
-                {chainId && (
-                    <div className="my-2 text-xs">
-                        Chain ID: <pre className="inline">{chainId}</pre>
-                    </div>
-                )}
+                    {isConnected && (
+                        <>
+                            <div className="mb-4">
+                                <SendEth />
+                            </div>
 
-                <div className="mb-4">
-                    <Button
-                        onClick={() =>
-                            isConnected
-                            ? disconnect()
-                            : connect({ connector: config.connectors[0] })
-                        }
-                    >
-                        {isConnected ? "Disconnect" : "Connect"}
-                    </Button>
-                </div>
+                            <div className="mb-4">
+                                <Button
+                                    onClick={sendTx}
+                                    disabled={!isConnected || isSendTxPending}
+                                    isLoading={isSendTxPending}
+                                >
+                                    Send Transaction (contract)
+                                </Button>
 
-                <div className="mb-4">
-                    <SignMessage />
-                </div>
+                                {isSendTxError && renderError(sendTxError)}
 
-                {isConnected && (
-                    <>
-                        <div className="mb-4">
-                            <SendEth />
-                        </div>
+                                {txHash && (
+                                    <div className="mt-2 text-xs">
+                                        <div>Hash: {truncateAddress(txHash)}</div>
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={sendTx}
-                                disabled={!isConnected || isSendTxPending}
-                                isLoading={isSendTxPending}
-                            >
-                                Send Transaction (contract)
-                            </Button>
-
-                            {isSendTxError && renderError(sendTxError)}
-
-                            {txHash && (
-                                <div className="mt-2 text-xs">
-                                    <div>Hash: {truncateAddress(txHash)}</div>
-
-                                    <div>
-                                        Status:{" "}
-                                        {isConfirming
-                                            ? "Confirming..."
-                                            : isConfirmed
-                                            ? "Confirmed!"
-                                            : "Pending"}
+                                        <div>
+                                            Status:{" "}
+                                            {isConfirming
+                                                ? "Confirming..."
+                                                : isConfirmed
+                                                ? "Confirmed!"
+                                                : "Pending"}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                        </div>
+                                )}
+                            </div>
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={signTyped}
-                                disabled={!isConnected || isSignTypedPending}
-                                isLoading={isSignTypedPending}
-                            >
-                                Sign Typed Data
-                            </Button>
+                            <div className="mb-4">
+                                <Button
+                                    onClick={signTyped}
+                                    disabled={!isConnected || isSignTypedPending}
+                                    isLoading={isSignTypedPending}
+                                >
+                                    Sign Typed Data
+                                </Button>
 
-                            {isSignTypedError && renderError(signTypedError)}
-                        </div>
+                                {isSignTypedError && renderError(signTypedError)}
+                            </div>
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={handleSwitchChain}
-                                disabled={isSwitchChainPending}
-                                isLoading={isSwitchChainPending}
-                            >
-                                Switch to {chainId === base.id ? "Optimism" : "Base"}
-                            </Button>
+                            <div className="mb-4">
+                                <Button
+                                    onClick={handleSwitchChain}
+                                    disabled={isSwitchChainPending}
+                                    isLoading={isSwitchChainPending}
+                                >
+                                    Switch to {chainId === base.id ? "Optimism" : "Base"}
+                                </Button>
 
-                            {isSwitchChainError && renderError(switchChainError)}
-                        </div>
-                    </>
-                )}
-            </div>
-        </div>
-    )
-}
-
-function SignMessage() {
-    const { isConnected } = useAccount()
-    const { connectAsync } = useConnect()
-
-    const {
-        signMessage,
-        data: signature,
-        error: signError,
-        isError: isSignError,
-        isPending: isSignPending,
-    } = useSignMessage()
-
-    const handleSignMessage = useCallback(async () => {
-        if (!isConnected) {
-            await connectAsync({
-                chainId: base.id,
-                connector: config.connectors[0],
-            })
-        }
-
-        signMessage({ message: "Hey from Cast Poker!" })
-    }, [connectAsync, isConnected, signMessage]);
-
-  return (
-        <>
-            <Button
-                onClick={handleSignMessage}
-                disabled={isSignPending}
-                isLoading={isSignPending}
-            >
-                Sign Message
-            </Button>
-
-            {isSignError && renderError(signError)}
-
-            {signature && (
-                <div className="mt-2 text-xs">
-                    <div>Signature: {signature}</div>
+                                {isSwitchChainError && renderError(switchChainError)}
+                            </div>
+                        </>
+                    )}
                 </div>
-            )}
+
+                <footer className="fixed bottom-0 left-0 right-0 h-[100px] z-10 flex justify-between bg-rose-500">
+                    footer
+
+                    <section className="m-3 px-3 flex flex-col items-center justify-center rounded-lg border-2 border-lime-500 bg-lime-200">
+                        <span className="text-lg font-medium text-lime-600 tracking-widest">
+                            Play Begins In
+                        </span>
+
+                        <span className="text-2xl font-bold text-lime-800 tracking-wider">
+                            ~ 11h:11m
+                        </span>
+                    </section>
+                </footer>
+            </main>
         </>
     )
-}
-
-function SendEth() {
-    const { isConnected, chainId } = useAccount()
-
-    const {
-        sendTransaction,
-        data,
-        error: sendTxError,
-        isError: isSendTxError,
-        isPending: isSendTxPending,
-    } = useSendTransaction()
-
-    const { isLoading: isConfirming, isSuccess: isConfirmed } =
-        useWaitForTransactionReceipt({
-            hash: data,
-        })
-
-    const toAddr = useMemo(() => {
-        // Protocol guild address
-        return chainId === base.id
-            ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
-            : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
-    }, [ chainId ])
-
-    const handleSend = useCallback(() => {
-        sendTransaction({
-            to: toAddr,
-            value: 1n,
-        })
-    }, [ toAddr, sendTransaction ])
-
-    return (
-        <>
-            <Button
-                onClick={handleSend}
-                disabled={!isConnected || isSendTxPending}
-                isLoading={isSendTxPending}
-            >
-                Send Transaction (eth)
-            </Button>
-
-            {isSendTxError && renderError(sendTxError)}
-
-            {data && (
-                <div className="mt-2 text-xs">
-                    <div>Hash: {truncateAddress(data)}</div>
-
-                    <div>
-                        Status:{" "}
-                        {isConfirming
-                            ? "Confirming..."
-                            : isConfirmed
-                            ? "Confirmed!"
-                            : "Pending"}
-                    </div>
-                </div>
-            )}
-        </>
-    )
-}
-
-const renderError = (error: Error | null) => {
-    if (!error) return null
-
-    if (error instanceof BaseError) {
-        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
-
-        if (isUserRejection) {
-            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
-        }
-    }
-
-    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
 }
