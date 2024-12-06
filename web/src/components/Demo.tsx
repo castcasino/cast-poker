@@ -189,11 +189,11 @@ export default function Demo(
   }
 
   return (
-    <div className="w-[300px] mx-auto py-4 px-2">
+    <div className="w-full mx-auto py-4 px-2">
       <h1 className="text-2xl font-bold text-center mb-4">{title}</h1>
 
       <div className="mb-4">
-        <h2 className="font-5xl font-bold italic tracking-widest">Casino Context</h2>
+        <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">Casino Context</h2>
         <button
           onClick={toggleContext}
           className="flex items-center gap-2 transition-colors"
