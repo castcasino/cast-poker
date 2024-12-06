@@ -22,6 +22,8 @@ import { base, optimism } from 'wagmi/chains'
 
 import { BaseError, UserRejectedRequestError } from 'viem'
 
+import { Header } from '~/components/Header'
+import { Footer } from '~/components/Footer'
 import { config } from '~/components/providers/WagmiProvider'
 import { Button } from '~/components/ui/Button'
 
@@ -316,37 +318,10 @@ export default function Demo(
     }
 
     return (
-        <>
-            <header className="fixed top-0 left-0 right-0 h-[100px] z-10 flex justify-between bg-sky-500">
-                <div className="">
-                    <span>
-                        header
-                    </span>
+        <div className="h-screen flex flex-col justify-between">
+            <Header />
 
-                    <div>
-
-                    </div>
-                </div>
-
-                <section className="m-3 px-5 py-2 flex flex-col items-center rounded-lg border-2 border-lime-500 bg-lime-200">
-                    <span className="text-2xl font-medium text-lime-600">
-                        Total Pot
-                    </span>
-
-                    <span className="-mt-2 flex flex-row text-4xl font-bold text-lime-800">
-                        $88
-                        <sup className="mt-2 flex flex-col items-end text-sm">
-                            .1337
-                            <span className="-mt-1 font-bold text-xs text-lime-600 tracking-widest">
-                                USD
-                            </span>
-                        </sup>
-                    </span>
-                </section>
-
-            </header>
-
-            <main className="pt-[100px] pb-[100px] w-full mx-auto py-4 px-2">
+            <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
                 <h1 className="text-2xl font-bold text-center mb-4">
                     {title}
                 </h1>
@@ -531,21 +506,9 @@ export default function Demo(
                         </>
                     )}
                 </div>
-
-                <footer className="fixed bottom-0 left-0 right-0 h-[100px] z-10 flex justify-between bg-rose-500">
-                    footer
-
-                    <section className="m-3 px-3 flex flex-col items-center justify-center rounded-lg border-2 border-lime-500 bg-lime-200">
-                        <span className="text-lg font-medium text-lime-600 tracking-widest">
-                            Play Begins In
-                        </span>
-
-                        <span className="text-2xl font-bold text-lime-800 tracking-wider">
-                            ~ 11h:11m
-                        </span>
-                    </section>
-                </footer>
             </main>
-        </>
+
+            <Footer />
+        </div>
     )
 }
