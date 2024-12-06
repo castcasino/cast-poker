@@ -7,16 +7,30 @@ export default (_ctx: any) => {
             {/* Frame Header */}
             <section tw="absolute w-full h-[200px] top-0 px-10 py-7 flex justify-between bg-lime-100 border-b-8 border-amber-500">
                 <div tw="flex flex-col">
-                    <span tw="text-4xl tracking-widest">
-                        Total Players: 7
-                    </span>
+                    <div tw="flex w-[500px] bg-red-100">
+                        <div tw="flex justify-end w-1/2">
+                            # of Players
+                        </div>
+
+                        <div tw="pl-4 flex w-1/2">
+                            <span tw="font-extrabold text-5xl">
+                                37
+                            </span>
+                        </div>
+                    </div>
+
+                    <div tw="flex w-[500px] bg-red-100">
+                        <div tw="flex justify-end w-1/2">
+                            # of Decks
+                        </div>
+
+                        <div tw="pl-4 flex w-1/2">
+                            2
+                        </div>
+                    </div>
 
                     <span tw="text-4xl tracking-widest">
-                        Total Players: 13
-                    </span>
-
-                    <span tw="text-4xl tracking-widest">
-                        Total Players: 26
+                        Max Players: none
                     </span>
                 </div>
 
@@ -95,7 +109,7 @@ export default (_ctx: any) => {
                     </span>
 
                     <span tw="my-2 text-5xl font-bold text-lime-800 tracking-wider">
-                        ~ 11h:11min
+                        ~ 11h:11m
                     </span>
                 </div>
             </section>
