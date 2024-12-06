@@ -1,7 +1,8 @@
 /* Import (local) modules. */
 import helpMenu from '../menus/help/index.tsx'
 import playQuickMenu from '../menus/play/quick.tsx'
-import startMenu from '../menus/start.tsx'
+// import startMenu from '../menus/start.tsx'
+import startMenu from '../menus/lobby.tsx'
 
 /* Main */
 import mainMenu from '../menus/main/index.tsx'
