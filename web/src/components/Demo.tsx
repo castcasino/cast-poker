@@ -193,7 +193,7 @@ export default function Demo(
       <h1 className="text-2xl font-bold text-center mb-4">{title}</h1>
 
       <div className="mb-4">
-        <h2 className="font-2xl font-bold">Casino Context</h2>
+        <h2 className="font-5xl font-bold italic tracking-widest">Casino Context</h2>
         <button
           onClick={toggleContext}
           className="flex items-center gap-2 transition-colors"
