@@ -193,7 +193,7 @@ export default function Demo(
       <h1 className="text-2xl font-bold text-center mb-4">{title}</h1>
 
       <div className="mb-4">
-        <h2 className="font-2xl font-bold">Context</h2>
+        <h2 className="font-2xl font-bold">Casino Context</h2>
         <button
           onClick={toggleContext}
           className="flex items-center gap-2 transition-colors"
@@ -462,7 +462,7 @@ const renderError = (error: Error | null) => {
   if (!error) return null;
   if (error instanceof BaseError) {
   const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
-  
+
     if (isUserRejection) {
       return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>;
     }
@@ -470,4 +470,3 @@ const renderError = (error: Error | null) => {
 
   return <div className="text-red-500 text-xs mt-1">{error.message}</div>;
 };
-
