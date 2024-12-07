@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-import splashIcon from '~/public/splash.png'
+import splashIcon from '~/../public/splash.png'
 
 export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)

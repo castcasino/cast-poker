@@ -1,13 +1,22 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
+import splashIcon from '~/../public/splash.png'
+
 export function Navbar({ tableid }: { tableid: string}) {
-console.log('WHAT R THE PARAMS', tableid)
     return (
         <main className="w-full sm:w-[640px] mx-auto h-[40px] z-10 flex justify-end sm:justify-between items-center bg-slate-700">
-            <span className="hidden sm:flex pl-3 text-xs font-bold tracking-widest text-slate-500 uppercase">
-                Main Menu
-            </span>
+            <div className="pl-3 hidden sm:flex flex-row gap-2 items-center">
+                <Image
+                    className="inline-block size-5 rounded-full"
+                    src={splashIcon}
+                    alt="Splash icon"
+                />
 
+                <span className="text-sm font-medium tracking-widest text-slate-400 uppercase">
+                    Main Menu
+                </span>
+            </div>
 
             <div className="h-full px-3 sm:px-4 py-1 flex flex-row items-center gap-3 sm:gap-4">
 

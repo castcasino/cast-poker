@@ -14,12 +14,12 @@ export function Footer({ tableid }: { tableid: string }) {
 
             <div className="py-2 flex flex-row gap-3">
                 {/* Buy-in Button */}
-                <button className="animate-pulse px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-100">
+                <button className="px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-100">
                     <span className="text-xs sm:text-lg font-medium text-lime-700 tracking-wider">
                         Buy In For Just
                     </span>
 
-                    <span className="text-sm sm:text-3xl font-bold text-lime-900 tracking-wider">
+                    <span className="animate-bounce text-sm sm:text-3xl font-bold text-lime-900 tracking-wider">
                         $8.88
                     </span>
 
