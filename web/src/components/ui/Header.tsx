@@ -32,7 +32,7 @@ export function Header({ tableid }: { tableid: string }) {
                     <div className="flex items-center">
                         <Image
                             className="inline-block size-9 rounded-full"
-                            src={context?.user?.pfpUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'}
+                            src={'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'}
                             alt={context?.user?.displayName || ''}
                             width={500}
                             height={500}
@@ -50,13 +50,9 @@ export function Header({ tableid }: { tableid: string }) {
                     </div>
                 </a>)}
 
-                <span>
-                    {tableid}
-                </span>
-
-                {(context && <p className="text-slate-700">
+                {/* {(context && <p className="text-slate-700">
                     { JSON.stringify(context) }
-                </p>)}
+                </p>)} */}
 
                 {(!context && <p className="text-slate-700 text-xs">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
