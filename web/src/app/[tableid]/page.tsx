@@ -43,5 +43,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TableFrame({ params }: Props) {
     const { tableid } = await params
 
-    return <App title={`Watching table # ${tableid}`} />
+    return <App screenid={'Lobby'} tableid={tableid} />
 }

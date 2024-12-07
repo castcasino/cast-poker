@@ -35,4 +35,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
     return (<App />)
+    // return <h1>How did we end up here??</h1>
 }

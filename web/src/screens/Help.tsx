@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-import { Footer } from '~/components/ui/Footer'
-import { Header } from '~/components/ui/Header'
-
-
 export default function Blank(
     { title }: { title?: string } = { title: 'Blank — Cast Poker' }
 ) {
@@ -31,12 +27,10 @@ export default function Blank(
     }
 
     return (
-        <div className="h-screen flex flex-col justify-between">
-            <Header />
-
+        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
             <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
                 <h1 className="text-2xl font-bold text-center mb-4">
-                    [ {title} ]
+                    Help
                 </h1>
 
                 <div className="mb-4">
@@ -53,8 +47,6 @@ export default function Blank(
                     </p>)}
                 </div>
             </main>
-
-            <Footer />
-        </div>
+        </main>
     )
 }

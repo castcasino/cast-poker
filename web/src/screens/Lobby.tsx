@@ -316,9 +316,9 @@ export default function Demo(
     }
 
     return (
-        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
+        <main className="w-full">
             <h1 className="text-2xl font-bold text-center mb-4">
-                [ {title} ]
+                Lobby
             </h1>
 
             <div className="mb-4">
