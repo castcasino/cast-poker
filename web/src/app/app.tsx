@@ -7,13 +7,13 @@ import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
 
 function withProps(WrappedComponent: React.FC) {
-    return function EnhancedComponent({ tableid }) {
-      return <WrappedComponent tableid={tableid} />
+    return function EnhancedComponent({ tableid }: { tableid: string }) {
+        return <WrappedComponent tableid={tableid} />
     }
 }
 
 export default function App(
-    { screenid, tableid }: { screenid?: string, tableid?: string } = { screenid: 'lobby', tableid: '1337beef' }
+    { screenid, tableid }: { screenid: string, tableid: string } = { screenid: 'lobby', tableid: '' }
 ) {
     /* Initialize screen manager. */
     const Screen = withProps(
