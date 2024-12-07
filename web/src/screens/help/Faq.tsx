@@ -39,8 +39,8 @@ export default function Help({ tableid }: { tableid: string}) {
                             Fairplay
                         </Link>
 
-                        <Link href={`/${tableid}/contact`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Contact
+                        <Link href={`/${tableid}/agent`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Agent
                         </Link>
                     </nav>
                 </div>

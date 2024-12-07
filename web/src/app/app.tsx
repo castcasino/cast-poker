@@ -6,7 +6,7 @@ import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
 
 // Import Help screens.
-import Contact from '~/screens/help/Contact'
+import Agent from '~/screens/help/Agent'
 import Fairplay from '~/screens/help/Fairplay'
 import Faq from '~/screens/help/Faq'
 
@@ -24,7 +24,7 @@ export default function App(
         <Header tableid={tableid} />
 
         <main className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
-            {screenid === 'contact' && <Contact tableid={tableid} />}
+            {screenid === 'agent' && <Agent tableid={tableid} />}
             {screenid === 'earn' && <Earn tableid={tableid} />}
             {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
             {screenid === 'faq' && <Faq tableid={tableid} />}
