@@ -36,7 +36,25 @@ export function Header({ tableid }: { tableid: string }) {
                     <div className="flex items-center">
                         <Image
                             className="inline-block size-9 rounded-full"
-                            src={'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/57f8600f-2e51-4549-8cc4-f80e4c681800/rectcrop3'}
+                            src={'https://cast.poker/icon.png'}
+                            alt={context?.user?.displayName || ''}
+                            width={50}
+                            height={50}
+                        />
+
+                        <Image
+                            className="inline-block size-9 rounded-full"
+                            src='https://cast.poker/icon.png'
+                            alt={context?.user?.displayName || ''}
+                            width={50}
+                            height={50}
+                        />
+
+<img src="https://tailwindui.com/plus/img/ecommerce-images/checkout-page-02-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." className="w-10 rounded-md" />
+
+                        <Image
+                            className="inline-block size-9 rounded-full"
+                            src='https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/57f8600f-2e51-4549-8cc4-f80e4c681800/rectcrop3'
                             alt={context?.user?.displayName || ''}
                             width={50}
                             height={50}
