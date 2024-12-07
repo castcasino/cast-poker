@@ -25,23 +25,58 @@ export default function Help({ tableid }: { tableid: string}) {
     }
 
     return (
-        <main className="w-full">
-            <h1 className="text-5xl font-bold text-sky-500 text-center tracking-widest uppercase">
-                Help
-            </h1>
+        <main className="w-full bg-white">
+            <div className="mx-auto max-w-7xl px-3 py-6 sm:py-8">
+                <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
+                    <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                        Frequently asked questions for {tableid}
+                    </h2>
 
-            <div className="mb-4">
-                <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Table # {tableid}
-                </h2>
+                    {(context?.user?.displayName && <p>
+                        {context.user.displayName},
+                        feel free to ask any questions by DM to our Farcaster account @CastCasino.
+                    </p>)}
 
-                {(context && <p className="text-slate-700">
-                    { JSON.stringify(context) }
-                </p>)}
+                    <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
+                        <div className="pt-6">
+                            <dt>
+                                {/* <!-- Expand/collapse question button --> */}
+                                <button type="button" className="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                                    <span className="text-base/7 font-semibold">
+                                        How do I Buy-In to a table?
+                                    </span>
 
-                {(!context && <p className="text-slate-700">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero velit at sequi consequuntur. Sed suscipit possimus veritatis temporibus vero beatae quam, assumenda eaque commodi repellat alias quod molestias, voluptas impedit.
-                </p>)}
+                                    <span className="ml-6 flex h-7 items-center">
+                                        {/* <!--
+                        Icon when question is collapsed.
+
+                        Item expanded: "hidden", Item collapsed: ""
+                        --> */}
+                                        <svg className="size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                                        </svg>
+                                        {/* <!--
+                        Icon when question is expanded.
+
+                        Item expanded: "", Item collapsed: "hidden"
+                        --> */}
+                                        <svg className="hidden size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </dt>
+
+                            <dd className="mt-2 pr-12" id="faq-0">
+                                <p className="text-base/7 text-gray-600">
+                                    Simply connect a wallet to your Farcaster/Warpcast account and click the "Buy-in" button to start the transaction.
+                                </p>
+                            </dd>
+                        </div>
+
+                        {/* <!-- More questions... --> */}
+                    </dl>
+                </div>
             </div>
         </main>
     )

@@ -36,10 +36,10 @@ export function Header({ tableid }: { tableid: string }) {
                     <div className="flex items-center">
                         <Image
                             className="inline-block size-9 rounded-full"
-                            src={context?.user?.pfpUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'}
+                            src={'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/57f8600f-2e51-4549-8cc4-f80e4c681800/rectcrop3'}
                             alt={context?.user?.displayName || ''}
-                            width={500}
-                            height={500}
+                            width={50}
+                            height={50}
                         />
 
                         <div className="ml-3">
@@ -50,6 +50,10 @@ export function Header({ tableid }: { tableid: string }) {
                             <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                                 {context.user.username}
                             </p>
+
+                            <small className="text-xs">
+                                {context?.user?.pfpUrl}
+                            </small>
                         </div>
                     </div>
                 </a>)}
