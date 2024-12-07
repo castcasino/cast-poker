@@ -12,12 +12,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cast.poker',
-        port: '',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
         hostname: 'wsrv.nl',
         port: '',
         pathname: '/',
