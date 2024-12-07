@@ -1,7 +1,5 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-
 import { Footer } from '~/components/ui/Footer'
 import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
