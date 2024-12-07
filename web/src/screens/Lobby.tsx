@@ -48,8 +48,8 @@ function SignMessage() {
             })
         }
 
-        signMessage({ message: "Hey from Cast Poker!" })
-    }, [connectAsync, isConnected, signMessage]);
+        signMessage({ message: `Hey from Cast Poker!` })
+    }, [ connectAsync, isConnected, signMessage ])
 
   return (
         <>

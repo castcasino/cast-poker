@@ -31,7 +31,7 @@ export default function Host({ tableid }: { tableid: string}) {
             </h1>
 
             <div className="p-10 border-2 border-amber-500">
-                {context}
+                {JSON.stringify(context)}
             </div>
 
             <div className="bg-gray-50">
