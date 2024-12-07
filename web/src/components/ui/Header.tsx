@@ -1,9 +1,9 @@
-export function Header() {
+export function Header({ tableid }) {
     return (
         <header className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-sky-500">
             <div className="">
                 <span>
-                    header
+                    {tableid}
                 </span>
 
                 <div>

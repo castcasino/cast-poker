@@ -6,17 +6,24 @@ import { Footer } from '~/components/ui/Footer'
 import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
 
+function withProps(WrappedComponent) {
+    return function EnhancedComponent({ tableid }) {
+      return <WrappedComponent tableid={tableid} />
+    }
+}
+
 export default function App(
     { screenid, tableid }: { screenid?: string, tableid?: string } = { screenid: 'lobby', tableid: '1337beef' }
 ) {
-console.log('SCREEN ID', screenid)
-console.log('TABLE ID', tableid)
-    const Screen = dynamic(() => import('~/screens/' + screenid), { ssr: false })
+    /* Initialize screen manager. */
+    const Screen = withProps(
+        dynamic(() => import('~/screens/' + screenid), { ssr: false })
+    )
 
-    return <main className="h-screen flex flex-col justify-between">
+    return <main className="w-screen h-screen flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
 
-        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
+        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
             <Screen tableid={tableid} />
         </main>
 

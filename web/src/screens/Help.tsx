@@ -25,26 +25,24 @@ export default function Help() {
     }
 
     return (
-        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
-            <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
-                <h1 className="text-2xl font-bold text-center mb-4">
-                    Help
-                </h1>
+        <main className="w-full">
+            <h1 className="text-5xl font-bold text-sky-500 text-center tracking-widest uppercase">
+                Help
+            </h1>
 
-                <div className="mb-4">
-                    <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                        Casino Context
-                    </h2>
+            <div className="mb-4">
+                <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
+                    Casino Context
+                </h2>
 
-                    {(context && <p>
-                        { JSON.stringify(context) }
-                    </p>)}
+                {(context && <p className="text-slate-700">
+                    { JSON.stringify(context) }
+                </p>)}
 
-                    {(!context && <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero velit at sequi consequuntur. Sed suscipit possimus veritatis temporibus vero beatae quam, assumenda eaque commodi repellat alias quod molestias, voluptas impedit.
-                    </p>)}
-                </div>
-            </main>
+                {(!context && <p className="text-slate-700">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero velit at sequi consequuntur. Sed suscipit possimus veritatis temporibus vero beatae quam, assumenda eaque commodi repellat alias quod molestias, voluptas impedit.
+                </p>)}
+            </div>
         </main>
     )
 }
