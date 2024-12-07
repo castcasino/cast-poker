@@ -19,17 +19,17 @@ const frame = {
 }
 
 export const metadata: Metadata = {
-    title: "Hello, world!",
-    description: "A simple hello world frame",
+    title: 'Hello, world!',
+    description: 'A simple hello world frame',
     openGraph: {
-        title: "Hello, world!",
-        description: "A simple hello world frame",
+        title: 'Hello, world!',
+        description: 'A simple hello world frame',
     },
     other: {
-        "fc:frame": JSON.stringify(frame),
+        'fc:frame': JSON.stringify(frame),
     },
 }
 
 export default function HelloFrame() {
-    return <App title={"Hello, world!"} />
+    return <App />
 }

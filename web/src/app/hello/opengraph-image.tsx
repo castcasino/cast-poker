@@ -12,10 +12,11 @@ const imageResponse = new ImageResponse(
     (
         <div tw="h-full w-full flex flex-col justify-center items-center relative bg-white">
             <h1 tw="text-6xl">
-                Cast Poker
+                Hello Player
             </h1>
+
             <h3 tw="text-4xl">
-                100% Provably Fair Gaming
+                Welcoem to 100% Provably Fair Gaming
             </h3>
         </div>
     ),
