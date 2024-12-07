@@ -147,7 +147,7 @@ const renderError = (error: Error | null) => {
 }
 
 
-export default function Lobby({ tableid }) {
+export default function Lobby({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
     const [isContextOpen, setIsContextOpen] = useState(false)

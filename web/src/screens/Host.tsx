@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export default function Host({ tableid }) {
+export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
@@ -44,13 +44,13 @@ export default function Host({ tableid }) {
                                 <h2 className="text-lg font-medium text-gray-900">Contact information</h2>
 
                                 <div className="mt-4">
-                                    <label for="email-address" className="block text-sm/6 font-medium text-gray-700">Email address</label>
+                                    <label htmlFor="email-address" className="block text-sm/6 font-medium text-gray-700">Email address</label>
                                     <div className="mt-2">
                                         <input
                                             type="email"
                                             id="email-address"
                                             name="email-address"
-                                            autocomplete="email"
+                                            autoComplete="email"
                                             className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                         />
                                     </div>
@@ -62,33 +62,33 @@ export default function Host({ tableid }) {
 
                                 <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                                     <div>
-                                        <label for="first-name" className="block text-sm/6 font-medium text-gray-700">First name</label>
+                                        <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-700">First name</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 id="first-name"
                                                 name="first-name"
-                                                autocomplete="given-name"
+                                                autoComplete="given-name"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label for="last-name" className="block text-sm/6 font-medium text-gray-700">Last name</label>
+                                        <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-700">Last name</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 id="last-name"
                                                 name="last-name"
-                                                autocomplete="family-name"
+                                                autoComplete="family-name"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="sm:col-span-2">
-                                        <label for="company" className="block text-sm/6 font-medium text-gray-700">Company</label>
+                                        <label htmlFor="company" className="block text-sm/6 font-medium text-gray-700">Company</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
@@ -100,20 +100,20 @@ export default function Host({ tableid }) {
                                     </div>
 
                                     <div className="sm:col-span-2">
-                                        <label for="address" className="block text-sm/6 font-medium text-gray-700">Address</label>
+                                        <label htmlFor="address" className="block text-sm/6 font-medium text-gray-700">Address</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="address"
                                                 id="address"
-                                                autocomplete="street-address"
+                                                autoComplete="street-address"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="sm:col-span-2">
-                                        <label for="apartment" className="block text-sm/6 font-medium text-gray-700">Apartment, suite, etc.</label>
+                                        <label htmlFor="apartment" className="block text-sm/6 font-medium text-gray-700">Apartment, suite, etc.</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
@@ -125,25 +125,25 @@ export default function Host({ tableid }) {
                                     </div>
 
                                     <div>
-                                        <label for="city" className="block text-sm/6 font-medium text-gray-700">City</label>
+                                        <label htmlFor="city" className="block text-sm/6 font-medium text-gray-700">City</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="city"
                                                 id="city"
-                                                autocomplete="address-level2"
+                                                autoComplete="address-level2"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label for="country" className="block text-sm/6 font-medium text-gray-700">Country</label>
+                                        <label htmlFor="country" className="block text-sm/6 font-medium text-gray-700">Country</label>
                                         <div className="mt-2 grid grid-cols-1">
                                             <select
                                                 id="country"
                                                 name="country"
-                                                autocomplete="country-name"
+                                                autoComplete="country-name"
                                                 className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             >
                                                 <option>United States</option>
@@ -151,45 +151,45 @@ export default function Host({ tableid }) {
                                                 <option>Mexico</option>
                                             </select>
                                             <svg className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                                <path fillRule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                                             </svg>
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label for="region" className="block text-sm/6 font-medium text-gray-700">State / Province</label>
+                                        <label htmlFor="region" className="block text-sm/6 font-medium text-gray-700">State / Province</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="region"
                                                 id="region"
-                                                autocomplete="address-level1"
+                                                autoComplete="address-level1"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label for="postal-code" className="block text-sm/6 font-medium text-gray-700">Postal code</label>
+                                        <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-700">Postal code</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="postal-code"
                                                 id="postal-code"
-                                                autocomplete="postal-code"
+                                                autoComplete="postal-code"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="sm:col-span-2">
-                                        <label for="phone" className="block text-sm/6 font-medium text-gray-700">Phone</label>
+                                        <label htmlFor="phone" className="block text-sm/6 font-medium text-gray-700">Phone</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="phone"
                                                 id="phone"
-                                                autocomplete="tel"
+                                                autoComplete="tel"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
@@ -217,9 +217,9 @@ export default function Host({ tableid }) {
                                             {/* <!-- Not Checked: "hidden" --> */}
                                             <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                                 <path
-                                                    fill-rule="evenodd"
+                                                    fillRule="evenodd"
                                                     d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                                    clip-rule="evenodd"
+                                                    clipRule="evenodd"
                                                 />
                                             </svg>
                                             {/* <!--
@@ -244,9 +244,9 @@ export default function Host({ tableid }) {
                                             {/* <!-- Not Checked: "hidden" --> */}
                                             <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                                 <path
-                                                    fill-rule="evenodd"
+                                                    fillRule="evenodd"
                                                     d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                                    clip-rule="evenodd"
+                                                    clipRule="evenodd"
                                                 />
                                             </svg>
                                             {/* <!--
@@ -274,7 +274,7 @@ export default function Host({ tableid }) {
                                                 checked
                                                 className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                             />
-                                            <label for="credit-card" className="ml-3 block text-sm/6 font-medium text-gray-700">Credit card</label>
+                                            <label htmlFor="credit-card" className="ml-3 block text-sm/6 font-medium text-gray-700">Credit card</label>
                                         </div>
                                         <div className="flex items-center">
                                             <input
@@ -283,7 +283,7 @@ export default function Host({ tableid }) {
                                                 type="radio"
                                                 className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                             />
-                                            <label for="paypal" className="ml-3 block text-sm/6 font-medium text-gray-700">PayPal</label>
+                                            <label htmlFor="paypal" className="ml-3 block text-sm/6 font-medium text-gray-700">PayPal</label>
                                         </div>
                                         <div className="flex items-center">
                                             <input
@@ -292,59 +292,59 @@ export default function Host({ tableid }) {
                                                 type="radio"
                                                 className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                             />
-                                            <label for="etransfer" className="ml-3 block text-sm/6 font-medium text-gray-700">eTransfer</label>
+                                            <label htmlFor="etransfer" className="ml-3 block text-sm/6 font-medium text-gray-700">eTransfer</label>
                                         </div>
                                     </div>
                                 </fieldset>
 
                                 <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">
                                     <div className="col-span-4">
-                                        <label for="card-number" className="block text-sm/6 font-medium text-gray-700">Card number</label>
+                                        <label htmlFor="card-number" className="block text-sm/6 font-medium text-gray-700">Card number</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 id="card-number"
                                                 name="card-number"
-                                                autocomplete="cc-number"
+                                                autoComplete="cc-number"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="col-span-4">
-                                        <label for="name-on-card" className="block text-sm/6 font-medium text-gray-700">Name on card</label>
+                                        <label htmlFor="name-on-card" className="block text-sm/6 font-medium text-gray-700">Name on card</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 id="name-on-card"
                                                 name="name-on-card"
-                                                autocomplete="cc-name"
+                                                autoComplete="cc-name"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="col-span-3">
-                                        <label for="expiration-date" className="block text-sm/6 font-medium text-gray-700">Expiration date (MM/YY)</label>
+                                        <label htmlFor="expiration-date" className="block text-sm/6 font-medium text-gray-700">Expiration date (MM/YY)</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="expiration-date"
                                                 id="expiration-date"
-                                                autocomplete="cc-exp"
+                                                autoComplete="cc-exp"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label for="cvc" className="block text-sm/6 font-medium text-gray-700">CVC</label>
+                                        <label htmlFor="cvc" className="block text-sm/6 font-medium text-gray-700">CVC</label>
                                         <div className="mt-2">
                                             <input
                                                 type="text"
                                                 name="cvc"
                                                 id="cvc"
-                                                autocomplete="csc"
+                                                autoComplete="csc"
                                                 className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                             />
                                         </div>
@@ -380,9 +380,9 @@ export default function Host({ tableid }) {
                                                         <span className="sr-only">Remove</span>
                                                         <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                                             <path
-                                                                fill-rule="evenodd"
+                                                                fillRule="evenodd"
                                                                 d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"
-                                                                clip-rule="evenodd"
+                                                                clipRule="evenodd"
                                                             />
                                                         </svg>
                                                     </button>
@@ -416,7 +416,7 @@ export default function Host({ tableid }) {
                                                             aria-hidden="true"
                                                             data-slot="icon"
                                                         >
-                                                            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                                            <path fillRule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                                                         </svg>
                                                     </div>
                                                 </div>

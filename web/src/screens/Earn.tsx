@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export default function Earn({ tableid }) {
+export default function Earn({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 

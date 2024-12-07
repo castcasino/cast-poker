@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export function Navbar({ tableid }) {
+export function Navbar({ tableid }: { tableid: string}) {
 console.log('WHAT R THE PARAMS', tableid)
     return (
         <main className="w-full sm:w-[640px] mx-auto h-[40px] z-10 flex justify-end sm:justify-between items-center bg-slate-700">
