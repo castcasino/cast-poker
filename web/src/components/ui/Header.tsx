@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export function Header({ tableid }) {
+export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 

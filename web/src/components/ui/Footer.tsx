@@ -1,4 +1,4 @@
-export function Footer({ tableid }) {
+export function Footer({ tableid }: { tableid: string }) {
     return (
         <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-rose-500">
             <section className="px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200">
