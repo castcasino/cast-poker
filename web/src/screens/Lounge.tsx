@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export default function Blank() {
+export default function Lounge() {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
@@ -27,7 +27,7 @@ export default function Blank() {
     return (
         <main className="w-full">
             <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                Blank
+                Lounge
             </h1>
 
             <div className="mb-4">

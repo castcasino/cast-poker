@@ -6,7 +6,7 @@ import { Footer } from '~/components/ui/Footer'
 import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
 
-function withProps(WrappedComponent) {
+function withProps(WrappedComponent: React.FC) {
     return function EnhancedComponent({ tableid }) {
       return <WrappedComponent tableid={tableid} />
     }
