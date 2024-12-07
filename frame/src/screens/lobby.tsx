@@ -69,8 +69,8 @@ console.log('LOBBY CONTEXT', _ctx)
 
             </header>
 
-            <main>
-            <section tw="flex items-center">
+            <main tw="flex flex-col">
+                <section tw="flex items-center">
                     <img
                         src="https://assets.cast.casino/poker-table.png"
                         tw="h-20 w-20"

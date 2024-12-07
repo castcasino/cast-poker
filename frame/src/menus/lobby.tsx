@@ -6,6 +6,7 @@ import btnBuyIn from '../buttons/play/buy-in.tsx'
 import btnNext from '../buttons/play/next.tsx'
 // import btnMainMenu from '../buttons/main/index.tsx'
 import btnLobby from '../buttons/main/lobby.tsx'
+import btnWatch from '../buttons/play/watch.tsx'
 
 export default () => {
     /* Initialize locals. */
@@ -15,10 +16,11 @@ export default () => {
     buttons = []
 
     /* Add buttons. */
-    buttons.push(btnBuyIn())
-    buttons.push(btnNext())
     buttons.push(btnLobby())
     buttons.push(btnHelp())
+    buttons.push(btnNext())
+    // buttons.push(btnBuyIn())
+    buttons.push(btnWatch())
 
     /* Return (menu) buttons. */
     return buttons
