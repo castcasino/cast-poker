@@ -3,8 +3,8 @@ import Link from 'next/link'
 export function Navbar({ tableid }) {
 console.log('WHAT R THE PARAMS', tableid)
     return (
-        <main className="w-full sm:w-[640px] mx-auto h-[40px] z-10 flex justify-between items-center bg-slate-700">
-            <span className="pl-3 text-xs font-bold tracking-widest text-slate-500 uppercase">
+        <main className="w-full sm:w-[640px] mx-auto h-[40px] z-10 flex justify-end sm:justify-between items-center bg-slate-700">
+            <span className="hidden sm:flex pl-3 text-xs font-bold tracking-widest text-slate-500 uppercase">
                 Main Menu
             </span>
 

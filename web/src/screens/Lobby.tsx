@@ -147,7 +147,7 @@ const renderError = (error: Error | null) => {
 }
 
 
-export default function Lobby() {
+export default function Lobby({ tableid }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
     const [isContextOpen, setIsContextOpen] = useState(false)
@@ -321,7 +321,7 @@ export default function Lobby() {
 
             <div className="mb-4">
                 <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Casino Context
+                    Table # {tableid}
                 </h2>
 
                 <button
