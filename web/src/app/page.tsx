@@ -5,7 +5,7 @@ const appUrl = process.env.NEXT_PUBLIC_URL
 
 const frame = {
     version: 'next',
-    imageUrl: `${appUrl}/banner`,
+    imageUrl: `${appUrl}/opengraph-image`,
     button: {
         title: 'Enter Lobby',
         action: {
