@@ -323,7 +323,7 @@ export default function Demo(
 
             <main className="w-full sm:w-[640px] mx-auto py-4 px-2 flex-1 overflow-y-scroll">
                 <h1 className="text-2xl font-bold text-center mb-4">
-                    {title}
+                    [ {title} ]
                 </h1>
 
                 <div className="mb-4">

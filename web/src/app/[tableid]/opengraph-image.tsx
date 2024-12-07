@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Hello TWITTER";
+export const alt = "Cast Poker";
 export const size = {
   width: 600,
   height: 400,
@@ -10,11 +10,19 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default async function Image() {
+interface Props {
+  params: Promise<{
+    tableid: string;
+  }>;
+}
+
+export default async function Image({ params }: Props) {
+  const { tableid } = await params;
+
   return new ImageResponse(
     (
       <div tw="h-full w-full flex flex-col justify-center items-center relative bg-white">
-        <h1 tw="text-6xl">Hello, TWITTER!</h1>
+        <h1 tw="text-6xl">Now playing, {tableid}</h1>
       </div>
     ),
     {
