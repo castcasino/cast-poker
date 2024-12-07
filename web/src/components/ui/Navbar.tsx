@@ -9,16 +9,22 @@ console.log('WHAT R THE PARAMS', tableid)
             </span>
 
 
-            <div className="h-full px-4 py-1 flex flex-row items-center gap-4">
+            <div className="h-full px-3 sm:px-4 py-1 flex flex-row items-center gap-3 sm:gap-4">
 
                 <Link href={`/${tableid}/lounge`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
-                    <span className="text-sm font-bold text-slate-800 tracking-widest uppercase">
+                    <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Lounge
                     </span>
                 </Link>
 
+                <Link href={`/${tableid}/earn`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
+                    <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
+                        Earn
+                    </span>
+                </Link>
+
                 <Link href={`/${tableid}/help`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
-                    <span className="text-sm font-bold text-slate-800 tracking-widest uppercase">
+                    <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Help
                     </span>
                 </Link>
@@ -26,7 +32,7 @@ console.log('WHAT R THE PARAMS', tableid)
                 <div className="h-full border-dashed border-r border-amber-400" />
 
                 <Link href={`/${tableid}`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
-                    <span className="text-sm font-bold text-slate-800 tracking-widest uppercase">
+                    <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Lobby
                     </span>
                 </Link>
