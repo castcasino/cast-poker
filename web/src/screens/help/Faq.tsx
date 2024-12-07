@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
@@ -26,6 +27,25 @@ export default function Help({ tableid }: { tableid: string}) {
 
     return (
         <main className="w-full bg-white">
+            <section>
+                <div className="border-b border-gray-200">
+                    <nav className="-mb-px flex" aria-label="Tabs">
+                        {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
+                        <Link href={`/${tableid}/faq`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            FAQ
+                        </Link>
+
+                        <Link href={`/${tableid}/fairplay`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Fairplay
+                        </Link>
+
+                        <Link href={`/${tableid}/contact`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Contact
+                        </Link>
+                    </nav>
+                </div>
+            </section>
+
             <div className="mx-auto max-w-7xl px-3 py-6 sm:py-8">
                 <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
                     <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">

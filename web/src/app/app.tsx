@@ -1,11 +1,17 @@
 'use client'
 
+// Import components.
 import { Footer } from '~/components/ui/Footer'
 import { Header } from '~/components/ui/Header'
 import { Navbar } from '~/components/ui/Navbar'
 
+// Import Help screens.
+import Contact from '~/screens/help/Contact'
+import Fairplay from '~/screens/help/Fairplay'
+import Faq from '~/screens/help/Faq'
+
+// Import screens.
 import Earn from '~/screens/Earn'
-import Help from '~/screens/Help'
 import Host from '~/screens/Host'
 import Lobby from '~/screens/Lobby'
 import Lounge from '~/screens/Lounge'
@@ -17,9 +23,11 @@ export default function App(
     return <main className="w-screen h-screen flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
 
-        <main className="w-full sm:w-[640px] mx-auto py-4 px-2 bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
+        <main className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
+            {screenid === 'contact' && <Contact tableid={tableid} />}
             {screenid === 'earn' && <Earn tableid={tableid} />}
-            {screenid === 'help' && <Help tableid={tableid} />}
+            {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
+            {screenid === 'faq' && <Faq tableid={tableid} />}
             {screenid === 'host' && <Host tableid={tableid} />}
             {screenid === 'lobby' && <Lobby tableid={tableid} />}
             {screenid === 'lounge' && <Lounge tableid={tableid} />}

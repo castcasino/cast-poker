@@ -19,11 +19,11 @@ console.log('WHAT R THE PARAMS', tableid)
 
                 <Link href={`/${tableid}/earn`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
                     <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
-                        Earn
+                        Earn ＄
                     </span>
                 </Link>
 
-                <Link href={`/${tableid}/help`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
+                <Link href={`/${tableid}/faq`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
                     <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Help
                     </span>
