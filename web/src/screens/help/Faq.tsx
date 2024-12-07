@@ -89,7 +89,7 @@ export default function Help({ tableid }: { tableid: string}) {
 
                             <dd className="mt-2 pr-12" id="faq-0">
                                 <p className="text-base/7 text-gray-600">
-                                    Simply connect a wallet to your Farcaster/Warpcast account and click the "Buy-in" button to start the transaction.
+                                    Simply connect a wallet to your Farcaster/Warpcast account and click the &ldquo;Buy-in&rdquo; button to start the transaction.
                                 </p>
                             </dd>
                         </div>
