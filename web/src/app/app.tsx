@@ -18,7 +18,7 @@ export default function App(
     /* Initialize screen manager. */
     const Screen = dynamic(() => import('~/screens/' + screenid), { ssr: false })
 
-    function ScreenCaller({ tableid }) {
+    function ScreenCaller({ tableid }: { tableid: string } = { tableid: '' }) {
         return <Screen tableid={tableid} />
     }
 
