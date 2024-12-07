@@ -38,12 +38,6 @@ export function Header({ tableid }: { tableid: string }) {
                     <div className="flex items-center">
                         <Image
                             className="inline-block size-9 rounded-full"
-                            src={splashIcon}
-                            alt="Splash icon"
-                        />
-
-                        <Image
-                            className="inline-block size-9 rounded-full"
                             src={'https://wsrv.nl/?url=' + context?.user?.pfpUrl || splashIcon}
                             alt={context?.user?.displayName || ''}
                         />
