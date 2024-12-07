@@ -60,7 +60,7 @@ export function Header({ tableid }: { tableid: string }) {
                         <Image
                             className="inline-block size-9 rounded-full"
                             src={splashIcon}
-                            alt={''}
+                            alt=""
                         />
 
                         <div className="ml-1">
