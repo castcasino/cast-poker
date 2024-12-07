@@ -30,6 +30,10 @@ export default function Host({ tableid }) {
                 Host a Table Like # {tableid}
             </h1>
 
+            <div className="p-10 border-2 border-amber-500">
+                {context}
+            </div>
+
             <div className="bg-gray-50">
                 <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6">
                     <h2 className="sr-only">Checkout</h2>
