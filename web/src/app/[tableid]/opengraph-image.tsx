@@ -1,19 +1,20 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from 'next/og'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
-export const alt = "Cast Poker";
+export const alt = 'Cast Poker'
+
 export const size = {
-  width: 600,
-  height: 400,
-};
+    width: 600,
+    height: 400,
+}
 
-export const contentType = "image/png";
+export const contentType = 'image/png'
 
 interface Props {
-  params: Promise<{
-    tableid: string;
-  }>;
+    params: Promise<{
+        tableid: string
+    }>
 }
 
 export default async function Image({ params }: Props) {
