@@ -12,13 +12,17 @@ import { Navbar } from '~/components/ui/Navbar'
 //     }
 // }
 
+interface Props {
+    tableid: string
+}
+
 export default function App(
     { screenid, tableid }: { screenid: string, tableid: string } = { screenid: 'lobby', tableid: '' }
 ) {
     /* Initialize screen manager. */
     const Screen = dynamic(() => import('~/screens/' + screenid), { ssr: false })
 
-    function ScreenCaller({ tableid }: { tableid: string } = { tableid: '' }) {
+    const ScreenCaller: React.FC<Props> = ({ tableid }) => {
         return <Screen tableid={tableid} />
     }
 
