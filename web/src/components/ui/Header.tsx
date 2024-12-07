@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
@@ -32,9 +33,9 @@ export function Header({ tableid }: { tableid: string }) {
     }
 
     return (
-        <header className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-sky-500">
-            <section className="w-2/3">
-                {(context && <a href="javascript://" className="group block shrink-0">
+        <header className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-slate-800 border-b-[3px] border-lime-400">
+            <section className="p-2">
+                {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
                     <div className="flex items-center">
                         <Image
                             className="inline-block size-9 rounded-full"
@@ -52,29 +53,40 @@ export function Header({ tableid }: { tableid: string }) {
                             </p>
                         </div>
                     </div>
-                </a>)}
+                </Link>)}
 
-                {/* {(context && <p className="text-slate-700">
-                    { JSON.stringify(context) }
-                </p>)} */}
+                {(!context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
+                    <div className="flex items-center">
+                        <Image
+                            className="inline-block size-9 rounded-full"
+                            src={splashIcon}
+                            alt={''}
+                        />
 
-                {(!context && <p className="text-slate-700 text-xs">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Vero velit at sequi consequuntur.
-                </p>)}
+                        <div className="ml-1">
+                            <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
+                                Guest User
+                            </p>
+
+                            <p className="text-xs font-medium text-lime-300 group-hover:text-lime-400">
+                                @guest_user
+                            </p>
+                        </div>
+                    </div>
+                </Link>)}
 
             </section>
 
-            <section className="m-3 px-5 py-2 flex flex-col items-center rounded-lg border-2 border-lime-500 bg-lime-200">
-                <span className="text-2xl font-medium text-lime-600">
+            <section className="cursor-help px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
+                <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest">
                     Total Pot
                 </span>
 
-                <span className="-mt-2 flex flex-row text-4xl font-bold text-lime-800">
+                <span className="-mt-2 flex flex-row text-6xl font-bold text-lime-800">
                     $88
-                    <sup className="mt-2 flex flex-col items-end text-sm">
-                        .1337
-                        <span className="-mt-1 font-bold text-xs text-lime-600 tracking-widest">
+                    <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
+                        .77
+                        <span className="-mt-2 font-bold text-sm text-lime-600 tracking-widest">
                             USD
                         </span>
                     </sup>

@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+
+import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
@@ -33,7 +34,7 @@ export default function Earn({ tableid }: { tableid: string}) {
 
             <div className="mb-4">
                 <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Promote by Cast (Earn 5%)
+                    Promote by Cast (Earn 3%)
                 </h2>
 
                 <Link href={`/${tableid}/promote`} className={'px-5 py-2 text-2xl font-medium text-slate-800 bg-blue-200 border border-amber-400 rounded-md'}>

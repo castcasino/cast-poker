@@ -5,7 +5,7 @@ import splashIcon from '~/../public/splash.png'
 
 export function Navbar({ tableid }: { tableid: string}) {
     return (
-        <main className="w-full sm:w-[640px] mx-auto h-[40px] z-10 flex justify-end sm:justify-between items-center bg-slate-700">
+        <main className="w-full sm:w-[640px] mx-auto h-[45px] z-10 flex justify-end sm:justify-between items-center bg-slate-700 border-t-[3px] border-amber-400">
             <div className="pl-3 hidden sm:flex flex-row gap-2 items-center">
                 <Image
                     className="inline-block size-5 rounded-full"
@@ -20,7 +20,7 @@ export function Navbar({ tableid }: { tableid: string}) {
 
             <div className="h-full px-3 sm:px-4 py-1 flex flex-row items-center gap-3 sm:gap-4">
 
-                <Link href={`/${tableid}/lounge`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
+                <Link href={`/${tableid}/leaderboard`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
                     <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Lounge
                     </span>

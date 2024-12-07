@@ -1,8 +1,8 @@
 export function Footer({ tableid }: { tableid: string }) {
     return (
-        <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200">
+        <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
             {/* Game Status Window */}
-            <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-2 border-amber-700 bg-stone-400">
+            <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-400">
                 <span className="text-xs sm:text-lg font-medium text-amber-200 tracking-widest">
                     Play Begins In
                 </span>
@@ -14,17 +14,17 @@ export function Footer({ tableid }: { tableid: string }) {
 
             <div className="py-2 flex flex-row gap-3">
                 {/* Buy-in Button */}
-                <button className="px-3 flex flex-col items-center justify-center border-2 border-yellow-500 bg-yellow-300 rounded-xl shadow hover:bg-yellow-100">
-                    <span className="text-xs sm:text-lg font-medium text-yellow-700 tracking-widest">
+                <button className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800">
+                    <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
                         Buy-In Just
                     </span>
 
-                    <span className="animate-bounce text-xl sm:text-3xl font-bold text-yellow-900 tracking-wider">
+                    <span className="animate-bounce mt-1 text-2xl sm:text-3xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
                         $8.88
                     </span>
 
-                    <span className="text-xs font-bold text-yellow-600 tracking-wider">
-                        # buy-ins: 0
+                    <span className="-mt-1 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100">
+                        # buy-ins : 0
                     </span>
                 </button>
 
@@ -34,13 +34,13 @@ export function Footer({ tableid }: { tableid: string }) {
                         Next Game
                     </span>
 
-                    <small className="-mt-2 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
+                    <small className="-mt-1.5 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
                         {tableid}
                     </small>
 
                     <span className="text-sm sm:text-lg font-bold text-amber-400 tracking-wider">
                         $DEGEN
-                        <span className="-mt-2 block text-xs sm:text-sm">
+                        <span className="-mt-1.5 block text-xs sm:text-sm">
                             on Base
                         </span>
                     </span>

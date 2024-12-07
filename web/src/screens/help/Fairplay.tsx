@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+
+import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
