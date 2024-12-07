@@ -7,7 +7,7 @@ const frame = {
     version: 'next',
     imageUrl: `${appUrl}/banner`,
     button: {
-        title: 'Go to Lobby',
+        title: 'Enter Lobby',
         action: {
             type: 'launch_frame',
             name: 'Cast Poker Lobby',

@@ -22,10 +22,10 @@ import { base, optimism } from 'wagmi/chains'
 
 import { BaseError, UserRejectedRequestError } from 'viem'
 
-import { Header } from '~/components/Header'
-import { Footer } from '~/components/Footer'
 import { config } from '~/components/providers/WagmiProvider'
 import { Button } from '~/components/ui/Button'
+import { Footer } from '~/components/ui/Footer'
+import { Header } from '~/components/ui/Header'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
