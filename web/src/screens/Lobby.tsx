@@ -147,9 +147,7 @@ const renderError = (error: Error | null) => {
 }
 
 
-export default function Demo(
-    { title }: { title?: string } = { title: 'Cast Poker — 100% Provably Fair Gaming' }
-) {
+export default function Lobby() {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
     const [isContextOpen, setIsContextOpen] = useState(false)
