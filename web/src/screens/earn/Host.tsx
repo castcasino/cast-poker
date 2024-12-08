@@ -11,7 +11,7 @@ import {
     useSendTransaction,
     useWaitForTransactionReceipt,
     // useSwitchChain,
-    useChainId,
+    // useChainId,
 } from 'wagmi'
 import { BaseError, UserRejectedRequestError } from 'viem'
 

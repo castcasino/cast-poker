@@ -12,8 +12,8 @@ import sdk, {
 
 import {
     useAccount,
-    useSendTransaction,
-    useWaitForTransactionReceipt,
+    // useSendTransaction,
+    // useWaitForTransactionReceipt,
     useSwitchChain,
     useChainId,
 } from 'wagmi'
