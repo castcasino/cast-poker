@@ -41,10 +41,6 @@ export default function Earn({ tableid }: { tableid: string}) {
                     {context?.user.displayName} Promote a Table/Game
                 </Link>
 
-                {(context && <p className="text-slate-700">
-                    { JSON.stringify() }
-                </p>)}
-
                 <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
                     {context?.user.displayName} Host a Table (Earn 5%)
                 </h2>
