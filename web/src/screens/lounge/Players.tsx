@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export default function Leaderboard({ tableid }: { tableid: string}) {
+export default function Players({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
@@ -32,16 +32,16 @@ export default function Leaderboard({ tableid }: { tableid: string}) {
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex" aria-label="Tabs">
                         {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
+                        <Link href={`/${tableid}/players`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            Players
+                        </Link>
+
+                        <Link href={`/${tableid}/hosts`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Hosts
+                        </Link>
+
                         <Link href={`/${tableid}/mysuite`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                             My Suite
-                        </Link>
-
-                        <Link href={`/${tableid}/leaderboard`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
-                            Leaderboard
-                        </Link>
-
-                        <Link href={`/${tableid}/events`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Events
                         </Link>
                     </nav>
                 </div>
@@ -49,12 +49,12 @@ export default function Leaderboard({ tableid }: { tableid: string}) {
 
             <div className="px-3 py-5">
                 <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                    Leaderboard for Table # {tableid}
+                    Players for Table # {tableid}
                 </h1>
 
                 <div className="mb-4">
                     {(context && <h3 className="text-2xl font-medium text-slate-700">
-                        {context?.user?.displayName} check out our Leaderboard!
+                        {context?.user?.displayName} check out our Players!
                     </h3>)}
                 </div>
 

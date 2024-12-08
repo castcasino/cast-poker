@@ -11,9 +11,9 @@ import Fairplay from '~/screens/help/Fairplay'
 import Faq from '~/screens/help/Faq'
 
 // Import Lounge screens.
-import Events from '~/screens/lounge/Events'
-import Leaderboard from '~/screens/lounge/Leaderboard'
+import Hosts from '~/screens/lounge/Hosts'
 import MySuite from '~/screens/lounge/MySuite'
+import Players from '~/screens/lounge/Players'
 
 // Import Earn screens.
 import Host from '~/screens/earn/Host'
@@ -31,13 +31,13 @@ export default function App(
 
         <main className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
             {screenid === 'agent' && <Agent tableid={tableid} />}
-            {screenid === 'events' && <Events tableid={tableid} />}
             {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
             {screenid === 'faq' && <Faq tableid={tableid} />}
             {screenid === 'host' && <Host tableid={tableid} />}
+            {screenid === 'hosts' && <Hosts tableid={tableid} />}
             {screenid === 'lobby' && <Lobby tableid={tableid} />}
-            {screenid === 'leaderboard' && <Leaderboard tableid={tableid} />}
             {screenid === 'mysuite' && <MySuite tableid={tableid} />}
+            {screenid === 'players' && <Players tableid={tableid} />}
             {screenid === 'promoter' && <Promoter tableid={tableid} />}
         </main>
 

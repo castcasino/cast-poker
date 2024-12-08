@@ -15,7 +15,7 @@ export function Navbar({ tableid }: { tableid: string}) {
 
             <div className="h-full px-3 sm:px-4 py-1 flex flex-row items-center gap-3 sm:gap-4">
 
-                <Link href={`/${tableid}/mysuite`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
+                <Link href={`/${tableid}/players`} className={'h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
                     <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Lounge
                     </span>

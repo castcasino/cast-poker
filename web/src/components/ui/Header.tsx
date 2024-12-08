@@ -40,7 +40,7 @@ export function Header({ tableid }: { tableid: string }) {
                             alt=""
                         />
 
-                        <div className="ml-2 grid grid-cols-2 gap-x-4 gap-y-1">
+                        <div className="sm:ml-2 grid grid-cols-2 gap-x-4 gap-y-1">
                             <p className="col-span-2 text-sm sm:text-base font-medium text-lime-500 tracking-widest uppercase group-hover:text-lime-400">
                                 Table # {tableid}
                             </p>
@@ -66,7 +66,7 @@ export function Header({ tableid }: { tableid: string }) {
 
             </section>
 
-            <section className="cursor-help px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
+            <section className="cursor-help px-3 sm:px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
                 <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest whitespace-nowrap">
                     Table Pot
                 </span>
