@@ -1,7 +1,4 @@
-import Image from 'next/image'
 import Link from 'next/link'
-
-import logoIcon from '~/../public/icon.png'
 
 export function Navbar({ tableid }: { tableid: string}) {
     return (
