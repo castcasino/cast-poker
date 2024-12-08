@@ -13,10 +13,6 @@ export function Header({ tableid }: { tableid: string }) {
     const [context, setContext] = useState<FrameContext>()
 
     useEffect(() => {
-        console.log('HEADER (tableid)', tableid)
-    }, [])
-
-    useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
             sdk.actions.ready()
