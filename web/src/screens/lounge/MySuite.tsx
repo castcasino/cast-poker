@@ -228,6 +228,12 @@ export default function MySuite({ tableid }: { tableid: string}) {
             </section>
 
             <section>
+                {isConnected && (
+                    <div className="my-2 text-xs">
+                        IS CONNECTED!
+                    </div>
+                )}
+
                 {address && (
                     <div className="my-2 text-xs">
                         Address: <pre className="inline">{truncateAddress(address)}</pre>
