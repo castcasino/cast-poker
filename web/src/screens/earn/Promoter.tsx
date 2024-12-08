@@ -16,7 +16,7 @@ export default function Promote({ tableid }: { tableid: string}) {
         sdk.actions.openUrl('https://warpcast.com/~/compose')
     }, [])
 
-    useEffect(() => {8
+    useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
             sdk.actions.ready()
