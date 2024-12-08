@@ -34,7 +34,7 @@ export function Footer({ tableid }: { tableid: string }) {
                         Next Game
                     </span>
 
-                    <small className="-mt-1.5 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
+                    <small className="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
                         {tableid}
                     </small>
 

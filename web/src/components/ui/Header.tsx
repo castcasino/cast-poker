@@ -39,12 +39,12 @@ export function Header({ tableid }: { tableid: string }) {
                             alt={context?.user?.displayName || ''}
                         />
 
-                        <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                        <div className="ml-1">
+                            <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
                                 {context.user.displayName}
                             </p>
 
-                            <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                            <p className="text-xs font-medium text-lime-300 group-hover:text-lime-400">
                                 {context.user.username}
                             </p>
                         </div>
@@ -78,7 +78,7 @@ export function Header({ tableid }: { tableid: string }) {
                     Total Pot
                 </span>
 
-                <span className="-mt-2 flex flex-row text-6xl font-bold text-lime-800">
+                <span className="-mt-1.5 flex flex-row text-6xl font-bold text-lime-800">
                     $88
                     <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
                         .77
