@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import Link from 'next/link'
 
@@ -10,11 +10,28 @@ import {
     useAccount,
     useSendTransaction,
     useWaitForTransactionReceipt,
-    useSwitchChain,
+    // useSwitchChain,
     useChainId,
 } from 'wagmi'
+import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { Button } from '~/components/ui/Button'
+
+import { truncateAddress } from '~/lib/truncateAddress'
+
+const renderError = (error: Error | null) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+        }
+    }
+
+    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+}
 
 // function SendEth() {
 //     const { isConnected, chainId } = useAccount()
