@@ -50,7 +50,7 @@ export default function Promote({ tableid }: { tableid: string}) {
 
                 <p className="mb-4 text-slate-700">
                     Cast Casino offers the <span className="font-bold">EASIEST</span> referral rewards in all of Farcaster!
-                    Simply recast <span className="font-bold">ANY</span> of our table games and you're done!
+                    Simply recast <span className="font-bold">ANY</span> of our table games and you&rsquo;re done!
                 </p>
 
                 <ol className="pl-10 list-decimal text-slate-700">
