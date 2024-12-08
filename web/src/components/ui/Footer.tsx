@@ -28,10 +28,10 @@ export function Footer({ tableid }: { tableid: string }) {
                     </span>
                 </button>
 
-                {/* Next Game Button */}
+                {/* Next Table Button */}
                 <button className="px-3 py-2 flex flex-col items-center justify-center border-2 border-r-0 border-amber-500 bg-stone-900 rounded-l-xl hover:bg-stone-700">
                     <span className="text-xs sm:text-xl font-bold text-amber-200 tracking-widest">
-                        Next Game
+                        Next Table
                     </span>
 
                     <small className="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
