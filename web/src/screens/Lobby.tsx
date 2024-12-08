@@ -2,10 +2,7 @@
 
 import { useEffect, useCallback, useState, useMemo } from 'react'
 
-import sdk, {
-    FrameNotificationDetails,
-    type FrameContext,
-} from '@farcaster/frame-sdk'
+import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import {
     useAccount,
@@ -152,10 +149,6 @@ export default function Lobby({ tableid }: { tableid: string}) {
     const [context, setContext] = useState<FrameContext>()
     const [isContextOpen, setIsContextOpen] = useState(false)
     const [txHash, setTxHash] = useState<string | null>(null)
-    const [addFrameResult, setAddFrameResult] = useState("")
-    const [notificationDetails, setNotificationDetails] =
-        useState<FrameNotificationDetails | null>(null)
-    const [sendNotificationResult, setSendNotificationResult] = useState("")
 
     const { address, isConnected } = useAccount()
     const chainId = useChainId()
@@ -205,34 +198,7 @@ export default function Lobby({ tableid }: { tableid: string}) {
         }
     }, [ isSDKLoaded ])
 
-    const close = useCallback(() => {
-        sdk.actions.close()
-    }, [])
 
-    const addFrame = useCallback(async () => {
-        try {
-            // setAddFrameResult("")
-            setNotificationDetails(null)
-
-            const result = await sdk.actions.addFrame()
-
-            if (result.added) {
-                if (result.notificationDetails) {
-                    setNotificationDetails(result.notificationDetails)
-                }
-
-                setAddFrameResult(
-                    result.notificationDetails
-                    ? `Added, got notificaton token ${result.notificationDetails.token} and url ${result.notificationDetails.url}`
-                    : 'Added, got no notification details'
-                )
-            } else {
-                setAddFrameResult(`Not added: ${result.reason}`)
-            }
-        } catch (error) {
-            setAddFrameResult(`Error: ${error}`)
-        }
-    }, [])
 
     const sendNotification = useCallback(async () => {
         setSendNotificationResult('')
@@ -335,34 +301,6 @@ export default function Lobby({ tableid }: { tableid: string}) {
                         </pre>
                     </div>
                 )}
-            </div>
-
-            <div>
-                <h2 className="font-2xl font-bold">Actions</h2>
-
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.close
-                        </pre>
-                    </div>
-
-                    <Button onClick={close}>Close Frame</Button>
-                </div>
-
-                <div className="mb-4">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg my-2">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            sdk.actions.addFrame
-                        </pre>
-                    </div>
-
-                    {addFrameResult && (
-                        <div className="mb-2">Add frame result: {addFrameResult}</div>
-                    )}
-
-                    <Button onClick={addFrame}>Add frame to client</Button>
-                </div>
             </div>
 
             {notificationDetails && (

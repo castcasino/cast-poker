@@ -1,17 +1,52 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import sdk, { type FrameContext } from '@farcaster/frame-sdk'
+import sdk, {
+    FrameNotificationDetails,
+    type FrameContext,
+} from '@farcaster/frame-sdk'
 
+
+import { Button } from '~/components/ui/Button'
 import splashIcon from '~/../public/splash.png'
 
 export default function MySuite({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+
+    const [addFrameResult, setAddFrameResult] = useState("")
+    const [notificationDetails, setNotificationDetails] =
+        useState<FrameNotificationDetails | null>(null)
+    const [sendNotificationResult, setSendNotificationResult] = useState("")
+
+    const addFrame = useCallback(async () => {
+        try {
+            // setAddFrameResult("")
+            setNotificationDetails(null)
+
+            const result = await sdk.actions.addFrame()
+
+            if (result.added) {
+                if (result.notificationDetails) {
+                    setNotificationDetails(result.notificationDetails)
+                }
+
+                setAddFrameResult(
+                    result.notificationDetails
+                    ? `Added, got notificaton token ${result.notificationDetails.token} and url ${result.notificationDetails.url}`
+                    : 'Added, got no notification details'
+                )
+            } else {
+                setAddFrameResult(`Not added: ${result.reason}`)
+            }
+        } catch (error) {
+            setAddFrameResult(`Error: ${error}`)
+        }
+    }, [])
 
     useEffect(() => {
         const load = async () => {
@@ -50,7 +85,10 @@ export default function MySuite({ tableid }: { tableid: string}) {
                 </div>
             </section>
 
-            <section className="p-2">
+            <section className="p-3">
+                <div>
+
+                </div>
                 {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
                     <div className="flex items-center">
                         <Image
@@ -91,6 +129,18 @@ export default function MySuite({ tableid }: { tableid: string}) {
                     </div>
                 </Link>)}
 
+                <div>
+                    <Button onClick={addFrame}>
+                        Add Cast Poker to Warpcast
+                    </Button>
+
+                    {addFrameResult && (
+                        <div className="mb-2 text-slate-700 text-xs text-center">
+                            Add frame result:
+                            {addFrameResult}
+                        </div>
+                    )}
+                </div>
             </section>
 
             <form className="px-3">
