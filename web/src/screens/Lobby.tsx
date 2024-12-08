@@ -5,7 +5,7 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import numeral from 'numeral'
 
-import { truncateAddress } from '~/lib/truncateAddress'
+// import { truncateAddress } from '~/lib/truncateAddress'
 import { truncateHash } from '~/lib/truncateHash'
 
 export default function Lobby({ tableid }: { tableid: string}) {
