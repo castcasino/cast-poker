@@ -38,21 +38,15 @@ export default function Earn({ tableid }: { tableid: string}) {
                 </h2>
 
                 <Link href={`/${tableid}/promote`} className={'px-5 py-2 text-2xl font-medium text-slate-800 bg-blue-200 border border-amber-400 rounded-md'}>
-                    Promote a Table/Game
+                    {context?.user.displayName} Promote a Table/Game
                 </Link>
 
                 {(context && <p className="text-slate-700">
-                    { JSON.stringify(context) }
-                </p>)}
-
-                {(!context && <p className="text-slate-700">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Vero velit at sequi consequuntur.
-                    Sed suscipit possimus veritatis temporibus vero beatae quam, assumenda eaque commodi repellat alias quod molestias, voluptas impedit.
+                    { JSON.stringify() }
                 </p>)}
 
                 <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Host a Table (Earn 5%)
+                    {context?.user.displayName} Host a Table (Earn 5%)
                 </h2>
 
                 <Link href={`/${tableid}/host`} className={'px-5 py-2 text-2xl font-medium text-slate-800 bg-blue-200 border border-amber-400 rounded-md'}>

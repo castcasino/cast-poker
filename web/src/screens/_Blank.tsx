@@ -35,12 +35,12 @@ export default function Blank({ tableid }: { tableid: string}) {
                     Table # {tableid}
                 </h2>
 
-                {(context && <p className="text-slate-700">
-                    { JSON.stringify(context) }
-                </p>)}
+                {(context && <pre className="text-slate-700">
+                    { JSON.stringify(context, null, 2) }
+                </pre>)}
 
                 {(!context && <p className="text-slate-700">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero velit at sequi consequuntur. Sed suscipit possimus veritatis temporibus vero beatae quam, assumenda eaque commodi repellat alias quod molestias, voluptas impedit.
+                    SORRY, NO CONTEXT AVAILABLE
                 </p>)}
             </div>
         </main>

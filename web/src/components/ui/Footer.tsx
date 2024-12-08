@@ -16,14 +16,14 @@ export function Footer({ tableid }: { tableid: string }) {
                 {/* Buy-in Button */}
                 <button className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800">
                     <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
-                        Buy-In Just
+                        Buy-In Is Only
                     </span>
 
-                    <span className="animate-bounce mt-1 text-2xl sm:text-3xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
+                    <span className="animate-bounce mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
                         $8.88
                     </span>
 
-                    <span className="-mt-1 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100">
+                    <span className="-mt-2 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100">
                         # buy-ins : 0
                     </span>
                 </button>

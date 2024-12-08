@@ -53,14 +53,9 @@ export default function Leaderboard({ tableid }: { tableid: string}) {
                 </h1>
 
                 <div className="mb-4">
-                    {(context && <p className="text-slate-700">
-                        { JSON.stringify(context) }
-                    </p>)}
-
-                    {(!context && <p className="text-slate-700">
-                        {context?.user?.displayName} Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Vero velit at sequi consequuntur.
-                    </p>)}
+                    {(context && <h3 className="text-2xl font-medium text-slate-700">
+                        {context?.user?.displayName} check out our Leaderboard!
+                    </h3>)}
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
