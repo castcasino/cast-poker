@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
+import Link from 'next/link'
+
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import numeral from 'numeral'
@@ -83,19 +86,45 @@ export default function Lobby({ tableid }: { tableid: string}) {
 
                 <div className="w-full px-5 py-3 flex flex-col gap-2 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
                     <span className="text-base font-medium text-amber-800 tracking-wider">
-                        Fairplay Block #
+                        Fairplay Block #s
 
                         <span className="block text-lg text-amber-600">
-                            {numeral(23443189).format('0,0')}
+                            {numeral(23443189).format('0,0')} - {numeral(23443193).format('0,0')}
                         </span>
                     </span>
 
                     <span className="text-base font-medium text-amber-800 tracking-wider">
-                        Fairplay Block Hash
+                        Fairplay Block Hashes
 
-                        <pre className="block text-xs text-amber-600 truncate">
-                            0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
-                        </pre>
+                        <Link href="https://basescan.org/block/0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd" target="_blank">
+                            <pre className="block text-xs text-amber-600 truncate">
+                                0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
+                            </pre>
+                        </Link>
+
+                        <Link href="https://basescan.org/block/0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1" target="_blank">
+                            <pre className="block text-xs text-amber-600 truncate">
+                                0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1
+                            </pre>
+                        </Link>
+
+                        <Link href="https://basescan.org/block/0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460" target="_blank">
+                            <pre className="block text-xs text-amber-600 truncate">
+                                0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460
+                            </pre>
+                        </Link>
+
+                        <Link href="https://basescan.org/block/0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6" target="_blank">
+                            <pre className="block text-xs text-amber-600 truncate">
+                                0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6
+                            </pre>
+                        </Link>
+
+                        <Link href="https://basescan.org/block/0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34" target="_blank">
+                            <pre className="block text-xs text-amber-600 truncate">
+                                0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34
+                            </pre>
+                        </Link>
                     </span>
                 </div>
             </section>
