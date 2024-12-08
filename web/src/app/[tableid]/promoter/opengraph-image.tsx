@@ -24,7 +24,7 @@ export default async function Image({ params }: Props) {
         (
             <div tw="h-full w-full flex flex-col justify-center items-center relative bg-white">
                 <span tw="text-6xl">
-                    Earn @
+                    Promoter @
                 </span>
 
                 <span tw="text-6xl">

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+import Link from 'next/link'
+
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 export default function Host({ tableid }: { tableid: string}) {
@@ -26,8 +28,23 @@ export default function Host({ tableid }: { tableid: string}) {
 
     return (
         <main className="w-full">
+            <section>
+                <div className="border-b border-gray-200">
+                    <nav className="-mb-px flex" aria-label="Tabs">
+                        {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
+                        <Link href={`/${tableid}/promoter`} className="w-1/2 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Promoter
+                        </Link>
+
+                        <Link href={`/${tableid}/host`} className="w-1/2 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            Host
+                        </Link>
+                    </nav>
+                </div>
+            </section>
+
             <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                Host a Table Like # {tableid}
+                Earn 5% Hosting a Table Like # {tableid}
             </h1>
 
             <div className="p-10 border-2 border-amber-500">
