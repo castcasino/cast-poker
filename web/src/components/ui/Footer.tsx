@@ -1,4 +1,106 @@
+import { useCallback, useState } from 'react'
+
+import {
+    useAccount,
+    useSendTransaction,
+    useWaitForTransactionReceipt,
+    useSwitchChain,
+    useChainId,
+} from 'wagmi'
+
+// function SendEth() {
+//     const { isConnected, chainId } = useAccount()
+
+//     const {
+//         sendTransaction,
+//         data,
+//         error: sendTxError,
+//         isError: isSendTxError,
+//         isPending: isSendTxPending,
+//     } = useSendTransaction()
+
+//     const { isLoading: isConfirming, isSuccess: isConfirmed } =
+//         useWaitForTransactionReceipt({
+//             hash: data,
+//         })
+
+//     const toAddr = useMemo(() => {
+//         // Protocol guild address
+//         return chainId === base.id
+//             ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
+//             : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
+//     }, [ chainId ])
+
+//     const handleSend = useCallback(() => {
+//         sendTransaction({
+//             to: toAddr,
+//             value: 1n,
+//         })
+//     }, [ toAddr, sendTransaction ])
+
+//     return (
+//         <>
+//             <Button
+//                 onClick={handleSend}
+//                 disabled={!isConnected || isSendTxPending}
+//                 isLoading={isSendTxPending}
+//             >
+//                 Send Transaction (eth)
+//             </Button>
+
+//             {isSendTxError && renderError(sendTxError)}
+
+//             {data && (
+//                 <div className="mt-2 text-xs">
+//                     <div>Hash: {truncateAddress(data)}</div>
+
+//                     <div>
+//                         Status:{" "}
+//                         {isConfirming
+//                             ? "Confirming..."
+//                             : isConfirmed
+//                             ? "Confirmed!"
+//                             : "Pending"}
+//                     </div>
+//                 </div>
+//             )}
+//         </>
+//     )
+// }
+
 export function Footer({ tableid }: { tableid: string }) {
+    const [txHash, setTxHash] = useState<string | null>(null)
+
+    const { address, isConnected } = useAccount()
+    const chainId = useChainId()
+
+    const {
+        sendTransaction,
+        error: sendTxError,
+        isError: isSendTxError,
+        isPending: isSendTxPending,
+    } = useSendTransaction()
+
+    const { isLoading: isConfirming, isSuccess: isConfirmed } =
+        useWaitForTransactionReceipt({
+            hash: txHash as `0x${string}`,
+        })
+
+    const sendTx = useCallback(() => {
+        sendTransaction(
+            {
+                // call yoink() on Yoink contract
+                to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
+                data: "0x9846cd9efc000023c0",
+            },
+            {
+                onSuccess: (hash) => {
+                    setTxHash(hash);
+                },
+            }
+        )
+    }, [ sendTransaction ])
+
     return (
         <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
             {/* Game Status Window */}

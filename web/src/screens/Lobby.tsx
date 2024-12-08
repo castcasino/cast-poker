@@ -1,190 +1,11 @@
 'use client'
 
-import { useEffect, useCallback, useState, useMemo } from 'react'
-
+import { useEffect, useState } from 'react'
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
-
-import {
-    useAccount,
-    useSendTransaction,
-    useSignMessage,
-    useSignTypedData,
-    useWaitForTransactionReceipt,
-    useDisconnect,
-    useConnect,
-    useSwitchChain,
-    useChainId,
-} from 'wagmi'
-import { base, optimism } from 'wagmi/chains'
-
-import { BaseError, UserRejectedRequestError } from 'viem'
-
-import { config } from '~/components/providers/WagmiProvider'
-import { Button } from '~/components/ui/Button'
-
-import { truncateAddress } from '~/lib/truncateAddress'
-
-
-function SignMessage() {
-    const { isConnected } = useAccount()
-    const { connectAsync } = useConnect()
-
-    const {
-        signMessage,
-        data: signature,
-        error: signError,
-        isError: isSignError,
-        isPending: isSignPending,
-    } = useSignMessage()
-
-    const handleSignMessage = useCallback(async () => {
-        if (!isConnected) {
-            await connectAsync({
-                chainId: base.id,
-                connector: config.connectors[0],
-            })
-        }
-
-        signMessage({ message: `Hey from Cast Poker!` })
-    }, [ connectAsync, isConnected, signMessage ])
-
-  return (
-        <>
-            <Button
-                onClick={handleSignMessage}
-                disabled={isSignPending}
-                isLoading={isSignPending}
-            >
-                Sign Message
-            </Button>
-
-            {isSignError && renderError(signError)}
-
-            {signature && (
-                <div className="mt-2 text-xs">
-                    <div>Signature: {signature}</div>
-                </div>
-            )}
-        </>
-    )
-}
-
-function SendEth() {
-    const { isConnected, chainId } = useAccount()
-
-    const {
-        sendTransaction,
-        data,
-        error: sendTxError,
-        isError: isSendTxError,
-        isPending: isSendTxPending,
-    } = useSendTransaction()
-
-    const { isLoading: isConfirming, isSuccess: isConfirmed } =
-        useWaitForTransactionReceipt({
-            hash: data,
-        })
-
-    const toAddr = useMemo(() => {
-        // Protocol guild address
-        return chainId === base.id
-            ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
-            : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
-    }, [ chainId ])
-
-    const handleSend = useCallback(() => {
-        sendTransaction({
-            to: toAddr,
-            value: 1n,
-        })
-    }, [ toAddr, sendTransaction ])
-
-    return (
-        <>
-            <Button
-                onClick={handleSend}
-                disabled={!isConnected || isSendTxPending}
-                isLoading={isSendTxPending}
-            >
-                Send Transaction (eth)
-            </Button>
-
-            {isSendTxError && renderError(sendTxError)}
-
-            {data && (
-                <div className="mt-2 text-xs">
-                    <div>Hash: {truncateAddress(data)}</div>
-
-                    <div>
-                        Status:{" "}
-                        {isConfirming
-                            ? "Confirming..."
-                            : isConfirmed
-                            ? "Confirmed!"
-                            : "Pending"}
-                    </div>
-                </div>
-            )}
-        </>
-    )
-}
-
-const renderError = (error: Error | null) => {
-    if (!error) return null
-
-    if (error instanceof BaseError) {
-        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
-
-        if (isUserRejection) {
-            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
-        }
-    }
-
-    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
-}
-
 
 export default function Lobby({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
-    const [isContextOpen, setIsContextOpen] = useState(false)
-    const [txHash, setTxHash] = useState<string | null>(null)
-
-    const { address, isConnected } = useAccount()
-    const chainId = useChainId()
-
-    const {
-        sendTransaction,
-        error: sendTxError,
-        isError: isSendTxError,
-        isPending: isSendTxPending,
-    } = useSendTransaction()
-
-    const { isLoading: isConfirming, isSuccess: isConfirmed } =
-        useWaitForTransactionReceipt({
-            hash: txHash as `0x${string}`,
-        })
-
-    const {
-        signTypedData,
-        error: signTypedError,
-        isError: isSignTypedError,
-        isPending: isSignTypedPending,
-    } = useSignTypedData()
-
-    const { disconnect } = useDisconnect()
-    const { connect } = useConnect()
-
-    const {
-        switchChain,
-        error: switchChainError,
-        isError: isSwitchChainError,
-        isPending: isSwitchChainPending,
-    } = useSwitchChain()
-
-    const handleSwitchChain = useCallback(() => {
-        switchChain({ chainId: chainId === base.id ? optimism.id : base.id })
-    }, [ switchChain, chainId ])
 
     useEffect(() => {
         const load = async () => {
@@ -198,142 +19,88 @@ export default function Lobby({ tableid }: { tableid: string}) {
         }
     }, [ isSDKLoaded ])
 
-    const sendTx = useCallback(() => {
-        sendTransaction(
-            {
-                // call yoink() on Yoink contract
-                to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
-                data: "0x9846cd9efc000023c0",
-            },
-            {
-                onSuccess: (hash) => {
-                    setTxHash(hash);
-                },
-            }
-        )
-    }, [ sendTransaction ])
-
-    const signTyped = useCallback(() => {
-        signTypedData({
-            domain: {
-                name: `Frames v2 Demo`,
-                version: '1',
-                chainId,
-            },
-            types: {
-                Message: [{ name: 'content', type: 'string' }],
-            },
-            message: {
-                content: `Hello from Frames v2!`,
-            },
-            primaryType: 'Message',
-        })
-    }, [ chainId, signTypedData ])
-
-    const toggleContext = useCallback(() => {
-        setIsContextOpen((prev) => !prev)
-    }, [])
-
     if (!isSDKLoaded) {
         return <div>Loading. Please wait...</div>
     }
 
     return (
         <main className="w-full">
-            <h1 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                Table # {tableid}
-            </h1>
+            <section className="p-3">
+                <h1 className="text-4xl font-bold text-rose-400 italic tracking-widest">
+                    Table # {tableid}
+                </h1>
 
-            <div>
-                <h2 className="font-2xl font-bold">Wallet</h2>
-
-                {address && (
-                    <div className="my-2 text-xs">
-                        Address: <pre className="inline">{truncateAddress(address)}</pre>
-                    </div>
-                )}
-
-                {chainId && (
-                    <div className="my-2 text-xs">
-                        Chain ID: <pre className="inline">{chainId}</pre>
-                    </div>
-                )}
-
-                <div className="mb-4">
-                    <Button
-                        onClick={() =>
-                            isConnected
-                            ? disconnect()
-                            : connect({ connector: config.connectors[0] })
-                        }
-                    >
-                        {isConnected ? "Disconnect" : "Connect"}
-                    </Button>
+                <div>
+                    <h2 className="text-slate-700 font-bold text-2xl">
+                        {context?.user.displayName || 'Guest'} Wallet
+                    </h2>
                 </div>
 
-                <div className="mb-4">
-                    <SignMessage />
+            </section>
+
+            <section className="mt-10 px-5 w-full grid grid-cols-5">
+                <div className="flex justify-center">
+                    <img
+                        src="https://assets.cast.casino/cards_01/AS.svg"
+                        className="w-12 sm:w-16 border sm:border-2 border-slate-700"
+                    />
                 </div>
 
-                {isConnected && (
-                    <>
-                        <div className="mb-4">
-                            <SendEth />
-                        </div>
+                <div className="flex justify-center">
+                    <img
+                        src="https://assets.cast.casino/cards_01/AD.svg"
+                        className="w-12 sm:w-16 border sm:border-2 border-slate-700"
+                    />
+                </div>
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={sendTx}
-                                disabled={!isConnected || isSendTxPending}
-                                isLoading={isSendTxPending}
-                            >
-                                Send Transaction (contract)
-                            </Button>
+                <div className="flex justify-center">
+                    <img
+                        src="https://assets.cast.casino/cards_01/KH.svg"
+                        className="w-12 sm:w-16 border sm:border-2 border-slate-700"
+                    />
+                </div>
 
-                            {isSendTxError && renderError(sendTxError)}
+                <div className="flex justify-center">
+                    <img
+                        src="https://assets.cast.casino/cards_01/KC.svg"
+                        className="w-12 sm:w-16 border sm:border-2 border-slate-700"
+                    />
+                </div>
 
-                            {txHash && (
-                                <div className="mt-2 text-xs">
-                                    <div>Hash: {truncateAddress(txHash)}</div>
+                <div className="flex justify-center">
+                    <img
+                        src="https://assets.cast.casino/cards_01/2D.svg"
+                        className="w-12 sm:w-16 border sm:border-2 border-slate-700"
+                    />
+                </div>
+            </section>
 
-                                    <div>
-                                        Status:{" "}
-                                        {isConfirming
-                                            ? "Confirming..."
-                                            : isConfirmed
-                                            ? "Confirmed!"
-                                            : "Pending"}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+            <section className="mt-10 w-full flex flex-row justify-center">
+                <img
+                    src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                    className="mx-5 w-16 border-2 border-slate-700"
+                />
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={signTyped}
-                                disabled={!isConnected || isSignTypedPending}
-                                isLoading={isSignTypedPending}
-                            >
-                                Sign Typed Data
-                            </Button>
+                <img
+                    src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
+                    className="mx-5 w-16 border-2 border-slate-700"
+                />
 
-                            {isSignTypedError && renderError(signTypedError)}
-                        </div>
+                <img
+                    src="https://assets.cast.casino/cards_01/covers/blue.svg"
+                    className="mx-5 w-16 border-2 border-slate-700"
+                />
 
-                        <div className="mb-4">
-                            <Button
-                                onClick={handleSwitchChain}
-                                disabled={isSwitchChainPending}
-                                isLoading={isSwitchChainPending}
-                            >
-                                Switch to {chainId === base.id ? "Optimism" : "Base"}
-                            </Button>
+                <img
+                    src="https://assets.cast.casino/cards_01/covers/frog.svg"
+                    className="mx-5 w-16 border-2 border-slate-700"
+                />
 
-                            {isSwitchChainError && renderError(switchChainError)}
-                        </div>
-                    </>
-                )}
-            </div>
+                <img
+                    src="https://assets.cast.casino/cards_01/covers/fish.svg"
+                    className="mx-5 w-16 border-2 border-slate-700"
+                />
+            </section>
         </main>
     )
 }

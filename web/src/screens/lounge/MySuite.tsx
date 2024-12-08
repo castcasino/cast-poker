@@ -10,22 +10,62 @@ import sdk, {
     type FrameContext,
 } from '@farcaster/frame-sdk'
 
+import {
+    useAccount,
+    useSendTransaction,
+    useWaitForTransactionReceipt,
+    useSwitchChain,
+    useChainId,
+} from 'wagmi'
+import { base, optimism } from 'wagmi/chains'
+import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { Button } from '~/components/ui/Button'
 import splashIcon from '~/../public/splash.png'
+
+import { truncateAddress } from '~/lib/truncateAddress'
+
+const renderError = (error: Error | null) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+        }
+    }
+
+    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+}
 
 export default function MySuite({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
-    const [addFrameResult, setAddFrameResult] = useState("")
+    const [addFrameResult, setAddFrameResult] = useState('')
     const [notificationDetails, setNotificationDetails] =
         useState<FrameNotificationDetails | null>(null)
-    const [sendNotificationResult, setSendNotificationResult] = useState("")
+    const [sendNotificationResult, setSendNotificationResult] = useState('')
+
+    const { address, isConnected } = useAccount()
+    const chainId = useChainId()
+
+    const {
+        switchChain,
+        error: switchChainError,
+        isError: isSwitchChainError,
+        isPending: isSwitchChainPending,
+    } = useSwitchChain()
+
+    const handleSwitchChain = useCallback(() => {
+        switchChain({ chainId: chainId === base.id ? optimism.id : base.id })
+    }, [ switchChain, chainId ])
+
 
     const addFrame = useCallback(async () => {
         try {
-            // setAddFrameResult("")
+            // setAddFrameResult('')
             setNotificationDetails(null)
 
             const result = await sdk.actions.addFrame()
@@ -116,10 +156,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                 </div>
             </section>
 
-            <section className="p-3">
-                <div>
-
-                </div>
+            <section className="p-3 flex flex-row">
                 {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
                     <div className="flex items-center">
                         <Image
@@ -171,21 +208,35 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             {addFrameResult}
                         </div>
                     )}
-                </div>
 
-                {notificationDetails && (
-                    <div>
-                        <h2 className="font-2xl font-bold">Notify</h2>
+                    {notificationDetails && (
+                        <div>
+                            <h2 className="font-2xl font-bold">Notify</h2>
 
-                        {sendNotificationResult && (
-                            <div className="mb-2">
-                                Send notification result: {sendNotificationResult}
+                            {sendNotificationResult && (
+                                <div className="mb-2">
+                                    Send notification result: {sendNotificationResult}
+                                </div>
+                            )}
+
+                            <div className="mb-4">
+                                <Button onClick={sendNotification}>Send notification</Button>
                             </div>
-                        )}
-
-                        <div className="mb-4">
-                            <Button onClick={sendNotification}>Send notification</Button>
                         </div>
+                    )}
+                </div>
+            </section>
+
+            <section>
+                {address && (
+                    <div className="my-2 text-xs">
+                        Address: <pre className="inline">{truncateAddress(address)}</pre>
+                    </div>
+                )}
+
+                {chainId && (
+                    <div className="my-2 text-xs">
+                        Chain ID: <pre className="inline">{chainId}</pre>
                     </div>
                 )}
 
@@ -306,6 +357,18 @@ export default function MySuite({ tableid }: { tableid: string}) {
                         <p className="mt-1 text-sm/6 text-gray-600">
                             We&rsquo;ll always let you know about important changes, but you pick what else you want to hear about.
                         </p>
+
+                        <div className="mb-4">
+                            <Button
+                                onClick={handleSwitchChain}
+                                disabled={isSwitchChainPending}
+                                isLoading={isSwitchChainPending}
+                            >
+                                Switch to {chainId === base.id ? "Optimism" : "Base"}
+                            </Button>
+
+                            {isSwitchChainError && renderError(switchChainError)}
+                        </div>
 
                         <div className="mt-10 space-y-10">
                             <fieldset>
