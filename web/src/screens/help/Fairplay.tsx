@@ -104,6 +104,42 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                             Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
                         </p>
 
+                        <section className="mt-5 flex flex-col gap-2">
+                            <h2 className="text-2xl font-medium text-slate-700 tracking-wider">
+                                Fairplay Block Hashes
+                            </h2>
+
+                            <Link href="https://basescan.org/block/0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd" target="_blank">
+                                <pre className="block text-sm text-blue-500 truncate">
+                                    0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
+                                </pre>
+                            </Link>
+
+                            <Link href="https://basescan.org/block/0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1" target="_blank">
+                                <pre className="block text-sm text-blue-500 truncate">
+                                    0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1
+                                </pre>
+                            </Link>
+
+                            <Link href="https://basescan.org/block/0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460" target="_blank">
+                                <pre className="block text-sm text-blue-500 truncate">
+                                    0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460
+                                </pre>
+                            </Link>
+
+                            <Link href="https://basescan.org/block/0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6" target="_blank">
+                                <pre className="block text-sm text-blue-500 truncate">
+                                    0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6
+                                </pre>
+                            </Link>
+
+                            <Link href="https://basescan.org/block/0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34" target="_blank">
+                                <pre className="block text-sm text-blue-500 truncate">
+                                    0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34
+                                </pre>
+                            </Link>
+                        </section>
+
                         <h2 className="mt-16 text-pretty text-3xl font-semibold tracking-tight text-gray-900">
                             Poker Hand verification is very simple!
                         </h2>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
@@ -10,6 +11,7 @@ import numeral from 'numeral'
 
 // import { truncateAddress } from '~/lib/truncateAddress'
 import { truncateHash } from '~/lib/truncateHash'
+import splashIcon from '~/../public/splash.png'
 
 export default function Lobby({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -127,6 +129,48 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 <div className="w-full bg-rose-500 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                     <div className="flex flex-col gap-2">
+                        <div>
+                            {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
+                                <div className="flex items-center">
+                                    <Image
+                                        className="inline-block size-12 rounded-full"
+                                        src={'https://wsrv.nl/?url=' + context?.user?.pfpUrl || splashIcon}
+                                        alt={context?.user?.displayName || ''}
+                                    />
+
+                                    <div className="ml-2">
+                                        <p className="text-lg font-medium text-lime-600 tracking-wider group-hover:text-lime-500">
+                                            {context.user.displayName}
+                                        </p>
+
+                                        <p className="text-sm font-medium text-lime-800 tracking-wider group-hover:text-lime-600">
+                                            {context.user.username}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>)}
+
+                            {(!context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
+                                <div className="flex items-center">
+                                    <Image
+                                        className="inline-block size-12"
+                                        src={splashIcon}
+                                        alt=""
+                                    />
+
+                                    <div className="ml-2">
+                                        <p className="text-lg font-medium text-lime-600 tracking-wider group-hover:text-lime-500">
+                                            Guest User
+                                        </p>
+
+                                        <p className="text-sm font-medium text-lime-800 tracking-wider group-hover:text-lime-600">
+                                            @guest_user
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>)}
+                        </div>
+
                         <div className="flex flex-row items-center gap-2">
                             <img
                                 src="https://assets.cast.casino/cards_01/covers/abstract.svg"
@@ -151,7 +195,6 @@ export default function Lobby({ tableid }: { tableid: string}) {
                                 </span>
                             </div>
                         </div>
-
 
                         <img
                             src="https://assets.cast.casino/cards_01/covers/abstract.svg"
