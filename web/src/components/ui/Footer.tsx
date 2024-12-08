@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react'
 
 import {
-    useAccount,
+    // useAccount,
     useSendTransaction,
     useWaitForTransactionReceipt,
-    useSwitchChain,
-    useChainId,
+    // useSwitchChain,
+    // useChainId,
 } from 'wagmi'
 
 // function SendEth() {
@@ -71,14 +71,14 @@ import {
 export function Footer({ tableid }: { tableid: string }) {
     const [txHash, setTxHash] = useState<string | null>(null)
 
-    const { address, isConnected } = useAccount()
-    const chainId = useChainId()
+    // const { address, isConnected } = useAccount()
+    // const chainId = useChainId()
 
     const {
         sendTransaction,
-        error: sendTxError,
-        isError: isSendTxError,
-        isPending: isSendTxPending,
+        // error: sendTxError,
+        // isError: isSendTxError,
+        // isPending: isSendTxPending,
     } = useSendTransaction()
 
     const { isLoading: isConfirming, isSuccess: isConfirmed } =
@@ -112,11 +112,15 @@ export function Footer({ tableid }: { tableid: string }) {
                 <span className="text-lg sm:text-2xl font-bold text-amber-200 tracking-wider">
                     ~ 11h:11m
                 </span>
+
+                <span className="text-xs">
+                    [ {isConfirming} : {isConfirmed} ]
+                </span>
             </section>
 
             <div className="py-2 flex flex-row gap-3">
                 {/* Buy-in Button */}
-                <button className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800">
+                <button onClick={sendTx} className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800">
                     <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
                         Buy-In Is Only
                     </span>

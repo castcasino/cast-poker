@@ -100,7 +100,7 @@ export default function Host({ tableid }: { tableid: string}) {
     const [txHash, setTxHash] = useState<string | null>(null)
 
     const { address, isConnected } = useAccount()
-    const chainId = useChainId()
+    // const chainId = useChainId()
 
     const {
         sendTransaction,
@@ -167,7 +167,7 @@ export default function Host({ tableid }: { tableid: string}) {
             </h1>
 
             <div className="p-10 border-2 border-amber-500">
-                {JSON.stringify(context)}
+                {context?.user.displayName || 'Guest'} address -&gt; {address}
             </div>
 
             <div className="bg-gray-50">
