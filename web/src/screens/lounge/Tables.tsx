@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-export default function Hosts({ tableid }: { tableid: string}) {
+export default function Tables({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
@@ -36,8 +36,8 @@ export default function Hosts({ tableid }: { tableid: string}) {
                             Players
                         </Link>
 
-                        <Link href={`/${tableid}/hosts`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
-                            Hosts
+                        <Link href={`/${tableid}/tables`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            Tables
                         </Link>
 
                         <Link href={`/${tableid}/mysuite`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
@@ -49,7 +49,7 @@ export default function Hosts({ tableid }: { tableid: string}) {
 
             <div className="px-3 py-5">
                 <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                    Players for Table # {tableid}
+                    Tables for Table # {tableid}
                 </h1>
 
                 <div className="mb-4">

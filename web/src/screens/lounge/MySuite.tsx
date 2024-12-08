@@ -145,8 +145,8 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             Players
                         </Link>
 
-                        <Link href={`/${tableid}/hosts`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Hosts
+                        <Link href={`/${tableid}/tables`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Tables
                         </Link>
 
                         <Link href={`/${tableid}/mysuite`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
