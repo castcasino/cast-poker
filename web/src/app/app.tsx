@@ -24,7 +24,7 @@ import Promote from '~/screens/Promote'
 export default function App(
     { screenid, tableid }: { screenid: string, tableid: string } = { screenid: 'lobby', tableid: '' }
 ) {
-    return <main className="w-screen h-screen flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
+    return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
 
         <main className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">

@@ -31,50 +31,42 @@ export function Header({ tableid }: { tableid: string }) {
     return (
         <header className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-slate-800 border-b-[3px] border-lime-400">
             <section className="p-2">
-                {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
+                <div className="group block shrink-0">
                     <div className="flex items-center">
                         <Image
-                            className="inline-block size-9 rounded-full"
-                            src={'https://wsrv.nl/?url=' + context?.user?.pfpUrl || splashIcon}
-                            alt={context?.user?.displayName || ''}
-                        />
-
-                        <div className="ml-2">
-                            <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
-                                {context.user.displayName}
-                            </p>
-
-                            <p className="text-xs font-medium text-lime-300 group-hover:text-lime-400">
-                                {context.user.username}
-                            </p>
-                        </div>
-                    </div>
-                </Link>)}
-
-                {(!context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
-                    <div className="flex items-center">
-                        <Image
-                            className="inline-block size-9 rounded-full"
+                            className="hidden sm:inline-block size-8 sm:size-16"
                             src={splashIcon}
                             alt=""
                         />
 
-                        <div className="ml-2">
-                            <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
-                                Guest User
+                        <div className="ml-2 grid grid-cols-2 gap-x-4 gap-y-1">
+                            <p className="col-span-2 text-sm sm:text-base font-medium text-lime-500 tracking-widest uppercase group-hover:text-lime-400">
+                                Table # {tableid}
                             </p>
 
-                            <p className="text-xs font-medium text-lime-300 group-hover:text-lime-400">
-                                @guest_user
+                            <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                Host : @shomari
+                            </p>
+
+                            <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                # Players : 51
+                            </p>
+
+                            <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                # Buy-ins : 72
+                            </p>
+
+                            <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                # Decks : 3
                             </p>
                         </div>
                     </div>
-                </Link>)}
+                </div>
 
             </section>
 
             <section className="cursor-help px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
-                <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest">
+                <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest whitespace-nowrap">
                     Table Pot
                 </span>
 
