@@ -39,7 +39,7 @@ export function Header({ tableid }: { tableid: string }) {
                             alt={context?.user?.displayName || ''}
                         />
 
-                        <div className="ml-1">
+                        <div className="ml-2">
                             <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
                                 {context.user.displayName}
                             </p>
@@ -59,7 +59,7 @@ export function Header({ tableid }: { tableid: string }) {
                             alt=""
                         />
 
-                        <div className="ml-1">
+                        <div className="ml-2">
                             <p className="text-base font-medium text-lime-100 group-hover:text-lime-200">
                                 Guest User
                             </p>
@@ -75,7 +75,7 @@ export function Header({ tableid }: { tableid: string }) {
 
             <section className="cursor-help px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
                 <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest">
-                    Total Pot
+                    Table Pot
                 </span>
 
                 <span className="-mt-1.5 flex flex-row text-6xl font-bold text-lime-800">
