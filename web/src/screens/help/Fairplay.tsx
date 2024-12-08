@@ -104,16 +104,44 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                             Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
                         </p>
 
-                        <h2 className="mt-16 text-pretty text-3xl font-semibold tracking-tight text-gray-900">2
-                            From beginner to expert in 3 hours
+                        <h2 className="mt-16 text-pretty text-3xl font-semibold tracking-tight text-gray-900">
+                            Poker Hand verification is very simple!
                         </h2>
 
-                        <p className="my-6">
-                            Our decks are NEVER shuffled.
-                            That makes verification a lot easier after each hand.
+                        <p className="my-4">
+                            Our decks are NEVER shuffled —
+                            which makes verification a lot easier after each hand.
                             You can easily calculate the position of each card dealt to each player.
                             For more help, please check out our Fairplay Tool on Cast Casino.
                         </p>
+
+                        <div className="my-4 rounded-md bg-yellow-50 p-4 border border-yellow-200">
+                            <div className="flex">
+                                <div className="shrink-0">
+                                    <svg className="size-10 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </div>
+
+                                <div className="ml-3">
+                                    <h3 className="text-base font-bold text-yellow-800">
+                                        You Should Know!
+                                    </h3>
+
+                                    <div className="mt-2 text-sm text-yellow-800 leading-5 sm:leading-6">
+                                        <p>
+                                            All of our card decks are indexed starting with <span className="font-bold">ZERO (0)</span> and not ONE (1).
+                                            Please make note of this fact when calculating the dealt card selections during the verification process.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <FullDeck />
 

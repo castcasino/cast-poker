@@ -51,7 +51,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
                         <h2 className="text-base/7 font-semibold text-gray-900">
-                            {context?.user.displayName}'s VIP Suite @ Table # {tableid}
+                            {context?.user.displayName}&rsquo;s VIP Suite @ Table # {tableid}
                         </h2>
 
                         <p className="mt-1 text-sm/6 text-gray-600">
@@ -243,7 +243,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
 
                     <div className="border-b border-gray-900/10 pb-12">
                         <h2 className="text-base/7 font-semibold text-gray-900">Notifications</h2>
-                        <p className="mt-1 text-sm/6 text-gray-600">We'll always let you know about important changes, but you pick what else you want to hear about.</p>
+                        <p className="mt-1 text-sm/6 text-gray-600">We&rsquo;ll always let you know about important changes, but you pick what else you want to hear about.</p>
 
                         <div className="mt-10 space-y-10">
                             <fieldset>

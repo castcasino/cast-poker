@@ -15,7 +15,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #1
+                        #0
                     </span>
                 </div>
 
@@ -29,7 +29,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #2
+                        #1
                     </span>
                 </div>
 
@@ -43,7 +43,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #3
+                        #2
                     </span>
                 </div>
 
@@ -57,7 +57,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #4
+                        #3
                     </span>
                 </div>
 
@@ -71,7 +71,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #5
+                        #4
                     </span>
                 </div>
 
@@ -85,7 +85,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #6
+                        #5
                     </span>
                 </div>
 
@@ -99,7 +99,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #7
+                        #6
                     </span>
                 </div>
 
@@ -113,7 +113,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #8
+                        #7
                     </span>
                 </div>
 
@@ -127,7 +127,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #9
+                        #8
                     </span>
                 </div>
 
@@ -141,7 +141,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #10
+                        #9
                     </span>
                 </div>
 
@@ -155,7 +155,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #11
+                        #10
                     </span>
                 </div>
 
@@ -169,7 +169,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #12
+                        #11
                     </span>
                 </div>
 
@@ -183,7 +183,7 @@ export function FullDeck() {
                     />
 
                     <span className="text-xs flex justify-center">
-                        #13
+                        #12
                     </span>
                 </div>
             </section>
