@@ -198,39 +198,6 @@ export default function Lobby({ tableid }: { tableid: string}) {
         }
     }, [ isSDKLoaded ])
 
-
-
-    const sendNotification = useCallback(async () => {
-        setSendNotificationResult('')
-
-        if (!notificationDetails) {
-            return
-        }
-
-        try {
-            const response = await fetch('/api/send-notification', {
-                method: 'POST',
-                mode: 'same-origin',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    token: notificationDetails.token,
-                    url: notificationDetails.url,
-                    targetUrl: window.location.href,
-                }),
-            })
-
-            if (response.status === 200) {
-                setSendNotificationResult('Success')
-                return
-            }
-
-            const data = await response.text()
-            setSendNotificationResult(`Error: ${data}`)
-        } catch (error) {
-            setSendNotificationResult(`Error: ${error}`)
-        }
-    }, [ notificationDetails ])
-
     const sendTx = useCallback(() => {
         sendTransaction(
             {
@@ -273,51 +240,9 @@ export default function Lobby({ tableid }: { tableid: string}) {
 
     return (
         <main className="w-full">
-            <h1 className="text-2xl font-bold text-center mb-4">
-                Lobby
+            <h1 className="text-4xl font-bold text-rose-400 italic tracking-widest">
+                Table # {tableid}
             </h1>
-
-            <div className="mb-4">
-                <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Table # {tableid}
-                </h2>
-
-                <button
-                    onClick={toggleContext}
-                    className="flex items-center gap-2 transition-colors"
-                >
-                    <span
-                        className={`transform transition-transform ${isContextOpen ? "rotate-90" : ""}`}
-                    >
-                        ➤
-                    </span>
-                    Tap to expand
-                </button>
-
-                {isContextOpen && (
-                    <div className="p-4 mt-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                        <pre className="font-mono text-xs whitespace-pre-wrap break-words max-w-[260px] overflow-x-">
-                            {JSON.stringify(context, null, 2)}
-                        </pre>
-                    </div>
-                )}
-            </div>
-
-            {notificationDetails && (
-                <div>
-                    <h2 className="font-2xl font-bold">Notify</h2>
-
-                    {sendNotificationResult && (
-                        <div className="mb-2">
-                            Send notification result: {sendNotificationResult}
-                        </div>
-                    )}
-
-                    <div className="mb-4">
-                        <Button onClick={sendNotification}>Send notification</Button>
-                    </div>
-                </div>
-            )}
 
             <div>
                 <h2 className="font-2xl font-bold">Wallet</h2>

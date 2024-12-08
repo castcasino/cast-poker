@@ -48,6 +48,37 @@ export default function MySuite({ tableid }: { tableid: string}) {
         }
     }, [])
 
+    const sendNotification = useCallback(async () => {
+        setSendNotificationResult('')
+
+        if (!notificationDetails) {
+            return
+        }
+
+        try {
+            const response = await fetch('/api/send-notification', {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    token: notificationDetails.token,
+                    url: notificationDetails.url,
+                    targetUrl: window.location.href,
+                }),
+            })
+
+            if (response.status === 200) {
+                setSendNotificationResult('Success')
+                return
+            }
+
+            const data = await response.text()
+            setSendNotificationResult(`Error: ${data}`)
+        } catch (error) {
+            setSendNotificationResult(`Error: ${error}`)
+        }
+    }, [ notificationDetails ])
+
     useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
@@ -141,6 +172,23 @@ export default function MySuite({ tableid }: { tableid: string}) {
                         </div>
                     )}
                 </div>
+
+                {notificationDetails && (
+                    <div>
+                        <h2 className="font-2xl font-bold">Notify</h2>
+
+                        {sendNotificationResult && (
+                            <div className="mb-2">
+                                Send notification result: {sendNotificationResult}
+                            </div>
+                        )}
+
+                        <div className="mb-4">
+                            <Button onClick={sendNotification}>Send notification</Button>
+                        </div>
+                    </div>
+                )}
+
             </section>
 
             <form className="px-3">
