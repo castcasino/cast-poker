@@ -1,6 +1,6 @@
 {
   "name": "cast-casino",
-  "version": "24.12.6",
+  "version": "24.12.8",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,9 @@
   "dependencies": {
     "@farcaster/frame-sdk": "0.0.10",
     "@tanstack/react-query": "5.62.3",
+    "moment": "2.30.1",
     "next": "15.0.4",
+    "numeral": "2.0.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "viem": "2.21.54",

@@ -50,15 +50,15 @@ export function Header({ tableid }: { tableid: string }) {
                             </p>
 
                             <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                # Players : 51
+                                # Players : 21
                             </p>
 
                             <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                # Buy-ins : 72
+                                # Buy-ins : 32
                             </p>
 
                             <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                # Decks : 3
+                                # Decks : 1
                             </p>
                         </div>
                     </div>
