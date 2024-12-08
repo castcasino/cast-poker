@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
@@ -10,11 +10,11 @@ import splashIcon from '~/../public/splash.png'
 
 export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
-    const [context, setContext] = useState<FrameContext>()
+    // const [context, setContext] = useState<FrameContext>()
 
     useEffect(() => {
         const load = async () => {
-            setContext(await sdk.context)
+            // setContext(await sdk.context)
             sdk.actions.ready()
         }
 
