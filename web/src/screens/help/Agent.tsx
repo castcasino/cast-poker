@@ -1,14 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
+import { Button } from '~/components/ui/Button'
+
 export default function Agent({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+
+    const openCasinoSupport = useCallback(() => {
+        sdk.actions.openUrl('https://cast.casino')
+    }, [])
 
     useEffect(() => {
         const load = async () => {
@@ -25,6 +31,7 @@ export default function Agent({ tableid }: { tableid: string}) {
     if (!isSDKLoaded) {
         return <div>Loading. Please wait...</div>
     }
+
 
     return (
         <main className="w-full">
@@ -50,6 +57,10 @@ export default function Agent({ tableid }: { tableid: string}) {
             <p className="mx-3 my-5 p-5 text-lg tracking-wider text-slate-600 leading-7 bg-amber-100 rounded-xl border border-amber-300 shadow">
                 {context?.user.displayName}, get the help that you need for table # {tableid}, when you need it!
             </p>
+
+            <Button onClick={openCasinoSupport}>
+                Visit Cast Casino Support
+            </Button>
 
             <section className="px-3 py-5">
                 <ul role="list" className="space-y-6">

@@ -1,16 +1,22 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
+import { Button } from '~/components/ui/Button'
+
 export default function Promote({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
-    useEffect(() => {
+    const castPromo = useCallback(() => {
+        sdk.actions.openUrl('https://warpcast.com/~/compose')
+    }, [])
+
+    useEffect(() => {8
         const load = async () => {
             setContext(await sdk.context)
             sdk.actions.ready()
@@ -43,7 +49,7 @@ export default function Promote({ tableid }: { tableid: string}) {
                 </div>
             </section>
 
-            <section className="px-3">
+            <section className="my-5 px-3">
                 <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
                     {context?.user.displayName || 'Guest'} earn 3% promoting Table # {tableid}
                 </h1>
@@ -52,6 +58,10 @@ export default function Promote({ tableid }: { tableid: string}) {
                     Cast Casino offers the <span className="font-bold">EASIEST</span> referral rewards in all of Farcaster!
                     Simply recast <span className="font-bold">ANY</span> of our table games and you&rsquo;re done!
                 </p>
+
+                <Button onClick={castPromo}>
+                    Promote Table # {tableid} NOW!
+                </Button>
 
                 <ol className="pl-10 list-decimal text-slate-700">
                     <li>
