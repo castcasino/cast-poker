@@ -20,33 +20,41 @@ import { Button } from '~/components/ui/Button'
 import { truncateAddress } from '~/lib/truncateAddress'
 
 const _handleCreateTable = async () => {
+    /* Initialize locals. */
     let body
-    let data
     let headers
     let method
     let options
+    let pkg
     let response
 
-    data = {
+    /* Build (data) package. */
+    pkg = {
         almost: 'there...',
     }
 
+    /* Set method. */
     method = 'POST'
 
+    /* Set headers. */
     headers = { 'Content-Type': 'application/json' }
 
-    body = JSON.stringify(data)
+    /* Serialize body. */
+    body = JSON.stringify(pkg)
 
+    /* Build options. */
     options = {
         method,
         headers,
         body,
     }
 
+    /* Make (remote) data request. */
     response = await fetch('https://cast.casino/v1', options)
         .catch(err => console.error(err))
 console.log('API RESPONSE', response)
 
+    /* Handle response. */
     response = await response
         .json()
         .catch(err => console.error(err))
