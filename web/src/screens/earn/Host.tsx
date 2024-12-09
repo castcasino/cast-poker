@@ -20,17 +20,37 @@ import { Button } from '~/components/ui/Button'
 import { truncateAddress } from '~/lib/truncateAddress'
 
 const _handleCreateTable = async () => {
-    const body = JSON.stringify({
-        getting: 'closer...',
-    })
+    let body
+    let data
+    let headers
+    let method
+    let options
+    let response
 
-    const response = await fetch('https://cast.casino/v1', {
-      method: 'POST',
-      body,
-    }).catch(err => console.error(err))
+    data = {
+        almost: 'there...',
+    }
+
+    method = 'POST'
+
+    headers = { 'Content-Type': 'application/json' }
+
+    body = JSON.stringify(data)
+
+    options = {
+        method,
+        headers,
+        body,
+    }
+
+    response = await fetch('https://cast.casino/v1', options)
+        .catch(err => console.error(err))
 console.log('API RESPONSE', response)
 
-    alert(`creating table... ${JSON.stringify(response)}`)
+    response = await response
+        .json()
+        .catch(err => console.error(err))
+console.log('API RESPONSE', response)
 }
 
 const renderError = (error: Error | null) => {
