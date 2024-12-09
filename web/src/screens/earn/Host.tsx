@@ -21,29 +21,24 @@ import { truncateAddress } from '~/lib/truncateAddress'
 
 const _handleCreateTable = async () => {
     /* Initialize locals. */
-    let body
-    let headers
-    let method
-    let options
-    let pkg
     let response
 
     /* Build (data) package. */
-    pkg = {
+    const pkg = {
         almost: 'there...',
     }
 
     /* Set method. */
-    method = 'POST'
+    const method = 'POST'
 
     /* Set headers. */
-    headers = { 'Content-Type': 'application/json' }
+    const headers = { 'Content-Type': 'application/json' }
 
     /* Serialize body. */
-    body = JSON.stringify(pkg)
+    const body = JSON.stringify(pkg)
 
     /* Build options. */
-    options = {
+    const options = {
         method,
         headers,
         body,
