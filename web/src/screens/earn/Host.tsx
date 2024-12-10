@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+// import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 
@@ -99,7 +100,7 @@ export default function Host({ tableid }: { tableid: string}) {
 
     const [txHash, setTxHash] = useState<string | null>(null)
 
-    // const { address, isConnected } = useAccount()
+    const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
     const {
@@ -587,6 +588,10 @@ export default function Host({ tableid }: { tableid: string}) {
                 >
                     Create My Table
                 </Button>
+
+                {isConnected && <div>
+                    My address is {address}
+                </div>}
 
                 {isSendTxError && renderError(sendTxError)}
 
