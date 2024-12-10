@@ -99,7 +99,7 @@ export default function Host({ tableid }: { tableid: string}) {
 
     const [txHash, setTxHash] = useState<string | null>(null)
 
-    const { address, isConnected } = useAccount()
+    // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
     const {
@@ -114,20 +114,20 @@ export default function Host({ tableid }: { tableid: string}) {
             hash: txHash as `0x${string}`,
         })
 
-    const sendTx = useCallback(() => {
-        sendTransaction(
-            {
-                // call yoink() on Yoink contract
-                to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
-                data: "0x9846cd9efc000023c0",
-            },
-            {
-                onSuccess: (hash) => {
-                    setTxHash(hash);
-                },
-            }
-        )
-    }, [ sendTransaction ])
+    // const sendTx = useCallback(() => {
+    //     sendTransaction(
+    //         {
+    //             // call yoink() on Yoink contract
+    //             to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
+    //             data: "0x9846cd9efc000023c0",
+    //         },
+    //         {
+    //             onSuccess: (hash) => {
+    //                 setTxHash(hash);
+    //             },
+    //         }
+    //     )
+    // }, [ sendTransaction ])
 
     useEffect(() => {
         const load = async () => {
@@ -146,43 +146,54 @@ export default function Host({ tableid }: { tableid: string}) {
     }
 
     const _handleCreateTable = async () => {
-        /* Initialize locals. */
-        let response
+        sendTransaction(
+            {
+                // call yoink() on Yoink contract
+                to: '0x4bBFD120d9f352A0BEd7a014bd67913a2007a878',
+                data: '0x9846cd9efc000023c0',
+            },
+            {
+                onSuccess: (hash) => {
+                    setTxHash(hash);
+                },
+            }
+        )
 
-        /* Build (data) package. */
-        const pkg = {
-            almost: 'there...',
-        }
+//         /* Initialize locals. */
+//         let response
 
-        /* Set method. */
-        const method = 'POST'
+//         /* Build (data) package. */
+//         const pkg = {
+//             almost: 'there...',
+//         }
 
-        /* Set headers. */
-        const headers = { 'Content-Type': 'application/json' }
+//         /* Set method. */
+//         const method = 'POST'
 
-        /* Serialize body. */
-        const body = JSON.stringify(pkg)
+//         /* Set headers. */
+//         const headers = { 'Content-Type': 'application/json' }
 
-        /* Build options. */
-        const options = {
-            method,
-            headers,
-            body,
-        }
+//         /* Serialize body. */
+//         const body = JSON.stringify(pkg)
 
-        /* Make (remote) data request. */
-        response = await fetch('https://cast.casino/v1', options)
-            .catch(err => console.error(err))
-    console.log('API RESPONSE', response)
+//         /* Build options. */
+//         const options = {
+//             method,
+//             headers,
+//             body,
+//         }
 
-        /* Handle response. */
-        response = await response
-            .json()
-            .catch(err => console.error(err))
-    console.log('API RESPONSE', response)
-    alert(JSON.stringify(response))
+//         /* Make (remote) data request. */
+//         response = await fetch('https://cast.casino/v1', options)
+//             .catch(err => console.error(err))
+// console.log('API RESPONSE', response)
 
-        // sendTx()
+//         /* Handle response. */
+//         response = await response
+//             .json()
+//             .catch(err => console.error(err))
+//     console.log('API RESPONSE', response)
+// alert(JSON.stringify(response))
     }
 
     return (
