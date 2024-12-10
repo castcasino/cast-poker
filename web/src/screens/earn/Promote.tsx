@@ -38,23 +38,25 @@ export default function Promote({ tableid }: { tableid: string}) {
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex" aria-label="Tabs">
                         {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
-                        <Link href={`/${tableid}/promoter`} className="w-1/2 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
-                            Promoter
+                        <Link href={`/${tableid}/promote`} className="w-1/2 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            Promotion
                         </Link>
 
                         <Link href={`/${tableid}/host`} className="w-1/2 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Host
+                            Hosting
                         </Link>
                     </nav>
                 </div>
             </section>
 
             <section className="my-5 px-3">
-                <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                    {context?.user.displayName || 'Guest'} earn 3% promoting Table # {tableid}
-                </h1>
+                <div className="w-full flex justify-center">
+                    <h1 className="sm:px-10 text-4xl font-light text-rose-400 text-center italic leading-[55px]">
+                        {context?.user.displayName || 'Guest'}, Earn <span className="text-5xl font-bold">3%</span> Promoting Table # {tableid}
+                    </h1>
+                </div>
 
-                <p className="mb-4 text-slate-700">
+                <p className="my-4 text-slate-700">
                     Cast Casino offers the <span className="font-bold">EASIEST</span> referral rewards in all of Farcaster!
                     Simply recast <span className="font-bold">ANY</span> of our table games and you&rsquo;re done!
                 </p>

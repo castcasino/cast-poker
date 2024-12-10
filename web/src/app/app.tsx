@@ -17,7 +17,7 @@ import Tables from '~/screens/lounge/Tables'
 
 // Import Earn screens.
 import Host from '~/screens/earn/Host'
-import Promoter from '~/screens/earn/Promoter'
+import Promote from '~/screens/earn/Promote'
 
 // Import screens.
 import Lobby from '~/screens/Lobby'
@@ -37,7 +37,7 @@ export default function App(
             {screenid === 'lobby' && <Lobby tableid={tableid} />}
             {screenid === 'mysuite' && <MySuite tableid={tableid} />}
             {screenid === 'players' && <Players tableid={tableid} />}
-            {screenid === 'promoter' && <Promoter tableid={tableid} />}
+            {screenid === 'promote' && <Promote tableid={tableid} />}
             {screenid === 'tables' && <Tables tableid={tableid} />}
         </main>
 
