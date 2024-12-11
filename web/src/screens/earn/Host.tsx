@@ -1,7 +1,7 @@
 'use client'
 
-// import { useEffect, useState, useCallback } from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
+// import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 
@@ -16,7 +16,14 @@ import {
 } from 'wagmi'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
+import { Asset } from '~/components/ui/host/Asset'
 import { Button } from '~/components/ui/Button'
+import { BuyIn } from '~/components/ui/host/BuyIn'
+import { DeckType } from '~/components/ui/host/DeckType'
+import { GameType } from '~/components/ui/host/GameType'
+import { Network } from '~/components/ui/host/Network'
+// import { Optional } from '~/components/ui/host/Optional'
+import { Seating } from '~/components/ui/host/Seating'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
@@ -100,8 +107,46 @@ export default function Host({ tableid }: { tableid: string}) {
 
     const [txHash, setTxHash] = useState<string | null>(null)
 
+    const [asset, setAsset] = useState('eth')
+    const [buyIn, setBuyIn] = useState('100000000000000')
+    const [deckType, setDeckType] = useState('solo')
+    const [gameType, setGameType] = useState('table')
+    const [network, setNetwork] = useState('base')
+    const [seating, setSeating] = useState('86400')
+    // const [tableName, setTableName] = useState('')
+
     const { address, isConnected } = useAccount()
     // const chainId = useChainId()
+
+//     const handleTableName = useCallback((event) => {
+// console.log('HANDLE TABLE NAME', event.target.value)
+//         setTableName(event.target.value)
+//     }, [ tableName ])
+
+    const handleBuyIn = useCallback((event) => {
+        setBuyIn(event.target.value)
+    }, [ buyIn ])
+
+    const handleAsset = useCallback((event) => {
+        // setAsset(event.target.value)
+    }, [ asset ])
+
+    const handleDeckType = useCallback((_deckType) => {
+        // setDeckType(_deckType)
+    }, [ deckType ])
+
+    const handleGameType = useCallback((_gameType) => {
+        // setGameType(_gameType)
+    }, [ gameType ])
+
+    const handleNetwork = useCallback((_network) => {
+        // setGameType(_network)
+    }, [ network ])
+
+    const handleSeating = useCallback((event) => {
+        setSeating(event.target.value)
+    }, [ seating ])
+
 
     const {
         sendTransaction,
@@ -147,6 +192,18 @@ export default function Host({ tableid }: { tableid: string}) {
     }
 
     const _handleCreateTable = async () => {
+
+        const pkg = {
+            gameType,
+            deckType,
+            network,
+            asset,
+            buyIn,
+            seating
+        }
+
+        return alert(JSON.stringify(pkg, null, 2))
+
         sendTransaction(
             {
                 // call yoink() on Yoink contract
@@ -228,7 +285,7 @@ export default function Host({ tableid }: { tableid: string}) {
 
                 <ol className="pl-10 list-decimal text-slate-700">
                     <li>
-                        Earn <span className="text-xl font-bold text-rose-500">3%</span> on <span className="font-bold">EVERY</span> dollar wagered from your promo
+                        Earn <span className="text-xl font-bold text-rose-500">5%</span> on <span className="font-bold">EVERY</span> dollar wagered on your table .. <span className="font-bold">WIN or LOSE!</span>
                     </li>
 
                     <li>
@@ -241,345 +298,41 @@ export default function Host({ tableid }: { tableid: string}) {
                 </ol>
             </section>
 
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <fieldset>
-                    <legend className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Choose a network
-                    </legend>
+            <div className="flex flex-col gap-2">
+                <GameType
+                    gameType={gameType}
+                    handleGameType={handleGameType}
+                />
 
-                    <div className="mt-2 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
+                <DeckType
+                    deckType={deckType}
+                    handleDeckType={handleDeckType} />
 
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-xl font-medium text-gray-900">
-                                        Base
-                                    </span>
+                <Network
+                    network={network}
+                    handleNetwork={handleNetwork} />
 
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        4–10 business days
-                                    </span>
+                <Asset
+                    asset={asset}
+                    handleAsset={handleAsset} />
 
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        $5.00
-                                    </span>
-                                </span>
-                            </span>
+                <BuyIn
+                    buyIn={buyIn}
+                    handleBuyIn={handleBuyIn} />
 
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
+                <Seating
+                    seating={seating}
+                    handleSeating={handleSeating} />
+            </div>
 
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
+            {/* <div className="my-10 mx-10 border-t border-slate-300" /> */}
 
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Express" className="sr-only" />
+            {/* <Optional
+                tableName={tableName}
+                handleTableName={handleTableName}
+            /> */}
 
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-xl font-medium text-gray-900">
-                                        Degen
-                                    </span>
-
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        2–5 business days
-                                    </span>
-
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        $16.00
-                                    </span>
-                                </span>
-                            </span>
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                </fieldset>
-            </section>
-
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <div className="w-full sm:w-2/5">
-                    <label htmlFor="asset" className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Choose a buy-in asset
-                    </label>
-
-                    <div className="mt-2">
-                        <select
-                            id="asset"
-                            name="asset"
-                            className="w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-lg tracking-wider text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-                        >
-                            <option>$DEGEN</option>
-                            <option>$ETH</option>
-                        </select>
-                    </div>
-                </div>
-            </section>
-
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <fieldset>
-                    <legend className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Choose a game type
-                    </legend>
-
-                    <div className="mt-2 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
-
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-sm font-medium text-gray-900">
-                                        Heads Up
-                                    </span>
-
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        No additinal rewards
-                                    </span>
-
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        FREE
-                                    </span>
-                                </span>
-                            </span>
-
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
-
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Express" className="sr-only" />
-
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-sm font-medium text-gray-900">
-                                        Table
-                                    </span>
-
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        Earn 5% on ALL buy-ins
-                                    </span>
-
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        FREE
-                                    </span>
-                                </span>
-                            </span>
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                </fieldset>
-            </section>
-
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <fieldset>
-                    <legend className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Choose a deck type
-                    </legend>
-
-                    <div className="mt-2 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
-
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-sm font-medium text-gray-900">
-                                        Single Deck
-                                    </span>
-
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        4–10 business days
-                                    </span>
-
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        $5.00
-                                    </span>
-                                </span>
-                            </span>
-
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
-
-                        {/* <!--
-            Checked: "border-transparent", Not Checked: "border-gray-300"
-            Active: "ring-2 ring-indigo-500"
-        --> */}
-                        <label aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none">
-                            <input type="radio" name="delivery-method" value="Express" className="sr-only" />
-
-                            <span className="flex flex-1">
-                                <span className="flex flex-col">
-                                    <span className="block text-sm font-medium text-gray-900">
-                                        WAGMI
-                                    </span>
-
-                                    <span className="mt-1 flex items-center text-sm text-gray-500">
-                                        2–5 business days
-                                    </span>
-
-                                    <span className="mt-6 text-sm font-medium text-gray-900">
-                                        $16.00
-                                    </span>
-                                </span>
-                            </span>
-                            {/* <!-- Not Checked: "hidden" --> */}
-                            <svg className="size-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            {/* <!--
-            Active: "border", Not Active: "border-2"
-            Checked: "border-indigo-500", Not Checked: "border-transparent"
-            --> */}
-                            <span className="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                </fieldset>
-            </section>
-
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <div className="w-full sm:w-2/5">
-                    <label htmlFor="asset" className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Choose a seating time
-                    </label>
-
-                    <div className="mt-2">
-                        <select
-                            id="asset"
-                            name="asset"
-                            className="w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-lg tracking-wider text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-                        >
-                            <option value="900" disabled>15 Minutes</option>
-                            <option value="1800" disabled>30 Minutes</option>
-                            <option value="3600" disabled>60 Minutes</option>
-                            <option value="5400" disabled>2 Hours</option>
-                            <option value="10800" disabled>3 Hours</option>
-                            <option value="21600" disabled>6 Hours</option>
-                            <option value="43200" disabled>12 Hours</option>
-                            <option value="86400" selected>24 Hours</option>
-                        </select>
-                    </div>
-                </div>
-            </section>
-
-            <div className="my-10 mx-10 border-t border-slate-300" />
-
-            <section className="my-5 px-3 flex flex-col gap-4">
-                <div className="w-full sm:w-2/3">
-                    <label htmlFor="table-name" className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Table Name (optional)
-                    </label>
-
-                    <div className="mt-2">
-                        <input
-                            type="text"
-                            id="table-name"
-                            name="table-name"
-                            className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                            placeholder="Saturday Night Hold-em"
-                        />
-                    </div>
-                </div>
-
-                <div className="w-full sm:w-2/3">
-                    <label htmlFor="table-banner" className="text-base font-medium text-slate-700 tracking-widest uppercase">
-                        Table Banner (optional)
-                    </label>
-
-                    <div className="mt-2">
-                        <input
-                            type="text"
-                            id="table-banner"
-                            name="table-banner"
-                            className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                            placeholder="https://location-of-banner-image"
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section className="mt-10 mb-5 text-center">
+            <section className="mt-5 mb-10 text-center">
                 <Button
                     onClick={_handleCreateTable}
                     // disabled={!isConnected || isSendTxPending}
@@ -610,7 +363,6 @@ export default function Host({ tableid }: { tableid: string}) {
                     </div>
                 )}
             </section>
-
         </main>
     )
 }
