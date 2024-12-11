@@ -1,5 +1,6 @@
 
 export function DeckType({ deckType, handleDeckType }) {
+console.log('DECK TYPE', deckType)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <fieldset>

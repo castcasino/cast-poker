@@ -128,19 +128,23 @@ export default function Host({ tableid }: { tableid: string}) {
     }, [ buyIn ])
 
     const handleAsset = useCallback((event) => {
-        // setAsset(event.target.value)
+        return console.log('ASSET IS CURRENTLY RESTRICTED!')
+        setAsset(event.target.value)
     }, [ asset ])
 
     const handleDeckType = useCallback((_deckType) => {
-        // setDeckType(_deckType)
+        return console.log('DECK TYPE IS CURRENTLY RESTRICTED!')
+        setDeckType(_deckType)
     }, [ deckType ])
 
     const handleGameType = useCallback((_gameType) => {
-        // setGameType(_gameType)
+        return console.log('GAME TYPE IS CURRENTLY RESTRICTED!')
+        setGameType(_gameType)
     }, [ gameType ])
 
     const handleNetwork = useCallback((_network) => {
-        // setGameType(_network)
+        return console.log('NETWORK IS CURRENTLY RESTRICTED!')
+        setNetwork(_network)
     }, [ network ])
 
     const handleSeating = useCallback((event) => {
