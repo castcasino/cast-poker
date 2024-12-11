@@ -129,9 +129,9 @@ export function Footer({ tableid }: { tableid: string }) {
                         $8.88
                     </span>
 
-                    <span className="-mt-2 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100">
+                    {/* <span className="-mt-2 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100">
                         # buy-ins : 0
-                    </span>
+                    </span> */}
                 </button>
 
                 {/* Next Table Button */}
