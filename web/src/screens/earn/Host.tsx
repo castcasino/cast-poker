@@ -321,7 +321,7 @@ export default function Host({ tableid }: { tableid: string}) {
                     onChange={handleAsset} />
 
                 <BuyIn
-                    buyIn={buyIn}
+                    value={buyIn}
                     onChange={handleBuyIn} />
 
                 <Seating
