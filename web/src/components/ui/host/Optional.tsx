@@ -1,4 +1,9 @@
-export function Optional({ tableName, handleTableName }: { tableName: string, handleTableName: any }) {
+interface Props {
+    value: string;
+    onChange: (event: unknown) => void;
+}
+
+export function Optional({ value, onChange }: Props) {
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <div className="w-full sm:w-2/3">
@@ -8,8 +13,8 @@ export function Optional({ tableName, handleTableName }: { tableName: string, ha
 
                 <div className="mt-2">
                     <input
-                        value={tableName}
-                        onChange={handleTableName}
+                        value={value}
+                        onChange={onChange}
                         type="text"
                         id="table-name"
                         name="table-name"

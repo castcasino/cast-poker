@@ -1,5 +1,9 @@
+interface Props {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-export function BuyIn({ buyIn, handleBuyIn }: { buyIn: string, handleBuyIn: any }) {
+export function BuyIn({ value, onChange }: Props) {
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <div className="w-full sm:w-2/5">
@@ -11,7 +15,8 @@ export function BuyIn({ buyIn, handleBuyIn }: { buyIn: string, handleBuyIn: any 
                     <select
                         id="buy-in"
                         name="buy-in"
-                        value={buyIn} onChange={handleBuyIn}
+                        value={value}
+                        onChange={onChange}
                         className="w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-2xl tracking-wider text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                     >
                         <option value="10000000000000000" disabled>0.01 (~$37.18)</option>

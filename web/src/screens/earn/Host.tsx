@@ -123,31 +123,31 @@ export default function Host({ tableid }: { tableid: string}) {
 //         setTableName(event.target.value)
 //     }, [ tableName ])
 
-    const handleBuyIn = useCallback((event) => {
+    const handleBuyIn = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         setBuyIn(event.target.value)
     }, [ buyIn ])
 
-    const handleAsset = useCallback((event) => {
+    const handleAsset = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         return console.log('ASSET IS CURRENTLY RESTRICTED!')
         setAsset(event.target.value)
     }, [ asset ])
 
-    const handleDeckType = useCallback((_deckType) => {
+    const handleDeckType = useCallback((event: string) => {
         return console.log('DECK TYPE IS CURRENTLY RESTRICTED!')
-        setDeckType(_deckType)
+        setDeckType(event)
     }, [ deckType ])
 
-    const handleGameType = useCallback((_gameType) => {
+    const handleGameType = useCallback((event: string) => {
         return console.log('GAME TYPE IS CURRENTLY RESTRICTED!')
-        setGameType(_gameType)
+        setGameType(event)
     }, [ gameType ])
 
-    const handleNetwork = useCallback((_network) => {
+    const handleNetwork = useCallback((event: string) => {
         return console.log('NETWORK IS CURRENTLY RESTRICTED!')
-        setNetwork(_network)
+        setNetwork(event)
     }, [ network ])
 
-    const handleSeating = useCallback((event) => {
+    const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         setSeating(event.target.value)
     }, [ seating ])
 
@@ -304,29 +304,29 @@ export default function Host({ tableid }: { tableid: string}) {
 
             <div className="flex flex-col gap-2">
                 <GameType
-                    gameType={gameType}
-                    handleGameType={handleGameType}
+                    value={gameType}
+                    onClick={handleGameType}
                 />
 
                 <DeckType
-                    deckType={deckType}
-                    handleDeckType={handleDeckType} />
+                    value={deckType}
+                    onClick={handleDeckType} />
 
                 <Network
-                    network={network}
-                    handleNetwork={handleNetwork} />
+                    value={network}
+                    onClick={handleNetwork} />
 
                 <Asset
-                    asset={asset}
-                    handleAsset={handleAsset} />
+                    value={asset}
+                    onChange={handleAsset} />
 
                 <BuyIn
                     buyIn={buyIn}
-                    handleBuyIn={handleBuyIn} />
+                    onChange={handleBuyIn} />
 
                 <Seating
-                    seating={seating}
-                    handleSeating={handleSeating} />
+                    value={seating}
+                    onChange={handleSeating} />
             </div>
 
             {/* <div className="my-10 mx-10 border-t border-slate-300" /> */}

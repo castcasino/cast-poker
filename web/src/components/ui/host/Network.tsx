@@ -1,6 +1,10 @@
+interface Props {
+    value: string;
+    onClick: (event: string) => void;
+}
 
-export function Network({ network, handleNetwork}: { network: string, handleNetwork: any }) {
-console.log('NETWORK', network)
+export function Network({ value, onClick}: Props) {
+console.log('NETWORK', value)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <fieldset>
@@ -13,7 +17,7 @@ console.log('NETWORK', network)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => handleNetwork('base')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
+                    <label onClick={() => onClick('base')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
                         <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
 
                         <span className="flex flex-1">
@@ -52,7 +56,7 @@ console.log('NETWORK', network)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => handleNetwork('degen')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-gray-300 opacity-50">
+                    <label onClick={() => onClick('degen')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-gray-300 opacity-50">
                         <input type="radio" name="delivery-method" value="Express" className="sr-only" />
 
                         <span className="flex flex-1">

@@ -1,6 +1,10 @@
+interface Props {
+    value: string;
+    onClick: (event: string) => void;
+}
 
-export function DeckType({ deckType, handleDeckType }: { deckType: string, handleDeckType: any }) {
-console.log('DECK TYPE', deckType)
+export function DeckType({ value, onClick }: Props) {
+console.log('DECK TYPE', value)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <fieldset>
@@ -13,7 +17,7 @@ console.log('DECK TYPE', deckType)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => handleDeckType('solo')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
+                    <label onClick={() => onClick('solo')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
                         <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
 
                         <span className="flex flex-1">
@@ -52,7 +56,7 @@ console.log('DECK TYPE', deckType)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => handleDeckType('wagmi')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-gray-300 opacity-50">
+                    <label onClick={() => onClick('wagmi')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-gray-300 opacity-50">
                         <input type="radio" name="delivery-method" value="Express" className="sr-only" />
 
                         <span className="flex flex-1">
