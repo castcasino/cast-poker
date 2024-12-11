@@ -1,5 +1,5 @@
 
-export function GameType({ gameType, handleGameType }) {
+export function GameType({ gameType, handleGameType }: { gameType: string, handleGameType: any }) {
 console.log('GAME TYPE', gameType)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">

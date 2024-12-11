@@ -1,5 +1,5 @@
 
-export function DeckType({ deckType, handleDeckType }) {
+export function DeckType({ deckType, handleDeckType }: { deckType: string, handleDeckType: any }) {
 console.log('DECK TYPE', deckType)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">

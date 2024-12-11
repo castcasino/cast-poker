@@ -1,5 +1,5 @@
 
-export function BuyIn({ buyIn, handleBuyIn }) {
+export function BuyIn({ buyIn, handleBuyIn }: { buyIn: string, handleBuyIn: any }) {
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
             <div className="w-full sm:w-2/5">

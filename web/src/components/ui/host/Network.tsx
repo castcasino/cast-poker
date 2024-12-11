@@ -1,5 +1,5 @@
 
-export function Network({ network, handleNetwork}) {
+export function Network({ network, handleNetwork}: { network: string, handleNetwork: any }) {
 console.log('NETWORK', network)
     return (
         <section className="my-5 px-3 flex flex-col gap-4">
