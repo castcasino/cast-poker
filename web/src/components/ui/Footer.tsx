@@ -75,6 +75,10 @@ export function Footer({ tableid }: { tableid: string }) {
     // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
+    const handleNextTable = () => {
+        setNextTableId('')
+    }
+
     const {
         sendTransaction,
         // error: sendTxError,
@@ -88,6 +92,7 @@ export function Footer({ tableid }: { tableid: string }) {
         })
 
     const sendTx = useCallback(() => {
+console.log('TABLE ID', tableid)
         sendTransaction(
             {
                 // call yoink() on Yoink contract
