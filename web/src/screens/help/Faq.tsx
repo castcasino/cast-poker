@@ -7,8 +7,13 @@ import Link from 'next/link'
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 export default function Help({ tableid }: { tableid: string}) {
+console.log('FAQ (tableid)', tableid)
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+
+    /* Question handlers. */
+    const [isShowingQ1, setIsShowingQ1] = useState(false)
+    const [isShowingQ2, setIsShowingQ2] = useState(false)
 
     useEffect(() => {
         const load = async () => {
@@ -50,8 +55,12 @@ export default function Help({ tableid }: { tableid: string}) {
             <div className="mx-auto max-w-7xl px-3 py-6 sm:py-8">
                 <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
                     <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                        Frequently asked questions for {tableid}
+                        Frequently Asked Questions
                     </h2>
+
+                    <Link href="https://docs.cast.poker" target="_blank" className="block w-full sm:w-fit my-5 px-5 py-3 text-xl font-medium text-amber-200 text-center bg-blue-700 hover:bg-blue-500 border-2 border-blue-700 rounded-xl shadow">
+                        Click here for Full Documentation
+                    </Link>
 
                     {(context?.user?.displayName && <p>
                         {context.user.displayName},
@@ -61,38 +70,54 @@ export default function Help({ tableid }: { tableid: string}) {
                     <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
                         <div className="pt-6">
                             <dt>
-                                {/* <!-- Expand/collapse question button --> */}
-                                <button type="button" className="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
-                                    <span className="text-base/7 font-semibold">
-                                        How do I Buy-In to a table?
+                                <button onClick={() => setIsShowingQ1(!isShowingQ1)} type="button" className="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                                    <span className="text-xl font-semibold tracking-wider">
+                                        How do I buy-in to a table?
                                     </span>
 
                                     <span className="ml-6 flex h-7 items-center">
-                                        {/* <!--
-                        Icon when question is collapsed.
-
-                        Item expanded: "hidden", Item collapsed: ""
-                        --> */}
-                                        <svg className="size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                        <svg className={`size-6 ${isShowingQ1 && 'hidden'}`} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
                                         </svg>
-                                        {/* <!--
-                        Icon when question is expanded.
 
-                        Item expanded: "", Item collapsed: "hidden"
-                        --> */}
-                                        <svg className="hidden size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                        <svg className={`size-6 ${!isShowingQ1 && 'hidden'}`} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                                         </svg>
                                     </span>
                                 </button>
                             </dt>
 
-                            <dd className="mt-2 pr-12" id="faq-0">
-                                <p className="text-base/7 text-gray-600">
-                                    Simply connect a wallet to your Farcaster/Warpcast account and click the &ldquo;Buy-in&rdquo; button to start the transaction.
+                            {isShowingQ1 && <dd className="mt-2 pr-12" id="faq-0">
+                                <p className="text-base/7 text-gray-600 tracking-wide">
+                                    Simply connect a wallet <em>(like Coinbase or Rainbow)</em> to your Farcaster/Warpcast account and click the <span className="font-bold">&ldquo;BUY-IN&rdquo;</span> button shown at the bottom of the window.
                                 </p>
-                            </dd>
+                            </dd>}
+                        </div>
+
+                        <div className="pt-6">
+                            <dt>
+                                <button onClick={() => setIsShowingQ2(!isShowingQ2)} type="button" className="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                                    <span className="text-xl font-semibold tracking-wider">
+                                        How do I cashout from a table?
+                                    </span>
+
+                                    <span className="ml-6 flex h-7 items-center">
+                                        <svg className={`size-6 ${isShowingQ2 && 'hidden'}`} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                                        </svg>
+
+                                        <svg className={`size-6 ${!isShowingQ2 && 'hidden'}`} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </dt>
+
+                            {isShowingQ2 && <dd className="mt-2 pr-12" id="faq-0">
+                                <p className="text-base/7 text-gray-600 tracking-wide">
+                                    Payouts will be sent directly to your Farcaster/Warpcast connected account <span className="font-bold">IMMEDIATELY</span> following the Showdown.
+                                </p>
+                            </dd>}
                         </div>
 
                         {/* <!-- More questions... --> */}
