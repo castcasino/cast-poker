@@ -86,35 +86,33 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     </div>
                 </div>
 
-                <Link href={`/${tableid}/fairplay`} className="w-full px-5 py-3 flex flex-col gap-2 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
-                    <span className="text-base font-medium text-amber-800 tracking-wider">
-                        Fairplay Block #s
-
-                        <span className="block text-lg text-amber-600">
-                            {numeral(23443189).format('0,0')} - {numeral(23443193).format('0,0')}
-                        </span>
+                <Link href={`/${tableid}/fairplay`} className="w-full px-5 py-3 flex flex-col gap-1 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
+                    <span className="text-2xl font-medium text-amber-800 tracking-wider">
+                        Fairplay Blocks
                     </span>
 
-                    <span className="text-base font-medium text-amber-800 tracking-wider">
-                        Fairplay Block Hashes
+                    <span className="text-lg font-medium text-amber-600 tracking-wider">
+                        {numeral(23443189).format('0,0')} - {numeral(23443193).format('0,0')}
+                    </span>
 
-                        <pre className="block text-xs text-amber-600 truncate">
+                    <span className="text-xs font-medium text-amber-600 tracking-wider">
+                        <pre className="block truncate">
                             0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
                         </pre>
 
-                        <pre className="block text-xs text-amber-600 truncate">
+                        <pre className="block truncate">
                             0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1
                         </pre>
 
-                        <pre className="block text-xs text-amber-600 truncate">
+                        <pre className="block truncate">
                             0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460
                         </pre>
 
-                        <pre className="block text-xs text-amber-600 truncate">
+                        <pre className="block truncate">
                             0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6
                         </pre>
 
-                        <pre className="block text-xs text-amber-600 truncate">
+                        <pre className="block truncate">
                             0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34
                         </pre>
                     </span>
