@@ -36,57 +36,54 @@ export default function Lobby({ tableid }: { tableid: string}) {
     return (
         <main className="w-full">
             <section className="p-3">
-                <h1 className="text-4xl font-bold text-rose-400 italic tracking-widest">
-                    Table # {tableid}
-                </h1>
+                <h2 className="text-slate-700 font-bold text-xl tracking-widest">
+                    Welcome Back
+                </h2>
 
-                <div>
-                    <h2 className="text-slate-700 font-bold text-2xl">
-                        {context?.user.displayName || 'Guest'} Wallet
-                    </h2>
-                </div>
-
+                <h2 className="text-slate-700 font-bold text-3xl tracking-widest">
+                    {context?.user.displayName || 'Guest'}
+                </h2>
             </section>
 
-            <section className="mt-10 px-5 w-full">
-                <div className="w-full px-3 sm:px-5 py-5 grid grid-cols-5 bg-amber-100 border-2 border-amber-300 rounded-2xl rounded-b-none">
+            <section className="my-5 px-5 w-full">
+                <div className="w-full px-2 sm:px-5 py-5 grid grid-cols-5 bg-amber-100 border-2 border-amber-300 rounded-xl rounded-b-none">
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AS.svg"
-                            className="w-14 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AD.svg"
-                            className="w-14 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KH.svg"
-                            className="w-14 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KC.svg"
-                            className="w-14 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/2D.svg"
-                            className="w-14 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
                 </div>
 
-                <Link href={`/${tableid}/fairplay`} className="w-full px-5 py-3 flex flex-col gap-1 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
+                <Link href={`/${tableid}/fairplay`} className="w-full px-3 py-3 flex flex-col gap-1 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
                     <span className="text-2xl font-medium text-amber-800 tracking-wider">
                         Fairplay Blocks
                     </span>
