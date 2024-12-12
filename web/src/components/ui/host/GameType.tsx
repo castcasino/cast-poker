@@ -27,11 +27,11 @@ console.log('GAME TYPE', value)
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    No additinal rewards
+                                    Player vs Player
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    FREE
+                                    All hands will complete their showdown and payout near instantly
                                 </span>
                             </span>
                         </span>
@@ -66,11 +66,11 @@ console.log('GAME TYPE', value)
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    Earn 5% on ALL buy-ins
+                                    Earn 5% on ALL player buy-ins
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    FREE
+                                    Hands can take up to 24 hours to showdown and payout
                                 </span>
                             </span>
                         </span>

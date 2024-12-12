@@ -23,15 +23,15 @@ console.log('DECK TYPE', value)
                         <span className="flex flex-1">
                             <span className="flex flex-col">
                                 <span className="block text-3xl font-medium text-gray-900">
-                                    Single Deck
+                                    Solo Deck
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    4–10 business days
+                                    Up to 23 players
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    $5.00
+                                    All cards are dealt randomly from on-chain block hashes
                                 </span>
                             </span>
                         </span>
@@ -66,11 +66,11 @@ console.log('DECK TYPE', value)
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    2–5 business days
+                                    Unlimited players + Lucky card jackpots
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    $16.00
+                                    Up to 255 decks seating 23 players each — PLUS POT BONUSES!
                                 </span>
                             </span>
                         </span>

@@ -27,11 +27,11 @@ console.log('NETWORK', value)
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    4–10 business days
+                                    low fees + fast blocks
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    $5.00
+                                    Layer-2
                                 </span>
                             </span>
                         </span>
@@ -66,11 +66,11 @@ console.log('NETWORK', value)
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
-                                    2–5 business days
+                                    low fees + fast blocks
                                 </span>
 
                                 <span className="mt-6 text-sm font-medium text-gray-900">
-                                    $16.00
+                                    Layer-3
                                 </span>
                             </span>
                         </span>
