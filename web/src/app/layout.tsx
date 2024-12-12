@@ -5,7 +5,7 @@ import { Providers } from '~/app/providers'
 
 export const metadata: Metadata = {
     title: 'Cast Poker — 100% Provably Fair Gaming',
-    description: 'The first fairplay, permissionless real-money gaming network.',
+    description: `Play hold'em poker in the 1st provably fair casino built on Farcaster.`,
 }
 
 export default function RootLayout({

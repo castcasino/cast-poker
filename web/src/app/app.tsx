@@ -22,10 +22,16 @@ import Promote from '~/screens/earn/Promote'
 // Import screens.
 import Lobby from '~/screens/Lobby'
 
-
-export default function App(
-    { screenid, tableid }: { screenid: string, tableid: string } = { screenid: 'lobby', tableid: '' }
-) {
+export default function App({
+    screenid,
+    tableid,
+}: {
+    screenid: string,
+    tableid: string,
+} = {
+    screenid: 'lobby',
+    tableid: '',
+}) {
     return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
 
