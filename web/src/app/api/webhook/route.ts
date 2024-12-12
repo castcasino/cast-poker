@@ -1,13 +1,14 @@
+/* Import modules. */
+import { NextRequest } from 'next/server'
+
 import {
     eventHeaderSchema,
     eventPayloadSchema,
     eventSchema,
 } from '@farcaster/frame-sdk'
-import { NextRequest } from 'next/server'
 
 export async function POST(request: NextRequest) {
     const requestJson = await request.json()
-
     const requestBody = eventSchema.safeParse(requestJson)
 
     if (requestBody.success === false) {

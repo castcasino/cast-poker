@@ -1,10 +1,14 @@
+/* Import modules. */
+import { NextRequest } from 'next/server'
+
 import {
     SendNotificationRequest,
     sendNotificationResponseSchema,
 } from '@farcaster/frame-sdk'
-import { NextRequest } from 'next/server'
+
 import { z } from 'zod'
 
+/* Initialize request schema. */
 const requestSchema = z.object({
     token: z.string(),
     url: z.string(),
@@ -29,8 +33,8 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
             notificationId: crypto.randomUUID(),
-            title: 'Hello from Frames v2!',
-            body: 'This is a test notification',
+            title: `Cast Casino`,
+            body: 'This is a Frames v2 test notification!',
             targetUrl: requestBody.data.targetUrl,
             tokens: [ requestBody.data.token ],
         } satisfies SendNotificationRequest),
@@ -40,7 +44,8 @@ export async function POST(request: NextRequest) {
 
     if (response.status === 200) {
         // Ensure correct response
-        const responseBody = sendNotificationResponseSchema.safeParse(responseJson)
+        const responseBody = sendNotificationResponseSchema
+            .safeParse(responseJson)
 
         if (responseBody.success === false) {
             return Response.json(
