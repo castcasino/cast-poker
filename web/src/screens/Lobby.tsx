@@ -54,35 +54,35 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AS.svg"
-                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AD.svg"
-                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KH.svg"
-                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KC.svg"
-                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/2D.svg"
-                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
                 </div>
