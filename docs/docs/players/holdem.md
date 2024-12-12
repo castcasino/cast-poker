@@ -1,7 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 ---
 
-# PLAY — Texas Hold'em
+# Texas Hold'em
 
-- 2 - 8 players
+- 2 - 23 players on a Solo table
+- Unlimited players on a #WAGMI table

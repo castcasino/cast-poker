@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Create a Game
+# Create a Table
 
 Cast Poker games are __FREE & Simple__ to create and share with your community.
 

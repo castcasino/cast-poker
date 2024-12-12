@@ -21,7 +21,7 @@ export function Navbar({ tableid }: { tableid: string}) {
                     </span>
                 </Link>
 
-                <Link href={`/${tableid}/promoter`} className={'relative h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
+                <Link href={`/${tableid}/promote`} className={'relative h-full flex items-center px-3 bg-slate-200 border border-amber-400 rounded'}>
                     <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
                         Earn ＄
                     </span>
