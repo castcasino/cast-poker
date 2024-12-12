@@ -17,20 +17,20 @@ console.log('DECK TYPE', value)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => onClick('solo')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
+                    <label onClick={() => onClick('single')} aria-label="Standard" aria-description="4–10 business days for $5.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
                         <input type="radio" name="delivery-method" value="Standard" className="sr-only" />
 
                         <span className="flex flex-1">
                             <span className="flex flex-col">
                                 <span className="block text-3xl font-medium text-gray-900">
-                                    Solo Deck
+                                    Single
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
                                     Up to 23 players
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wide">
                                     All cards are dealt randomly from on-chain block hashes
                                 </span>
                             </span>
@@ -62,14 +62,14 @@ console.log('DECK TYPE', value)
                         <span className="flex flex-1">
                             <span className="flex flex-col">
                                 <span className="block text-3xl font-medium text-gray-900">
-                                    WAGMI
+                                    #WAGMI
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
                                     Unlimited players + Lucky card jackpots
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wider">
                                     Up to 255 decks seating 23 players each — PLUS POT BONUSES!
                                 </span>
                             </span>

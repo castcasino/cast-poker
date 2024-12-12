@@ -109,8 +109,8 @@ export default function Host({ tableid }: { tableid: string}) {
 
     const [asset, setAsset] = useState('eth')
     const [buyIn, setBuyIn] = useState('100000000000000')
-    const [deckType, setDeckType] = useState('solo')
-    const [gameType, setGameType] = useState('table')
+    const [deckType, setDeckType] = useState('single')
+    const [gameType, setGameType] = useState('community')
     const [network, setNetwork] = useState('base')
     const [seating, setSeating] = useState('86400')
     // const [tableName, setTableName] = useState('')

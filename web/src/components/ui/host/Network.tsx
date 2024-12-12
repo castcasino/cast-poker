@@ -30,7 +30,7 @@ console.log('NETWORK', value)
                                     low fees + fast blocks
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wider">
                                     Layer-2
                                 </span>
                             </span>
@@ -69,7 +69,7 @@ console.log('NETWORK', value)
                                     low fees + fast blocks
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wider">
                                     Layer-3
                                 </span>
                             </span>

@@ -30,7 +30,7 @@ console.log('GAME TYPE', value)
                                     Player vs Player
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wider">
                                     All hands will complete their showdown and payout near instantly
                                 </span>
                             </span>
@@ -56,20 +56,20 @@ console.log('GAME TYPE', value)
         Checked: "border-transparent", Not Checked: "border-gray-300"
         Active: "ring-2 ring-lime-500"
     --> */}
-                    <label onClick={() => onClick('table')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
+                    <label onClick={() => onClick('community')} aria-label="Express" aria-description="2–5 business days for $16.00" className="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none border-transparent ring-2 ring-lime-500">
                         <input type="radio" name="delivery-method" value="Express" className="sr-only" />
 
                         <span className="flex flex-1">
                             <span className="flex flex-col">
                                 <span className="block text-3xl font-medium text-gray-900">
-                                    Table
+                                    Community
                                 </span>
 
                                 <span className="mt-1 flex items-center text-sm text-gray-500">
                                     Earn 5% on ALL player buy-ins
                                 </span>
 
-                                <span className="mt-6 text-sm font-medium text-gray-900">
+                                <span className="mt-6 text-sm font-medium text-gray-900 tracking-wider">
                                     Hands can take up to 24 hours to showdown and payout
                                 </span>
                             </span>
