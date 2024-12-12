@@ -35,7 +35,11 @@ export default function Lobby({ tableid }: { tableid: string}) {
 
     return (
         <main className="w-full">
-            <section className="p-3">
+            <div className="w-full h-[80px] bg-gradient-to-b from-stone-500 to-stone-300 border-b-2 border-stone-500">
+                {/* Banner Advertisement */}
+            </div>
+
+            <section className="hidden p-3">
                 <h2 className="text-slate-700 font-bold text-xl tracking-widest">
                     Welcome Back
                 </h2>
@@ -45,54 +49,54 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 </h2>
             </section>
 
-            <section className="my-5 px-5 w-full">
-                <div className="w-full px-2 sm:px-5 py-5 grid grid-cols-5 bg-amber-100 border-2 border-amber-300 rounded-xl rounded-b-none">
+            <section className="my-5 px-2 w-full">
+                <div className="w-full px-2 sm:px-5 py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600 rounded-xl rounded-b-none">
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AS.svg"
-                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AD.svg"
-                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KH.svg"
-                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/KC.svg"
-                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/2D.svg"
-                            className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            className="w-18 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
                 </div>
 
-                <Link href={`/${tableid}/fairplay`} className="w-full px-3 py-3 flex flex-col gap-1 bg-amber-200 border-2 border-t-0 border-amber-300 rounded-b-2xl">
-                    <span className="text-2xl font-medium text-amber-800 tracking-wider">
-                        Fairplay Blocks
+                <Link href={`/${tableid}/fairplay`} className="w-full px-2 pb-3 flex flex-col gap-1 bg-gradient-to-b from-green-200 to-green-100 border-2 border-t-0 border-green-600 rounded-b-2xl">
+                    <span className="text-lg font-bold text-green-800 tracking-widest uppercase">
+                        Fairplay Mined Blocks
                     </span>
 
-                    <span className="text-lg font-medium text-amber-600 tracking-wider">
+                    <span className="text-lg font-medium text-green-600 tracking-wider">
                         {numeral(23443189).format('0,0')} - {numeral(23443193).format('0,0')}
                     </span>
 
-                    <span className="text-xs font-medium text-amber-600 tracking-wider">
+                    <span className="text-xs font-medium text-green-800 tracking-wider">
                         <pre className="block truncate">
                             0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
                         </pre>
@@ -116,12 +120,12 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 </Link>
             </section>
 
-            <section className="flex flex-col items-center px-5 py-5">
+            <section className="flex flex-col items-center px-2 py-5">
                 <h2 className="text-2xl font-medium text-slate-700 tracking-widest">
                     Players At The Showdown
                 </h2>
 
-                <div className="w-full bg-rose-500 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mt-2 w-full bg-rose-500 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                     <div className="flex flex-col gap-2">
                         <div>
