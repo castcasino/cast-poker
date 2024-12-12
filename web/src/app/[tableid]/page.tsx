@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: 'Enter Lobby',
             action: {
                 type: 'launch_frame',
-                name: 'Cast Poker',
+                name: 'Lobby — Cast Poker',
                 url: `${appUrl}/${tableid}/`,
                 splashImageUrl: `${appUrl}/splash.png`,
                 splashBackgroundColor: '#f7f7f7',
@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `Cast Poker Table # ${tableid}`,
+        title: `Lobby for Table # ${tableid} — Cast Poker`,
         description: `Come play a hand of poker at table # ${tableid}`,
         openGraph: {
-            title: `Cast Poker Table # ${tableid}`,
+            title: `Lobby for Table # ${tableid} — Cast Poker`,
             description: `Come play a hand of poker at table # ${tableid}`,
         },
         other: {

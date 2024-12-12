@@ -16,10 +16,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         version: 'next',
         imageUrl: `${appUrl}/${tableid}/opengraph-image`,
         button: {
-            title: 'Help?',
+            title: 'FAQ',
             action: {
                 type: 'launch_frame',
-                name: 'Cast Poker Help',
+                name: 'FAQ — Cast Poker',
                 url: `${appUrl}/${tableid}/`,
                 splashImageUrl: `${appUrl}/splash.png`,
                 splashBackgroundColor: '#f7f7f7',
@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `Cast Poker Help`,
+        title: `FAQ — Cast Poker`,
         description: `Come play a hand of poker at table # ${tableid}`,
         openGraph: {
-            title: `Cast Poker Help`,
+            title: `FAQ — Cast Poker`,
             description: `Come play a hand of poker at table # ${tableid}`,
         },
         other: {
