@@ -76,6 +76,7 @@ export function Footer({ tableid }: { tableid: string }) {
     // const chainId = useChainId()
 
     const handleNextTable = () => {
+        return
         setNextTableId('')
     }
 
@@ -105,7 +106,7 @@ console.log('TABLE ID', tableid)
                 },
             }
         )
-    }, [ sendTransaction ])
+    }, [ sendTransaction, tableid ])
 
     return (
         <>
@@ -150,7 +151,7 @@ console.log('TABLE ID', tableid)
                     </button>
 
                     {/* Next Table Button */}
-                    <button className="px-3 py-2 flex flex-col items-center justify-center border-2 border-r-0 border-amber-500 bg-stone-900 rounded-l-xl hover:bg-stone-700">
+                    <button onClick={handleNextTable} className="px-3 py-2 flex flex-col items-center justify-center border-2 border-r-0 border-amber-500 bg-stone-900 rounded-l-xl hover:bg-stone-700">
                         <span className="text-xs sm:text-xl font-bold text-amber-200 tracking-widest">
                             Next Table
                         </span>
