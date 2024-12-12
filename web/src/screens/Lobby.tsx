@@ -49,8 +49,8 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 </h2>
             </section>
 
-            <section className="my-5 px-2 w-full">
-                <div className="w-full px-2 sm:px-5 py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600 rounded-xl rounded-b-none">
+            <section className="w-full">
+                <div className="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                     <div className="flex justify-center">
                         <img
                             src="https://assets.cast.casino/cards_01/AS.svg"
@@ -87,13 +87,13 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     </div>
                 </div>
 
-                <Link href={`/${tableid}/fairplay`} className="w-full px-2 pb-3 flex flex-col gap-1 bg-gradient-to-b from-green-200 to-green-100 border-2 border-t-0 border-green-600 rounded-b-2xl">
-                    <span className="text-lg font-bold text-green-800 tracking-widest uppercase">
-                        Fairplay Mined Blocks
+                <Link href={`/${tableid}/fairplay`} className="w-full px-2 pb-3 flex flex-col gap-1 bg-gradient-to-b from-green-200 to-green-100 border-2 border-t-0 border-green-600 rounded-b-3xl">
+                    <span className="text-lg font-bold text-center text-green-800 tracking-widest uppercase">
+                        Fairplay Community Cards
                     </span>
 
-                    <span className="text-lg font-medium text-green-600 tracking-wider">
-                        {numeral(23443189).format('0,0')} - {numeral(23443193).format('0,0')}
+                    <span className="-mt-2 text-base font-medium text-center text-green-600 tracking-wider uppercase">
+                        Blocks #{numeral(23443189).format('0,0')} - #{numeral(23443193).format('0,0')}
                     </span>
 
                     <span className="text-xs font-medium text-green-800 tracking-wider">
