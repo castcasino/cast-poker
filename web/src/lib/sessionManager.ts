@@ -8,7 +8,7 @@ console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', context)
     })
 
     /* Send session. */
-    const response = await fetch('https://cast.poker/v1', {
+    const response = await fetch('https://cast.casino/v1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body,
