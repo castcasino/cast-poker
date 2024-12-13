@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import { usePlausible } from 'next-plausible'
 
@@ -11,8 +11,25 @@ import {
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
+import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { abi } from '~/abi/CastPoker'
+
+import { truncateAddress } from '~/lib/truncateAddress'
+
+const renderError = (error: Error | null) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+        }
+    }
+
+    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+}
 
 /* Set constants. */
 const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
@@ -20,8 +37,8 @@ const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
-
     const [txHash, setTxHash] = useState<string | null>(null)
+
     const [nextTableId, setNextTableId] = useState('1337')
 
     const plausible = usePlausible()
@@ -97,16 +114,40 @@ console.log('TRANSACTION SUCCESSFUL', hash)
 
     return (
         <>
+
+
+{txHash && (
+    <div className="mt-2 text-xs">
+        <div className="">
+
+        </div>
+
+        <div className="">
+
+        </div>
+    </div>
+)}
             {/* (Hidden) Status Bar */}
-            <section className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
+            {(txHash || isSendTxError) && <section className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
                 <span className="text-sm font-medium text-amber-100 tracking-wider">
-                    show some confirmations stuff here...
+                    {isSendTxError && renderError(sendTxError)}
                 </span>
 
+                {txHash && <span className="text-sm font-medium text-amber-100 tracking-wider">
+                    Hash: {truncateAddress(txHash)}
+                </span>}
+
                 <span className="text-sm font-medium text-amber-100 tracking-wider">
-                    [ {isConfirming} : {isConfirmed} ]
+                    [
+                        Status :&nbsp;
+                        {isConfirming
+                            ? 'Confirming...'
+                            : isConfirmed
+                                ? 'Confirmed!'
+                                : 'Pending'}
+                    ]
                 </span>
-            </section>
+            </section>}
 
             <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
 
@@ -123,7 +164,11 @@ console.log('TRANSACTION SUCCESSFUL', hash)
 
                 <div className="py-2 flex flex-row gap-3">
                     {/* Buy-in Button */}
-                    <button onClick={sendTx} className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800">
+                    <button
+                        onClick={sendTx}
+                        className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800"
+                        disabled={isSendTxPending}
+                    >
                         <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
                             ☆ Buy-In Is Only ☆
                         </span>

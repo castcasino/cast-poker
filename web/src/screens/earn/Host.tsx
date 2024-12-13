@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-// import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 
@@ -11,13 +10,11 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import {
     useAccount,
-    // useSendTransaction,
     useWriteContract,
     useWaitForTransactionReceipt,
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
-// import { writeContract } from '@wagmi/core'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { abi } from '~/abi/CastPoker'
@@ -53,7 +50,6 @@ const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
 export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
-
     const [txHash, setTxHash] = useState<string | null>(null)
 
     const [asset, setAsset] = useState('eth')
@@ -102,13 +98,6 @@ export default function Host({ tableid }: { tableid: string}) {
         setTimeToSit(event.target.value)
     }, [ timeToSit ])
 
-
-    // const {
-    //     sendTransaction,
-    //     error: sendTxError,
-    //     isError: isSendTxError,
-    //     isPending: isSendTxPending,
-    // } = useSendTransaction()
     const {
         writeContract,
         error: sendTxError,
@@ -313,12 +302,12 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                         </div>
 
                         <div className="">
-                            Status:{' '}
+                            Status :&nbsp;
                             {isConfirming
                                 ? 'Confirming...'
                                 : isConfirmed
-                                ? 'Confirmed!'
-                                : 'Pending'}
+                                    ? 'Confirmed!'
+                                    : 'Pending'}
                         </div>
                     </div>
                 )}
