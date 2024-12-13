@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { redirect } from 'next/navigation'
 
 import { usePlausible } from 'next-plausible'
 
@@ -58,6 +59,7 @@ export function Footer({ tableid }: { tableid: string }) {
     }, [ isSDKLoaded ])
 
     const handleNextTable = () => {
+        redirect('/0')
         return
         setNextTableId('')
     }
@@ -74,7 +76,8 @@ export function Footer({ tableid }: { tableid: string }) {
             hash: txHash as `0x${string}`,
         })
 
-    const sendTx = useCallback(() => {
+    const buyIn = useCallback(() => {
+alert('buy-in')
         /* Set function name. */
         // const functionName = gameType === 'community' ? 'setTable' : 'setBench'
         const functionName = 'buyIn'
@@ -91,7 +94,7 @@ export function Footer({ tableid }: { tableid: string }) {
                 seed,
             },
         })
-
+alert('writing contract')
         /* Make on-chain execution request. */
         writeContract(
             {
@@ -165,7 +168,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 <div className="py-2 flex flex-row gap-3">
                     {/* Buy-in Button */}
                     <button
-                        onClick={sendTx}
+                        onClick={buyIn}
                         className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800"
                         disabled={isSendTxPending}
                     >
