@@ -155,11 +155,6 @@ export default function Host({ tableid }: { tableid: string}) {
         setNetwork(event)
     }, [ network ])
 
-    const handleToken = useCallback((event: `0x${string}`) => {
-        return console.log('TOKEN IS CURRENTLY RESTRICTED!')
-        setToken(event)
-    }, [ network ])
-
     const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         setTimeToSit(event.target.value)
     }, [ timeToSit ])
@@ -194,6 +189,16 @@ export default function Host({ tableid }: { tableid: string}) {
             load()
         }
     }, [ isSDKLoaded ])
+
+    useEffect(() => {
+        if (asset === 'eth') {
+            setToken('0x0000000000000000000000000000000000000000')
+        }
+
+        if (asset === 'degen') {
+            setToken('0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed')
+        }
+    }, [ asset ])
 
     if (!isSDKLoaded) {
         return <div>Loading. Please wait...</div>
