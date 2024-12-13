@@ -9,7 +9,7 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import {
     useAccount,
-    useSendTransaction,
+    // useSendTransaction,
     useWriteContract,
     useWaitForTransactionReceipt,
     // useSwitchChain,
