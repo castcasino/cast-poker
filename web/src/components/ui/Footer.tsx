@@ -87,7 +87,7 @@ export function Footer({ tableid }: { tableid: string }) {
         const seed = '0'
 
         /* Set buy-in amount. */
-        const buyInAmount = '100000000000000'
+        const buyInAmount = '10000000000000'
 
         /* Track buy-ins. */
         plausible('buyIn', {
