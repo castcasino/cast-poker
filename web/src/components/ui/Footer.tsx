@@ -97,9 +97,12 @@ export function Footer({ tableid }: { tableid: string }) {
 
     const sendTx = useCallback(() => {
         /* Track buy-ins. */
-        plausible('buyIn')
+        plausible('buyIn', {
+            props: {
+                tableid,
+            },
+        })
 
-console.log('TABLE ID', tableid)
         sendTransaction(
             {
                 // call yoink() on Yoink contract

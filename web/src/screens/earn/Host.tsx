@@ -153,17 +153,24 @@ export default function Host({ tableid }: { tableid: string}) {
      * Executes either a new Bench or Table in the CasinoPoker contract.
      */
     const _handleCreateVenue = async () => {
-        /* Track new venues. */
-        plausible('createVenue')
+        /* Build package. */
+        const pkg = {
+            gameType,
+            deckType,
+            network,
+            asset,
+            buyIn,
+            timeToSit,
+        }
 
-// const pkg = {
-//     gameType,
-//     deckType,
-//     network,
-//     asset,
-//     buyIn,
-//     timeToSit,
-// }
+        /* Track new venues. */
+        plausible('createVenue', {
+            props: {
+                tableid,
+                ...pkg,
+            },
+        })
+
 // return alert(JSON.stringify(pkg, null, 2))
 
     /* Set function name. */
