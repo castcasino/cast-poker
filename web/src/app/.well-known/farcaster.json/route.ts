@@ -10,7 +10,7 @@ export async function GET() {
                 'MHgwNDA4NmJjMTkxMDZiN2M0NTUzMzZmODliYTY0YzkzMThiYzE2NTMzMjJlZjFlZWVkODc1OWY1MzRjOTEyZmQxMmU4ZTA2MmJhYWJlZGI0MjZkZmFhMWZhMGQyNjZmNDQ2MTFhNzdlMjBiNjc4M2Q3OTM5ZTg5OWE3MjZhMTU2YjFj'
         },
         frame: {
-            version: '0.0.0',
+            version: '0.0.1',
             name: 'Cast Poker',
             iconUrl: `${appUrl}/icon.png`,
             splashImageUrl: `${appUrl}/splash.png`,
