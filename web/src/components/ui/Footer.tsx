@@ -85,11 +85,7 @@ export function Footer({ tableid }: { tableid: string }) {
         /* Set seed. */
 // TODO Allow host to set their own seed.
         const seed = '0'
-alert(JSON.stringify({
-    user: context?.user,
-    tableid,
-    seed,
-}))
+
         /* Track buy-ins. */
         plausible('buyIn', {
             props: {
@@ -98,7 +94,7 @@ alert(JSON.stringify({
                 seed,
             },
         })
-alert('writing contract')
+
         /* Make on-chain execution request. */
         writeContract(
             {
