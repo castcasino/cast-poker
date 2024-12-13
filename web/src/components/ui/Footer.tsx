@@ -86,6 +86,9 @@ export function Footer({ tableid }: { tableid: string }) {
 // TODO Allow host to set their own seed.
         const seed = '0'
 
+        /* Set buy-in amount. */
+        const buyInAmount = '100000000000000'
+
         /* Track buy-ins. */
         plausible('buyIn', {
             props: {
@@ -105,6 +108,7 @@ export function Footer({ tableid }: { tableid: string }) {
                     BigInt(tableid),    // table id
                     BigInt(seed),       // seed
                 ],
+                value: BigInt(buyInAmount),
             },
             {
                 onSuccess: (hash) => {
