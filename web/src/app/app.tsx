@@ -57,7 +57,11 @@ export default function App({
 
     useEffect(() => {
         console.log('THIS IS THE CONTEXT WE NEED TO STORE', context)
-        sessionManager(JSON.stringify(context))
+
+        /* Validate context. */
+        if (typeof context !== 'undefined' && context !== null) {
+            sessionManager(JSON.stringify(context))
+        }
     }, [ context ])
 
     return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
