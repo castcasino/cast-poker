@@ -1,7 +1,6 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import PlausibleProvider from 'next-plausible'
 
 const WagmiProvider = dynamic(
     () => import('~/components/providers/WagmiProvider'),
@@ -9,9 +8,5 @@ const WagmiProvider = dynamic(
 )
 
 export function Providers({ children }: { children: React.ReactNode }) {
-    return <PlausibleProvider domain="cast.poker">
-        <WagmiProvider>
-            {children}
-        </WagmiProvider>
-    </PlausibleProvider>
+    return <WagmiProvider>{children}</WagmiProvider>
 }

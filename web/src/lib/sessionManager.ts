@@ -1,5 +1,5 @@
 export const sessionManager = async (context: string) => {
-console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', context)
+// console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', context)
 
     /* Build body. */
     const body = JSON.stringify({

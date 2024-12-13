@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import PlausibleProvider from 'next-plausible'
 
 import '~/app/globals.css'
 import { Providers } from '~/app/providers'
@@ -15,6 +16,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
+            <head>
+                <PlausibleProvider domain="cast.poker" />
+            </head>
             <body>
                 <Providers>
                     {children}
