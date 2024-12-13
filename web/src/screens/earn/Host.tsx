@@ -166,6 +166,7 @@ export default function Host({ tableid }: { tableid: string}) {
         /* Track new venues. */
         plausible('createVenue', {
             props: {
+                user: context?.user,
                 tableid,
                 ...pkg,
             },
@@ -173,8 +174,8 @@ export default function Host({ tableid }: { tableid: string}) {
 
 // return alert(JSON.stringify(pkg, null, 2))
 
-    /* Set function name. */
-    const functionName = gameType === 'community' ? 'setTable' : 'setBench'
+        /* Set function name. */
+        const functionName = gameType === 'community' ? 'setTable' : 'setBench'
 
 // TODO Allow host to set their own seed.
         const seed = 0n

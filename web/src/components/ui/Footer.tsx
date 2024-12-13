@@ -2,75 +2,25 @@ import { useCallback, useState } from 'react'
 
 import { usePlausible } from 'next-plausible'
 
+import sdk, { type FrameContext } from '@farcaster/frame-sdk'
+
 import {
     // useAccount,
-    useSendTransaction,
+    useWriteContract,
     useWaitForTransactionReceipt,
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
 
-// function SendEth() {
-//     const { isConnected, chainId } = useAccount()
+import { abi } from '~/abi/CastPoker'
 
-//     const {
-//         sendTransaction,
-//         data,
-//         error: sendTxError,
-//         isError: isSendTxError,
-//         isPending: isSendTxPending,
-//     } = useSendTransaction()
-
-//     const { isLoading: isConfirming, isSuccess: isConfirmed } =
-//         useWaitForTransactionReceipt({
-//             hash: data,
-//         })
-
-//     const toAddr = useMemo(() => {
-//         // Protocol guild address
-//         return chainId === base.id
-//             ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
-//             : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
-//     }, [ chainId ])
-
-//     const handleSend = useCallback(() => {
-//         sendTransaction({
-//             to: toAddr,
-//             value: 1n,
-//         })
-//     }, [ toAddr, sendTransaction ])
-
-//     return (
-//         <>
-//             <Button
-//                 onClick={handleSend}
-//                 disabled={!isConnected || isSendTxPending}
-//                 isLoading={isSendTxPending}
-//             >
-//                 Send Transaction (eth)
-//             </Button>
-
-//             {isSendTxError && renderError(sendTxError)}
-
-//             {data && (
-//                 <div className="mt-2 text-xs">
-//                     <div>Hash: {truncateAddress(data)}</div>
-
-//                     <div>
-//                         Status:{" "}
-//                         {isConfirming
-//                             ? "Confirming..."
-//                             : isConfirmed
-//                             ? "Confirmed!"
-//                             : "Pending"}
-//                     </div>
-//                 </div>
-//             )}
-//         </>
-//     )
-// }
+/* Set constants. */
+const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
 
 export function Footer({ tableid }: { tableid: string }) {
+    const [isSDKLoaded, setIsSDKLoaded] = useState(false)
+    const [context, setContext] = useState<FrameContext>()
+
     const [txHash, setTxHash] = useState<string | null>(null)
     const [nextTableId, setNextTableId] = useState('1337')
 
@@ -78,17 +28,29 @@ export function Footer({ tableid }: { tableid: string }) {
     // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
+    useEffect(() => {
+        const load = async () => {
+            setContext(await sdk.context)
+            sdk.actions.ready()
+        }
+
+        if (sdk && !isSDKLoaded) {
+            setIsSDKLoaded(true)
+            load()
+        }
+    }, [ isSDKLoaded ])
+
     const handleNextTable = () => {
         return
         setNextTableId('')
     }
 
     const {
-        sendTransaction,
-        // error: sendTxError,
-        // isError: isSendTxError,
-        // isPending: isSendTxPending,
-    } = useSendTransaction()
+        writeContract,
+        error: sendTxError,
+        isError: isSendTxError,
+        isPending: isSendTxPending,
+    } = useWriteContract()
 
     const { isLoading: isConfirming, isSuccess: isConfirmed } =
         useWaitForTransactionReceipt({
@@ -96,26 +58,42 @@ export function Footer({ tableid }: { tableid: string }) {
         })
 
     const sendTx = useCallback(() => {
+        /* Set function name. */
+        // const functionName = gameType === 'community' ? 'setTable' : 'setBench'
+        const functionName = 'buyIn'
+
+        /* Set seed. */
+// TODO Allow host to set their own seed.
+        const seed = 0n
+
         /* Track buy-ins. */
         plausible('buyIn', {
             props: {
+                user: context?.user,
                 tableid,
+                seed,
             },
         })
 
-        sendTransaction(
+        /* Make on-chain execution request. */
+        writeContract(
             {
-                // call yoink() on Yoink contract
-                to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
-                data: "0x9846cd9efc000023c0",
+                abi,
+                address: CAST_POKER_CONTRACT_ADDR,
+                functionName,
+                args: [
+                    BigInt(tableid),    // table id
+                    seed,               // seed
+                ],
             },
             {
                 onSuccess: (hash) => {
-                    setTxHash(hash);
+console.log('TRANSACTION SUCCESSFUL', hash)
+                    setTxHash(hash)
                 },
             }
         )
-    }, [ sendTransaction, tableid ])
+    }, [ writeContract ])
 
     return (
         <>
