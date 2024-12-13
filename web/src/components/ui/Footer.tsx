@@ -77,7 +77,7 @@ export function Footer({ tableid }: { tableid: string }) {
         })
 
     const buyIn = useCallback(() => {
-alert('buy-in')
+// alert('buy-in')
         /* Set function name. */
         // const functionName = gameType === 'community' ? 'setTable' : 'setBench'
         const functionName = 'buyIn'
@@ -85,7 +85,11 @@ alert('buy-in')
         /* Set seed. */
 // TODO Allow host to set their own seed.
         const seed = 0n
-
+alert(JSON.stringify({
+    user: context?.user,
+    tableid,
+    seed,
+}))
         /* Track buy-ins. */
         plausible('buyIn', {
             props: {
