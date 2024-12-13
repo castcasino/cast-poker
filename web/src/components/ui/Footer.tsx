@@ -107,7 +107,7 @@ alert('writing contract')
                 functionName,
                 args: [
                     BigInt(tableid),    // table id
-                    seed,               // seed
+                    BigInt(seed),       // seed
                 ],
             },
             {
