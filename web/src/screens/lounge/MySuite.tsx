@@ -140,31 +140,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
      *
      * Executes either a new Bench or Table in the CasinoPoker contract.
      */
-    const _handleCreateVenue = async () => {
-
-        const pkg = {
-            gameType,
-            deckType,
-            network,
-            asset,
-            buyIn,
-            seating
-        }
-
-        return alert(JSON.stringify(pkg, null, 2))
-
-        sendTransaction(
-            {
-                // call yoink() on Yoink contract
-                to: '0x4bBFD120d9f352A0BEd7a014bd67913a2007a878',
-                data: '0x9846cd9efc000023c0',
-            },
-            {
-                onSuccess: (hash) => {
-                    setTxHash(hash);
-                },
-            }
-        )
+    // const _handleCreateVenue = async () => {
 
 //         /* Initialize locals. */
 //         let response
@@ -201,7 +177,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
 //             .catch(err => console.error(err))
 //     console.log('API RESPONSE', response)
 // alert(JSON.stringify(response))
-    }
+    // }
 
     return (
         <main className="w-full">
