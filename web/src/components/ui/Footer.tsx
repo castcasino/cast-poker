@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react'
 
+import { usePlausible } from 'next-plausible'
+
 import {
     // useAccount,
     useSendTransaction,
@@ -72,6 +74,7 @@ export function Footer({ tableid }: { tableid: string }) {
     const [txHash, setTxHash] = useState<string | null>(null)
     const [nextTableId, setNextTableId] = useState('1337')
 
+    const plausible = usePlausible()
     // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
@@ -93,6 +96,9 @@ export function Footer({ tableid }: { tableid: string }) {
         })
 
     const sendTx = useCallback(() => {
+        /* Track buy-ins. */
+        plausible('buyIn')
+
 console.log('TABLE ID', tableid)
         sendTransaction(
             {

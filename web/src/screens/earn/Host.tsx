@@ -5,6 +5,8 @@ import { useEffect, useState, useCallback } from 'react'
 
 import Link from 'next/link'
 
+import { usePlausible } from 'next-plausible'
+
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import {
@@ -45,66 +47,6 @@ const renderError = (error: Error | null) => {
     return <div className="text-red-500 text-xs mt-1">{error.message}</div>
 }
 
-// function SendEth() {
-//     const { isConnected, chainId } = useAccount()
-
-//     const {
-//         sendTransaction,
-//         data,
-//         error: sendTxError,
-//         isError: isSendTxError,
-//         isPending: isSendTxPending,
-//     } = useSendTransaction()
-
-//     const { isLoading: isConfirming, isSuccess: isConfirmed } =
-//         useWaitForTransactionReceipt({
-//             hash: data,
-//         })
-
-//     const toAddr = useMemo(() => {
-//         // Protocol guild address
-//         return chainId === base.id
-//             ? "0x32e3C7fD24e175701A35c224f2238d18439C7dBC"
-//             : "0xB3d8d7887693a9852734b4D25e9C0Bb35Ba8a830"
-//     }, [ chainId ])
-
-//     const handleSend = useCallback(() => {
-//         sendTransaction({
-//             to: toAddr,
-//             value: 1n,
-//         })
-//     }, [ toAddr, sendTransaction ])
-
-//     return (
-//         <>
-//             <Button
-//                 onClick={handleSend}
-//                 disabled={!isConnected || isSendTxPending}
-//                 isLoading={isSendTxPending}
-//             >
-//                 Send Transaction (eth)
-//             </Button>
-
-//             {isSendTxError && renderError(sendTxError)}
-
-//             {data && (
-//                 <div className="mt-2 text-xs">
-//                     <div>Hash: {truncateAddress(data)}</div>
-
-//                     <div>
-//                         Status:{" "}
-//                         {isConfirming
-//                             ? "Confirming..."
-//                             : isConfirmed
-//                             ? "Confirmed!"
-//                             : "Pending"}
-//                     </div>
-//                 </div>
-//             )}
-//         </>
-//     )
-// }
-
 /* Set constants. */
 const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
 
@@ -123,6 +65,7 @@ export default function Host({ tableid }: { tableid: string}) {
     const [timeToSit, setTimeToSit] = useState('86400')
     // const [tableName, setTableName] = useState('')
 
+    const plausible = usePlausible()
     const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
@@ -210,6 +153,9 @@ export default function Host({ tableid }: { tableid: string}) {
      * Executes either a new Bench or Table in the CasinoPoker contract.
      */
     const _handleCreateVenue = async () => {
+        /* Track new venues. */
+        plausible('createVenue')
+
 // const pkg = {
 //     gameType,
 //     deckType,
