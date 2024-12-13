@@ -10,11 +10,15 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 import {
     useAccount,
     useSendTransaction,
+    useWriteContract,
     useWaitForTransactionReceipt,
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
+// import { writeContract } from '@wagmi/core'
 import { BaseError, UserRejectedRequestError } from 'viem'
+
+import { abi } from '~/abi/CastPoker'
 
 import { Asset } from '~/components/ui/host/Asset'
 import { Button } from '~/components/ui/Button'
@@ -101,6 +105,9 @@ const renderError = (error: Error | null) => {
 //     )
 // }
 
+/* Set constants. */
+const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
+
 export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
@@ -112,7 +119,8 @@ export default function Host({ tableid }: { tableid: string}) {
     const [deckType, setDeckType] = useState('single')
     const [gameType, setGameType] = useState('community')
     const [network, setNetwork] = useState('base')
-    const [seating, setSeating] = useState('86400')
+    const [token, setToken] = useState<`0x${string}`>('0x0000000000000000000000000000000000000000')
+    const [timeToSit, setTimeToSit] = useState('86400')
     // const [tableName, setTableName] = useState('')
 
     const { address, isConnected } = useAccount()
@@ -147,17 +155,28 @@ export default function Host({ tableid }: { tableid: string}) {
         setNetwork(event)
     }, [ network ])
 
+    const handleToken = useCallback((event: `0x${string}`) => {
+        return console.log('TOKEN IS CURRENTLY RESTRICTED!')
+        setToken(event)
+    }, [ network ])
+
     const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSeating(event.target.value)
-    }, [ seating ])
+        setTimeToSit(event.target.value)
+    }, [ timeToSit ])
 
 
+    // const {
+    //     sendTransaction,
+    //     error: sendTxError,
+    //     isError: isSendTxError,
+    //     isPending: isSendTxPending,
+    // } = useSendTransaction()
     const {
-        sendTransaction,
+        writeContract,
         error: sendTxError,
         isError: isSendTxError,
         isPending: isSendTxPending,
-    } = useSendTransaction()
+    } = useWriteContract()
 
     const { isLoading: isConfirming, isSuccess: isConfirmed } =
         useWaitForTransactionReceipt({
@@ -186,27 +205,48 @@ export default function Host({ tableid }: { tableid: string}) {
      * Executes either a new Bench or Table in the CasinoPoker contract.
      */
     const _handleCreateVenue = async () => {
+// const pkg = {
+//     gameType,
+//     deckType,
+//     network,
+//     asset,
+//     buyIn,
+//     timeToSit,
+// }
+// return alert(JSON.stringify(pkg, null, 2))
 
-        const pkg = {
-            gameType,
-            deckType,
-            network,
-            asset,
-            buyIn,
-            seating
-        }
+    /* Set function name. */
+    const functionName = gameType === 'community' ? 'setTable' : 'setBench'
 
-        return alert(JSON.stringify(pkg, null, 2))
+// TODO Allow host to set their own seed.
+        const seed = 0n
+// TODO Allow host to set max seating.
+        const numSeats = 23
+// FIXME Change fomo to a boolean.
+        const fomo = deckType === 'single' ? 0 : 1
+// TODO Allow host to set their own theme.
+        const theme = 0
 
-        sendTransaction(
+        /* Make on-chain execution request. */
+        writeContract(
             {
-                // call yoink() on Yoink contract
-                to: '0x4bBFD120d9f352A0BEd7a014bd67913a2007a878',
-                data: '0x9846cd9efc000023c0',
+                abi,
+                address: CAST_POKER_CONTRACT_ADDR,
+                functionName,
+                args: [
+                    token,              // token
+                    seed,               // seed
+                    BigInt(buyIn),      // buy-in
+                    BigInt(timeToSit),  // tts
+                    numSeats,           // seats
+                    fomo,               // fomo
+                    theme,              // theme
+                ],
             },
             {
                 onSuccess: (hash) => {
-                    setTxHash(hash);
+console.log('TRANSACTION SUCCESSFUL', hash)
+                    setTxHash(hash)
                 },
             }
         )
@@ -279,7 +319,7 @@ export default function Host({ tableid }: { tableid: string}) {
                     onChange={handleBuyIn} />
 
                 <Seating
-                    value={seating}
+                    value={timeToSit}
                     onChange={handleSeating} />
             </div>
 
