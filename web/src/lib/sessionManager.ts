@@ -14,6 +14,6 @@ console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', context)
         body,
     })
 
-    const data = await response.text()
+    const data = await response.json()
 console.log('SESSION MANAGER (data)', data)
 }
