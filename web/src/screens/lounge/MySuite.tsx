@@ -135,6 +135,74 @@ export default function MySuite({ tableid }: { tableid: string}) {
         return <div>Loading. Please wait...</div>
     }
 
+    /**
+     * Create Venue
+     *
+     * Executes either a new Bench or Table in the CasinoPoker contract.
+     */
+    const _handleCreateVenue = async () => {
+
+        const pkg = {
+            gameType,
+            deckType,
+            network,
+            asset,
+            buyIn,
+            seating
+        }
+
+        return alert(JSON.stringify(pkg, null, 2))
+
+        sendTransaction(
+            {
+                // call yoink() on Yoink contract
+                to: '0x4bBFD120d9f352A0BEd7a014bd67913a2007a878',
+                data: '0x9846cd9efc000023c0',
+            },
+            {
+                onSuccess: (hash) => {
+                    setTxHash(hash);
+                },
+            }
+        )
+
+//         /* Initialize locals. */
+//         let response
+
+//         /* Build (data) package. */
+//         const pkg = {
+//             almost: 'there...',
+//         }
+
+//         /* Set method. */
+//         const method = 'POST'
+
+//         /* Set headers. */
+//         const headers = { 'Content-Type': 'application/json' }
+
+//         /* Serialize body. */
+//         const body = JSON.stringify(pkg)
+
+//         /* Build options. */
+//         const options = {
+//             method,
+//             headers,
+//             body,
+//         }
+
+//         /* Make (remote) data request. */
+//         response = await fetch('https://cast.casino/v1', options)
+//             .catch(err => console.error(err))
+// console.log('API RESPONSE', response)
+
+//         /* Handle response. */
+//         response = await response
+//             .json()
+//             .catch(err => console.error(err))
+//     console.log('API RESPONSE', response)
+// alert(JSON.stringify(response))
+    }
+
     return (
         <main className="w-full">
             <section>

@@ -164,21 +164,6 @@ export default function Host({ tableid }: { tableid: string}) {
             hash: txHash as `0x${string}`,
         })
 
-    // const sendTx = useCallback(() => {
-    //     sendTransaction(
-    //         {
-    //             // call yoink() on Yoink contract
-    //             to: "0x4bBFD120d9f352A0BEd7a014bd67913a2007a878",
-    //             data: "0x9846cd9efc000023c0",
-    //         },
-    //         {
-    //             onSuccess: (hash) => {
-    //                 setTxHash(hash);
-    //             },
-    //         }
-    //     )
-    // }, [ sendTransaction ])
-
     useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
@@ -195,7 +180,12 @@ export default function Host({ tableid }: { tableid: string}) {
         return <div>Loading. Please wait...</div>
     }
 
-    const _handleCreateTable = async () => {
+    /**
+     * Create Venue
+     *
+     * Executes either a new Bench or Table in the CasinoPoker contract.
+     */
+    const _handleCreateVenue = async () => {
 
         const pkg = {
             gameType,
@@ -220,42 +210,6 @@ export default function Host({ tableid }: { tableid: string}) {
                 },
             }
         )
-
-//         /* Initialize locals. */
-//         let response
-
-//         /* Build (data) package. */
-//         const pkg = {
-//             almost: 'there...',
-//         }
-
-//         /* Set method. */
-//         const method = 'POST'
-
-//         /* Set headers. */
-//         const headers = { 'Content-Type': 'application/json' }
-
-//         /* Serialize body. */
-//         const body = JSON.stringify(pkg)
-
-//         /* Build options. */
-//         const options = {
-//             method,
-//             headers,
-//             body,
-//         }
-
-//         /* Make (remote) data request. */
-//         response = await fetch('https://cast.casino/v1', options)
-//             .catch(err => console.error(err))
-// console.log('API RESPONSE', response)
-
-//         /* Handle response. */
-//         response = await response
-//             .json()
-//             .catch(err => console.error(err))
-//     console.log('API RESPONSE', response)
-// alert(JSON.stringify(response))
     }
 
     return (
@@ -338,8 +292,9 @@ export default function Host({ tableid }: { tableid: string}) {
 
             <section className="mt-5 mb-10 text-center">
                 <Button
-                    onClick={_handleCreateTable}
+                    onClick={_handleCreateVenue}
                     // disabled={!isConnected || isSendTxPending}
+                    disabled={isSendTxPending}
                     isLoading={isSendTxPending}
                     className="text-2xl font-bold tracking-wider"
                 >
@@ -354,15 +309,17 @@ export default function Host({ tableid }: { tableid: string}) {
 
                 {txHash && (
                     <div className="mt-2 text-xs">
-                        <div>Hash: {truncateAddress(txHash)}</div>
+                        <div className="">
+                            Hash: {truncateAddress(txHash)}
+                        </div>
 
-                        <div>
-                            Status:{" "}
+                        <div className="">
+                            Status:{' '}
                             {isConfirming
-                                ? "Confirming..."
+                                ? 'Confirming...'
                                 : isConfirmed
-                                ? "Confirmed!"
-                                : "Pending"}
+                                ? 'Confirmed!'
+                                : 'Pending'}
                         </div>
                     </div>
                 )}
