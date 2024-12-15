@@ -24,7 +24,7 @@ export function Header({ tableid }: { tableid: string }) {
 
     useEffect(() => {
         async function fetchData() {
-            const response: any = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
+            const response: unknown = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             }).catch(err => console.error(err))
@@ -44,7 +44,7 @@ console.log('RESPONSE (tableid)', response)
 
     useEffect(() => {
         async function fetchData() {
-            const response: any = await fetch('https://cast.casino/v1/quotes', {
+            const response: unknown = await fetch('https://cast.casino/v1/quotes', {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             }).catch(err => console.error(err))
