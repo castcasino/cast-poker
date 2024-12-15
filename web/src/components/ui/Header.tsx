@@ -14,28 +14,6 @@ import { truncateAddress } from '~/lib/truncateAddress'
 
 import splashIcon from '~/../public/splash.png'
 
-interface Table {
-    id: number;
-    name: string;
-    price: number;
-}
-
-interface Quote {
-    USD: number;
-    EUR: number;
-    CNY: number;
-    JPY: number;
-    GBP: number;
-}
-
-type JSONResponse = {
-	data?: {
-		pokemon: Omit<PokemonData, 'fetchedAt'>
-	}
-	errors?: Array<{ message: string }>
-}
-
-
 export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     // const [context, setContext] = useState<FrameContext>()
