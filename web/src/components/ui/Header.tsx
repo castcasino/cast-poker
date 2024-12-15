@@ -14,6 +14,28 @@ import { truncateAddress } from '~/lib/truncateAddress'
 
 import splashIcon from '~/../public/splash.png'
 
+interface Table {
+    id: number;
+    name: string;
+    price: number;
+}
+
+interface Quote {
+    USD: number;
+    EUR: number;
+    CNY: number;
+    JPY: number;
+    GBP: number;
+}
+
+type JSONResponse = {
+	data?: {
+		pokemon: Omit<PokemonData, 'fetchedAt'>
+	}
+	errors?: Array<{ message: string }>
+}
+
+
 export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     // const [context, setContext] = useState<FrameContext>()
@@ -24,7 +46,7 @@ export function Header({ tableid }: { tableid: string }) {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
+            const response: any = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             }).catch(err => console.error(err))
@@ -44,12 +66,14 @@ console.log('RESPONSE (tableid)', response)
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://cast.casino/v1/quotes', {
+            const response: any = await fetch('https://cast.casino/v1/quotes', {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             }).catch(err => console.error(err))
 console.log('RESPONSE (quotes)', response)
 
+//             const { data, errors }: JSONResponse = await response.json()
+// console.log('ERRORS (quotes)', errors)
             const data = await response
                 .json()
                 .catch(err => console.error(err))
