@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from 'react'
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
+import { useAccount } from 'wagmi'
 
 // Import components.
 import { Footer } from '~/components/ui/Footer'
@@ -43,6 +44,8 @@ export default function App({
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
 
+    const { address, isConnected } = useAccount()
+
     useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
@@ -58,10 +61,26 @@ export default function App({
     useEffect(() => {
         console.log('THIS IS THE CONTEXT WE NEED TO STORE', context)
 
+        let session = {}
+
         /* Validate context. */
         if (typeof context !== 'undefined' && context !== null) {
-            sessionManager(JSON.stringify(context))
+            session = {
+                ...session,
+                ...context,
+            }
         }
+
+        /* Validate connection. */
+        if (isConnected) {
+            session = {
+                ...session,
+                address,
+            }
+        }
+
+        /* Call session manager. */
+        sessionManager(JSON.stringify(session))
     }, [ context ])
 
     return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">

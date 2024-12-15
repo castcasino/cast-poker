@@ -1,10 +1,10 @@
-export const sessionManager = async (context: string) => {
-// console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', context)
+export const sessionManager = async (session: string) => {
+// console.log('SESSION MANAGER HAS BEEN INITIALIZED!!', session)
 
     /* Build body. */
     const body = JSON.stringify({
         method: 'manage-session',
-        pkg: context,
+        pkg: session,
     })
 
     /* Send session. */
