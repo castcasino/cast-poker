@@ -13,9 +13,33 @@ import numeral from 'numeral'
 import { truncateHash } from '~/lib/truncateHash'
 import splashIcon from '~/../public/splash.png'
 
+const BLANK_HASH = '0x0000000000000000000000000000000000000000000000000000000000000000'
+
 export default function Lobby({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+    const [table, setTable] = useState<string>('')
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            }).catch(err => console.error(err))
+// console.log('RESPONSE (lobby)', response)
+
+            const data = await response
+                .json()
+                .catch(err => console.error(err))
+
+            if (data) {
+                setTable(data)
+// console.log('DATA (lobby)', data)
+            }
+        }
+
+        fetchData()
+    }, [ table ])
 
     useEffect(() => {
         const load = async () => {
@@ -53,35 +77,35 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 <div className="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                     <div className="flex justify-center">
                         <img
-                            src="https://assets.cast.casino/cards_01/AS.svg"
+                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop1?.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src="https://assets.cast.casino/cards_01/AD.svg"
+                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop2?.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src="https://assets.cast.casino/cards_01/KH.svg"
+                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop3?.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src="https://assets.cast.casino/cards_01/KC.svg"
+                            src={`https://assets.cast.casino/cards_01/${table?.community?.turn?.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src="https://assets.cast.casino/cards_01/2D.svg"
+                            src={`https://assets.cast.casino/cards_01/${table?.community?.river?.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
@@ -93,32 +117,34 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     </span>
 
                     <span className="-mt-2 text-base font-medium text-center text-green-600 tracking-wider uppercase">
-                        Blocks #{numeral(23443189).format('0,0')} - #{numeral(23443193).format('0,0')}
+                        Blocks #{numeral(table?.community?.flop1?.blockIdx || 0).format('0,0')} - #{numeral(table?.community?.river?.blockIdx || 0).format('0,0')}
                     </span>
 
                     <span className="text-xs font-medium text-green-800 tracking-wider">
                         <pre className="block truncate">
-                            0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd
+                            {table?.community?.flop1?.blockHash || BLANK_HASH}
                         </pre>
 
                         <pre className="block truncate">
-                            0x78a8903613d155bb7d9d9fd74fff5e99c0d46031ea9985c1e3230e8e5bf0edd1
+                            {table?.community?.flop2?.blockHash || BLANK_HASH}
                         </pre>
 
                         <pre className="block truncate">
-                            0x7bc240d924d4bdc79ff9b520cec8fc5fdb5e23d693fe8101ff16dcc6d9d8c460
+                            {table?.community?.flop3?.blockHash || BLANK_HASH}
                         </pre>
 
                         <pre className="block truncate">
-                            0x9ea98dde5091bf3c50015639cf27c2550b9b41857d5391fdd8e39520631efef6
+                            {table?.community?.turn?.blockHash || BLANK_HASH}
                         </pre>
 
                         <pre className="block truncate">
-                            0x13bdbadaeb217c08069c2821f5183d2ada5e4fdb158133ecda0c338f04633f34
+                            {table?.community?.river?.blockHash || BLANK_HASH}
                         </pre>
                     </span>
                 </Link>
             </section>
+
+<pre className="font-bold text-xs text-slate-700">TABLE{JSON.stringify(table, null, 2)}</pre>
 
             <section className="flex flex-col items-center px-2 py-5">
                 <h2 className="text-2xl font-medium text-slate-700 tracking-widest">

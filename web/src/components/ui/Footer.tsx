@@ -40,7 +40,7 @@ export function Footer({ tableid }: { tableid: string }) {
     const [context, setContext] = useState<FrameContext>()
     const [txHash, setTxHash] = useState<string | null>(null)
 
-    const [nextTableId, setNextTableId] = useState('1337')
+    const [nextTableId, setNextTableId] = useState('4')
 
     const plausible = usePlausible()
     // const { address, isConnected } = useAccount()
@@ -59,7 +59,7 @@ export function Footer({ tableid }: { tableid: string }) {
     }, [ isSDKLoaded ])
 
     const handleNextTable = () => {
-        redirect('/0')
+        redirect('/' + nextTableId)
         return
         setNextTableId('')
     }
@@ -200,7 +200,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                         </small>
 
                         <span className="text-sm sm:text-lg font-bold text-amber-400 tracking-wider">
-                            $DEGEN
+                            $ETH
                             <span className="-mt-1.5 block text-xs sm:text-sm">
                                 on Base
                             </span>
