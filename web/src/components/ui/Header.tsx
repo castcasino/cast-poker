@@ -45,16 +45,16 @@ export function Header({ tableid }: { tableid: string }) {
 
     useEffect(() => {
         const fetchData = async () => {
-          const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
-          setTable(response.data)
+            const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+            setTable(response.data)
         }
         fetchData()
     }, [])
 
     useEffect(() => {
         const fetchData = async () => {
-          const response = await axios.get('https://cast.casino/v1/quotes')
-          setQuotes(response.data)
+            const response = await axios.get('https://cast.casino/v1/quotes')
+            setQuotes(response.data)
         }
         fetchData()
     }, [])

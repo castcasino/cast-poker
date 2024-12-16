@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
+import axios from 'axios'
 import numeral from 'numeral'
 
 // import { truncateAddress } from '~/lib/truncateAddress'
@@ -21,25 +22,12 @@ export default function Lobby({ tableid }: { tableid: string}) {
     const [table, setTable] = useState<string>('')
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            }).catch(err => console.error(err))
-// console.log('RESPONSE (lobby)', response)
-
-            const data = await response
-                .json()
-                .catch(err => console.error(err))
-
-            if (data) {
-                setTable(data)
-// console.log('DATA (lobby)', data)
-            }
+        const fetchData = async () => {
+            const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+            setTable(response.data)
         }
-
         fetchData()
-    }, [ table ])
+    }, [])
 
     useEffect(() => {
         const load = async () => {

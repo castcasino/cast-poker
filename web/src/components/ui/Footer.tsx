@@ -14,6 +14,8 @@ import {
 } from 'wagmi'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
+import axios from 'axios'
+
 import { abi } from '~/abi/CastPoker'
 
 import { truncateAddress } from '~/lib/truncateAddress'
@@ -40,11 +42,28 @@ export function Footer({ tableid }: { tableid: string }) {
     const [context, setContext] = useState<FrameContext>()
     const [txHash, setTxHash] = useState<string | null>(null)
 
+    const [table, setTable] = useState<string>('')
     const [nextTableId, setNextTableId] = useState('4')
 
     const plausible = usePlausible()
     // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+            setTable(response.data)
+        }
+        fetchData()
+    }, [])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('https://cast.casino/v1/poker/table/next/' + context?.user?.fid || '0')
+            setNextTableId(response.data)
+        }
+        fetchData()
+    }, [])
 
     useEffect(() => {
         const load = async () => {
