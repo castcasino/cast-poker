@@ -14,12 +14,31 @@ import numeral from 'numeral'
 import { truncateHash } from '~/lib/truncateHash'
 import splashIcon from '~/../public/splash.png'
 
+type Table = {
+    community: Community;
+}
+
+type Community = {
+    flop1: Deal;
+    flop2: Deal;
+    flop3: Deal;
+    turn: Deal;
+    river: Deal;
+}
+
+type Deal = {
+    card: string;
+    carIdx: number;
+    blockIdx: number;
+    blockHash: string;
+}
+
 const BLANK_HASH = '0x0000000000000000000000000000000000000000000000000000000000000000'
 
 export default function Lobby({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
-    const [table, setTable] = useState<string>('')
+    const [table, setTable] = useState<Table>()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,35 +84,35 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 <div className="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                     <div className="flex justify-center">
                         <img
-                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop1?.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table.community.flop1.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop2?.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src={`https://assets.cast.casino/cards_01/${table?.community?.flop3?.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src={`https://assets.cast.casino/cards_01/${table?.community?.turn?.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table.community.turn.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
 
                     <div className="flex justify-center">
                         <img
-                            src={`https://assets.cast.casino/cards_01/${table?.community?.river?.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table.community.river.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         />
                     </div>
@@ -105,7 +124,7 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     </span>
 
                     <span className="-mt-2 text-base font-medium text-center text-green-600 tracking-wider uppercase">
-                        Blocks #{numeral(table?.community?.flop1?.blockIdx || 0).format('0,0')} - #{numeral(table?.community?.river?.blockIdx || 0).format('0,0')}
+                        Blocks #{numeral(table?.community.flop1.blockIdx || 0).format('0,0')} - #{numeral(table?.community.river?.blockIdx || 0).format('0,0')}
                     </span>
 
                     <span className="text-xs font-medium text-green-800 tracking-wider">
