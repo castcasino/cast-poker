@@ -7,7 +7,7 @@ import Link from 'next/link'
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import axios from 'axios'
-import { formatEther } from 'viem'
+// import { formatEther } from 'viem'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
