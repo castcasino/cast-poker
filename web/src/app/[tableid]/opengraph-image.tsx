@@ -52,14 +52,14 @@ console.log('OPENGRAPH-IMAGE')
     if (typeof table === 'undefined') {
         return new ImageResponse(
             (
-                <div tw="w-full h-full flex flex-col justify-center items-center bg-red-300">
+                <div tw="w-full h-full flex flex-col justify-center items-center bg-red-800">
                     <section tw="flex items-center">
                         <img
                             src="https://assets.cast.casino/poker-table.png"
                             tw="h-20 w-20"
                         />
 
-                        <span tw="pl-5 text-red-600 text-4xl font-light tracking-tight">
+                        <span tw="pl-5 text-red-200 text-4xl font-light tracking-tight">
                             Table # {tableid} Is Unset
                         </span>
                     </section>
@@ -98,14 +98,14 @@ console.log('OPENGRAPH-IMAGE')
 
     return new ImageResponse(
         (
-            <div tw="w-full h-full flex flex-col justify-center items-center bg-green-50">
+            <div tw="w-full h-full flex flex-col justify-center items-center bg-green-700">
                 <section tw="flex items-center">
                     <img
                         src="https://assets.cast.casino/poker-table.png"
                         tw="h-20 w-20"
                     />
 
-                    <span tw="pl-5 text-lime-600 text-4xl font-light tracking-tight">
+                    <span tw="pl-5 text-green-100 text-4xl font-light tracking-tight">
                         Buy-In! Play Table # {tableid}
                     </span>
                 </section>
