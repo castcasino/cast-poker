@@ -15,6 +15,7 @@ import {
 import { BaseError, formatEther, UserRejectedRequestError } from 'viem'
 
 import axios from 'axios'
+import moment from 'moment'
 import numeral from 'numeral'
 
 import { abi } from '~/abi/CastPoker'
@@ -186,7 +187,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 },
             }
         )
-    }, [ writeContract ])
+    }, [ table, writeContract ])
 
     return (
         <>
@@ -230,12 +231,12 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 {/* Game Status Window */}
                 <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-400">
                     <span className="text-xs sm:text-lg font-medium text-amber-200 tracking-widest">
-                        Showdown In
+                        Showdown By
                     </span>
 
-                    <span className="text-lg sm:text-2xl font-bold text-amber-200 tracking-wider">
-                        ~ 11h:11m
-                    </span>
+                    {table && <span className="text-xs sm:text-sm font-bold text-amber-200 tracking-wider">
+                        {moment.unix(Number(table.tts) + Number(table.createdAt)).format('lll')}
+                    </span>}
                 </section>
 
                 <div className="py-2 flex flex-row gap-3">

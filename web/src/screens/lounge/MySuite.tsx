@@ -240,38 +240,40 @@ export default function MySuite({ tableid }: { tableid: string}) {
                         </div>
                     </div>
                 </Link>)}
-
-                <div>
-                    <Button onClick={addFrame}>
-                        Add Cast Poker to Warpcast
-                    </Button>
-
-                    {addFrameResult && (
-                        <div className="mb-2 text-slate-700 text-xs text-center">
-                            Add frame result:
-                            {addFrameResult}
-                        </div>
-                    )}
-
-                    {notificationDetails && (
-                        <div>
-                            <h2 className="font-2xl font-bold">Notify</h2>
-
-                            {sendNotificationResult && (
-                                <div className="mb-2">
-                                    Send notification result: {sendNotificationResult}
-                                </div>
-                            )}
-
-                            <div className="mb-4">
-                                <Button onClick={sendNotification}>Send notification</Button>
-                            </div>
-                        </div>
-                    )}
-                </div>
             </section>
 
-            <section>
+            <div className="mt-5">
+                <Button onClick={addFrame}>
+                    <span className="font-bold text-xl">
+                        Add Cast Poker to Warpcast
+                    </span>
+                </Button>
+
+                {addFrameResult && (
+                    <div className="mb-2 text-slate-700 text-xs text-center">
+                        Add frame result:
+                        {addFrameResult}
+                    </div>
+                )}
+
+                {notificationDetails && (
+                    <div>
+                        <h2 className="font-2xl font-bold">Notify</h2>
+
+                        {sendNotificationResult && (
+                            <div className="mb-2">
+                                Send notification result: {sendNotificationResult}
+                            </div>
+                        )}
+
+                        <div className="mb-4">
+                            <Button onClick={sendNotification}>Send notification</Button>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <section className="mt-3">
                 {isConnected && (
                     <div className="my-2 text-xs">
                         IS CONNECTED!
@@ -292,7 +294,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
 
             </section>
 
-            <form className="px-3">
+            {/* <form className="px-3">
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
 
@@ -568,7 +570,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                         Save
                     </button>
                 </div>
-            </form>
+            </form> */}
 
         </main>
     )

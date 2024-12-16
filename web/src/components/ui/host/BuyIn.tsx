@@ -21,8 +21,8 @@ export function BuyIn({ value, onChange }: Props) {
                     >
                         <option value="10000000000000000" disabled>0.01 (~$37.18)</option>
                         <option value="5000000000000000" disabled>0.005 (~$18.59)</option>
-                        <option value="1000000000000000" disabled>0.001 (~$3.70)</option>
-                        <option value="500000000000000" disabled>0.0005 (~$1.85)</option>
+                        <option value="1000000000000000">0.001 (~$3.70)</option>
+                        <option value="500000000000000">0.0005 (~$1.85)</option>
                         <option value="100000000000000">0.0001 (~$0.37)</option>
                         <option value="50000000000000">0.00005 (~$0.19)</option>
                         <option value="10000000000000">0.00001 (~$0.04)</option>
