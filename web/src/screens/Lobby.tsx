@@ -49,7 +49,6 @@ export default function Lobby({ tableid }: { tableid: string}) {
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
             setTable(response.data)
-console.log('TABLE', response.data)
         }
         fetchData()
     }, [])
