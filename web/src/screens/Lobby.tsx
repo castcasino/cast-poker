@@ -132,7 +132,7 @@ export default function Lobby({ tableid }: { tableid: string}) {
                 </Link>
             </section>
 
-<pre className="font-bold text-xs text-slate-700">TABLE{JSON.stringify(table, null, 2)}</pre>
+{/* <pre className="font-bold text-xs text-slate-700">TABLE{JSON.stringify(table, null, 2)}</pre> */}
 
             <section className="flex flex-col items-center px-2 py-5">
                 <h2 className="text-2xl font-medium text-slate-700 tracking-widest">

@@ -12,9 +12,10 @@ import {
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
-import { BaseError, UserRejectedRequestError } from 'viem'
+import { BaseError, formatEther, UserRejectedRequestError } from 'viem'
 
 import axios from 'axios'
+import numeral from 'numeral'
 
 import { abi } from '~/abi/CastPoker'
 
@@ -34,6 +35,20 @@ const renderError = (error: Error | null) => {
     return <div className="text-red-500 text-xs mt-1">{error.message}</div>
 }
 
+type Table = {
+    buyin: string;
+    pot: string;
+}
+
+type Quotes = {
+    ETH: Quote;
+    DEGEN: Quote;
+}
+
+type Quote = {
+    USD: number;
+}
+
 /* Set constants. */
 const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
 
@@ -42,12 +57,24 @@ export function Footer({ tableid }: { tableid: string }) {
     const [context, setContext] = useState<FrameContext>()
     const [txHash, setTxHash] = useState<string | null>(null)
 
-    const [table, setTable] = useState<string>('')
+    const [table, setTable] = useState<Table>()
     const [nextTableId, setNextTableId] = useState('4')
+
+    const [quotes, setQuotes] = useState<Quotes>()
+    const [buyInValueDollars, setBuyInValueDollars] = useState<string>('0')
+    const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
 
     const plausible = usePlausible()
     // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('https://cast.casino/v1/quotes')
+            setQuotes(response.data)
+        }
+        fetchData()
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,10 +87,32 @@ export function Footer({ tableid }: { tableid: string }) {
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/next/' + context?.user?.fid || '0')
-            setNextTableId(response.data)
+            setNextTableId(response.data.tableid)
         }
         fetchData()
     }, [])
+
+    useEffect(() => {
+        /* Validate quotes. */
+        if (typeof quotes === 'undefined') {
+            return
+        }
+
+        /* Validate table. */
+        if (typeof table === 'undefined') {
+            return
+        }
+
+        const buyinValue = formatEther(BigInt(table.buyin))
+        const usdValue = quotes?.ETH?.USD || 0
+        const buyinUsdValue = Number(buyinValue) * usdValue
+
+        const dollars = numeral(buyinUsdValue).format('0,0')
+        const cents = numeral(buyinUsdValue).format('.00[00]')
+
+        setBuyInValueDollars(dollars)
+        setBuyInValueCents(cents)
+    }, [ quotes, table ])
 
     useEffect(() => {
         const load = async () => {
@@ -105,9 +154,6 @@ export function Footer({ tableid }: { tableid: string }) {
 // TODO Allow host to set their own seed.
         const seed = '0'
 
-        /* Set buy-in amount. */
-        const buyInAmount = '10000000000000'
-
         /* Track buy-ins. */
         plausible('buyIn', {
             props: {
@@ -116,6 +162,10 @@ export function Footer({ tableid }: { tableid: string }) {
                 seed,
             },
         })
+
+        if (typeof table === 'undefined') {
+            return alert('Error: Table data.')
+        }
 
         /* Make on-chain execution request. */
         writeContract(
@@ -127,7 +177,7 @@ export function Footer({ tableid }: { tableid: string }) {
                     BigInt(tableid),    // table id
                     BigInt(seed),       // seed
                 ],
-                value: BigInt(buyInAmount),
+                value: BigInt(table.buyin),
             },
             {
                 onSuccess: (hash) => {
@@ -199,11 +249,14 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                             ☆ Buy-In Is Only ☆
                         </span>
 
-                        <span className="animate-bounce mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
-                            $8.88
+                        <span className="animate-bounce flex flex-row mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
+                            ${buyInValueDollars}
+                            <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
+                                {buyInValueCents}
+                            </sup>
                         </span>
 
-                        <span className="-mt-2 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
+                        <span className="-mt-4 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
                             ❭ ❭ ❭ click here ❬ ❬ ❬
                         </span>
                     </button>
@@ -214,9 +267,9 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                             Next Table
                         </span>
 
-                        <small className="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
+                        {/* <small className="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
                             # {nextTableId}
-                        </small>
+                        </small> */}
 
                         <span className="text-sm sm:text-lg font-bold text-amber-400 tracking-wider">
                             $ETH
