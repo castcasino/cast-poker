@@ -66,27 +66,27 @@ console.log('OPENGRAPH-IMAGE')
 
                     <section tw="mt-10 flex">
                         <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
                         />
 
                         <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
                         />
 
                         <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
                         />
 
                         <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
                         />
 
                         <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
                         />
                     </section>
