@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { ImageResponse } from 'next/og'
 
 import axios from 'axios'
@@ -43,7 +42,6 @@ interface Props {
 export default async function Image({ params }: Props) {
 console.log('OPENGRAPH-IMAGE')
     /* Initialize locals. */
-    let response
     let table
 
     const { tableid } = await params
@@ -57,7 +55,7 @@ console.log('OPENGRAPH-IMAGE')
         // fetchData()
     // }, [])
 
-    response = await axios
+    const response = await axios
         .get('https://cast.casino/v1/poker/table/' + tableid)
         .catch(err => console.error(err))
 console.log('RESPONSE', response)
