@@ -180,7 +180,7 @@ console.log('TABLE', response.data)
                                     </span>
 
                                     <span className="block text-2xl font-bold truncate">
-                                        {table.seated[_seatid]}
+                                        {table.seated[Number(_seatid)].address}
                                     </span>
                                 </div>
                             </div>
