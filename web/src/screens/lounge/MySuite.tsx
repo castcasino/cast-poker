@@ -14,30 +14,30 @@ import {
     useAccount,
     // useSendTransaction,
     // useWaitForTransactionReceipt,
-    useSwitchChain,
+    // useSwitchChain,
     useChainId,
 } from 'wagmi'
-import { base, optimism } from 'wagmi/chains'
-import { BaseError, UserRejectedRequestError } from 'viem'
+// import { base, optimism } from 'wagmi/chains'
+// import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { Button } from '~/components/ui/Button'
 import splashIcon from '~/../public/splash.png'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
-const renderError = (error: Error | null) => {
-    if (!error) return null
+// const renderError = (error: Error | null) => {
+//     if (!error) return null
 
-    if (error instanceof BaseError) {
-        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+//     if (error instanceof BaseError) {
+//         const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
 
-        if (isUserRejection) {
-            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
-        }
-    }
+//         if (isUserRejection) {
+//             return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+//         }
+//     }
 
-    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
-}
+//     return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+// }
 
 export default function MySuite({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -51,16 +51,16 @@ export default function MySuite({ tableid }: { tableid: string}) {
     const { address, isConnected } = useAccount()
     const chainId = useChainId()
 
-    const {
-        switchChain,
-        error: switchChainError,
-        isError: isSwitchChainError,
-        isPending: isSwitchChainPending,
-    } = useSwitchChain()
+    // const {
+    //     switchChain,
+    //     error: switchChainError,
+    //     isError: isSwitchChainError,
+    //     isPending: isSwitchChainPending,
+    // } = useSwitchChain()
 
-    const handleSwitchChain = useCallback(() => {
-        switchChain({ chainId: chainId === base.id ? optimism.id : base.id })
-    }, [ switchChain, chainId ])
+    // const handleSwitchChain = useCallback(() => {
+    //     switchChain({ chainId: chainId === base.id ? optimism.id : base.id })
+    // }, [ switchChain, chainId ])
 
 
     const addFrame = useCallback(async () => {
