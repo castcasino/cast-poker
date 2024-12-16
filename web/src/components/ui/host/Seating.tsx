@@ -22,9 +22,9 @@ export function Seating({ value, onChange }: Props) {
                         <option value="900" disabled>15 Minutes</option>
                         <option value="1800" disabled>30 Minutes</option>
                         <option value="3600" disabled>60 Minutes</option>
-                        <option value="5400" disabled>2 Hours</option>
-                        <option value="10800" disabled>3 Hours</option>
-                        <option value="21600" disabled>6 Hours</option>
+                        <option value="5400">2 Hours</option>
+                        <option value="10800">3 Hours</option>
+                        <option value="21600">6 Hours</option>
                         <option value="43200">12 Hours</option>
                         <option value="86400">24 Hours</option>
                     </select>

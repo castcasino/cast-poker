@@ -11,7 +11,7 @@ import axios from 'axios'
 import numeral from 'numeral'
 
 // import { truncateAddress } from '~/lib/truncateAddress'
-import { truncateHash } from '~/lib/truncateHash'
+// import { truncateHash } from '~/lib/truncateHash'
 // import splashIcon from '~/../public/splash.png'
 
 type Table = {
