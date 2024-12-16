@@ -43,7 +43,8 @@ console.log('OPENGRAPH-IMAGE')
                     POKER TABLE ERROR!
                 </h1>
             </div>
-        )
+        ),
+        { ...size }
     }
 
     if (typeof table === 'undefined') {
@@ -87,7 +88,8 @@ console.log('OPENGRAPH-IMAGE')
                     />
                 </section>
             </div>
-        )
+        ),
+        { ...size }
     }
 
     return new ImageResponse(
