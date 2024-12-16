@@ -38,58 +38,62 @@ console.log('OPENGRAPH-IMAGE')
 
     if (table === null) {
         return new ImageResponse(
-            <div tw="w-full h-full flex flex-col justify-center items-center bg-red-300">
-                <h1 tw="text-6xl font-bold text-red-800 tracking-widest">
-                    POKER TABLE ERROR!
-                </h1>
-            </div>
-        ),
-        { ...size }
+            (
+                <div tw="w-full h-full flex flex-col justify-center items-center bg-red-300">
+                    <h1 tw="text-6xl font-bold text-red-800 tracking-widest">
+                        POKER TABLE ERROR!
+                    </h1>
+                </div>
+            ),
+            { ...size }
+        )
     }
 
     if (typeof table === 'undefined') {
         return new ImageResponse(
-            <div tw="w-full h-full flex flex-col justify-center items-center bg-green-50">
-                <section tw="flex items-center">
-                    <img
-                        src="https://assets.cast.casino/poker-table.png"
-                        tw="h-20 w-20"
-                    />
+            (
+                <div tw="w-full h-full flex flex-col justify-center items-center bg-green-50">
+                    <section tw="flex items-center">
+                        <img
+                            src="https://assets.cast.casino/poker-table.png"
+                            tw="h-20 w-20"
+                        />
 
-                    <span tw="pl-5 text-lime-600 text-4xl font-light tracking-tight">
-                        Table # {tableid} Is Unset
-                    </span>
-                </section>
+                        <span tw="pl-5 text-lime-600 text-4xl font-light tracking-tight">
+                            Table # {tableid} Is Unset
+                        </span>
+                    </section>
 
-                <section tw="mt-10 flex">
-                    <img
-                        src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                        tw="mx-1 w-26 border-2 border-slate-700"
-                    />
+                    <section tw="mt-10 flex">
+                        <img
+                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            tw="mx-1 w-26 border-2 border-slate-700"
+                        />
 
-                    <img
-                        src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                        tw="mx-1 w-26 border-2 border-slate-700"
-                    />
+                        <img
+                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            tw="mx-1 w-26 border-2 border-slate-700"
+                        />
 
-                    <img
-                        src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                        tw="mx-1 w-26 border-2 border-slate-700"
-                    />
+                        <img
+                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            tw="mx-1 w-26 border-2 border-slate-700"
+                        />
 
-                    <img
-                        src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                        tw="mx-1 w-26 border-2 border-slate-700"
-                    />
+                        <img
+                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            tw="mx-1 w-26 border-2 border-slate-700"
+                        />
 
-                    <img
-                        src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                        tw="mx-1 w-26 border-2 border-slate-700"
-                    />
-                </section>
-            </div>
-        ),
-        { ...size }
+                        <img
+                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                            tw="mx-1 w-26 border-2 border-slate-700"
+                        />
+                    </section>
+                </div>
+            ),
+            { ...size }
+        )
     }
 
     return new ImageResponse(
