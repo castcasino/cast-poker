@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
@@ -12,10 +12,15 @@ import numeral from 'numeral'
 
 // import { truncateAddress } from '~/lib/truncateAddress'
 import { truncateHash } from '~/lib/truncateHash'
-import splashIcon from '~/../public/splash.png'
+// import splashIcon from '~/../public/splash.png'
 
 type Table = {
     community: Community;
+    seated: Player[];
+}
+
+type Player = {
+    address: string;
 }
 
 type Community = {
@@ -44,6 +49,7 @@ export default function Lobby({ tableid }: { tableid: string}) {
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
             setTable(response.data)
+console.log('TABLE', response.data)
         }
         fetchData()
     }, [])
@@ -158,131 +164,48 @@ export default function Lobby({ tableid }: { tableid: string}) {
                     Players At The Showdown
                 </h2>
 
-                <div className="mt-2 w-full bg-rose-500 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {table && <div className="mt-2 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                    <div className="flex flex-col gap-2">
-                        <div>
-                            {(context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
-                                <div className="flex items-center">
-                                    <Image
-                                        className="inline-block size-12 rounded-full"
-                                        src={'https://wsrv.nl/?url=' + context?.user?.pfpUrl || splashIcon}
-                                        alt={context?.user?.displayName || ''}
-                                    />
+                    {Object.keys(table.seated).map((_seatid) => (
+                        <div key="_seatid" className="px-3 py-2 flex flex-col gap-2 bg-gradient-to-r from-amber-600 to-amber-800 border-2 border-amber-300 rounded-xl shadow">
+                            <div className="flex flex-row items-center gap-2">
+                                <img
+                                    src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                                    className="mr-5 w-12 border-2 border-slate-700"
+                                />
 
-                                    <div className="ml-2">
-                                        <p className="text-lg font-medium text-lime-600 tracking-wider group-hover:text-lime-500">
-                                            {context.user.displayName}
-                                        </p>
-
-                                        <p className="text-sm font-medium text-lime-800 tracking-wider group-hover:text-lime-600">
-                                            {context.user.username}
-                                        </p>
-                                    </div>
-                                </div>
-                            </Link>)}
-
-                            {(!context && <Link href={`/${tableid}/mysuite`} className="group block shrink-0">
-                                <div className="flex items-center">
-                                    <Image
-                                        className="inline-block size-12"
-                                        src={splashIcon}
-                                        alt=""
-                                    />
-
-                                    <div className="ml-2">
-                                        <p className="text-lg font-medium text-lime-600 tracking-wider group-hover:text-lime-500">
-                                            Guest User
-                                        </p>
-
-                                        <p className="text-sm font-medium text-lime-800 tracking-wider group-hover:text-lime-600">
-                                            @guest_user
-                                        </p>
-                                    </div>
-                                </div>
-                            </Link>)}
-                        </div>
-
-                        <div className="flex flex-row items-center gap-2">
-                            <img
-                                src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                                className="mx-5 w-12 border-2 border-slate-700"
-                            />
-
-                            <div className="py-2 flex flex-col">
-                                <span className="text-xs tracking-wider">
-                                    Fairplay Block #
-
-                                    <span className="block text-sm">
-                                        {numeral(23443189).format('0,0')}
+                                <div className="py-2 flex flex-col truncate">
+                                    <span className="text-xs font-medium tracking-wider uppercase">
+                                        Player Address
                                     </span>
-                                </span>
 
-                                <span className="text-xs tracking-wider">
-                                    Fairplay Block Hash
-
-                                    <pre className="block text-sm">
-                                        {truncateHash('0x4ec179a76051ce8add89671ff7ced12e3da773f39d0e700c013941203ed3f7dd')}
-                                    </pre>
-                                </span>
+                                    <span className="block text-2xl font-bold truncate">
+                                        {table.seated[_seatid]}
+                                    </span>
+                                </div>
                             </div>
+
+                            <div className="flex flex-row items-center gap-2">
+                                <img
+                                    src="https://assets.cast.casino/cards_01/covers/abstract.svg"
+                                    className="mr-5 w-12 border-2 border-slate-700"
+                                />
+
+                                <div className="py-2 flex flex-col truncate">
+                                    <span className="text-xs font-medium tracking-wider uppercase">
+                                        Fairplay Block Hash
+                                    </span>
+
+                                    <pre className="block text-xl font-medium italic">
+                                        pending...
+                                    </pre>
+                                </div>
+                            </div>
+
                         </div>
+                    ))}
 
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/abstract.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-2 bg-green-500">
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-2 bg-green-500">
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/blue.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/blue.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-2 bg-green-500">
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/frog.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/frog.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-2 bg-green-500">
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/fish.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-
-                        <img
-                            src="https://assets.cast.casino/cards_01/covers/fish.svg"
-                            className="mx-5 w-12 border-2 border-slate-700"
-                        />
-                    </div>
-
-                </div>
+                </div>}
             </section>
 
         </main>
