@@ -38,7 +38,9 @@ const renderError = (error: Error | null) => {
 
 type Table = {
     buyin: string;
+    tts: string;
     pot: string;
+    createdAt: number;
 }
 
 type Quotes = {
