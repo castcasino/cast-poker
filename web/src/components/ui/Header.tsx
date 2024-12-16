@@ -15,11 +15,24 @@ import { truncateAddress } from '~/lib/truncateAddress'
 
 import splashIcon from '~/../public/splash.png'
 
+type Table = {
+    pot: string;
+}
+
+type Quotes = {
+    ETH: Quote;
+    DEGEN: Quote;
+}
+
+type Quote = {
+    USD: number;
+}
+
 export function Header({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     // const [context, setContext] = useState<FrameContext>()
-    const [table, setTable] = useState<string>('')
-    const [quotes, setQuotes] = useState<string>('')
+    const [table, setTable] = useState<Table>()
+    const [quotes, setQuotes] = useState<Quotes>()
     const [potValueDollars, setPotValueDollars] = useState<string>('0')
     const [potValueCents, setPotValueCents] = useState<string>('00')
 
@@ -41,21 +54,18 @@ export function Header({ tableid }: { tableid: string }) {
 
     useEffect(() => {
         /* Validate quotes. */
-        if (quotes === '') {
+        if (typeof quotes === 'undefined') {
             return
         }
 
         /* Validate table. */
-        if (table === '') {
+        if (typeof table === 'undefined') {
             return
         }
 
-        const potValue = formatEther(table.pot)
+        const potValue = formatEther(BigInt(table.pot))
         const usdValue = quotes?.ETH?.USD || 0
         const potUsdValue = Number(potValue) * usdValue
-
-        // const dollars = potUsdValue.toString().split('.')[0]
-        // const cents = potUsdValue.toString().split('.')[1]
 
         const dollars = numeral(potUsdValue).format('0,0')
         const cents = numeral(potUsdValue).format('.00[00]')
