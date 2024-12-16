@@ -110,7 +110,7 @@ export function Header({ tableid }: { tableid: string }) {
 
                         <div className="sm:ml-2 grid gap-x-4 gap-y-1">
                             <p className="text-sm sm:text-base font-medium text-lime-500 tracking-widest uppercase group-hover:text-lime-400">
-                                {/* Table # {tableid} */}
+                                Table # {tableid}
                             </p>
 
                             {table && <p className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
