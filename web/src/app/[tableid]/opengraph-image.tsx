@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react'
 import { ImageResponse } from 'next/og'
+
+import axios from 'axios'
+// import numeral from 'numeral'
 
 export const runtime = 'edge'
 
@@ -17,8 +21,60 @@ interface Props {
     }>
 }
 
+// type Table = {
+//     community: Community;
+// }
+
+// type Community = {
+//     flop1: Deal;
+//     flop2: Deal;
+//     flop3: Deal;
+//     turn: Deal;
+//     river: Deal;
+// }
+
+// type Deal = {
+//     card: string;
+//     carIdx: number;
+//     blockIdx: number;
+//     blockHash: string;
+// }
+
 export default async function Image({ params }: Props) {
+console.log('OPENGRAPH-IMAGE')
+    /* Initialize locals. */
+    let response
+    let table
+
     const { tableid } = await params
+
+    // const [table, setTable] = useState<Table>()
+
+        // const fetchData = async () => {
+        //     const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+        //     // setTable(response.data)
+        // }
+        // fetchData()
+    // }, [])
+
+    response = await axios
+        .get('https://cast.casino/v1/poker/table/' + tableid)
+        .catch(err => console.error(err))
+console.log('RESPONSE', response)
+
+    if (typeof response !== 'undefined') {
+        table = response.data
+    }
+
+    if (typeof table === 'undefined') {
+        return new ImageResponse(
+            <div tw="w-full h-full flex flex-col justify-center items-center bg-red-300">
+                <h1 tw="text-6xl font-bold text-red-800 tracking-widest">
+                    POKER TABLE ERROR!
+                </h1>
+            </div>
+        )
+    }
 
     return new ImageResponse(
         (
@@ -29,35 +85,35 @@ export default async function Image({ params }: Props) {
                         tw="h-20 w-20"
                     />
 
-                    <span tw="pl-10 text-lime-600 text-5xl font-light tracking-wider italic">
-                        Would you like to play a game at Table # {tableid}?
+                    <span tw="pl-5 text-lime-600 text-4xl font-light tracking-tight">
+                        Buy-In To Play Table # {tableid}
                     </span>
                 </section>
 
                 <section tw="mt-10 flex">
                     <img
-                        src="https://assets.cast.casino/cards_01/AS.svg"
-                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                        src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || '_'}.svg`}
+                        tw="mx-1 w-26 border-2 border-slate-700"
                     />
 
                     <img
-                        src="https://assets.cast.casino/cards_01/KS.svg"
-                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                        src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
+                        tw="mx-1 w-26 border-2 border-slate-700"
                     />
 
                     <img
-                        src="https://assets.cast.casino/cards_01/QS.svg"
-                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                        src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
+                        tw="mx-1 w-26 border-2 border-slate-700"
                     />
 
                     <img
-                        src="https://assets.cast.casino/cards_01/JS.svg"
-                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                        src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || '_'}.svg`}
+                        tw="mx-1 w-26 border-2 border-slate-700"
                     />
 
                     <img
-                        src="https://assets.cast.casino/cards_01/TS.svg"
-                        tw="mx-5 h-48 w-36 border-2 border-slate-700"
+                        src={`https://assets.cast.casino/cards_01/${table?.community.river.card || '_'}.svg`}
+                        tw="mx-1 w-26 border-2 border-slate-700"
                     />
                 </section>
             </div>
