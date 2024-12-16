@@ -20,25 +20,6 @@ interface Props {
     }>
 }
 
-// type Table = {
-//     community: Community;
-// }
-
-// type Community = {
-//     flop1: Deal;
-//     flop2: Deal;
-//     flop3: Deal;
-//     turn: Deal;
-//     river: Deal;
-// }
-
-// type Deal = {
-//     card: string;
-//     carIdx: number;
-//     blockIdx: number;
-//     blockHash: string;
-// }
-
 export default async function Image({ params }: Props) {
 console.log('OPENGRAPH-IMAGE')
     /* Initialize locals. */
@@ -46,19 +27,10 @@ console.log('OPENGRAPH-IMAGE')
 
     const { tableid } = await params
 
-    // const [table, setTable] = useState<Table>()
-
-        // const fetchData = async () => {
-        //     const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
-        //     // setTable(response.data)
-        // }
-        // fetchData()
-    // }, [])
-
     const response = await axios
         .get('https://cast.casino/v1/poker/table/' + tableid)
         .catch(err => console.error(err))
-console.log('RESPONSE', response)
+// console.log('RESPONSE', response)
 
     if (typeof response !== 'undefined') {
         table = response.data
@@ -84,7 +56,7 @@ console.log('RESPONSE', response)
                     />
 
                     <span tw="pl-5 text-lime-600 text-4xl font-light tracking-tight">
-                        Buy-In To Play Table # {tableid}
+                        Buy-In! Play Table # {tableid}
                     </span>
                 </section>
 
