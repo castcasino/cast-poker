@@ -16,7 +16,14 @@ import { truncateAddress } from '~/lib/truncateAddress'
 import splashIcon from '~/../public/splash.png'
 
 type Table = {
+    host: string;
     pot: string;
+    seats: number;
+    seated: Seat[];
+}
+
+type Seat = {
+    address: string;
 }
 
 type Quotes = {
@@ -106,13 +113,13 @@ export function Header({ tableid }: { tableid: string }) {
                                 Table # {tableid}
                             </p>
 
-                            <p className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                hosted by {truncateAddress(table?.host) || 'Guest'}
-                            </p>
+                            {table && <p className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                hosted by {truncateAddress(table.host) || 'Guest'}
+                            </p>}
 
-                            <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                # Seats : {table?.seated?.length} of {table?.seats}
-                            </p>
+                            {table && <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                                # Seats : {table.seated.length} of {table.seats}
+                            </p>}
 
                             <div className="grid grid-cols-2">
                                 <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
