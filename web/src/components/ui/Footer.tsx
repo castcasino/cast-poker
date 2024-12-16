@@ -257,7 +257,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                         </span>
 
                         <span className="-mt-4 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
-                            ❭ ❭ ❭ click here ❬ ❬ ❬
+                            ❭❭❭ click here ❬❬❬
                         </span>
                     </button>
 

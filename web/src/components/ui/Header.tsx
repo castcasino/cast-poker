@@ -117,11 +117,11 @@ export function Header({ tableid }: { tableid: string }) {
                                 hosted by {truncateAddress(table.host) || 'Guest'}
                             </p>}
 
-                            {table && <p className="text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                            {table && <p className="-mt-1 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                                 # Seats : {table.seated.length} of {table.seats}
                             </p>}
 
-                            <div className="grid grid-cols-2">
+                            <div className="-mt-1 grid grid-cols-2">
                                 <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                                     $ETH {JSON.stringify(quotes?.ETH?.USD)}
                                 </p>
