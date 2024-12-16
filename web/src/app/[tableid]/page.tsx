@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { Metadata } from 'next'
 import App from '~/app/app'
 
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const frame = {
         version: 'next',
-        imageUrl: `${appUrl}/${tableid}/opengraph-image`,
+        imageUrl: `${appUrl}/${tableid}/opengraph-image?${moment().unix()}`,
         button: {
             title: 'Enter Lobby',
             action: {
