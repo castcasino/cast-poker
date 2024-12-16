@@ -6,9 +6,28 @@ import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
+import axios from 'axios'
+import { formatEther } from 'viem'
+
+import { truncateAddress } from '~/lib/truncateAddress'
+
+type Table = {
+    host: string;
+    // seated: string[];
+}
+
 export default function Tables({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+    const [tables, setTables] = useState<Table[]>()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('https://cast.casino/v1/poker/tables/active')
+            setTables(response.data)
+        }
+        fetchData()
+    }, [])
 
     useEffect(() => {
         const load = async () => {
@@ -54,84 +73,37 @@ export default function Tables({ tableid }: { tableid: string}) {
 
                 <div className="mb-4">
                     {(context && <h3 className="text-2xl font-medium text-slate-700">
-                        {context?.user?.displayName} check out our Players!
+                        {context?.user?.displayName} check out our Tables!
                     </h3>)}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4">
-                    <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-                        <div className="shrink-0">
-                            <img
-                                className="size-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                            />
-                        </div>
+                {tables && <div className="grid grid-cols-1 gap-4">
+                    {Object.keys(tables).map((_tableid) => (
+                        <div key="_tableid" className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+                            <div className="shrink-0">
+                                <img
+                                    className="size-10 rounded-full"
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt=""
+                                />
+                            </div>
 
-                        <div className="min-w-0 flex-1">
-                            <a href="javascript://" className="focus:outline-none">
-                                <span className="absolute inset-0" aria-hidden="true"></span>
-                                <p className="text-sm font-medium text-gray-900">Leslie Alexander</p>
-                                <p className="truncate text-sm text-gray-500">Co-Founder / CEO</p>
-                            </a>
-                        </div>
-                    </div>
+                            <div className="min-w-0 flex-1">
+                                <a href="javascript://" className="focus:outline-none">
+                                    <span className="absolute inset-0" aria-hidden="true"></span>
 
-                    <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-                        <div className="shrink-0">
-                            <img
-                                className="size-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                            />
-                        </div>
+                                    <p className="text-sm font-medium text-gray-900">
+                                        {truncateAddress(tables[Number(_tableid)].host)}
+                                    </p>
 
-                        <div className="min-w-0 flex-1">
-                            <a href="javascript://" className="focus:outline-none">
-                                <span className="absolute inset-0" aria-hidden="true"></span>
-                                <p className="text-sm font-medium text-gray-900">Michael Foster</p>
-                                <p className="truncate text-sm text-gray-500">Co-Founder / CTO</p>
-                            </a>
+                                    {/* <p className="truncate text-sm text-gray-500">
+                                        Buy-in : {formatEther(BigInt(table.buyin))} $ETH
+                                    </p> */}
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-                        <div className="shrink-0">
-                            <img
-                                className="size-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                            />
-                        </div>
-
-                        <div className="min-w-0 flex-1">
-                            <a href="javascript://" className="focus:outline-none">
-                                <span className="absolute inset-0" aria-hidden="true"></span>
-                                <p className="text-sm font-medium text-gray-900">Dries Vincent</p>
-                                <p className="truncate text-sm text-gray-500">Business Relations</p>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-                        <div className="shrink-0">
-                            <img
-                                className="size-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                            />
-                        </div>
-
-                        <div className="min-w-0 flex-1">
-                            <a href="javascript://" className="focus:outline-none">
-                                <span className="absolute inset-0" aria-hidden="true"></span>
-                                <p className="text-sm font-medium text-gray-900">Lindsay Walton</p>
-                                <p className="truncate text-sm text-gray-500">Front-end Developer</p>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+                    ))}
+                </div>}
             </div>
         </main>
     )
