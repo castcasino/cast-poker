@@ -8,6 +8,7 @@ import Image from 'next/image'
 import sdk from '@farcaster/frame-sdk'
 
 import { formatEther } from 'viem'
+import axios from 'axios'
 import numeral from 'numeral'
 
 import { truncateAddress } from '~/lib/truncateAddress'
@@ -23,45 +24,18 @@ export function Header({ tableid }: { tableid: string }) {
     const [potValueCents, setPotValueCents] = useState<string>('00')
 
     useEffect(() => {
-        async function fetchData() {
-            const response: unknown = await fetch('https://cast.casino/v1/poker/table/' + tableid, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            }).catch(err => console.error(err))
-console.log('RESPONSE (tableid)', response)
-
-            const data = await response
-                .json()
-                .catch(err => console.error(err))
-
-            if (data) {
-                setTable(data)
-            }
+        const fetchData = async () => {
+          const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+          setTable(response.data)
         }
-
         fetchData()
     }, [])
 
     useEffect(() => {
-        async function fetchData() {
-            const response: unknown = await fetch('https://cast.casino/v1/quotes', {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            }).catch(err => console.error(err))
-console.log('RESPONSE (quotes)', response)
-
-//             const { data, errors }: JSONResponse = await response.json()
-// console.log('ERRORS (quotes)', errors)
-            const data = await response
-                .json()
-                .catch(err => console.error(err))
-
-            if (data) {
-                setQuotes(data)
-console.log('DATA (quotes)', data)
-            }
+        const fetchData = async () => {
+          const response = await axios.get('https://cast.casino/v1/quotes')
+          setQuotes(response.data)
         }
-
         fetchData()
     }, [])
 
