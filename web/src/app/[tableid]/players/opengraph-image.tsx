@@ -5,7 +5,7 @@ export const runtime = 'edge'
 export const alt = 'Cast Poker'
 
 export const size = {
-    width: 764,
+    width: 600,
     height: 400,
 }
 
