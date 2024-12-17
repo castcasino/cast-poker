@@ -66,17 +66,18 @@ console.log('CONTEXT', context)
                         <span className="block text-xl">Table # {tableid}</span>
                     </h3>
 
-                    {/* <p className="mt-6 text-xl/8">
-                        {context?.user.displayName}, what do you already know about Fairplay?
-                        Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas
-                        fringilla sapien.
-                    </p> */}
+                    <p className="mt-6 text-xl/8">
+                        {context?.user.displayName || 'Guest'}, what do you already know about Fairplay?
+
+                        We all want to play at fair, trustworthy online gaming sites.
+                    </p>
 
                     <div className="mt-10 max-w-2xl">
-                        {/* <p>
-                            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-                            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                        </p> */}
+                        <p>
+                            The Crypto gaming community has come up with its own way of proving that games are fair.
+                            As you might expect, with this being specific to Crypto, it doesn’t require you to trust a third party, it makes games totally transparent, and it makes use of advanced cryptography to ensure game outcomes haven’t been tampered with.
+                            Using the provably fair method, you can verify the results for yourself in real time.
+                        </p>
 
                         {/* <ul role="list" className="mt-8 max-w-xl space-y-8 text-gray-600">
                             <li className="flex gap-x-3">
@@ -101,10 +102,10 @@ console.log('CONTEXT', context)
                             </li>
                         </ul> */}
 
-                        {/* <p className="mt-8">
-                            Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas.
-                            Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
-                        </p> */}
+                        <p className="mt-8">
+                            But what exactly is provably fair gaming? How does it work? Why does it make Crypto gaming so transparent? We’re going to explore all of that here.
+                            As you’ll see, the ramifications of provably fair gaming are revolutionary.
+                        </p>
 
                         <section className="mt-5 flex flex-col gap-2">
                             <h2 className="text-2xl font-medium text-slate-700 tracking-wider">
@@ -183,27 +184,43 @@ console.log('CONTEXT', context)
 
                         <FullDeck />
 
-                        {/* <figure className="mt-10 border-l border-indigo-600 pl-9">
+                        <figure className="mt-10 border-l border-indigo-600 pl-9">
                             <blockquote className="font-semibold text-gray-900">
-                                <p>“Vel ultricies morbi odio facilisi ultrices accumsan donec lacus purus. Lectus nibh ullamcorper ac dictum justo in euismod. Risus aenean ut elit massa. In amet aliquet eget cras. Sem volutpat enim tristique.”</p>
+                                <p>
+                                    “You should never trust any online entity at face value.
+                                    Luckily for casino players, there are third parties set up with the sole purpose of verifying the published payout figures through testing.”
+                                </p>
                             </blockquote>
+
                             <figcaption className="mt-6 flex gap-x-4">
                                 <img
                                     className="size-6 flex-none rounded-full bg-gray-50"
                                     src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     alt=""
                                 />
-                                <div className="text-sm/6"><strong className="font-semibold text-gray-900">Maria Hill</strong> – Marketing Manager</div>
-                            </figcaption>
-                        </figure> */}
 
-                        {/* <p className="mt-10">
-                            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-                        </p> */}
+                                <div className="text-sm/6">
+                                    <strong className="font-semibold text-gray-900">
+                                        Maria Hill
+                                    </strong>
+
+                                    – Marketing Manager
+                                </div>
+                            </figcaption>
+                        </figure>
+
+                        <p className="mt-10">
+                            Much like Crypto itself, provably fair solutions work on the problem of trust.
+                            You no longer need a middleman or third party to verify that a casino’s algorithm is fair.
+                            Since you have intervened in the process of a game outcome by providing a seed which changes something, the casino is no longer fully in control.
+                        </p>
                     </div>
 
-                    {/* <figure className="mt-16">
-                        <img className="aspect-video rounded-xl bg-gray-50 object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3" alt="" />
+                    <figure className="mt-16">
+                        <img
+                            className="aspect-video rounded-xl bg-gray-50 object-cover border border-indigo-600 shadow"
+                            src="https://i.ibb.co/cXRjBc5/cGc.jpg" alt=""
+                        />
 
                         <figcaption className="mt-4 flex gap-x-2 text-sm/6 text-gray-500">
                             <svg className="mt-0.5 size-5 flex-none text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -213,22 +230,29 @@ console.log('CONTEXT', context)
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            Faucibus commodo massa rhoncus, volutpat.
-                        </figcaption>
-                    </figure> */}
 
-                    {/* <div className="mt-16 max-w-2xl">
-                        <h2 className="text-pretty text-3xl font-semibold tracking-tight text-gray-900">Everything you need to get up and running</h2>
+                            eCOGRA is an example of one such third party.
+                            This organization tests many casino games and published reports on whether or not the claims of the software providers match up with the facts.
+                        </figcaption>
+                    </figure>
+
+                    <div className="mt-16 max-w-2xl">
+                        <h2 className="text-pretty text-3xl font-semibold tracking-tight text-gray-900">
+                            We all want to play at fair, trustworthy online gaming sites.
+                        </h2>
 
                         <p className="mt-6">
-                            Purus morbi dignissim senectus mattis adipiscing. Amet, massa quam varius orci dapibus volutpat cras. In amet eu ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut viverra ridiculus non molestie. Gravida quis
-                            fringilla amet eget dui tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat ac. Cras fermentum convallis quam.
+                            This comprehensive framework provides a detailed catalogue of problematic in-game conduct, aiming to empower game developers, publishers, and community managers to support player well-being and foster healthier gaming spaces.
                         </p>
 
                         <p className="mt-8">
-                            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
+                            Establishing clear and effective community guidelines is crucial for promoting fairplay gaming. These guidelines should outline expected behavior, consequences for toxic behavior, and mechanisms for reporting and addressing issues.
                         </p>
-                    </div> */}
+
+                        <p className="mt-8">
+                            Raising player awareness about fairplay gaming values and expectations can help promote a positive and respectful gaming culture.
+                        </p>
+                    </div>
                 </div>
             </div>
 
