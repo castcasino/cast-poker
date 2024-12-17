@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default async function AppRoot({}) {
-    redirect('/3')
+    redirect('/4')
 }
