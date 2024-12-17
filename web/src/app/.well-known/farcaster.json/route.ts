@@ -12,9 +12,9 @@ export async function GET() {
         frame: {
             version: '0.0.1',
             name: 'Cast Poker',
-            iconUrl: `${appUrl}/icon.png`,
+            iconUrl: `${appUrl}/logo.png`,
             splashImageUrl: `${appUrl}/splash.png`,
-            splashBackgroundColor: '#b5a5c7',
+            splashBackgroundColor: '#cd98f9',
             homeUrl: appUrl,
             webhookUrl: `${appUrl}/api/webhook`,
         },
