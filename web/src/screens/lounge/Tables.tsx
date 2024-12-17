@@ -81,11 +81,11 @@ export default function Tables({ tableid }: { tableid: string}) {
                     {Object.keys(tables).map((_tableid) => (
                         <div key="_tableid" className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
                             <div className="shrink-0">
-                                <img
+                                {/* <img
                                     className="size-10 rounded-full"
                                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     alt=""
-                                />
+                                /> */}
                             </div>
 
                             <div className="min-w-0 flex-1">
