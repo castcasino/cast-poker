@@ -65,19 +65,19 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                         <span className="block text-xl">Table # {tableid}</span>
                     </h3>
 
-                    <p className="mt-6 text-xl/8">
+                    {/* <p className="mt-6 text-xl/8">
                         {context?.user.displayName}, what do you already know about Fairplay?
                         Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas
                         fringilla sapien.
-                    </p>
+                    </p> */}
 
                     <div className="mt-10 max-w-2xl">
-                        <p>
+                        {/* <p>
                             Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
                             Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                        </p>
+                        </p> */}
 
-                        <ul role="list" className="mt-8 max-w-xl space-y-8 text-gray-600">
+                        {/* <ul role="list" className="mt-8 max-w-xl space-y-8 text-gray-600">
                             <li className="flex gap-x-3">
                                 <svg className="mt-1 size-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
@@ -98,11 +98,12 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                                 </svg>
                                 <span><strong className="font-semibold text-gray-900">Events.</strong> Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
                             </li>
-                        </ul>
-                        <p className="mt-8">
+                        </ul> */}
+
+                        {/* <p className="mt-8">
                             Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas.
                             Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
-                        </p>
+                        </p> */}
 
                         <section className="mt-5 flex flex-col gap-2">
                             <h2 className="text-2xl font-medium text-slate-700 tracking-wider">
@@ -181,7 +182,7 @@ export default function Fairplay({ tableid }: { tableid: string}) {
 
                         <FullDeck />
 
-                        <figure className="mt-10 border-l border-indigo-600 pl-9">
+                        {/* <figure className="mt-10 border-l border-indigo-600 pl-9">
                             <blockquote className="font-semibold text-gray-900">
                                 <p>“Vel ultricies morbi odio facilisi ultrices accumsan donec lacus purus. Lectus nibh ullamcorper ac dictum justo in euismod. Risus aenean ut elit massa. In amet aliquet eget cras. Sem volutpat enim tristique.”</p>
                             </blockquote>
@@ -193,13 +194,16 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                                 />
                                 <div className="text-sm/6"><strong className="font-semibold text-gray-900">Maria Hill</strong> – Marketing Manager</div>
                             </figcaption>
-                        </figure>
-                        <p className="mt-10">
+                        </figure> */}
+
+                        {/* <p className="mt-10">
                             Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-                        </p>
+                        </p> */}
                     </div>
-                    <figure className="mt-16">
+
+                    {/* <figure className="mt-16">
                         <img className="aspect-video rounded-xl bg-gray-50 object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3" alt="" />
+
                         <figcaption className="mt-4 flex gap-x-2 text-sm/6 text-gray-500">
                             <svg className="mt-0.5 size-5 flex-none text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                 <path
@@ -210,17 +214,20 @@ export default function Fairplay({ tableid }: { tableid: string}) {
                             </svg>
                             Faucibus commodo massa rhoncus, volutpat.
                         </figcaption>
-                    </figure>
-                    <div className="mt-16 max-w-2xl">
+                    </figure> */}
+
+                    {/* <div className="mt-16 max-w-2xl">
                         <h2 className="text-pretty text-3xl font-semibold tracking-tight text-gray-900">Everything you need to get up and running</h2>
+
                         <p className="mt-6">
                             Purus morbi dignissim senectus mattis adipiscing. Amet, massa quam varius orci dapibus volutpat cras. In amet eu ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut viverra ridiculus non molestie. Gravida quis
                             fringilla amet eget dui tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat ac. Cras fermentum convallis quam.
                         </p>
+
                         <p className="mt-8">
                             Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

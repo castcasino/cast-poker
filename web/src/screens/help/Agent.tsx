@@ -55,14 +55,14 @@ export default function Agent({ tableid }: { tableid: string}) {
             </section>
 
             <p className="mx-3 my-5 p-5 text-lg tracking-wider text-slate-600 leading-7 bg-amber-100 rounded-xl border border-amber-300 shadow">
-                {context?.user.displayName}, get the help that you need for table # {tableid}, when you need it!
+                {context?.user.displayName || 'Guest'}, get the help that you need for table # {tableid}, when you need it!
             </p>
 
             <Button onClick={openCasinoSupport}>
                 Visit Cast Casino Support
             </Button>
 
-            <section className="px-3 py-5">
+            {/* <section className="px-3 py-5">
                 <ul role="list" className="space-y-6">
                     <li className="relative flex gap-x-4">
                         <div className="absolute -bottom-6 left-0 top-0 flex w-6 justify-center">
@@ -139,7 +139,6 @@ export default function Agent({ tableid }: { tableid: string}) {
                     </li>
                 </ul>
 
-                {/* <!-- New comment form --> */}
                 <div className="mt-6 flex gap-x-3">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="size-6 flex-none rounded-full bg-gray-50" />
 
@@ -177,7 +176,7 @@ export default function Agent({ tableid }: { tableid: string}) {
                         </div>
                     </form>
                 </div>
-            </section>
+            </section> */}
 
         </main>
     )
