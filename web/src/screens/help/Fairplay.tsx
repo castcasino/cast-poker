@@ -12,6 +12,7 @@ import { FullDeck } from '~/components/ui/FullDeck'
 export default function Fairplay({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
+console.log('CONTEXT', context)
 
     useEffect(() => {
         const load = async () => {
