@@ -18,8 +18,8 @@ export default function RootLayout({
         <html lang='en'>
             <head>
                 <PlausibleProvider
-                    domain="cast.poker"
-                    customDomain="plausible.cast.casino"
+                    domain="https://cast.poker"
+                    customDomain="https://plausible.cast.casino"
                 />
             </head>
             <body>
