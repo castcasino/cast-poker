@@ -10,13 +10,15 @@ export async function GET() {
                 'MHgwNDA4NmJjMTkxMDZiN2M0NTUzMzZmODliYTY0YzkzMThiYzE2NTMzMjJlZjFlZWVkODc1OWY1MzRjOTEyZmQxMmU4ZTA2MmJhYWJlZGI0MjZkZmFhMWZhMGQyNjZmNDQ2MTFhNzdlMjBiNjc4M2Q3OTM5ZTg5OWE3MjZhMTU2YjFj'
         },
         frame: {
-            version: '0.0.1',
+            version: '1',
             name: 'Cast Poker',
             iconUrl: `${appUrl}/logo.png`,
             splashImageUrl: `${appUrl}/splash.png`,
             splashBackgroundColor: '#cd98f9',
             homeUrl: appUrl,
             webhookUrl: `${appUrl}/api/webhook`,
+            imageUrl: `${appUrl}/logo.png`,
+            buttonTitle: "Enter Lobby",
         },
     }
 
