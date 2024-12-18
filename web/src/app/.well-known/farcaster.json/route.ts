@@ -1,3 +1,9 @@
+/* Import modules. */
+import moment from 'moment'
+
+// FIXME THIS SHOULD DYNAMIC FROM API
+const tableid = 4
+
 export async function GET() {
     const appUrl = process.env.NEXT_PUBLIC_URL
 
@@ -17,7 +23,7 @@ export async function GET() {
             splashBackgroundColor: '#cd98f9',
             homeUrl: appUrl,
             webhookUrl: `${appUrl}/api/webhook`,
-            imageUrl: `${appUrl}/logo.png`,
+            imageUrl: `${appUrl}/${tableid}/opengraph-image?${moment().unix()}`,
             buttonTitle: "Enter Lobby",
         },
     }
