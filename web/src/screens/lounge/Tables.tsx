@@ -27,7 +27,7 @@ export default function Tables({ tableid }: { tableid: string}) {
             setTables(response.data)
         }
         fetchData()
-    }, [])
+    })
 
     useEffect(() => {
         const load = async () => {
