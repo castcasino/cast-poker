@@ -125,15 +125,15 @@ export function Header({ tableid }: { tableid: string }) {
                                 # Seats : {table.seated.length} of {table.seats}
                             </p>}
 
-                            <div className="-mt-1 grid grid-cols-2">
+                            {quotes && <div className="-mt-1 grid grid-cols-2">
                                 <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                    $ETH {JSON.stringify(quotes?.ETH?.USD)}
+                                    $ETH {numeral(quotes.ETH.USD.price).format('0,0.0000')}
                                 </p>
 
                                 <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                    $DEGEN {JSON.stringify(quotes?.DEGEN?.USD)}
+                                    $DEGEN {numeral(quotes.DEGEN.USD.price).format('0,0.0000')}
                                 </p>
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </div>
