@@ -27,7 +27,7 @@ export default function Players({ tableid }: { tableid: string}) {
             setTable(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         const load = async () => {

@@ -51,7 +51,7 @@ export default function Lobby({ tableid }: { tableid: string}) {
             setTable(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         const load = async () => {

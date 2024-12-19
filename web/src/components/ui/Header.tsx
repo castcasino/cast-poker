@@ -49,7 +49,7 @@ export function Header({ tableid }: { tableid: string }) {
             setQuotes(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,7 +57,7 @@ export function Header({ tableid }: { tableid: string }) {
             setTable(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         /* Validate quotes. */

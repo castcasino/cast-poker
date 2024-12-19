@@ -77,7 +77,7 @@ export function Footer({ tableid }: { tableid: string }) {
             setQuotes(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -85,7 +85,7 @@ export function Footer({ tableid }: { tableid: string }) {
             setTable(response.data)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -93,7 +93,7 @@ export function Footer({ tableid }: { tableid: string }) {
             setNextTableId(response.data.tableid)
         }
         fetchData()
-    })
+    }, [])
 
     useEffect(() => {
         /* Validate quotes. */
