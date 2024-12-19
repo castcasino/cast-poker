@@ -49,7 +49,11 @@ type Quotes = {
 }
 
 type Quote = {
-    USD: number;
+    USD: Currency;
+}
+
+type Currency = {
+    price: number;
 }
 
 /* Set constants. */
@@ -107,7 +111,7 @@ export function Footer({ tableid }: { tableid: string }) {
         }
 
         const buyinValue = formatEther(BigInt(table.buyin))
-        const usdValue = quotes?.ETH?.USD || 0
+        const usdValue = quotes?.ETH?.USD?.price || 0
         const buyinUsdValue = Number(buyinValue) * usdValue
 
         const dollars = numeral(buyinUsdValue).format('0,0')

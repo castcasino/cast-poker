@@ -32,7 +32,11 @@ type Quotes = {
 }
 
 type Quote = {
-    USD: number;
+    USD: Currency;
+}
+
+type Currency = {
+    price: number;
 }
 
 export function Header({ tableid }: { tableid: string }) {
@@ -71,7 +75,7 @@ export function Header({ tableid }: { tableid: string }) {
         }
 
         const potValue = formatEther(BigInt(table.pot))
-        const usdValue = quotes?.ETH?.USD || 0
+        const usdValue = quotes?.ETH?.USD?.price || 0
         const potUsdValue = Number(potValue) * usdValue
 
         const dollars = numeral(potUsdValue).format('0,0')
