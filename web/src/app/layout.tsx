@@ -1,19 +1,24 @@
 import type { Metadata } from 'next'
 import PlausibleProvider from 'next-plausible'
 
+import { getSession } from "~/auth"
 import '~/app/globals.css'
 import { Providers } from '~/app/providers'
 
 export const metadata: Metadata = {
     title: 'Cast Poker — 100% Provably Fair Gaming',
-    description: `Play hold'em poker in the 1st provably fair casino built on Farcaster.`,
+    description: `Play Texas Hold'em poker in the ONLY provably fair casino built on Farcaster.`,
+    metadataBase: new URL('https://cast.poker'),
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
+    /* Initialize session. */
+    const session = await getSession()
+
     return (
         <html lang='en'>
             <head>
@@ -23,7 +28,7 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                <Providers>
+                <Providers session={session}>
                     {children}
                 </Providers>
             </body>
