@@ -5,6 +5,8 @@ import { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { signIn, signOut, getCsrfToken } from 'next-auth/react'
+
 import sdk, {
     FrameNotificationDetails,
     type FrameContext,
@@ -19,6 +21,9 @@ import {
 } from 'wagmi'
 import { base, degen } from 'wagmi/chains'
 import { BaseError, UserRejectedRequestError } from 'viem'
+
+import { useSession } from "next-auth/react"
+import { SignInResult } from "@farcaster/frame-core/dist/actions/signIn";
 
 import { Button } from '~/components/ui/Button'
 import splashIcon from '~/../public/splash.png'
@@ -123,6 +128,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
         const load = async () => {
             setContext(await sdk.context)
             sdk.actions.ready()
+console.log('SDK.CONTEXT', await sdk.context)
         }
 
         if (sdk && !isSDKLoaded) {
@@ -185,16 +191,16 @@ export default function MySuite({ tableid }: { tableid: string}) {
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex" aria-label="Tabs">
                         {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
-                        <Link href={`/${tableid}/players`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Players
-                        </Link>
-
-                        <Link href={`/${tableid}/tables`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Tables
+                        <Link href={`/${tableid}/lounge`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Lounge
                         </Link>
 
                         <Link href={`/${tableid}/mysuite`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
                             My Suite
+                        </Link>
+
+                        <Link href={`/${tableid}/concierge`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Concierge
                         </Link>
                     </nav>
                 </div>
@@ -272,6 +278,10 @@ export default function MySuite({ tableid }: { tableid: string}) {
                     </div>
                 )}
             </div>
+
+            <section className="py-10">
+                <SignIn />
+            </section>
 
             <section className="mt-3">
                 {isConnected && (
@@ -416,7 +426,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                 disabled={isSwitchChainPending}
                                 isLoading={isSwitchChainPending}
                             >
-                                Switch to {chainId === base.id ? "Optimism" : "Base"}
+                                Switch to {chainId === base.id ? 'Degen' : 'Base'}
                             </Button>
 
                             {isSwitchChainError && renderError(switchChainError)}
@@ -575,3 +585,78 @@ export default function MySuite({ tableid }: { tableid: string}) {
         </main>
     )
 }
+
+function SignIn() {
+    const [signingIn, setSigningIn] = useState(false);
+    const [signingOut, setSigningOut] = useState(false);
+    const [signInResult, setSignInResult] = useState<SignInResult>();
+    const { data: session, status } = useSession()
+
+    const getNonce = useCallback(async () => {
+      const nonce = await getCsrfToken();
+      if (!nonce) throw new Error("Unable to generate nonce");
+      return nonce;
+    }, []);
+
+    const handleSignIn = useCallback(async () => {
+      try {
+        setSigningIn(true);
+        const nonce = await getNonce();
+console.log('SDK', sdk)
+console.log('CONTEXT', await sdk.context)
+        const result = await sdk.actions.signIn({ nonce });
+        setSignInResult(result);
+
+        await signIn("credentials", {
+          message: result.message,
+          signature: result.signature,
+          redirect: false,
+        });
+      } finally {
+        setSigningIn(false);
+      }
+    }, [getNonce]);
+
+    const handleSignOut = useCallback(async () => {
+      try {
+        setSigningOut(true);
+        await signOut({ redirect: false })
+        setSignInResult(undefined);
+      } finally {
+        setSigningOut(false);
+      }
+    }, []);
+
+    return (
+      <>
+        {status !== "authenticated" &&
+          <Button
+            onClick={handleSignIn}
+            disabled={signingIn}
+          >
+            Sign In with Farcaster
+          </Button>
+        }
+        {status === "authenticated" &&
+          <Button
+            onClick={handleSignOut}
+            disabled={signingOut}
+          >
+            Sign out
+          </Button>
+        }
+        {session &&
+          <div className="my-2 p-2 text-xs overflow-x-scroll bg-gray-100 rounded-lg font-mono">
+            <div className="font-semibold text-gray-500 mb-1">Session</div>
+            <div className="whitespace-pre">{JSON.stringify(session, null, 2)}</div>
+          </div>
+        }
+        {signInResult && !signingIn && (
+          <div className="my-2 p-2 text-xs overflow-x-scroll bg-gray-100 rounded-lg font-mono">
+            <div className="font-semibold text-gray-500 mb-1">SIWF Result</div>
+            <div className="whitespace-pre">{JSON.stringify(signInResult, null, 2)}</div>
+          </div>
+        )}
+      </>
+    );
+  }

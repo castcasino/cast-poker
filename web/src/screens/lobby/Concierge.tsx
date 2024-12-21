@@ -16,7 +16,7 @@ type Table = {
     // seated: string[];
 }
 
-export default function Tables({ tableid }: { tableid: string}) {
+export default function Concierge({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
     const [tables, setTables] = useState<Table[]>()
@@ -51,16 +51,16 @@ export default function Tables({ tableid }: { tableid: string}) {
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex" aria-label="Tabs">
                         {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
-                        <Link href={`/${tableid}/players`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                            Players
-                        </Link>
-
-                        <Link href={`/${tableid}/tables`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
-                            Tables
+                        <Link href={`/${tableid}/lounge`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                            Lounge
                         </Link>
 
                         <Link href={`/${tableid}/mysuite`} className="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                             My Suite
+                        </Link>
+
+                        <Link href={`/${tableid}/concierge`} className="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                            Concierge
                         </Link>
                     </nav>
                 </div>
@@ -68,7 +68,7 @@ export default function Tables({ tableid }: { tableid: string}) {
 
             <div className="px-3 py-5">
                 <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
-                    Tables for Table # {tableid}
+                    Concierge for Table # {tableid}
                 </h1>
 
                 <div className="mb-4">

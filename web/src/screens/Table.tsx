@@ -42,7 +42,7 @@ type Deal = {
 
 const BLANK_HASH = '0x0000000000000000000000000000000000000000000000000000000000000000'
 
-export default function Lobby({ tableid }: { tableid: string}) {
+export default function Table({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
     const [table, setTable] = useState<Table>()

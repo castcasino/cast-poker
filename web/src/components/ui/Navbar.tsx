@@ -15,9 +15,9 @@ export function Navbar({ tableid }: { tableid: string}) {
 
             <div className="h-full flex flex-row">
 
-                <Link href={`/${tableid}/players`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
+                <Link href={`/${tableid}/lounge`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
                     <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
-                        Lounge
+                        Lobby
                     </span>
                 </Link>
 
@@ -37,7 +37,7 @@ export function Navbar({ tableid }: { tableid: string}) {
 
                 <Link href={`/${tableid}`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
                     <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
-                        Lobby
+                        Table
                     </span>
                 </Link>
 

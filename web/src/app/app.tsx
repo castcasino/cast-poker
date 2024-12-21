@@ -14,17 +14,17 @@ import Agent from '~/screens/help/Agent'
 import Fairplay from '~/screens/help/Fairplay'
 import Faq from '~/screens/help/Faq'
 
-// Import Lounge screens.
-import MySuite from '~/screens/lounge/MySuite'
-import Players from '~/screens/lounge/Players'
-import Tables from '~/screens/lounge/Tables'
+// Import Lobby screens.
+import Concierge from '~/screens/lobby/Concierge'
+import Lounge from '~/screens/lobby/Lounge'
+import MySuite from '~/screens/lobby/MySuite'
 
 // Import Earn screens.
 import Host from '~/screens/earn/Host'
 import Promote from '~/screens/earn/Promote'
 
 // Import screens.
-import Lobby from '~/screens/Lobby'
+import Table from '~/screens/Table'
 
 /* Import session manager. */
 import { sessionManager } from '~/lib/sessionManager'
@@ -36,7 +36,7 @@ export default function App({
     screenid: string,
     tableid: string,
 } = {
-    screenid: 'lobby',
+    screenid: 'table',
     tableid: '',
 }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -87,11 +87,11 @@ export default function App({
             {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
             {screenid === 'faq' && <Faq tableid={tableid} />}
             {screenid === 'host' && <Host tableid={tableid} />}
-            {screenid === 'lobby' && <Lobby tableid={tableid} />}
+            {screenid === 'table' && <Table tableid={tableid} />}
             {screenid === 'mysuite' && <MySuite tableid={tableid} />}
-            {screenid === 'players' && <Players tableid={tableid} />}
+            {screenid === 'lounge' && <Lounge tableid={tableid} />}
             {screenid === 'promote' && <Promote tableid={tableid} />}
-            {screenid === 'tables' && <Tables tableid={tableid} />}
+            {screenid === 'concierge' && <Concierge tableid={tableid} />}
         </main>
 
         <>

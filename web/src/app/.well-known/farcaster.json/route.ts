@@ -24,7 +24,7 @@ export async function GET() {
             homeUrl: appUrl,
             webhookUrl: `${appUrl}/api/webhook`,
             imageUrl: `${appUrl}/${tableid}/opengraph-image?${moment().unix()}`,
-            buttonTitle: "Enter Lobby",
+            buttonTitle: "Watch Table",
         },
     }
 
