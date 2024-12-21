@@ -14,30 +14,30 @@ import {
     useAccount,
     // useSendTransaction,
     // useWaitForTransactionReceipt,
-    // useSwitchChain,
+    useSwitchChain,
     useChainId,
 } from 'wagmi'
-// import { base, optimism } from 'wagmi/chains'
-// import { BaseError, UserRejectedRequestError } from 'viem'
+import { base, degen } from 'wagmi/chains'
+import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { Button } from '~/components/ui/Button'
 import splashIcon from '~/../public/splash.png'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
-// const renderError = (error: Error | null) => {
-//     if (!error) return null
+const renderError = (error: Error | null) => {
+    if (!error) return null
 
-//     if (error instanceof BaseError) {
-//         const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
 
-//         if (isUserRejection) {
-//             return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
-//         }
-//     }
+        if (isUserRejection) {
+            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+        }
+    }
 
-//     return <div className="text-red-500 text-xs mt-1">{error.message}</div>
-// }
+    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+}
 
 export default function MySuite({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -51,16 +51,16 @@ export default function MySuite({ tableid }: { tableid: string}) {
     const { address, isConnected } = useAccount()
     const chainId = useChainId()
 
-    // const {
-    //     switchChain,
-    //     error: switchChainError,
-    //     isError: isSwitchChainError,
-    //     isPending: isSwitchChainPending,
-    // } = useSwitchChain()
+    const {
+        switchChain,
+        error: switchChainError,
+        isError: isSwitchChainError,
+        isPending: isSwitchChainPending,
+    } = useSwitchChain()
 
-    // const handleSwitchChain = useCallback(() => {
-    //     switchChain({ chainId: chainId === base.id ? optimism.id : base.id })
-    // }, [ switchChain, chainId ])
+    const handleSwitchChain = useCallback(() => {
+        switchChain({ chainId: chainId === base.id ? degen.id : base.id })
+    }, [ switchChain, chainId ])
 
 
     const addFrame = useCallback(async () => {
@@ -294,17 +294,17 @@ export default function MySuite({ tableid }: { tableid: string}) {
 
             </section>
 
-            {/* <form className="px-3">
+            <form className="px-3">
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
 
-                        <p className="mt-1 text-sm/6 text-gray-600">
+                        <p className="mt-1 text-xl text-gray-600">
                             This information will be displayed publicly so be careful what you share.
                         </p>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-4">
-                                <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="username" className="block text-xl font-medium text-gray-900">
                                     Username
                                 </label>
 
@@ -325,7 +325,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             </div>
 
                             <div className="sm:col-span-4">
-                                <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="first-name" className="block text-xl font-medium text-gray-900">
                                     Nickname
                                 </label>
 
@@ -341,7 +341,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             </div>
 
                             <div className="sm:col-span-3">
-                                <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="postal-code" className="block text-xl font-medium text-gray-900">
                                     Farcaster ID
                                 </label>
 
@@ -356,7 +356,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             </div>
 
                             <div className="col-span-full">
-                                <label htmlFor="about" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="about" className="block text-xl font-medium text-gray-900">
                                     Player Bio
                                 </label>
 
@@ -367,13 +367,13 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                     ></textarea>
                                 </div>
 
-                                <p className="mt-3 text-sm/6 text-gray-600">
+                                <p className="mt-3 text-xl text-gray-600">
                                     Write a few sentences about yourself.
                                 </p>
                             </div>
 
                             <div className="col-span-full">
-                                <label htmlFor="cover-photo" className="block text-sm/6 font-medium text-gray-900">Cover photo</label>
+                                <label htmlFor="cover-photo" className="block text-xl font-medium text-gray-900">Cover photo</label>
 
                                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                     <div className="text-center">
@@ -384,7 +384,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                                 clipRule="evenodd"
                                             />
                                         </svg>
-                                        <div className="mt-4 flex text-sm/6 text-gray-600">
+                                        <div className="mt-4 flex text-xl text-gray-600">
                                             <label
                                                 htmlFor="file-upload"
                                                 className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
@@ -406,7 +406,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                             Notifications
                         </h2>
 
-                        <p className="mt-1 text-sm/6 text-gray-600">
+                        <p className="mt-1 text-xl text-gray-600">
                             We&rsquo;ll always let you know about important changes, but you pick what else you want to hear about.
                         </p>
 
@@ -509,7 +509,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                     Push notifications
                                 </legend>
 
-                                <p className="mt-1 text-sm/6 text-gray-600">
+                                <p className="mt-1 text-xl text-gray-600">
                                     These are delivered via SMS to your mobile phone.
                                 </p>
 
@@ -523,7 +523,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                             className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                         />
 
-                                        <label htmlFor="push-everything" className="block text-sm/6 font-medium text-gray-900">
+                                        <label htmlFor="push-everything" className="block text-xl font-medium text-gray-900">
                                             Everything
                                         </label>
                                     </div>
@@ -535,7 +535,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                             type="radio"
                                             className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                         />
-                                        <label htmlFor="push-email" className="block text-sm/6 font-medium text-gray-900">
+                                        <label htmlFor="push-email" className="block text-xl font-medium text-gray-900">
                                             Same as email
                                         </label>
                                     </div>
@@ -548,7 +548,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                                             className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                                         />
 
-                                        <label htmlFor="push-nothing" className="block text-sm/6 font-medium text-gray-900">
+                                        <label htmlFor="push-nothing" className="block text-xl font-medium text-gray-900">
                                             No push notifications
                                         </label>
                                     </div>
@@ -570,7 +570,7 @@ export default function MySuite({ tableid }: { tableid: string}) {
                         Save
                     </button>
                 </div>
-            </form> */}
+            </form>
 
         </main>
     )
