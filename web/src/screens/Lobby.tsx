@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-// import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
@@ -12,7 +12,9 @@ import numeral from 'numeral'
 
 // import { truncateAddress } from '~/lib/truncateAddress'
 // import { truncateHash } from '~/lib/truncateHash'
-// import splashIcon from '~/../public/splash.png'
+
+import desktopBanner from '~/../public/banners/fairplay-gaming-desktop.jpg'
+import mobileBanner from '~/../public/banners/fairplay-gaming-mobile.jpg'
 
 type Table = {
     community: Community;
@@ -71,9 +73,14 @@ export default function Lobby({ tableid }: { tableid: string}) {
 
     return (
         <main className="w-full">
-            <div className="w-full h-[80px] bg-gradient-to-b from-stone-500 to-stone-300 border-b-2 border-stone-500">
-                {/* Banner Advertisement */}
-            </div>
+            <Image
+                src={mobileBanner}
+                alt="Fairplay Gaming (Mobile) Banner"
+                className="sm:hidden w-full h-[80px] object-cover border-b-2 border-stone-500" />
+            <Image
+                src={desktopBanner}
+                alt="Fairplay Gaming (Desktop) Banner"
+                className="hidden sm:flex w-full h-[80px] object-cover border-b-2 border-stone-500" />
 
             <section className="hidden p-3">
                 <h2 className="text-slate-700 font-bold text-xl tracking-widest">

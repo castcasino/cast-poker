@@ -257,8 +257,11 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                         </span>
 
                         <span className="animate-bounce flex flex-row mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
-                            ${buyInValueDollars}
-                            <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
+                            <sup className="mt-4 pr-0.5 flex flex-col items-start text-2xl">
+                                $
+                            </sup>
+                            {buyInValueDollars}
+                            <sup className="mt-4 pl-0.5 flex flex-col items-start text-2xl">
                                 {buyInValueCents}
                             </sup>
                         </span>
