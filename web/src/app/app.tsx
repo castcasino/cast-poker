@@ -21,7 +21,7 @@ import MySuite from '~/screens/lobby/MySuite'
 
 // Import Earn screens.
 import Host from '~/screens/earn/Host'
-import Promote from '~/screens/earn/Promote'
+import Share from '~/screens/earn/Share'
 
 // Import screens.
 import Table from '~/screens/Table'
@@ -90,7 +90,7 @@ export default function App({
             {screenid === 'table' && <Table tableid={tableid} />}
             {screenid === 'mysuite' && <MySuite tableid={tableid} />}
             {screenid === 'lounge' && <Lounge tableid={tableid} />}
-            {screenid === 'promote' && <Promote tableid={tableid} />}
+            {screenid === 'share' && <Share tableid={tableid} />}
             {screenid === 'concierge' && <Concierge tableid={tableid} />}
         </section>
 
