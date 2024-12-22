@@ -146,7 +146,10 @@ export function Header({ tableid }: { tableid: string }) {
                 </span>
 
                 <span className="-mt-1.5 flex flex-row text-6xl font-bold text-lime-800">
-                    ${potValueDollars}
+                    <sup className="mt-5 pr-0.5 flex flex-col items-start text-4xl">
+                        $
+                    </sup>
+                    {potValueDollars}
                     <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
                         {potValueCents}
                         <span className="-mt-2 font-bold text-sm text-lime-600 tracking-widest">

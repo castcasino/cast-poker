@@ -82,7 +82,7 @@ export default function App({
     return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
 
-        <main className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
+        <section className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
             {screenid === 'agent' && <Agent tableid={tableid} />}
             {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
             {screenid === 'faq' && <Faq tableid={tableid} />}
@@ -92,7 +92,7 @@ export default function App({
             {screenid === 'lounge' && <Lounge tableid={tableid} />}
             {screenid === 'promote' && <Promote tableid={tableid} />}
             {screenid === 'concierge' && <Concierge tableid={tableid} />}
-        </main>
+        </section>
 
         <>
             <Navbar tableid={tableid} />
