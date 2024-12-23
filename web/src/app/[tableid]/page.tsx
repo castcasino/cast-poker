@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 type: 'launch_frame',
                 name: 'Table — Cast Poker',
                 url: `${appUrl}/${tableid}/`,
-                splashImageUrl: `${appUrl}/splash.png`,
+                splashImageUrl: `${appUrl}/splash.gif`,
                 splashBackgroundColor: '#f7f7f7',
             },
         },

@@ -19,7 +19,7 @@ export async function GET() {
             version: '1',
             name: 'Cast Poker',
             iconUrl: `${appUrl}/logo.png`,
-            splashImageUrl: `${appUrl}/splash.png`,
+            splashImageUrl: `${appUrl}/splash.gif`,
             splashBackgroundColor: '#cd98f9',
             homeUrl: appUrl,
             webhookUrl: `${appUrl}/api/webhook`,
