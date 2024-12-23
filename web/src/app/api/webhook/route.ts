@@ -41,6 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     const fid = data.fid
+console.log('FID', fid)
     const event = data.event
 
     switch (event.event) {
