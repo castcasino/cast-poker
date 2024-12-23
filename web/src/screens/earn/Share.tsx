@@ -92,7 +92,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <div className="mt-2 text-lg text-rose-700">
                                 <p>
-                                    We just checked our records and you <span className="font-bold">STILL</span> haven't earned a single penny in <span className="font-bold">FREE</span> referral rewards!
+                                    We just checked our records and you <span className="font-bold">STILL</span> haven&lsquo;t earned a single penny in <span className="font-bold">FREE</span> referral rewards!
 
                                 </p>
                             </div>

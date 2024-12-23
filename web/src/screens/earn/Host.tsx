@@ -72,31 +72,31 @@ export default function Host({ tableid }: { tableid: string}) {
 
     const handleBuyIn = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         setBuyIn(event.target.value)
-    }, [ buyIn ])
+    }, [])
 
     const handleAsset = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         return console.log('ASSET IS CURRENTLY RESTRICTED!')
         setAsset(event.target.value)
-    }, [ asset ])
+    }, [])
 
     const handleDeckType = useCallback((event: string) => {
         return console.log('DECK TYPE IS CURRENTLY RESTRICTED!')
         setDeckType(event)
-    }, [ deckType ])
+    }, [])
 
     const handleGameType = useCallback((event: string) => {
         return console.log('GAME TYPE IS CURRENTLY RESTRICTED!')
         setGameType(event)
-    }, [ gameType ])
+    }, [])
 
     const handleNetwork = useCallback((event: string) => {
         return console.log('NETWORK IS CURRENTLY RESTRICTED!')
         setNetwork(event)
-    }, [ network ])
+    }, [])
 
     const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         setTimeToSit(event.target.value)
-    }, [ timeToSit ])
+    }, [])
 
     const {
         writeContract,

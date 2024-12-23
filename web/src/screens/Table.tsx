@@ -95,37 +95,42 @@ export default function Table({ tableid }: { tableid: string}) {
             <section className="w-full">
                 <div className="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            alt="Flop card #1"
                         />
                     </div>
 
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            alt="Flop card #2"
                         />
                     </div>
 
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            alt="Flop card #3"
                         />
                     </div>
 
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            alt="Turn card"
                         />
                     </div>
 
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.river.card || '_'}.svg`}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
+                            alt="River card"
                         />
                     </div>
                 </div>

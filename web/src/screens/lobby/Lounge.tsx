@@ -24,10 +24,11 @@ export default function Lounge({ tableid }: { tableid: string}) {
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
+console.log('RESPONSE (lounge)', response)
             setTable(response.data)
         }
         fetchData()
-    }, [])
+    })
 
     useEffect(() => {
         const load = async () => {

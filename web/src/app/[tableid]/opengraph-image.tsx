@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ImageResponse } from 'next/og'
 
 import axios from 'axios'
@@ -20,8 +21,7 @@ interface Props {
     }>
 }
 
-export default async function Image({ params }: Props) {
-console.log('OPENGRAPH-IMAGE')
+export default async function OgImage({ params }: Props) {
     /* Initialize locals. */
     let table
 
@@ -54,9 +54,10 @@ console.log('OPENGRAPH-IMAGE')
             (
                 <div tw="w-full h-full flex flex-col justify-center items-center bg-red-800">
                     <section tw="flex items-center">
-                        <img
+                        <Image
                             src="https://assets.cast.casino/poker-table.png"
                             tw="h-20 w-20"
+                            alt="Poker table"
                         />
 
                         <span tw="pl-5 text-red-200 text-4xl font-light tracking-tight">
@@ -65,29 +66,34 @@ console.log('OPENGRAPH-IMAGE')
                     </section>
 
                     <section tw="mt-10 flex">
-                        <img
+                        <Image
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
+                            alt="Unset card of astronaut"
                         />
 
-                        <img
+                        <Image
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
+                            alt="Unset card of astronaut"
                         />
 
-                        <img
+                        <Image
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
+                            alt="Unset card of astronaut"
                         />
 
-                        <img
+                        <Image
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
+                            alt="Unset card of astronaut"
                         />
 
-                        <img
+                        <Image
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
+                            alt="Unset card of astronaut"
                         />
                     </section>
                 </div>
