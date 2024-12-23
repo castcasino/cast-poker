@@ -73,7 +73,7 @@ export default function Share({ tableid }: { tableid: string}) {
                     </span>
                 </Button>
 
-                <section className="mt-5 rounded-md bg-rose-50 p-4 border-2 border-rose-300">
+                <section className="mt-5 rounded-md bg-gradient-to-r from-rose-50 to-rose-100 p-4 border-2 border-rose-300">
                     <div className="flex">
                         <div className="shrink-0">
                             <svg className="size-10 text-rose-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -92,7 +92,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <div className="mt-2 text-lg text-rose-700">
                                 <p>
-                                    We just checked and you <span className="font-bold">STILL</span> haven't earned a single penny in <span className="font-bold">FREE</span> referral rewards!
+                                    We just checked our records and you <span className="font-bold">STILL</span> haven't earned a single penny in <span className="font-bold">FREE</span> referral rewards!
 
                                 </p>
                             </div>
@@ -106,7 +106,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                 Simply (re-)cast <span className="font-bold">ANY</span> table game out to your community of followers and you&rsquo;re done!
                             </p>
 
-                            <ol className="my-2 pl-10 list-decimal text-lg text-rose-700 tracking-tight">
+                            <ol className="my-2 pl-10 list-decimal text-lg text-rose-700 tracking-tight leading-8">
                                 <li>
                                     Earn <span className="text-xl font-bold text-rose-500">$0.03</span> on <span className="font-bold">EVERY</span> dollar buy-in, WIN or LOSE!
                                 </li>
@@ -148,7 +148,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
                                 <p className="text-2xl font-semibold text-gray-900">
-                                    71,897
+                                    0
                                 </p>
 
                                 <p className="ml-2 flex items-baseline text-sm font-semibold text-green-600">
@@ -160,7 +160,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                         />
                                     </svg>
                                     <span className="sr-only"> Increased by </span>
-                                    122
+                                    0
                                 </p>
 
                                 <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -192,7 +192,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
                                 <p className="text-2xl font-semibold text-gray-900">
-                                    58.16%
+                                    0.0%
                                 </p>
 
                                 <p className="ml-2 flex items-baseline text-sm font-semibold text-green-600">
@@ -204,7 +204,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                         />
                                     </svg>
                                     <span className="sr-only"> Increased by </span>
-                                    5.4%
+                                    0.0%
                                 </p>
 
                                 <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -236,7 +236,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
                                 <p className="text-2xl font-semibold text-gray-900">
-                                    24.57%
+                                    0.0%
                                 </p>
 
                                 <p className="ml-2 flex items-baseline text-sm font-semibold text-red-600">
@@ -248,7 +248,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                         />
                                     </svg>
                                     <span className="sr-only"> Decreased by </span>
-                                    3.2%
+                                    0.0%
                                 </p>
 
                                 <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -280,7 +280,7 @@ export default function Share({ tableid }: { tableid: string}) {
 
                             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
                                 <p className="text-2xl font-semibold text-gray-900">
-                                    2.16%
+                                    0.0%
                                 </p>
 
                                 <p className="ml-2 flex items-baseline text-sm font-semibold text-green-600">
@@ -292,7 +292,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                         />
                                     </svg>
                                     <span className="sr-only"> Increased by </span>
-                                    5.4%
+                                    0.0%
                                 </p>
 
                                 <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -310,10 +310,15 @@ export default function Share({ tableid }: { tableid: string}) {
 
                 <section className="my-10">
                     <h3 className="pl-3 text-base font-light text-slate-500 uppercase tracking-widest">
-                        Your <span className="font-bold text-lg">Activity</span> From The Last 30 days
+                        Your <span className="font-bold text-lg">Recent Activity</span>
+                        <small className="pl-2 text-xs italic">(updated 5 minutes ago)</small>
                     </h3>
 
-                    <div className="mt-3 px-10 flow-root">
+                    <p className="p-10 text-center font-bold italic text-slate-400 tracking-wider">
+                        You DO NOT have any recent activity
+                    </p>
+
+                    <div className="hidden mt-3 px-10 flow-root">
                         <ul role="list" className="-mb-8">
                             <li>
                                 <div className="relative pb-8">
@@ -432,7 +437,7 @@ export default function Share({ tableid }: { tableid: string}) {
                     </div>
                 </section>
 
-                <section className="my-10 rounded-md bg-yellow-50 p-4 border border-yellow-200">
+                <section className="my-10 rounded-md bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 border-2 border-yellow-300">
                     <div className="flex">
                         <div className="shrink-0">
                             <svg className="size-10 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -445,7 +450,7 @@ export default function Share({ tableid }: { tableid: string}) {
                         </div>
 
                         <div className="ml-3">
-                            <h3 className="text-base font-bold text-yellow-800">
+                            <h3 className="text-xl font-bold text-yellow-800">
                                 You Should Know!
                             </h3>
 
@@ -455,7 +460,7 @@ export default function Share({ tableid }: { tableid: string}) {
                                 </p>
 
                                 <p>
-                                    When a player creates a NEW session, via a different frame or link, referral rewards for the NEW session will be redirected to the NEW source of their latest engagement.
+                                    When a player creates a NEW session, by clicking on another frame or link, their referral rewards will then be directed towards the latest source of engagement.
                                 </p>
                             </div>
                         </div>
