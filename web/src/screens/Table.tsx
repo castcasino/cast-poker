@@ -71,6 +71,8 @@ export default function Table({ tableid }: { tableid: string}) {
         return <div>Loading. Please wait...</div>
     }
 
+const CARD_COVER = 'abstract'
+
     return (
         <main className="w-full">
             <Image
@@ -100,7 +102,7 @@ export default function Table({ tableid }: { tableid: string}) {
                 <div className="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                     <div className="flex justify-center">
                         <Image
-                            src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || 'covers/' + CARD_COVER}.svg`}
                             width={0}
                             height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
@@ -110,7 +112,7 @@ export default function Table({ tableid }: { tableid: string}) {
 
                     <div className="flex justify-center">
                         <Image
-                            src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || 'covers/' + CARD_COVER}.svg`}
                             width={0}
                             height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
@@ -120,7 +122,7 @@ export default function Table({ tableid }: { tableid: string}) {
 
                     <div className="flex justify-center">
                         <Image
-                            src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || 'covers/' + CARD_COVER}.svg`}
                             width={0}
                             height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
@@ -130,7 +132,7 @@ export default function Table({ tableid }: { tableid: string}) {
 
                     <div className="flex justify-center">
                         <Image
-                            src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || 'covers/' + CARD_COVER}.svg`}
                             width={0}
                             height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
@@ -140,7 +142,7 @@ export default function Table({ tableid }: { tableid: string}) {
 
                     <div className="flex justify-center">
                         <Image
-                            src={`https://assets.cast.casino/cards_01/${table?.community.river.card || '_'}.svg`}
+                            src={`https://assets.cast.casino/cards_01/${table?.community.river.card || 'covers/' + CARD_COVER}.svg`}
                             width={0}
                             height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
@@ -158,7 +160,7 @@ export default function Table({ tableid }: { tableid: string}) {
                         Blocks #{numeral(table?.community.flop1.blockIdx || 0).format('0,0')} - #{numeral(table?.community.river?.blockIdx || 0).format('0,0')}
                     </span>
 
-                    <span className="text-xs font-medium text-green-800 tracking-wider">
+                    <span className="flex flex-col items-center text-xs font-medium text-green-800 tracking-wider">
                         <pre className="block truncate">
                             {table?.community?.flop1?.blockHash || BLANK_HASH}
                         </pre>
