@@ -45,7 +45,7 @@ const renderError = (error: Error | null) => {
 }
 
 /* Set constants. */
-const CAST_POKER_CONTRACT_ADDR = '0xD54f3183bB58fAe987F2D1752FFc37BaB4DBaA95'
+const CAST_POKER_CONTRACT_ADDR = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 
 export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
