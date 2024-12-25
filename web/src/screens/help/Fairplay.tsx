@@ -195,7 +195,9 @@ console.log('CONTEXT', context)
                             <figcaption className="mt-6 flex gap-x-4">
                                 <Image
                                     className="size-6 flex-none rounded-full bg-gray-50"
-                                    src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    width={0}
+                                    height={0}
                                     alt=""
                                 />
 
@@ -219,7 +221,10 @@ console.log('CONTEXT', context)
                     <figure className="mt-16">
                         <Image
                             className="aspect-video rounded-xl bg-gray-50 object-cover border border-indigo-600 shadow"
-                            src="https://i.ibb.co/cXRjBc5/cGc.jpg" alt=""
+                            src="https://wsrv.nl/?url=https://i.ibb.co/cXRjBc5/cGc.jpg"
+                            width={0}
+                            height={0}
+                            alt=""
                         />
 
                         <figcaption className="mt-4 flex gap-x-2 text-sm/6 text-gray-500">

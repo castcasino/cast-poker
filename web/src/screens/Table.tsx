@@ -75,10 +75,14 @@ export default function Table({ tableid }: { tableid: string}) {
         <main className="w-full">
             <Image
                 src={mobileBanner}
+                width={0}
+                height={0}
                 alt="Fairplay Gaming (Mobile) Banner"
                 className="sm:hidden w-full h-[80px] object-cover border-b-2 border-stone-500" />
             <Image
                 src={desktopBanner}
+                width={0}
+                height={0}
                 alt="Fairplay Gaming (Desktop) Banner"
                 className="hidden sm:flex w-full h-[80px] object-cover border-b-2 border-stone-500" />
 
@@ -97,6 +101,8 @@ export default function Table({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || '_'}.svg`}
+                            width={0}
+                            height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                             alt="Flop card #1"
                         />
@@ -105,6 +111,8 @@ export default function Table({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
+                            width={0}
+                            height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                             alt="Flop card #2"
                         />
@@ -113,6 +121,8 @@ export default function Table({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
+                            width={0}
+                            height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                             alt="Flop card #3"
                         />
@@ -121,6 +131,8 @@ export default function Table({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || '_'}.svg`}
+                            width={0}
+                            height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                             alt="Turn card"
                         />
@@ -129,6 +141,8 @@ export default function Table({ tableid }: { tableid: string}) {
                     <div className="flex justify-center">
                         <Image
                             src={`https://assets.cast.casino/cards_01/${table?.community.river.card || '_'}.svg`}
+                            width={0}
+                            height={0}
                             className="w-16 sm:w-24 border sm:border-2 border-slate-700"
                             alt="River card"
                         />
