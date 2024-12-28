@@ -49,83 +49,85 @@ export function BuyIn({ token, value, onChange }: Props) {
     }, [])
 
     useEffect(() => {
-        switch(token) {
-        case '0x0000000000000000000000000000000000000000':
-            setBuyInOne({
-                value: '10000000000000000',
-                display: '0.01···',
-                displayUsd: numeral(quotes?.ETH.USD.price / 100).format('0,0.00') || '0'
-            })
-            setBuyInTwo({
-                value: '5000000000000000',
-                display: '0.005··',
-                displayUsd: numeral(quotes?.ETH.USD.price / 200).format('0,0.00') || '0'
-            })
-            setBuyInThree({
-                value: '1000000000000000',
-                display: '0.001··',
-                displayUsd: numeral(quotes?.ETH.USD.price / 1000).format('0,0.00') || '0'
-            })
-            setBuyInFour({
-                value: '500000000000000',
-                display: '0.0005·',
-                displayUsd: numeral(quotes?.ETH.USD.price / 2000).format('0,0.00') || '0'
-            })
-            setBuyInFive({
-                value: '100000000000000',
-                display: '0.0001·',
-                displayUsd: numeral(quotes?.ETH.USD.price / 10000).format('0,0.00') || '0'
-            })
-            setBuyInSix({
-                value: '50000000000000',
-                display: '0.00005',
-                displayUsd: numeral(quotes?.ETH.USD.price / 20000).format('0,0.00') || '0'
-            })
-            setBuyInSeven({
-                value: '10000000000000',
-                display: '0.00001',
-                displayUsd: numeral(quotes?.ETH.USD.price / 100000).format('0,0.00') || '0'
-            })
-            break
-        case '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed':
-            setBuyInOne({
-                value: '1000000000000000000000',
-                display: '1000',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 1000).format('0,0.00') || '0'
-            })
-            setBuyInTwo({
-                value: '500000000000000000000',
-                display: '500·',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 500).format('0,0.00') || '0'
-            })
-            setBuyInThree({
-                value: '100000000000000000000',
-                display: '100·',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 100).format('0,0.00') || '0'
-            })
-            setBuyInFour({
-                value: '50000000000000000000',
-                display: '50··',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 50).format('0,0.00') || '0'
-            })
-            setBuyInFive({
-                value: '10000000000000000000',
-                display: '10··',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 10).format('0,0.00') || '0'
-            })
-            setBuyInSix({
-                value: '5000000000000000000',
-                display: '5···',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 5).format('0,0.00') || '0'
-            })
-            setBuyInSeven({
-                value: '1000000000000000000',
-                display: '1···',
-                displayUsd: numeral(quotes?.DEGEN.USD.price * 1).format('0,0.00') || '0'
-            })
-            break
-        default:
-            // TODO
+        if (quotes) {
+            switch(token) {
+            case '0x0000000000000000000000000000000000000000':
+                setBuyInOne({
+                    value: '10000000000000000',
+                    display: '0.01···',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 100).format('0,0.00') || '0'
+                })
+                setBuyInTwo({
+                    value: '5000000000000000',
+                    display: '0.005··',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 200).format('0,0.00') || '0'
+                })
+                setBuyInThree({
+                    value: '1000000000000000',
+                    display: '0.001··',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 1000).format('0,0.00') || '0'
+                })
+                setBuyInFour({
+                    value: '500000000000000',
+                    display: '0.0005·',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 2000).format('0,0.00') || '0'
+                })
+                setBuyInFive({
+                    value: '100000000000000',
+                    display: '0.0001·',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 10000).format('0,0.00') || '0'
+                })
+                setBuyInSix({
+                    value: '50000000000000',
+                    display: '0.00005',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 20000).format('0,0.00') || '0'
+                })
+                setBuyInSeven({
+                    value: '10000000000000',
+                    display: '0.00001',
+                    displayUsd: numeral(quotes?.ETH.USD.price / 100000).format('0,0.00') || '0'
+                })
+                break
+            case '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed':
+                setBuyInOne({
+                    value: '1000000000000000000000',
+                    display: '1000',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 1000).format('0,0.00') || '0'
+                })
+                setBuyInTwo({
+                    value: '500000000000000000000',
+                    display: '500·',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 500).format('0,0.00') || '0'
+                })
+                setBuyInThree({
+                    value: '100000000000000000000',
+                    display: '100·',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 100).format('0,0.00') || '0'
+                })
+                setBuyInFour({
+                    value: '50000000000000000000',
+                    display: '50··',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 50).format('0,0.00') || '0'
+                })
+                setBuyInFive({
+                    value: '10000000000000000000',
+                    display: '10··',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 10).format('0,0.00') || '0'
+                })
+                setBuyInSix({
+                    value: '5000000000000000000',
+                    display: '5···',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 5).format('0,0.00') || '0'
+                })
+                setBuyInSeven({
+                    value: '1000000000000000000',
+                    display: '1···',
+                    displayUsd: numeral(quotes?.DEGEN.USD.price * 1).format('0,0.00') || '0'
+                })
+                break
+            default:
+                // TODO
+            }
         }
     }, [ quotes, token ])
 
