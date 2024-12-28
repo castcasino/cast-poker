@@ -75,7 +75,7 @@ export default function Host({ tableid }: { tableid: string}) {
     }, [])
 
     const handleAsset = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        return console.log('ASSET IS CURRENTLY RESTRICTED!')
+        console.log('ASSET IS CURRENTLY RESTRICTED!')
         setAsset(event.target.value)
     }, [])
 
@@ -122,6 +122,7 @@ export default function Host({ tableid }: { tableid: string}) {
         }
     }, [ isSDKLoaded ])
 
+    /* Handle asset. */
     useEffect(() => {
         if (asset === 'eth') {
             setToken('0x0000000000000000000000000000000000000000')
@@ -263,6 +264,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                     onChange={handleAsset} />
 
                 <BuyIn
+                    token={token}
                     value={buyIn}
                     onChange={handleBuyIn} />
 
