@@ -161,8 +161,6 @@ export function Footer({ tableid }: { tableid: string }) {
         isPending: isSendTxPending,
     } = useWriteContract()
 
-console.log('table?.token', table?.token)
-console.log('address', address)
     const {
         data: contractAllowance,
         // error: readContractError,
@@ -186,10 +184,8 @@ console.log('NEW ALLOWANCE ' + contractAllowance)
 
     const buyIn = useCallback(async () => {
         /* Initialize locals. */
+        // let functionName
         let value
-
-        /* Set function name. */
-        const functionName = 'buyIn'
 
         /* Set seed. */
 // TODO Allow host to set their own seed.
@@ -219,19 +215,43 @@ console.log('NEW ALLOWANCE ' + contractAllowance)
             value = BigInt(table.buyin)
         } else {
             if (contractAllowance === 0n) {
-alert('REQUEST AN ALLOWANCE TO CONTINUE')
+console.log('REQUEST AN ALLOWANCE TO CONTINUE')
+                /* Set function name. */
+                // functionName = 'approve'
+
+                /* Make on-chain execution request. */
+                writeContract(
+                    {
+                        abi: erc20Abi,
+                        address: table.token,
+                        functionName: 'approve',
+                        args: [
+                            CAST_POKER_ADDRESS, // spender / contract
+                            BigInt(1000),       // 2^256-1
+                        ],
+                        value,                  // undefined for ERC-20 tokens
+                    },
+                    {
+                        onSuccess: (hash) => {
+console.log('TRANSACTION SUCCESSFUL', hash)
+                            setTxHash(hash)
+                        },
+                    }
+                )
             } else {
-                // setAllowance(1337)
-alert('CONTRACT ALLOWANCE IS ' + contractAllowance)
+console.log('CONTRACT ALLOWANCE IS ' + contractAllowance)
             }
         }
+
+        /* Set function name. */
+        // functionName = 'buyIn'
 
         /* Make on-chain execution request. */
         writeContract(
             {
                 abi: castPokerAbi,
                 address: CAST_POKER_ADDRESS,
-                functionName,
+                functionName: 'buyIn',
                 args: [
                     BigInt(tableid),    // table id
                     BigInt(seed),       // seed
@@ -245,7 +265,6 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 },
             }
         )
-    // }, [ table, writeContract ])
     }, [
         address,
         context?.user,
