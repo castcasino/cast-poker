@@ -62,7 +62,8 @@ type Currency = {
 /* Set constants. */
 const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 // const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
-const MAX_ALLOWANCE = BigInt(0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe) // 2^256-1
+// const MAX_ALLOWANCE = BigInt(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) // 2^256-1
+const MAX_ALLOWANCE = BigInt('115792089237316195423570985008687907853269984665640564039457584007913129639935') // 2^256-1
 
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -217,7 +218,7 @@ console.log('NEW ALLOWANCE ' + contractAllowance)
             value = BigInt(table.buyin)
         } else {
             if (contractAllowance === 0n) {
-console.log('REQUEST AN ALLOWANCE TO CONTINUE')
+console.log('REQUEST AN ALLOWANCE TO CONTINUE', MAX_ALLOWANCE)
                 /* Set function name. */
                 // functionName = 'approve'
 
