@@ -57,7 +57,7 @@ export default async function OgImage({ params }: Props) {
                         <img
                             src="https://assets.cast.casino/poker-table.png"
                             tw="h-20 w-20"
-                            alt="Poker table"
+                            alt="poker table"
                         />
 
                         <span tw="pl-5 text-red-200 text-4xl font-light tracking-tight">
@@ -69,31 +69,31 @@ export default async function OgImage({ params }: Props) {
                         <img
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
-                            alt="Unset card of astronaut"
+                            alt="unset card of astronaut"
                         />
 
                         <img
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
-                            alt="Unset card of astronaut"
+                            alt="unset card of astronaut"
                         />
 
                         <img
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
-                            alt="Unset card of astronaut"
+                            alt="unset card of astronaut"
                         />
 
                         <img
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
-                            alt="Unset card of astronaut"
+                            alt="unset card of astronaut"
                         />
 
                         <img
                             src="https://assets.cast.casino/cards_01/covers/astronaut.svg"
                             tw="mx-1 w-26 border-2 border-slate-700"
-                            alt="Unset card of astronaut"
+                            alt="unset card of astronaut"
                         />
                     </section>
                 </div>
@@ -109,6 +109,7 @@ export default async function OgImage({ params }: Props) {
                     <img
                         src="https://assets.cast.casino/poker-table.png"
                         tw="h-20 w-20"
+                        alt="poker table"
                     />
 
                     <span tw="pl-5 text-green-100 text-4xl font-light tracking-tight">
@@ -120,26 +121,31 @@ export default async function OgImage({ params }: Props) {
                     <img
                         src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || '_'}.svg`}
                         tw="mx-1 w-26 border-2 border-slate-700"
+                        alt="flop card #1"
                     />
 
                     <img
                         src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || '_'}.svg`}
                         tw="mx-1 w-26 border-2 border-slate-700"
+                        alt="flop card #2"
                     />
 
                     <img
                         src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || '_'}.svg`}
                         tw="mx-1 w-26 border-2 border-slate-700"
+                        alt="flop card #3"
                     />
 
                     <img
                         src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || '_'}.svg`}
                         tw="mx-1 w-26 border-2 border-slate-700"
+                        alt="turn card"
                     />
 
                     <img
                         src={`https://assets.cast.casino/cards_01/${table?.community.river.card || '_'}.svg`}
                         tw="mx-1 w-26 border-2 border-slate-700"
+                        alt="river card"
                     />
                 </section>
             </div>

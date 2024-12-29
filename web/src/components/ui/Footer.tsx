@@ -100,7 +100,7 @@ export function Footer({ tableid }: { tableid: string }) {
             setNextTableId(response.data.tableid)
         }
         fetchData()
-    }, [])
+    }, [ context?.user?.fid])
 
     useEffect(() => {
         /* Validate quotes. */
@@ -132,11 +132,7 @@ export function Footer({ tableid }: { tableid: string }) {
 
         setBuyInValueDollars(dollars)
         setBuyInValueCents(cents)
-    }, [
-        quotes?.DEGEN?.USD?.price,
-        quotes?.ETH?.USD?.price,
-        table?.buyin,
-    ])
+    }, [ quotes, table ])
 
     useEffect(() => {
         const load = async () => {

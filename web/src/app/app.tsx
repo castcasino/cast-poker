@@ -77,7 +77,7 @@ export default function App({
 
         /* Call session manager. */
         sessionManager(JSON.stringify(session))
-    }, [ context ])
+    }, [ address, context, isConnected ])
 
     return <main className="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header tableid={tableid} />
