@@ -300,11 +300,11 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                     </div>}
                 </section>
 
-                <div className="py-1 flex">
+                <div className="pb-2 flex">
                     {/* Buy-in Button */}
                     <button
                         onClick={buyIn}
-                        className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-lg shadow hover:bg-lime-800"
+                        className="group px-3 flex flex-col items-center justify-center border-2 border-t-0 border-lime-500 bg-lime-200 rounded-lg rounded-t-none shadow hover:bg-lime-900"
                         disabled={isSendTxPending}
                     >
                         <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">

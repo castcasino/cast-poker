@@ -15,28 +15,28 @@ export function Navbar({ tableid }: { tableid: string}) {
 
             <div className="h-full flex flex-row">
 
-                <Link href={`/${tableid}/lounge`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
-                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
+                <Link href={`/${tableid}/lounge`} className='group h-full flex items-center px-3 bg-slate-200 border-x border-amber-400 hover:bg-amber-600'>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase group-hover:text-slate-200">
                         Lobby
                     </span>
                 </Link>
 
-                <Link href={`/${tableid}/share`} className={'relative h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
-                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
+                <Link href={`/${tableid}/share`} className='group h-full flex items-center px-3 bg-slate-200 border-x border-amber-400 hover:bg-amber-600'>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase group-hover:text-slate-200">
                         Earn<span className="text-lime-500 font-bold">＄</span>
                     </span>
                 </Link>
 
-                <Link href={`/${tableid}/faq`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
-                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
+                <Link href={`/${tableid}/faq`} className='group h-full flex items-center px-3 bg-slate-200 border-x border-amber-400 hover:bg-amber-600'>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase group-hover:text-slate-200">
                         Help?
                     </span>
                 </Link>
 
-                <div className="mx-2 h-full border-dashed border-r border-amber-400" />
+                <div className="mx-2 h-full" />
 
-                <Link href={`/${tableid}`} className={'h-full flex items-center px-3 bg-slate-200 border-x border-amber-400'}>
-                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase">
+                <Link href={`/${tableid}`} className='group h-full flex items-center px-3 bg-slate-200 border-x border-amber-400 hover:bg-amber-600'>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight sm:tracking-widest uppercase group-hover:text-slate-200">
                         Table
                     </span>
                 </Link>
