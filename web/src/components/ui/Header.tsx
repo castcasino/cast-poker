@@ -16,7 +16,7 @@ import { truncateAddress } from '~/lib/truncateAddress'
 import splashIcon from '~/../public/splash.png'
 
 type Table = {
-    host: string;
+    host: `0x${string}`;
     pot: string;
     seats: number;
     seated: Seat[];

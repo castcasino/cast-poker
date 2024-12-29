@@ -45,7 +45,7 @@ const renderError = (error: Error | null) => {
 }
 
 /* Set constants. */
-const CAST_POKER_CONTRACT_ADDR = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
+const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 
 export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -180,7 +180,7 @@ export default function Host({ tableid }: { tableid: string}) {
         writeContract(
             {
                 abi,
-                address: CAST_POKER_CONTRACT_ADDR,
+                address: CAST_POKER_ADDRESS,
                 functionName,
                 args: [
                     token,              // token

@@ -6,7 +6,8 @@ import { usePlausible } from 'next-plausible'
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
 import {
-    // useAccount,
+    useAccount,
+    useReadContract,
     useWriteContract,
     useWaitForTransactionReceipt,
     // useSwitchChain,
@@ -18,7 +19,8 @@ import axios from 'axios'
 import moment from 'moment'
 import numeral from 'numeral'
 
-import { abi } from '~/abi/CastPoker'
+import castPokerAbi from '~/abi/CastPoker'
+import erc20Abi from '~/abi/ERC20'
 
 import { truncateAddress } from '~/lib/truncateAddress'
 
@@ -37,7 +39,7 @@ const renderError = (error: Error | null) => {
 }
 
 type Table = {
-    token: string;
+    token: `0x${string}`;
     buyin: string;
     tts: string;
     pot: string;
@@ -58,7 +60,7 @@ type Currency = {
 }
 
 /* Set constants. */
-const CAST_POKER_CONTRACT_ADDR = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
+const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -73,7 +75,7 @@ export function Footer({ tableid }: { tableid: string }) {
     const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
 
     const plausible = usePlausible()
-    // const { address, isConnected } = useAccount()
+    const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
     useEffect(() => {
@@ -162,7 +164,7 @@ export function Footer({ tableid }: { tableid: string }) {
             hash: txHash as `0x${string}`,
         })
 
-    const buyIn = useCallback(() => {
+    const buyIn = useCallback(async () => {
         /* Initialize locals. */
         let value
 
@@ -172,6 +174,11 @@ export function Footer({ tableid }: { tableid: string }) {
         /* Set seed. */
 // TODO Allow host to set their own seed.
         const seed = '0'
+
+        /* Validate wallet connection. */
+        if (!isConnected || !address) {
+            return alert('Your wallet is NOT connected!')
+        }
 
         /* Track buy-ins. */
         plausible('buyIn', {
@@ -190,13 +197,24 @@ export function Footer({ tableid }: { tableid: string }) {
         // NOTE: Only required for "native" asset buy-ins.
         if (table.token === '0x0000000000000000000000000000000000000000') {
             value = BigInt(table.buyin)
+        } else {
+            /* Request (token) allowance. */
+            const allowance = await useReadContract({
+                address: table.token,
+                abi: erc20Abi,
+                functionName: 'allowance',
+                args: [ address, CAST_POKER_ADDRESS ],
+            })
+console.log('TOKEN ALLOWANCE', allowance)
+alert(JSON.stringify(allowance))
+return
         }
 
         /* Make on-chain execution request. */
         writeContract(
             {
-                abi,
-                address: CAST_POKER_CONTRACT_ADDR,
+                abi: castPokerAbi,
+                address: CAST_POKER_ADDRESS,
                 functionName,
                 args: [
                     BigInt(tableid),    // table id
@@ -218,7 +236,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
         <>
             {/* (Hidden) Status Bar */}
             {(txHash || isSendTxError) && <section className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
-                <span className="text-sm font-medium text-amber-100 tracking-wider">
+                <span className="text-xs font-medium text-amber-100 tracking-wider">
                     {isSendTxError && renderError(sendTxError)}
                 </span>
 
@@ -226,7 +244,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                     Hash: {truncateAddress(txHash)}
                 </span>}
 
-                <span className="text-sm font-medium text-amber-100 tracking-wider">
+                <span className="text-xs font-medium text-amber-100 tracking-wider">
                     [
                         Status :&nbsp;
                         {isConfirming
