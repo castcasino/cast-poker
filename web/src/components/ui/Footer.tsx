@@ -37,6 +37,7 @@ const renderError = (error: Error | null) => {
 }
 
 type Table = {
+    token: string;
     buyin: string;
     tts: string;
     pot: string;
@@ -110,12 +111,26 @@ export function Footer({ tableid }: { tableid: string }) {
             return
         }
 
-        const buyinValue = formatEther(BigInt(table.buyin))
-        const usdValue = quotes?.ETH?.USD?.price || 0
-        const buyinUsdValue = Number(buyinValue) * usdValue
+        /* Initialize locals. */
+        let buyinValue
+        let usdValue
+        let buyinUsdValue
+        let dollars
+        let cents
 
-        const dollars = numeral(buyinUsdValue).format('0,0')
-        const cents = numeral(buyinUsdValue).format('.00[00]')
+        /* Handle fiat value. */
+// TODO Allow multiple tokens.
+        if (table.token === '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed') {
+            usdValue = quotes?.DEGEN?.USD?.price || 0
+        } else {
+            usdValue = quotes?.ETH?.USD?.price || 0
+        }
+
+        buyinValue = formatEther(BigInt(table.buyin))
+        buyinUsdValue = Number(buyinValue) * usdValue
+
+        dollars = numeral(buyinUsdValue).format('0,0')
+        cents = numeral(buyinUsdValue).format('.00[00]')
 
         setBuyInValueDollars(dollars)
         setBuyInValueCents(cents)
@@ -152,9 +167,10 @@ export function Footer({ tableid }: { tableid: string }) {
         })
 
     const buyIn = useCallback(() => {
-// alert('buy-in')
+        /* Initialize locals. */
+        let value
+
         /* Set function name. */
-        // const functionName = gameType === 'community' ? 'setTable' : 'setBench'
         const functionName = 'buyIn'
 
         /* Set seed. */
@@ -174,6 +190,12 @@ export function Footer({ tableid }: { tableid: string }) {
             return alert('Error: Table data.')
         }
 
+        /* Handle buy-in value. */
+        // NOTE: Only required for "native" asset buy-ins.
+        if (table.token === '0x0000000000000000000000000000000000000000') {
+            value = BigInt(table.buyin)
+        }
+
         /* Make on-chain execution request. */
         writeContract(
             {
@@ -184,7 +206,7 @@ export function Footer({ tableid }: { tableid: string }) {
                     BigInt(tableid),    // table id
                     BigInt(seed),       // seed
                 ],
-                value: BigInt(table.buyin),
+                value,                  // undefined for ERC-20 tokens
             },
             {
                 onSuccess: (hash) => {
@@ -193,23 +215,11 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 },
             }
         )
-    }, [ table, writeContract ])
+    // }, [ table, writeContract ])
+    }, [ table ])
 
     return (
         <>
-
-
-{txHash && (
-    <div className="mt-2 text-xs">
-        <div className="">
-
-        </div>
-
-        <div className="">
-
-        </div>
-    </div>
-)}
             {/* (Hidden) Status Bar */}
             {(txHash || isSendTxError) && <section className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
                 <span className="text-sm font-medium text-amber-100 tracking-wider">
