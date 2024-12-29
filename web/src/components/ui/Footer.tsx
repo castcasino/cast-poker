@@ -74,6 +74,8 @@ export function Footer({ tableid }: { tableid: string }) {
     const [buyInValueDollars, setBuyInValueDollars] = useState<string>('0')
     const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
 
+    const [allowance, setAllowance] = useState(0)
+
     const plausible = usePlausible()
     const { address, isConnected } = useAccount()
     // const chainId = useChainId()
@@ -133,6 +135,21 @@ export function Footer({ tableid }: { tableid: string }) {
         setBuyInValueDollars(dollars)
         setBuyInValueCents(cents)
     }, [ quotes, table ])
+
+    useEffect(() => {
+        const fetchAllowance = async () => {
+            /* Request (token) allowance. */
+            const allowance = await useReadContract({
+                address: table.token,
+                abi: erc20Abi,
+                functionName: 'allowance',
+                args: [ address, CAST_POKER_ADDRESS ],
+            })
+console.log('TOKEN ALLOWANCE', allowance)
+alert(JSON.stringify(allowance))
+        }
+        fetchAllowance()
+    }, [ address, table.token ])
 
     useEffect(() => {
         const load = async () => {
@@ -198,16 +215,11 @@ export function Footer({ tableid }: { tableid: string }) {
         if (table.token === '0x0000000000000000000000000000000000000000') {
             value = BigInt(table.buyin)
         } else {
-            /* Request (token) allowance. */
-            const allowance = await useReadContract({
-                address: table.token,
-                abi: erc20Abi,
-                functionName: 'allowance',
-                args: [ address, CAST_POKER_ADDRESS ],
-            })
-console.log('TOKEN ALLOWANCE', allowance)
-alert(JSON.stringify(allowance))
-return
+            if (allowance === 0) {
+alert('REQUEST AN ALLOWANCE TO CONTINUE')
+            } else {
+alert('ALLOWANCE IS ' + allowance)
+            }
         }
 
         /* Make on-chain execution request. */
@@ -235,6 +247,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
         context?.user,
         isConnected,
         plausible,
+        table,
         tableid,
         writeContract,
     ])
