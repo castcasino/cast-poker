@@ -48,12 +48,13 @@ export default function Table({ tableid }: { tableid: string}) {
     const [table, setTable] = useState<Table>()
 
     useEffect(() => {
+console.log('FETCHING TABLE DATA', tableid)
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
             setTable(response.data)
         }
         fetchData()
-    }, [])
+    }, [ tableid ])
 
     useEffect(() => {
         const load = async () => {

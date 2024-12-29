@@ -16,6 +16,7 @@ import { truncateAddress } from '~/lib/truncateAddress'
 import splashIcon from '~/../public/splash.png'
 
 type Table = {
+    token: `0x${string}`;
     host: `0x${string}`;
     pot: string;
     seats: number;
@@ -61,7 +62,7 @@ export function Header({ tableid }: { tableid: string }) {
             setTable(response.data)
         }
         fetchData()
-    }, [])
+    }, [ tableid ])
 
     useEffect(() => {
         /* Validate quotes. */
@@ -74,8 +75,19 @@ export function Header({ tableid }: { tableid: string }) {
             return
         }
 
+        /* Initialize locals. */
+        let usdValue
+
+        /* Handle fiat value. */
+// TODO Allow multiple tokens.
+        if (table.token === '0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed') {
+            usdValue = quotes?.DEGEN?.USD?.price || 0
+        } else {
+            usdValue = quotes?.ETH?.USD?.price || 0
+        }
+
         const potValue = formatEther(BigInt(table.pot))
-        const usdValue = quotes?.ETH?.USD?.price || 0
+        usdValue = quotes?.ETH?.USD?.price || 0
         const potUsdValue = Number(potValue) * usdValue
 
         const dollars = numeral(potUsdValue).format('0,0')
@@ -83,7 +95,11 @@ export function Header({ tableid }: { tableid: string }) {
 
         setPotValueDollars(dollars)
         setPotValueCents(cents)
-    }, [ quotes, table ])
+    }, [
+        quotes?.DEGEN?.USD?.price,
+        quotes?.ETH?.USD?.price,
+        table?.pot,
+    ])
 
     useEffect(() => {
         const load = async () => {

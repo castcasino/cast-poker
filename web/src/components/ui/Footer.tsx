@@ -92,7 +92,7 @@ export function Footer({ tableid }: { tableid: string }) {
             setTable(response.data)
         }
         fetchData()
-    }, [])
+    }, [ tableid ])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -132,7 +132,11 @@ export function Footer({ tableid }: { tableid: string }) {
 
         setBuyInValueDollars(dollars)
         setBuyInValueCents(cents)
-    }, [ quotes, table ])
+    }, [
+        quotes?.DEGEN?.USD?.price,
+        quotes?.ETH?.USD?.price,
+        table?.buyin,
+    ])
 
     useEffect(() => {
         const load = async () => {
@@ -230,7 +234,14 @@ console.log('TRANSACTION SUCCESSFUL', hash)
             }
         )
     // }, [ table, writeContract ])
-    }, [ table ])
+    }, [
+        address,
+        context?.user,
+        isConnected,
+        plausible,
+        tableid,
+        writeContract,
+    ])
 
     return (
         <>
