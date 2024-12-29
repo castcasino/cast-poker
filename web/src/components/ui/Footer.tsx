@@ -62,7 +62,7 @@ type Currency = {
 /* Set constants. */
 const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 // const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
-const MAX_ALLOWANCE = BigInt(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)
+const MAX_ALLOWANCE = BigInt(0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe) // 2^256-1
 
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
