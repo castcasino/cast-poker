@@ -61,6 +61,8 @@ type Currency = {
 
 /* Set constants. */
 const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
+// const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+const MAX_ALLOWANCE = BigInt(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)
 
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
@@ -227,7 +229,7 @@ console.log('REQUEST AN ALLOWANCE TO CONTINUE')
                         functionName: 'approve',
                         args: [
                             CAST_POKER_ADDRESS, // spender / contract
-                            BigInt(1000),       // 2^256-1
+                            MAX_ALLOWANCE,      // 2^256-1
                         ],
                         value,                  // undefined for ERC-20 tokens
                     },
@@ -238,6 +240,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                         },
                     }
                 )
+return // FIXME Use useWaitForTransactionReceipt
             } else {
 console.log('CONTRACT ALLOWANCE IS ' + contractAllowance)
             }
