@@ -95,11 +95,7 @@ export function Header({ tableid }: { tableid: string }) {
 
         setPotValueDollars(dollars)
         setPotValueCents(cents)
-    }, [
-        quotes?.DEGEN?.USD?.price,
-        quotes?.ETH?.USD?.price,
-        table?.pot,
-    ])
+    }, [ quotes, table ])
 
     useEffect(() => {
         const load = async () => {

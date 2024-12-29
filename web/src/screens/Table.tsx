@@ -197,9 +197,12 @@ const CARD_COVER = 'abstract'
                     {Object.keys(table.seated).map((_seatid) => (
                         <div key="_seatid" className="px-3 py-2 flex flex-col gap-2 bg-gradient-to-r from-amber-600 to-amber-800 border-2 border-amber-300 rounded-xl shadow">
                             <div className="flex flex-row items-center gap-2">
-                                <img
+                                <Image
                                     src="https://assets.cast.casino/cards_01/covers/abstract.svg"
                                     className="mr-5 w-12 border-2 border-slate-700"
+                                    alt="Card cover"
+                                    width={0}
+                                    height={0}
                                 />
 
                                 <div className="py-2 flex flex-col truncate">
@@ -214,9 +217,12 @@ const CARD_COVER = 'abstract'
                             </div>
 
                             <div className="flex flex-row items-center gap-2">
-                                <img
+                                <Image
                                     src="https://assets.cast.casino/cards_01/covers/abstract.svg"
                                     className="mr-5 w-12 border-2 border-slate-700"
+                                    alt="Card cover"
+                                    width={0}
+                                    height={0}
                                 />
 
                                 <div className="py-2 flex flex-col truncate">

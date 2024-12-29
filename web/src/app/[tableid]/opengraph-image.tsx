@@ -1,5 +1,7 @@
-import { ImageResponse } from 'next/og'
+/* eslint-disable @next/next/no-img-element */
 
+/* Import modules. */
+import { ImageResponse } from 'next/og'
 import axios from 'axios'
 
 export const runtime = 'edge'
