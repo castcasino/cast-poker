@@ -17,7 +17,7 @@ import {
 } from 'wagmi'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
-import { abi } from '~/abi/CastPoker'
+import castPokerAbi from '~/abi/CastPoker'
 
 import { Asset } from '~/components/ui/host/Asset'
 import { Button } from '~/components/ui/Button'
@@ -179,7 +179,7 @@ export default function Host({ tableid }: { tableid: string}) {
         /* Make on-chain execution request. */
         writeContract(
             {
-                abi,
+                abi: castPokerAbi,
                 address: CAST_POKER_ADDRESS,
                 functionName,
                 args: [
