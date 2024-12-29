@@ -161,6 +161,8 @@ export function Footer({ tableid }: { tableid: string }) {
         isPending: isSendTxPending,
     } = useWriteContract()
 
+console.log('table?.token', table?.token)
+console.log('address', address)
     const {
         data: contractAllowance,
         // error: readContractError,
@@ -282,21 +284,27 @@ console.log('TRANSACTION SUCCESSFUL', hash)
             <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
 
                 {/* Game Status Window */}
-                <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-400">
-                    <span className="text-xs sm:text-lg font-medium text-amber-200 tracking-widest">
+                <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-900">
+                    <span className="text-xs sm:text-sm font-medium text-amber-100 tracking-tight uppercase">
                         Showdown By
                     </span>
 
-                    {table && <span className="text-xs sm:text-sm font-bold text-amber-200 tracking-wider">
-                        {moment.unix(Number(table.tts) + Number(table.createdAt)).format('lll')}
-                    </span>}
+                    {table && <div className="flex flex-col gap-0 items-center">
+                        <span className="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                            {moment.unix(Number(table.tts) + Number(table.createdAt)).format('MMM Do')}
+                        </span>
+
+                        <span className="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                            @ {moment.unix(Number(table.tts) + Number(table.createdAt)).format('H:mm A')}
+                        </span>
+                    </div>}
                 </section>
 
-                <div className="py-2 flex flex-row gap-3">
+                <div className="py-1 flex">
                     {/* Buy-in Button */}
                     <button
                         onClick={buyIn}
-                        className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-xl shadow hover:bg-lime-800"
+                        className="group px-3 flex flex-col items-center justify-center border-2 border-lime-500 bg-lime-200 rounded-lg shadow hover:bg-lime-800"
                         disabled={isSendTxPending}
                     >
                         <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
@@ -317,10 +325,12 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                             ❭❭❭ click here ❬❬❬
                         </span>
                     </button>
+                </div>
 
                     {/* Next Table Button */}
-                    <button onClick={handleNextTable} className="px-3 py-2 flex flex-col items-center justify-center border-2 border-r-0 border-amber-500 bg-stone-900 rounded-l-xl hover:bg-stone-700">
-                        <span className="text-xs sm:text-xl font-bold text-amber-200 tracking-widest">
+                <button onClick={handleNextTable} className="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
+                    <div className="pl-3 flex flex-col items-center justify-center">
+                        <span className="text-xs sm:text-xl font-bold text-amber-100 tracking-tight">
                             Next Table
                         </span>
 
@@ -328,15 +338,20 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                             # {nextTableId}
                         </small> */}
 
-                        <span className="text-sm sm:text-lg font-bold text-amber-400 tracking-wider">
+                        <span className="text-xl sm:text-2xl font-bold text-amber-300 tracking-widest">
                             $ETH
-                            <span className="-mt-1.5 block text-xs sm:text-sm">
+                            <span className="-mt-1.5 block text-sm sm:text-base tracking-wider">
                                 on Base
                             </span>
                         </span>
-                    </button>
+                    </div>
 
-                </div>
+                    <div className="flex pr-1">
+                        <svg className="size-6 text-amber-500 group-hover:text-yellow-500 group-hover:animate-pulse" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"></path>
+                        </svg>
+                    </div>
+                </button>
             </footer>
         </>
     )
