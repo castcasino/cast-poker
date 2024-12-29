@@ -74,7 +74,7 @@ export function Footer({ tableid }: { tableid: string }) {
     const [buyInValueDollars, setBuyInValueDollars] = useState<string>('0')
     const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
 
-    const [allowance, setAllowance] = useState(0)
+    // const [allowance, setAllowance] = useState(0)
 
     const plausible = usePlausible()
     const { address, isConnected } = useAccount()
@@ -137,21 +137,6 @@ export function Footer({ tableid }: { tableid: string }) {
     }, [ quotes, table ])
 
     useEffect(() => {
-        const fetchAllowance = async () => {
-            /* Request (token) allowance. */
-            const allowance = await useReadContract({
-                address: table.token,
-                abi: erc20Abi,
-                functionName: 'allowance',
-                args: [ address, CAST_POKER_ADDRESS ],
-            })
-console.log('TOKEN ALLOWANCE', allowance)
-alert(JSON.stringify(allowance))
-        }
-        fetchAllowance()
-    }, [ address, table.token ])
-
-    useEffect(() => {
         const load = async () => {
             setContext(await sdk.context)
             sdk.actions.ready()
@@ -175,6 +160,22 @@ alert(JSON.stringify(allowance))
         isError: isSendTxError,
         isPending: isSendTxPending,
     } = useWriteContract()
+
+    const {
+        data: contractAllowance,
+        // error: readContractError,
+        // isPending: isReadContractPending,
+    } = useReadContract({
+        address: table?.token,
+        abi: erc20Abi,
+        functionName: 'allowance',
+        args: [ address || '0x', CAST_POKER_ADDRESS ],
+        query: { enabled: !!address },
+    })
+
+    useEffect(() => {
+        alert('NEW ALLOWANCE ' + contractAllowance)
+    }, [ contractAllowance ])
 
     const { isLoading: isConfirming, isSuccess: isConfirmed } =
         useWaitForTransactionReceipt({
@@ -218,8 +219,8 @@ alert(JSON.stringify(allowance))
             if (allowance === 0) {
 alert('REQUEST AN ALLOWANCE TO CONTINUE')
             } else {
-                setAllowance(1337)
-alert('ALLOWANCE IS ' + allowance)
+                // setAllowance(1337)
+alert('CONTRACT ALLOWANCE IS ' + contractAllowance)
             }
         }
 
