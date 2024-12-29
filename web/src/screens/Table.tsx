@@ -48,7 +48,6 @@ export default function Table({ tableid }: { tableid: string}) {
     const [table, setTable] = useState<Table>()
 
     useEffect(() => {
-console.log('FETCHING TABLE DATA', tableid)
         const fetchData = async () => {
             const response = await axios.get('https://cast.casino/v1/poker/table/' + tableid)
             setTable(response.data)
@@ -77,12 +76,14 @@ const CARD_COVER = 'abstract'
     return (
         <main className="w-full">
             <Image
+                priority
                 src={mobileBanner}
                 width={0}
                 height={0}
                 alt="Fairplay Gaming (Mobile) Banner"
                 className="sm:hidden w-full h-[80px] object-cover border-b-2 border-stone-500" />
             <Image
+                priority
                 src={desktopBanner}
                 width={0}
                 height={0}

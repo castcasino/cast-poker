@@ -170,11 +170,11 @@ export function Footer({ tableid }: { tableid: string }) {
         abi: erc20Abi,
         functionName: 'allowance',
         args: [ address || '0x', CAST_POKER_ADDRESS ],
-        query: { enabled: !!address },
+        query: { enabled: !!address && !!table?.token },
     })
 
     useEffect(() => {
-        alert('NEW ALLOWANCE ' + contractAllowance)
+console.log('NEW ALLOWANCE ' + contractAllowance)
     }, [ contractAllowance ])
 
     const { isLoading: isConfirming, isSuccess: isConfirmed } =
