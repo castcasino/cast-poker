@@ -218,6 +218,7 @@ alert(JSON.stringify(allowance))
             if (allowance === 0) {
 alert('REQUEST AN ALLOWANCE TO CONTINUE')
             } else {
+                setAllowance(1337)
 alert('ALLOWANCE IS ' + allowance)
             }
         }
