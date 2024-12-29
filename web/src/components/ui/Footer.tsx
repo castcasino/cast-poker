@@ -216,7 +216,7 @@ export function Footer({ tableid }: { tableid: string }) {
         if (table.token === '0x0000000000000000000000000000000000000000') {
             value = BigInt(table.buyin)
         } else {
-            if (allowance === 0) {
+            if (contractAllowance === 0n) {
 alert('REQUEST AN ALLOWANCE TO CONTINUE')
             } else {
                 // setAllowance(1337)
