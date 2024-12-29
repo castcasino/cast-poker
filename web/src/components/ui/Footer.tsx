@@ -112,11 +112,7 @@ export function Footer({ tableid }: { tableid: string }) {
         }
 
         /* Initialize locals. */
-        let buyinValue
         let usdValue
-        let buyinUsdValue
-        let dollars
-        let cents
 
         /* Handle fiat value. */
 // TODO Allow multiple tokens.
@@ -126,11 +122,11 @@ export function Footer({ tableid }: { tableid: string }) {
             usdValue = quotes?.ETH?.USD?.price || 0
         }
 
-        buyinValue = formatEther(BigInt(table.buyin))
-        buyinUsdValue = Number(buyinValue) * usdValue
+        const buyinValue = formatEther(BigInt(table.buyin))
+        const buyinUsdValue = Number(buyinValue) * usdValue
 
-        dollars = numeral(buyinUsdValue).format('0,0')
-        cents = numeral(buyinUsdValue).format('.00[00]')
+        const dollars = numeral(buyinUsdValue).format('0,0')
+        const cents = numeral(buyinUsdValue).format('.00[00]')
 
         setBuyInValueDollars(dollars)
         setBuyInValueCents(cents)
