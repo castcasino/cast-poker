@@ -247,6 +247,7 @@ console.log('TRANSACTION SUCCESSFUL', hash)
     }, [
         address,
         context?.user,
+        contractAllowance,
         isConnected,
         plausible,
         table,
