@@ -87,7 +87,6 @@ export function Header({ tableid }: { tableid: string }) {
         }
 
         const potValue = formatEther(BigInt(table.pot))
-        usdValue = quotes?.ETH?.USD?.price || 0
         const potUsdValue = Number(potValue) * usdValue
 
         const dollars = numeral(potUsdValue).format('0,0')
