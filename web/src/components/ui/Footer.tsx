@@ -101,7 +101,8 @@ export function Footer({ tableid }: { tableid: string }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('https://cast.casino/v1/poker/table/next/' + context?.user?.fid || '0')
+            const response = await axios
+                .get('https://cast.casino/v1/poker/table/next/' + context?.user?.fid || '0')
             setNextTableId(response.data.tableid)
         }
         fetchData()
