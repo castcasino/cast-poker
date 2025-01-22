@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 
+/* Add Edge support. */
 export const runtime = 'edge'
 
 export const alt = 'Cast Poker'

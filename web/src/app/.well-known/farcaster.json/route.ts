@@ -1,9 +1,6 @@
 /* Import modules. */
 import moment from 'moment'
 
-/* Add Edge support. */
-export const runtime = 'edge'
-
 // FIXME THIS SHOULD DYNAMIC FROM API
 const tableid = 4
 

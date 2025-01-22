@@ -7,9 +7,6 @@ import {
     verifyAppKeyWithNeynar,
 } from '@farcaster/frame-node'
 
-/* Add Edge support. */
-export const runtime = 'edge'
-
 export async function POST(request: NextRequest) {
     const requestJson = await request.json()
 
