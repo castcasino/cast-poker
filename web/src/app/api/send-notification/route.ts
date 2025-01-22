@@ -8,6 +8,9 @@ import {
 
 import { z } from 'zod'
 
+/* Add Edge support. */
+export const runtime = 'edge'
+
 /* Initialize request schema. */
 const requestSchema = z.object({
     token: z.string(),

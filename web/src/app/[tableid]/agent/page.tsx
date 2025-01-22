@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import App from '~/app/app'
 
+/* Add Edge support. */
+export const runtime = 'edge'
+
 const appUrl = process.env.NEXT_PUBLIC_URL
 
 interface Props {
