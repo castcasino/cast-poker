@@ -11,9 +11,9 @@ import { formatEther } from 'viem'
 import axios from 'axios'
 import numeral from 'numeral'
 
-import { truncateAddress } from '../lib/truncateAddress'
+import { truncateAddress } from '../../lib/truncateAddress'
 
-import splashIcon from '../../public/splash.png'
+import splashIcon from '../../../public/splash.png'
 
 type Table = {
     token: `0x${string}`;
