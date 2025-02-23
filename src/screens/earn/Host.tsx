@@ -17,18 +17,18 @@ import {
 } from 'wagmi'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
-import castPokerAbi from '~/abi/CastPoker'
+import castPokerAbi from '../../abi/CastPoker'
 
-import { Asset } from '~/components/ui/host/Asset'
-import { Button } from '~/components/ui/Button'
-import { BuyIn } from '~/components/ui/host/BuyIn'
-import { DeckType } from '~/components/ui/host/DeckType'
-import { GameType } from '~/components/ui/host/GameType'
-import { Network } from '~/components/ui/host/Network'
-// import { Optional } from '~/components/ui/host/Optional'
-import { Seating } from '~/components/ui/host/Seating'
+import { Asset } from '../../components/ui/host/Asset'
+import { Button } from '../../components/ui/Button'
+import { BuyIn } from '../../components/ui/host/BuyIn'
+import { DeckType } from '../../components/ui/host/DeckType'
+import { GameType } from '../../components/ui/host/GameType'
+import { Network } from '../../components/ui/host/Network'
+// import { Optional } from '../../components/ui/host/Optional'
+import { Seating } from '../../components/ui/host/Seating'
 
-import { truncateAddress } from '~/lib/truncateAddress'
+import { truncateAddress } from '../../lib/truncateAddress'
 
 const renderError = (error: Error | null) => {
     if (!error) return null

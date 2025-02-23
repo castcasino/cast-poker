@@ -25,10 +25,10 @@ import { BaseError, UserRejectedRequestError } from 'viem'
 import { useSession } from "next-auth/react"
 import { SignInResult } from "@farcaster/frame-core/dist/actions/signIn";
 
-import { Button } from '~/components/ui/Button'
-import splashIcon from '~/../public/splash.png'
+import { Button } from '../../components/ui/Button'
+import splashIcon from '../../../public/splash.png'
 
-import { truncateAddress } from '~/lib/truncateAddress'
+import { truncateAddress } from '../../lib/truncateAddress'
 
 const renderError = (error: Error | null) => {
     if (!error) return null

@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 
-import { Button } from '~/components/ui/Button'
-import earnRewardsAni from '~/../public/lottie/earn-rewards.gif'
+import { Button } from '../../components/ui/Button'
+import earnRewardsAni from '../../../public/lottie/earn-rewards.gif'
 
 export default function Share({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)

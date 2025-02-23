@@ -5,29 +5,29 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 import { useAccount } from 'wagmi'
 
 // Import components.
-import { Footer } from '~/components/ui/Footer'
-import { Header } from '~/components/ui/Header'
-import { Navbar } from '~/components/ui/Navbar'
+import { Footer } from '../components/ui/Footer'
+import { Header } from '../components/ui/Header'
+import { Navbar } from '../components/ui/Navbar'
 
 // Import Help screens.
-import Agent from '~/screens/help/Agent'
-import Fairplay from '~/screens/help/Fairplay'
-import Faq from '~/screens/help/Faq'
+import Agent from '../screens/help/Agent'
+import Fairplay from '../screens/help/Fairplay'
+import Faq from '../screens/help/Faq'
 
 // Import Lobby screens.
-import Concierge from '~/screens/lobby/Concierge'
-import Lounge from '~/screens/lobby/Lounge'
-import MySuite from '~/screens/lobby/MySuite'
+import Concierge from '../screens/lobby/Concierge'
+import Lounge from '../screens/lobby/Lounge'
+import MySuite from '../screens/lobby/MySuite'
 
 // Import Earn screens.
-import Host from '~/screens/earn/Host'
-import Share from '~/screens/earn/Share'
+import Host from '../screens/earn/Host'
+import Share from '../screens/earn/Share'
 
 // Import screens.
-import Table from '~/screens/Table'
+import Table from '../screens/Table'
 
 /* Import session manager. */
-import { sessionManager } from '~/lib/sessionManager'
+import { sessionManager } from '../lib/sessionManager'
 
 export default function App({
     screenid,
