@@ -1,6 +1,6 @@
 {
   "name": "cast-casino",
-  "version": "25.1.22",
+  "version": "25.2.23",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -36,9 +36,5 @@
     "eslint-config-next": "15.0.4",
     "postcss": "8.4.49",
     "typescript": "5.7.2"
-  },
-  "packageManager": "yarn@1.22.22",
-  "engines": {
-    "node": ">=21.0.0"
   }
 }
