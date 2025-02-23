@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import App from '~/app/app'
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const appUrl = process.env.NEXT_PUBLIC_URL
 
