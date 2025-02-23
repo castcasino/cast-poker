@@ -23,7 +23,7 @@ import { base, degen } from 'wagmi/chains'
 import { BaseError, UserRejectedRequestError } from 'viem'
 
 import { useSession } from "next-auth/react"
-import { SignInResult } from "@farcaster/frame-core/dist/actions/signIn";
+import { SignInResult } from '@farcaster/frame-core/dist/actions/signIn'
 
 import { Button } from '../../components/ui/Button'
 import splashIcon from '../../../public/splash.png'

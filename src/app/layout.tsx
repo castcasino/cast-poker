@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import PlausibleProvider from 'next-plausible'
 
-import { getSession } from "~/auth"
-import '~/app/globals.css'
-import { Providers } from '~/app/providers'
+import { getSession } from "../auth"
+import './globals.css'
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
     title: 'Cast Poker — 100% Provably Fair Gaming',

@@ -19,10 +19,10 @@ import axios from 'axios'
 import moment from 'moment'
 import numeral from 'numeral'
 
-import castPokerAbi from '~/abi/CastPoker'
-import erc20Abi from '~/abi/ERC20'
+import castPokerAbi from '../abi/CastPoker'
+import erc20Abi from '../abi/ERC20'
 
-import { truncateAddress } from '~/lib/truncateAddress'
+import { truncateAddress } from '../lib/truncateAddress'
 
 const renderError = (error: Error | null) => {
     if (!error) return null

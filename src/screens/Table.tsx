@@ -10,11 +10,11 @@ import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 import axios from 'axios'
 import numeral from 'numeral'
 
-// import { truncateAddress } from '~/lib/truncateAddress'
-// import { truncateHash } from '~/lib/truncateHash'
+// import { truncateAddress } from '../lib/truncateAddress'
+// import { truncateHash } from '../lib/truncateHash'
 
-import desktopBanner from '~/../public/banners/fairplay-gaming-desktop.jpg'
-import mobileBanner from '~/../public/banners/fairplay-gaming-mobile.jpg'
+import desktopBanner from '../../public/banners/fairplay-gaming-desktop.jpg'
+import mobileBanner from '../../public/banners/fairplay-gaming-mobile.jpg'
 
 type Table = {
     community: Community;

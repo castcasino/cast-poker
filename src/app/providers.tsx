@@ -5,7 +5,7 @@ import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 
 const WagmiProvider = dynamic(
-    () => import('~/components/providers/WagmiProvider'),
+    () => import('../components/providers/WagmiProvider'),
     { ssr: false }
 )
 
