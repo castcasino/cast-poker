@@ -7,6 +7,8 @@ import {
     verifyAppKeyWithNeynar,
 } from '@farcaster/frame-node'
 
+export const runtime = 'edge'
+
 export async function POST(request: NextRequest) {
     const requestJson = await request.json()
 

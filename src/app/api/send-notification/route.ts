@@ -15,6 +15,8 @@ const requestSchema = z.object({
     targetUrl: z.string(),
 })
 
+export const runtime = 'edge'
+
 export async function POST(request: NextRequest) {
     const requestJson = await request.json()
     const requestBody = requestSchema.safeParse(requestJson)
