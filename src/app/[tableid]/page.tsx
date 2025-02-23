@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { Metadata } from 'next'
-import App from '~/app/app'
+import App from '../app'
 
 const appUrl = process.env.NEXT_PUBLIC_URL
 
