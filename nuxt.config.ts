@@ -6,9 +6,9 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            title: 'Cast Casino — Casual & Provably Fair Gaming',
+            title: 'Cast Poker — 100% Provably Fair Gaming',
             meta: [
-                { name: 'description', content: 'The first fairplay, permissionless real-money gaming network.' },
+                { name: 'description', content: `Play Texas Hold'em poker in the ONLY provably fair casino built on Farcaster.` },
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -23,14 +23,7 @@ export default defineNuxtConfig({
 
         /* Pinia */
         '@pinia/nuxt',
-
-        /* Plausible */
-        '@nuxtjs/plausible',
     ],
-
-    plausible: {
-        apiHost: 'https://plausible.cast.casino',
-    },
 
     /* Route Rules */
     routeRules: {
@@ -42,5 +35,5 @@ export default defineNuxtConfig({
     },
 
     /* Set compatibility date. */
-    compatibilityDate: '2024-12-05',
+    compatibilityDate: '2025-03-15',
 })
