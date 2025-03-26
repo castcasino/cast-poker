@@ -1,17 +1,18 @@
 services:
-  web:
+  app:
     build: .
-    image: web
-    container_name: web
+    image: app
+    container_name: app
     restart: unless-stopped
+    # network_mode: 'host'
     ports:
-      - '127.0.0.1:3000:3000'
+      - '127.0.0.1:3000:3000'   # use with proxy server (eg. Nginx)
     environment:
-      - NODE_ENV=production
-      - NEXT_PUBLIC_URL=${NEXT_PUBLIC_URL}
-      - NEXTAUTH_URL=${NEXTAUTH_URL}
-      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
-    logging:
+      - COUCHDB_USER=${COUCHDB_USER} # change this to match your system's ENV
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD} # change this to match your system's ENV
+      - MNEMONIC=${MNEMONIC} # change this to match your system's ENV
+      - TREASURY_ADDRESS=${TREASURY_ADDRESS}
+    logging: # apply better controls to Docker overlay folder
       driver: 'json-file'
       options:
         max-file: '5'

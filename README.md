@@ -1,5 +1,5 @@
-# Cast Poker
+# Cast Casino
 
-### https://cast.poker
+### https://cast.casino
 
-A simple, frames-based poker game for Farcasters.
+Casual, Provably Fair Gaming
