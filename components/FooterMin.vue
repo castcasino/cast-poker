@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <footer className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
+    <footer class="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
 
         <div class="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8 lg:pt-24">

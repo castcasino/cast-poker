@@ -132,19 +132,19 @@ export function BuyIn({ token, value, onChange }: Props) {
     }, [ quotes, token ])
 
     return (
-        <section className="my-5 px-3 flex flex-col gap-4">
-            <div className="w-full sm:w-3/5">
-                <label htmlFor="buy-in" className="text-base font-medium text-slate-700 tracking-widest uppercase">
+        <section class="my-5 px-3 flex flex-col gap-4">
+            <div class="w-full sm:w-3/5">
+                <label htmlFor="buy-in" class="text-base font-medium text-slate-700 tracking-widest uppercase">
                     Buy-in amount
                 </label>
 
-                <div className="mt-2">
+                <div class="mt-2">
                     <select
                         id="buy-in"
                         name="buy-in"
                         value={value}
                         onChange={onChange}
-                        className="w-full appearance-none rounded-md bg-white py-2 px-3 font-mono text-2xl tracking-wider text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                        class="w-full appearance-none rounded-md bg-white py-2 px-3 font-mono text-2xl tracking-wider text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                     >
                         <option value={buyInOne?.value} disabled>{buyInOne?.display} | {(Number(buyInOne?.displayUsd) < 10) && <span>&nbsp;</span>}~${buyInOne?.displayUsd}</option>
                         <option value={buyInTwo?.value} disabled>{buyInTwo?.display} | {(Number(buyInTwo?.displayUsd) < 10) && <span>&nbsp;</span>}~${buyInTwo?.displayUsd}</option>

@@ -31,11 +31,11 @@ const renderError = (error: Error | null) => {
         const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
 
         if (isUserRejection) {
-            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+            return <div class="text-red-500 text-xs mt-1">Rejected by user.</div>
         }
     }
 
-    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+    return <div class="text-red-500 text-xs mt-1">{error.message}</div>
 }
 
 type Table = {
@@ -284,16 +284,16 @@ console.log('TRANSACTION SUCCESSFUL', hash)
     return (
         <>
             {/* (Hidden) Status Bar */}
-            {(txHash || isSendTxError) && <section className="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
-                <span className="text-xs font-medium text-amber-100 tracking-wider">
+            {(txHash || isSendTxError) && <section class="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
+                <span class="text-xs font-medium text-amber-100 tracking-wider">
                     {isSendTxError && renderError(sendTxError)}
                 </span>
 
-                {txHash && <span className="text-sm font-medium text-amber-100 tracking-wider">
+                {txHash && <span class="text-sm font-medium text-amber-100 tracking-wider">
                     Hash: {truncateAddress(txHash)}
                 </span>}
 
-                <span className="text-xs font-medium text-amber-100 tracking-wider">
+                <span class="text-xs font-medium text-amber-100 tracking-wider">
                     [
                         Status :&nbsp;
                         {isConfirming
@@ -305,73 +305,73 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 </span>
             </section>}
 
-            <footer className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
+            <footer class="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
 
                 {/* Game Status Window */}
-                <section className="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-900">
-                    <span className="text-xs sm:text-sm font-medium text-amber-100 tracking-tight uppercase">
+                <section class="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-900">
+                    <span class="text-xs sm:text-sm font-medium text-amber-100 tracking-tight uppercase">
                         Showdown By
                     </span>
 
-                    {table && <div className="flex flex-col gap-0 items-center">
-                        <span className="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                    {table && <div class="flex flex-col gap-0 items-center">
+                        <span class="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
                             {moment.unix(Number(table.tts) + Number(table.createdAt)).format('MMM Do')}
                         </span>
 
-                        <span className="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                        <span class="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
                             @ {moment.unix(Number(table.tts) + Number(table.createdAt)).format('H:mm A')}
                         </span>
                     </div>}
                 </section>
 
-                <div className="pb-2 flex">
+                <div class="pb-2 flex">
                     {/* Buy-in Button */}
                     <button
                         onClick={buyIn}
-                        className="group px-3 flex flex-col items-center justify-center border-2 border-t-0 border-lime-500 bg-lime-200 rounded-lg rounded-t-none shadow hover:bg-lime-900"
+                        class="group px-3 flex flex-col items-center justify-center border-2 border-t-0 border-lime-500 bg-lime-200 rounded-lg rounded-t-none shadow hover:bg-lime-900"
                         disabled={isSendTxPending}
                     >
-                        <span className="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
+                        <span class="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
                             ☆ Buy-In Is Only ☆
                         </span>
 
-                        <span className="animate-bounce flex flex-row mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
-                            <sup className="mt-4 pr-0.5 flex flex-col items-start text-2xl">
+                        <span class="animate-bounce flex flex-row mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
+                            <sup class="mt-4 pr-0.5 flex flex-col items-start text-2xl">
                                 $
                             </sup>
                             {buyInValueDollars}
-                            <sup className="mt-4 pl-0.5 flex flex-col items-start text-2xl">
+                            <sup class="mt-4 pl-0.5 flex flex-col items-start text-2xl">
                                 {buyInValueCents}
                             </sup>
                         </span>
 
-                        <span className="-mt-4 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
+                        <span class="-mt-4 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
                             ❭❭❭ click here ❬❬❬
                         </span>
                     </button>
                 </div>
 
                     {/* Next Table Button */}
-                <button onClick={handleNextTable} className="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
-                    <div className="pl-3 flex flex-col items-center justify-center">
-                        <span className="text-xs sm:text-xl font-bold text-amber-100 tracking-tight">
+                <button onClick={handleNextTable} class="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
+                    <div class="pl-3 flex flex-col items-center justify-center">
+                        <span class="text-xs sm:text-xl font-bold text-amber-100 tracking-tight">
                             Next Table
                         </span>
 
-                        {/* <small className="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
+                        {/* <small class="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
                             # {nextTableId}
                         </small> */}
 
-                        <span className="text-xl sm:text-2xl font-bold text-amber-300 tracking-widest">
+                        <span class="text-xl sm:text-2xl font-bold text-amber-300 tracking-widest">
                             $ETH
-                            <span className="-mt-1.5 block text-sm sm:text-base tracking-wider">
+                            <span class="-mt-1.5 block text-sm sm:text-base tracking-wider">
                                 on Base
                             </span>
                         </span>
                     </div>
 
-                    <div className="flex pr-1">
-                        <svg className="size-6 text-amber-500 group-hover:text-yellow-500 group-hover:animate-pulse" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <div class="flex pr-1">
+                        <svg class="size-6 text-amber-500 group-hover:text-yellow-500 group-hover:animate-pulse" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"></path>
                         </svg>
                     </div>

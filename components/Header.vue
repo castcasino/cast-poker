@@ -1,33 +1,33 @@
 <template>
-    <header className="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-slate-800 border-b-[3px] border-lime-400">
-        <section className="p-2">
-            <div className="group block shrink-0">
-                <div className="flex items-center">
+    <header class="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-slate-800 border-b-[3px] border-lime-400">
+        <section class="p-2">
+            <div class="group block shrink-0">
+                <div class="flex items-center">
                     <Image
-                        className="hidden sm:inline-block size-8 sm:size-16"
+                        class="hidden sm:inline-block size-8 sm:size-16"
                         src="@/assets/icon.png"
                         alt=""
                     />
 
-                    <div className="sm:ml-2 grid gap-x-4 gap-y-1">
-                        <p className="text-sm sm:text-base font-medium text-lime-500 tracking-widest uppercase group-hover:text-lime-400">
+                    <div class="sm:ml-2 grid gap-x-4 gap-y-1">
+                        <p class="text-sm sm:text-base font-medium text-lime-500 tracking-widest uppercase group-hover:text-lime-400">
                             Table # {{props.tableid}}
                         </p>
 
-                        <p v-if="table" className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                        <p v-if="table" class="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                             hosted by {{truncateAddress(table.host) || 'Guest'}}
                         </p>
 
-                        <p v-if="table" className="-mt-1 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                        <p v-if="table" class="-mt-1 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                             # Seats : {{table.seated.length}} of {{table.seats}}
                         </p>
 
-                        <div v-if="quotes" className="-mt-1 grid grid-cols-2">
-                            <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                        <div v-if="quotes" class="-mt-1 grid grid-cols-2">
+                            <p class="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                                 $ETH {{numeral(quotes.ETH.USD.price).format('0,0.0000')}}
                             </p>
 
-                            <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                            <p class="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
                                 $DEGEN {{numeral(quotes.DEGEN.USD.price).format('0,0.0000')}}
                             </p>
                         </div>
@@ -37,19 +37,19 @@
 
         </section>
 
-        <section className="cursor-help px-3 sm:px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
-            <span className="text-2xl font-medium text-lime-600 uppercase tracking-widest whitespace-nowrap">
+        <section class="cursor-help px-3 sm:px-5 py-2 flex flex-col items-center rounded-l-lg rounded-bl-none border-l-[3px] border-lime-400 bg-lime-200">
+            <span class="text-2xl font-medium text-lime-600 uppercase tracking-widest whitespace-nowrap">
                 Table Pot
             </span>
 
-            <span className="-mt-1.5 flex flex-row text-6xl font-bold text-lime-800">
-                <sup className="mt-5 pr-0.5 flex flex-col items-start text-4xl">
+            <span class="-mt-1.5 flex flex-row text-6xl font-bold text-lime-800">
+                <sup class="mt-5 pr-0.5 flex flex-col items-start text-4xl">
                     $
                 </sup>
                 {potValueDollars}
-                <sup className="mt-4 pl-1 flex flex-col items-start text-2xl">
+                <sup class="mt-4 pl-1 flex flex-col items-start text-2xl">
                     {potValueCents}
-                    <span className="-mt-2 font-bold text-sm text-lime-600 tracking-widest">
+                    <span class="-mt-2 font-bold text-sm text-lime-600 tracking-widest">
                         USD
                     </span>
                 </sup>
