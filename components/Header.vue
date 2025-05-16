@@ -5,7 +5,7 @@
                 <div className="flex items-center">
                     <Image
                         className="hidden sm:inline-block size-8 sm:size-16"
-                        src={splashIcon}
+                        src="@/assets/icon.png"
                         alt=""
                     />
 
@@ -14,23 +14,23 @@
                             Table # {{props.tableid}}
                         </p>
 
-                        {table && <p className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                            hosted by {truncateAddress(table.host) || 'Guest'}
-                        </p>}
+                        <p v-if="table" className="-mt-2 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                            hosted by {{truncateAddress(table.host) || 'Guest'}}
+                        </p>
 
-                        {table && <p className="-mt-1 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                            # Seats : {table.seated.length} of {table.seats}
-                        </p>}
+                        <p v-if="table" className="-mt-1 text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
+                            # Seats : {{table.seated.length}} of {{table.seats}}
+                        </p>
 
-                        {quotes && <div className="-mt-1 grid grid-cols-2">
+                        <div v-if="quotes" className="-mt-1 grid grid-cols-2">
                             <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                $ETH {numeral(quotes.ETH.USD.price).format('0,0.0000')}
+                                $ETH {{numeral(quotes.ETH.USD.price).format('0,0.0000')}}
                             </p>
 
                             <p className="text-center text-xs sm:text-sm font-medium text-lime-300 group-hover:text-lime-400">
-                                $DEGEN {numeral(quotes.DEGEN.USD.price).format('0,0.0000')}
+                                $DEGEN {{numeral(quotes.DEGEN.USD.price).format('0,0.0000')}}
                             </p>
-                        </div>}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,21 +55,20 @@
                 </sup>
             </span>
         </section>
-
     </header>
 </template>
 
 <script setup lang="ts">
 // import sdk, { type FrameContext } from '@farcaster/frame-sdk'
-import sdk from '@farcaster/frame-sdk'
+// import sdk from '@farcaster/frame-sdk'
 
-import { formatEther } from 'viem'
-import axios from 'axios'
+// import { formatEther } from 'viem'
+// import axios from 'axios'
 import numeral from 'numeral'
 
-import { truncateAddress } from '../../lib/truncateAddress'
+import { truncateAddress } from '../libs/truncateAddress'
 
-import splashIcon from '../../../public/splash.png'
+import splashIcon from '../public/splash.png'
 
 type Table = {
     token: `0x${string}`;
@@ -100,11 +99,17 @@ const props = defineProps({
     tableid: String,
 })
 
-const table = ref(null)
+const quotes = ref(null)
+const table = ref<Table>({
+    token: '0x',
+    host: '0x',
+    pot: '',
+    seats: 0,
+    seated: [],
+})
 
 // onMounted(() => {
 //     console.log('Mounted!')
-//     // Now it's safe to perform setup operations.
 // })
 
 // onBeforeUnmount(() => {
