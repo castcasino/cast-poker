@@ -20,200 +20,100 @@ onMounted(() => {
 </script>
 
 <template>
-    <footer class="bg-gray-50" aria-labelledby="footer-heading">
-        <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <footer>
+        {/* (Hidden) Status Bar */}
+        {(txHash || isSendTxError) && <section class="px-5 w-full sm:w-[640px] mx-auto h-[35px] z-10 flex justify-between items-center bg-stone-800 border-t-[3px] border-amber-400">
+            <span class="text-xs font-medium text-amber-100 tracking-wider">
+                {isSendTxError && renderError(sendTxError)}
+            </span>
 
-        <div class="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8 lg:pt-24">
-            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="grid grid-cols-2 gap-8 xl:col-span-2">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
+            {txHash && <span class="text-sm font-medium text-amber-100 tracking-wider">
+                Hash: {truncateAddress(txHash)}
+            </span>}
 
-                        <div>
-                            <h3 class="text-base font-medium text-gray-900">
-                                For Players
-                            </h3>
+            <span class="text-xs font-medium text-amber-100 tracking-wider">
+                [
+                    Status :&nbsp;
+                    {isConfirming
+                        ? 'Confirming...'
+                        : isConfirmed
+                            ? 'Confirmed!'
+                            : 'Pending'}
+                ]
+            </span>
+        </section>}
 
-                            <ul role="list" class="mt-4 space-y-4">
-                                <li>
-                                    <NuxtLink to="/manager" class="text-base text-gray-500 hover:text-gray-900">
-                                        Profile Manager
-                                    </NuxtLink>
-                                </li>
+        <section class="w-full sm:w-[640px] mx-auto h-[100px] z-10 flex justify-between bg-stone-200 border-t-[3px] border-amber-400">
 
-                                <li>
-                                    <NuxtLink to="/fairplay" class="text-base text-gray-500 hover:text-gray-900">
-                                        Fairplay 101
-                                    </NuxtLink>
-                                </li>
+            {/* Game Status Window */}
+            <section class="cursor-help px-3 flex flex-col items-center justify-center border-r-[3px] rounded-r-lg rounded-tr-none border-amber-400 bg-stone-900">
+                <span class="text-xs sm:text-sm font-medium text-amber-100 tracking-tight uppercase">
+                    Showdown By
+                </span>
 
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Promotions
-                                    </a>
-                                </li>
+                {table && <div class="flex flex-col gap-0 items-center">
+                    <span class="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                        {moment.unix(Number(table.tts) + Number(table.createdAt)).format('MMM Do')}
+                    </span>
 
-                                <li>
-                                    <NuxtLink to="https://docs.cast.casino/backup" target="_blank" class="text-base text-gray-500 hover:text-gray-900">
-                                        Wallet Backup
-                                    </NuxtLink>
-                                </li>
-                            </ul>
-                        </div>
+                    <span class="text-base sm:text-lg font-bold text-amber-300 tracking-wider">
+                        @ {moment.unix(Number(table.tts) + Number(table.createdAt)).format('H:mm A')}
+                    </span>
+                </div>}
+            </section>
 
-                        <div class="mt-12 md:mt-0">
-                            <h3 class="text-base font-medium text-gray-900">
-                                For Bankers
-                            </h3>
+            <div class="pb-2 flex">
+                {/* Buy-in Button */}
+                <button
+                    onClick={buyIn}
+                    class="group px-3 flex flex-col items-center justify-center border-2 border-t-0 border-lime-500 bg-lime-200 rounded-lg rounded-t-none shadow hover:bg-lime-900"
+                    disabled={isSendTxPending}
+                >
+                    <span class="text-xs sm:text-lg font-bold text-lime-700 tracking-widest group-hover:text-lime-100">
+                        ☆ Buy-In Is Only ☆
+                    </span>
 
-                            <ul role="list" class="mt-4 space-y-4">
-                                <li>
-                                    <NuxtLink to="/manager" class="text-base text-gray-500 hover:text-gray-900">
-                                        Banking Manager
-                                    </NuxtLink>
-                                </li>
+                    <span class="animate-bounce flex flex-row mt-1 text-3xl sm:text-4xl font-bold text-lime-900 tracking-wider group-hover:text-lime-100">
+                        <sup class="mt-4 pr-0.5 flex flex-col items-start text-2xl">
+                            $
+                        </sup>
+                        {buyInValueDollars}
+                        <sup class="mt-4 pl-0.5 flex flex-col items-start text-2xl">
+                            {buyInValueCents}
+                        </sup>
+                    </span>
 
-                                <li>
-                                    <NuxtLink to="/profit" class="text-base text-gray-500 hover:text-gray-900">
-                                        Profit Calculators
-                                    </NuxtLink>
-                                </li>
-
-                                <li>
-                                    <NuxtLink to="/market" class="text-base text-gray-500 hover:text-gray-900">
-                                        Marketplace
-                                    </NuxtLink>
-                                </li>
-
-                                <li>
-                                    <NuxtLink to="https://docs.cast.casino" target="_blank" class="text-base text-gray-500 hover:text-gray-900">
-                                        Documentation
-                                    </NuxtLink>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div>
-                            <h3 class="text-base font-medium text-gray-900">
-                                For Gamemakers
-                            </h3>
-
-                            <ul role="list" class="mt-4 space-y-4">
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Build a Game
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Monetize Your Game
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Financing 101
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <NuxtLink to="https://repo.hos.im/nyusternie" target="_blank" class="text-base text-gray-500 hover:text-gray-900">
-                                        View the source
-                                    </NuxtLink>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-12 md:mt-0">
-                            <h3 class="text-base font-medium text-gray-900">
-                                Legal
-                            </h3>
-
-                            <ul role="list" class="mt-4 space-y-4">
-                                <li>
-                                    <NuxtLink to="/license" class="text-base text-gray-500 hover:text-gray-900">
-                                        License
-                                    </NuxtLink>
-                                </li>
-
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Cookies
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Privacy
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript://" class="text-base text-gray-500 hover:text-gray-900">
-                                        Terms
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="mt-12 xl:mt-0">
-                    <h3 class="text-base font-medium text-gray-900">
-                        Subscribe to our newsletter
-                    </h3>
-
-                    <p class="mt-4 text-base text-gray-500">
-                        The latest news, articles, and resources, sent to your inbox weekly.
-                    </p>
-
-                    <form class="mt-4 sm:flex sm:max-w-md">
-                        <label for="email-address" class="sr-only">Email address</label>
-
-<NuxtLink to="https://twitter.com/0xShomari" target="_blank" class="flex">
-                        <input
-                            type="email"
-                            name="email-address"
-                            id="email-address"
-                            autocomplete="email"
-                            required
-                            class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500"
-                            placeholder="Enter your email"
-                            disabled
-                        />
-</NuxtLink>
-                        <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                            <NuxtLink to="https://twitter.com/0xShomari" target="_blank"
-                                class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"
-                                disabled
-                            >
-                                Subscribe
-                            </NuxtLink>
-                        </div>
-                    </form>
-                </div>
+                    <span class="-mt-4 text-xs font-bold text-lime-600 tracking-wider group-hover:text-lime-100 uppercase">
+                        ❭❭❭ click here ❬❬❬
+                    </span>
+                </button>
             </div>
 
-            <div class="mt-12 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
-                <div class="flex space-x-6 md:order-2 justify-center">
-                    <a href="https://twitter.com/0xShomari" target="_blank" class="text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Twitter</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-                            />
-                        </svg>
-                    </a>
+                {/* Next Table Button */}
+            <button onClick={handleNextTable} class="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
+                <div class="pl-3 flex flex-col items-center justify-center">
+                    <span class="text-xs sm:text-xl font-bold text-amber-100 tracking-tight">
+                        Next Table
+                    </span>
 
+                    {/* <small class="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
+                        # {nextTableId}
+                    </small> */}
+
+                    <span class="text-xl sm:text-2xl font-bold text-amber-300 tracking-widest">
+                        $ETH
+                        <span class="-mt-1.5 block text-sm sm:text-base tracking-wider">
+                            on Base
+                        </span>
+                    </span>
                 </div>
 
-                <p class="mt-8 text-sm text-center sm:text-base sm:text-left text-gray-400 md:order-1 md:mt-0">
-                    &copy; {{curYear}} Cast Casino DAO. All rights reserved.
-                </p>
-            </div>
-        </div>
+                <div class="flex pr-1">
+                    <svg class="size-6 text-amber-500 group-hover:text-yellow-500 group-hover:animate-pulse" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"></path>
+                    </svg>
+                </div>
+            </button>
+        </section>
     </footer>
 </template>

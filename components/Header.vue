@@ -3,7 +3,7 @@
         <section class="p-2">
             <div class="group block shrink-0">
                 <div class="flex items-center">
-                    <Image
+                    <img
                         class="hidden sm:inline-block size-8 sm:size-16"
                         src="@/assets/icon.png"
                         alt=""
@@ -46,9 +46,9 @@
                 <sup class="mt-5 pr-0.5 flex flex-col items-start text-4xl">
                     $
                 </sup>
-                {potValueDollars}
+                {{potValueDollars}}
                 <sup class="mt-4 pl-1 flex flex-col items-start text-2xl">
-                    {potValueCents}
+                    {{potValueCents}}
                     <span class="-mt-2 font-bold text-sm text-lime-600 tracking-widest">
                         USD
                     </span>
@@ -96,10 +96,13 @@ type Currency = {
 }
 
 const props = defineProps({
-    tableid: String,
+    tableid: Number,
 })
 
-const quotes = ref(null)
+const quotes = ref<Quotes>({
+    ETH: { USD: { price: 0 }},
+    DEGEN: { USD: { price: 0 }},
+})
 const table = ref<Table>({
     token: '0x',
     host: '0x',
@@ -107,6 +110,8 @@ const table = ref<Table>({
     seats: 0,
     seated: [],
 })
+const potValueDollars = ref<string>('')
+const potValueCents = ref<string>('')
 
 // onMounted(() => {
 //     console.log('Mounted!')
