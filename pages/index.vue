@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useHead({
-    title: 'Cast Casino — Casual Blockchain Gaming',
+    title: 'Cast Poker — Casual Blockchain Gaming',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a premium blockchain gaming experience for Players over 18+.' }
+        { name: 'description', content: 'Cast Poker offers a premium blockchain gaming experience for Players over 18+.' }
     ],
 })
 </script>
@@ -19,7 +19,7 @@ useHead({
                         <img
                             class="h-full w-full object-cover"
                             src="https://images.unsplash.com/photo-1592398191627-25b41eeaa398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
-                            alt="Casino room"
+                            alt="Poker room"
                         />
                         <div class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply"></div>
                     </div>
@@ -27,7 +27,7 @@ useHead({
                     <div class="relative px-4 py-16 sm:px-6 sm:py-24">
                         <h1 class="text-center font-bold tracking-tight">
                             <span class="block text-white text-5xl">
-                                Cast Casino
+                                Cast Poker
                             </span>
 
                             <span class="block text-indigo-200 text-4xl sm:text-5xl">
@@ -228,7 +228,7 @@ useHead({
                     </p>
 
                     <p class="mt-5 text-lg text-gray-300">
-                        We want you to continue building your wildest dreams; and that's why Cast Casino offers a comprehensive suite of monetization tools &amp; services to best suit your individual/team's needs.
+                        We want you to continue building your wildest dreams; and that's why Cast Poker offers a comprehensive suite of monetization tools &amp; services to best suit your individual/team's needs.
                     </p>
                     <div class="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
                         <p>
@@ -276,7 +276,7 @@ useHead({
                         Browse the games
                     </NuxtLink>
 
-                    <NuxtLink to="https://docs.cast.casino" target="_blank" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-50 px-4 py-3 text-2xl font-medium text-indigo-800 shadow-sm hover:bg-indigo-100">
+                    <NuxtLink to="https://docs.cast.Poker" target="_blank" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-50 px-4 py-3 text-2xl font-medium text-indigo-800 shadow-sm hover:bg-indigo-100">
                         Learn more
                     </NuxtLink>
                 </div>

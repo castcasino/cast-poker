@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useHead({
-    title: 'License — Cast Casino',
+    title: 'License — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 </script>
@@ -14,7 +14,7 @@ useHead({
         </h1>
 
         <p>
-            Cast Casino (formerly Coincun) is licensed for real-money gaming by the Costa Rica Gaming Commission.
+            Cast Poker (formerly Coincun) is licensed for real-money gaming by the Costa Rica Gaming Commission.
         </p>
     </main>
 </template>

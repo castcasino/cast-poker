@@ -6,9 +6,9 @@ import { useSystemStore } from '@/stores/system'
 const System = useSystemStore()
 
 useHead({
-    title: 'Epochs — Cast Casino',
+    title: 'Epochs — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 
@@ -26,7 +26,7 @@ console.log('EPOCH ID', epochid)
         </h1>
 
         <pre class="mt-5 w-fit font-mono text-xs px-3 py-2 bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-md">
-Cast Casino Hashes
+Cast Poker Hashes
 Generated: Saturday, May 13, 2023 4:26 PM UTC
 Hash count: 10,000
 Epoch: 1

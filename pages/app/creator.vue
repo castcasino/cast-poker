@@ -4,9 +4,9 @@ definePageMeta({
 })
 
 useHead({
-    title: 'Game Creator — Cast Casino',
+    title: 'Game Creator — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 

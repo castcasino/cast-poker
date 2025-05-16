@@ -66,7 +66,7 @@ const isAuth = ref(false)
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                         <NuxtLink to="/manager" class="flex h-16 shrink-0 items-center">
-                            <img class="h-12 w-auto" src="~/assets/icon.svg" alt="Cast Casino Logo" />
+                            <img class="h-12 w-auto" src="~/assets/icon.svg" alt="Cast Poker Logo" />
                         </NuxtLink>
 
                         <nav class="flex flex-1 flex-col">
@@ -161,21 +161,21 @@ const isAuth = ref(false)
                                             <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                                             <NuxtLink to="/manager" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">NS</span>
-                                                <span class="truncate">Cast Casino</span>
+                                                <span class="truncate">Cast Poker</span>
                                             </NuxtLink>
                                         </li>
 
                                         <li>
                                             <NuxtLink to="/manager" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">JS</span>
-                                                <span class="truncate">Cast Casino</span>
+                                                <span class="truncate">Cast Poker</span>
                                             </NuxtLink>
                                         </li>
 
                                         <li>
                                             <NuxtLink to="/manager" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">HI</span>
-                                                <span class="truncate">Cast Casino</span>
+                                                <span class="truncate">Cast Poker</span>
                                             </NuxtLink>
                                         </li>
                                     </ul>
@@ -205,7 +205,7 @@ const isAuth = ref(false)
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
                 <NuxtLink to="/manager" class="flex h-16 shrink-0 items-center">
-                    <img class="h-12 w-auto" src="~/assets/icon.svg" alt="Cast Casino Logo" />
+                    <img class="h-12 w-auto" src="~/assets/icon.svg" alt="Cast Poker Logo" />
                 </NuxtLink>
 
                 <nav class="flex flex-1 flex-col">
@@ -295,7 +295,7 @@ const isAuth = ref(false)
                                             NS
                                         </span>
 
-                                        <span class="truncate">Cast Casino Style</span>
+                                        <span class="truncate">Cast Poker Style</span>
                                     </NuxtLink>
                                 </li>
 

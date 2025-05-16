@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useHead({
-    title: 'Players — Cast Casino',
+    title: 'Players — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 </script>
@@ -39,7 +39,7 @@ useHead({
             </h2>
 
             <p>
-                Most Cast Casino are HTML5-compatible and can be played from EVERY device, including:
+                Most Cast Poker are HTML5-compatible and can be played from EVERY device, including:
             </p>
 
             <ol class="list-decimal pl-10">

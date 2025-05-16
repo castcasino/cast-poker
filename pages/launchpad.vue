@@ -6,9 +6,9 @@ import { useSystemStore } from '@/stores/system'
 const System = useSystemStore()
 
 useHead({
-    title: 'Launchpad — Cast Casino',
+    title: 'Launchpad — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 </script>
@@ -24,7 +24,7 @@ useHead({
         </p>
 
         <p>
-            Cast Casino Gaming Engine (NGE) is a permissionless and provably fair wagering system, powered by the Cast Casino blockchain.
+            Cast Poker Gaming Engine (NGE) is a permissionless and provably fair wagering system, powered by the Cast Poker blockchain.
         </p>
     </main>
 </template>

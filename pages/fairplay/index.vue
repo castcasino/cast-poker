@@ -2,9 +2,9 @@
 /* Import modules. */
 
 useHead({
-    title: 'Fairplay — Cast Casino',
+    title: 'Fairplay — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 

@@ -33,7 +33,7 @@ const props = defineProps({
                 <div>
                     <img
                         class="h-14 w-auto"
-                        src="~/assets/icon.svg" alt="Cast Casino Logo" />
+                        src="~/assets/icon.svg" alt="Cast Poker Logo" />
 
                     <h2 class="mt-8 text-4xl/9 font-medium tracking-tighter text-gray-900">
                         Casino Manager Sign-in

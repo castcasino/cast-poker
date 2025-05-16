@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useHead({
-    title: 'Bankers — Cast Casino',
+    title: 'Bankers — Cast Poker',
     meta: [
-        { name: 'description', content: 'Cast Casino offers a revolutionary blockchain experience.' }
+        { name: 'description', content: 'Cast Poker offers a revolutionary blockchain experience.' }
     ],
 })
 </script>
@@ -24,7 +24,7 @@ useHead({
                 </h2>
 
                 <p>
-                    The top class of NFT offered in the Banking sector of Cast Casino.
+                    The top class of NFT offered in the Banking sector of Cast Poker.
                 </p>
 
                 <ol class="pl-10 list-disc">
@@ -40,7 +40,7 @@ useHead({
                 </h2>
 
                 <p>
-                    The standard class of NFT offered in the Banking sector of Cast Casino.
+                    The standard class of NFT offered in the Banking sector of Cast Poker.
                 </p>
 
                 <ol class="pl-10 list-disc">
