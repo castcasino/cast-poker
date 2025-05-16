@@ -19,7 +19,9 @@
     "nuxt": "3.12.4",
     "pinia": "2.2.2",
     "simple-analytics-vue": "3.0.2",
-    "uuid": "11.1.0"
+    "uuid": "11.1.0",
+    "viem": "2.29.4",
+    "wagmi": "2.15.3"
   },
   "packageManager": "pnpm@9.15.4",
   "engines": {
