@@ -1,3 +1,11 @@
+<template>
+    <main class="">
+        <h1 class="">
+            Blank
+        </h1>
+    </main>
+</template>
+
 <script setup lang="ts">
 const props = defineProps({
     data: {
@@ -17,11 +25,3 @@ const props = defineProps({
 //     // Now is the time to perform all cleanup operations.
 // })
 </script>
-
-<template>
-    <main class="">
-        <h1 class="">
-            Blank
-        </h1>
-    </main>
-</template>
