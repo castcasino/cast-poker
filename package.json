@@ -1,6 +1,6 @@
 {
   "name": "cast-poker",
-  "version": "25.3.26",
+  "version": "25.5.16",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@neynar/nodejs-sdk": "1.70.0",
+    "@neynar/nodejs-sdk": "2.41.0",
     "@nuxtjs/i18n": "8.3.3",
     "@nuxtjs/tailwindcss": "6.12.1",
     "@pinia/nuxt": "0.5.4",
@@ -19,7 +19,7 @@
     "nuxt": "3.12.4",
     "pinia": "2.2.2",
     "simple-analytics-vue": "3.0.2",
-    "uuid": "10.0.0"
+    "uuid": "11.1.0"
   },
   "packageManager": "pnpm@9.15.4",
   "engines": {

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@neynar/nodejs-sdk':
-        specifier: 1.70.0
-        version: 1.70.0
+        specifier: 2.41.0
+        version: 2.41.0
       '@nuxtjs/i18n':
         specifier: 8.3.3
         version: 8.3.3(magicast@0.3.5)(rollup@4.37.0)(vue@3.5.13)
@@ -36,8 +36,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(vue@3.5.13)
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.1.0
+        version: 11.1.0
 
 packages:
 
@@ -799,8 +799,8 @@ packages:
     resolution: {integrity: sha512-z6okREyK8in0486a22Oro0k+YsuyEjDXJt46FpgeOgXqKJ9ElM8QPll0iuLBkpbH33ENiNbIPLd1cuClRQnhiw==}
     engines: {node: '>=18.0.0'}
 
-  '@neynar/nodejs-sdk@1.70.0':
-    resolution: {integrity: sha512-/mpF7dgHqVGyLiiLCn+nR5yqc53PjLQ0vcefkxuNIadOjqg+F3ntHixDpl5jLBuBFTkxOSeM6ywOyvQSlB11jQ==}
+  '@neynar/nodejs-sdk@2.41.0':
+    resolution: {integrity: sha512-xB6LMOcDmB0u06FAlmk0DYx2gaKiXK/uzN1SSBWECbln+DvC9b+hs8W9b5tctqPt3BwkWlZ4Tu2M1/DZvnBAgQ==}
     engines: {node: '>=19.9.0'}
 
   '@noble/curves@1.8.1':
@@ -1449,9 +1449,6 @@ packages:
 
   axios@1.8.3:
     resolution: {integrity: sha512-iP4DebzoNlP/YN2dpwCgb8zoCmhtkajzS48JvwmkSkXvPI3DHc7m+XYL5tGnSlJtR6nImXZmdCuN5aP8dh1d8A==}
-
-  axios@1.8.4:
-    resolution: {integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==}
 
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
@@ -3932,8 +3929,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   vary@1.1.2:
@@ -4810,10 +4807,9 @@ snapshots:
 
   '@netlify/serverless-functions-api@1.36.0': {}
 
-  '@neynar/nodejs-sdk@1.70.0':
+  '@neynar/nodejs-sdk@2.41.0':
     dependencies:
       '@openapitools/openapi-generator-cli': 2.18.4
-      axios: 1.8.4
       semver: 7.7.1
       viem: 2.23.15
     transitivePeerDependencies:
@@ -5713,14 +5709,6 @@ snapshots:
       postcss-value-parser: 4.2.0
 
   axios@1.8.3:
-    dependencies:
-      follow-redirects: 1.15.9
-      form-data: 4.0.2
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-
-  axios@1.8.4:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.2
@@ -8510,7 +8498,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  uuid@10.0.0: {}
+  uuid@11.1.0: {}
 
   vary@1.1.2: {}
 
