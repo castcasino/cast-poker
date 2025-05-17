@@ -25,21 +25,21 @@ export default function Blank({ tableid }: { tableid: string}) {
     }
 
     return (
-        <main className="w-full">
-            <h1 className="text-2xl font-bold text-amber-600 text-center mb-4">
+        <main class="w-full">
+            <h1 class="text-2xl font-bold text-amber-600 text-center mb-4">
                 Blank
             </h1>
 
-            <div className="mb-4">
-                <h2 className="text-4xl font-bold text-rose-400 italic tracking-widest">
+            <div class="mb-4">
+                <h2 class="text-4xl font-bold text-rose-400 italic tracking-widest">
                     Table # {tableid}
                 </h2>
 
-                {(context && <pre className="text-slate-700">
+                {(context && <pre class="text-slate-700">
                     { JSON.stringify(context, null, 2) }
                 </pre>)}
 
-                {(!context && <p className="text-slate-700">
+                {(!context && <p class="text-slate-700">
                     SORRY, NO CONTEXT AVAILABLE
                 </p>)}
             </div>

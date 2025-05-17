@@ -37,11 +37,11 @@ const renderError = (error: Error | null) => {
         const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
 
         if (isUserRejection) {
-            return <div className="text-red-500 text-xs mt-1">Rejected by user.</div>
+            return <div class="text-red-500 text-xs mt-1">Rejected by user.</div>
         }
     }
 
-    return <div className="text-red-500 text-xs mt-1">{error.message}</div>
+    return <div class="text-red-500 text-xs mt-1">{error.message}</div>
 }
 
 /* Set constants. */
@@ -202,50 +202,50 @@ console.log('TRANSACTION SUCCESSFUL', hash)
     }
 
     return (
-        <main className="w-full">
+        <main class="w-full">
             <section>
-                <div className="border-b border-gray-200">
-                    <nav className="-mb-px flex" aria-label="Tabs">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex" aria-label="Tabs">
                         {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" --> */}
-                        <Link href={`/${tableid}/share`} className="w-1/2 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        <Link href={`/${tableid}/share`} class="w-1/2 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                             Promotion
                         </Link>
 
-                        <Link href={`/${tableid}/host`} className="w-1/2 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
+                        <Link href={`/${tableid}/host`} class="w-1/2 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
                             Hosting
                         </Link>
                     </nav>
                 </div>
             </section>
 
-            <section className="my-5 px-3">
-                <div className="w-full flex justify-center">
-                    <h1 className="sm:px-10 text-4xl font-light text-rose-400 text-center italic leading-[55px]">
-                        {context?.user.displayName || 'Guest'}, Earn <span className="text-5xl font-bold">5%</span> Of ALL Table Buy-ins By Hosting
+            <section class="my-5 px-3">
+                <div class="w-full flex justify-center">
+                    <h1 class="sm:px-10 text-4xl font-light text-rose-400 text-center italic leading-[55px]">
+                        {context?.user.displayName || 'Guest'}, Earn <span class="text-5xl font-bold">5%</span> Of ALL Table Buy-ins By Hosting
                     </h1>
                 </div>
 
-                <p className="my-4 text-slate-700">
-                    Cast Casino offers the <span className="font-bold">EASIEST</span> referral rewards in all of Farcaster!
-                    Simply recast <span className="font-bold">ANY</span> of our table games and you&rsquo;re done!
+                <p class="my-4 text-slate-700">
+                    Cast Casino offers the <span class="font-bold">EASIEST</span> referral rewards in all of Farcaster!
+                    Simply recast <span class="font-bold">ANY</span> of our table games and you&rsquo;re done!
                 </p>
 
-                <ol className="pl-10 list-decimal text-slate-700">
+                <ol class="pl-10 list-decimal text-slate-700">
                     <li>
-                        Earn <span className="text-xl font-bold text-rose-500">5%</span> on <span className="font-bold">EVERY</span> dollar wagered on your table .. <span className="font-bold">WIN or LOSE!</span>
+                        Earn <span class="text-xl font-bold text-rose-500">5%</span> on <span class="font-bold">EVERY</span> dollar wagered on your table .. <span class="font-bold">WIN or LOSE!</span>
                     </li>
 
                     <li>
-                        Payouts are sent <span className="font-bold">DIRECTLY</span> to your Farcaster wallet
+                        Payouts are sent <span class="font-bold">DIRECTLY</span> to your Farcaster wallet
                     </li>
 
                     <li>
-                        Payouts are sent <span className="font-bold">IMMEDIATELY</span> after play ends
+                        Payouts are sent <span class="font-bold">IMMEDIATELY</span> after play ends
                     </li>
                 </ol>
             </section>
 
-            <div className="flex flex-col gap-2">
+            <div class="flex flex-col gap-2">
                 <GameType
                     value={gameType}
                     onClick={handleGameType}
@@ -273,20 +273,20 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                     onChange={handleSeating} />
             </div>
 
-            {/* <div className="my-10 mx-10 border-t border-slate-300" /> */}
+            {/* <div class="my-10 mx-10 border-t border-slate-300" /> */}
 
             {/* <Optional
                 tableName={tableName}
                 handleTableName={handleTableName}
             /> */}
 
-            <section className="mt-5 mb-10 text-center">
+            <section class="mt-5 mb-10 text-center">
                 <Button
                     onClick={_handleCreateVenue}
                     // disabled={!isConnected || isSendTxPending}
                     disabled={isSendTxPending}
                     isLoading={isSendTxPending}
-                    className="text-2xl font-bold tracking-wider"
+                    class="text-2xl font-bold tracking-wider"
                 >
                     Create My Table
                 </Button>
@@ -298,12 +298,12 @@ console.log('TRANSACTION SUCCESSFUL', hash)
                 {isSendTxError && renderError(sendTxError)}
 
                 {txHash && (
-                    <div className="mt-2 text-xs">
-                        <div className="">
+                    <div class="mt-2 text-xs">
+                        <div class="">
                             Hash: {truncateAddress(txHash)}
                         </div>
 
-                        <div className="">
+                        <div class="">
                             Status :&nbsp;
                             {isConfirming
                                 ? 'Confirming...'
