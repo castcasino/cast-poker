@@ -39,21 +39,21 @@ const renderError = (error: Error | null) => {
 }
 
 export function Footer({ tableid }: { tableid: string }) {
-    const [isSDKLoaded, setIsSDKLoaded] = useState(false)
-    const [context, setContext] = useState<FrameContext>()
-    const [txHash, setTxHash] = useState<string | null>(null)
+    // const [isSDKLoaded, setIsSDKLoaded] = useState(false)
+    // const [context, setContext] = useState<FrameContext>()
+    // const [txHash, setTxHash] = useState<string | null>(null)
 
-    const [table, setTable] = useState<Table>()
-    const [nextTableId, setNextTableId] = useState('4')
+    // const [table, setTable] = useState<Table>()
+    // const [nextTableId, setNextTableId] = useState('4')
 
-    const [quotes, setQuotes] = useState<Quotes>()
-    const [buyInValueDollars, setBuyInValueDollars] = useState<string>('0')
-    const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
+    // const [quotes, setQuotes] = useState<Quotes>()
+    // const [buyInValueDollars, setBuyInValueDollars] = useState<string>('0')
+    // const [buyInValueCents, setBuyInValueCents] = useState<string>('.00')
 
     // const [allowance, setAllowance] = useState(0)
 
-    const plausible = usePlausible()
-    const { address, isConnected } = useAccount()
+    // const plausible = usePlausible()
+    // const { address, isConnected } = useAccount()
     // const chainId = useChainId()
 
     useEffect(() => {
@@ -113,18 +113,6 @@ export function Footer({ tableid }: { tableid: string }) {
         setBuyInValueCents(cents)
     }, [ quotes, table ])
 
-    useEffect(() => {
-        const load = async () => {
-            setContext(await sdk.context)
-            sdk.actions.ready()
-        }
-
-        if (sdk && !isSDKLoaded) {
-            setIsSDKLoaded(true)
-            load()
-        }
-    }, [ isSDKLoaded ])
-
     const handleNextTable = () => {
         redirect('/' + nextTableId)
         return
@@ -159,98 +147,5 @@ console.log('NEW ALLOWANCE ' + contractAllowance)
             hash: txHash as `0x${string}`,
         })
 
-    const buyIn = useCallback(async () => {
-        /* Initialize locals. */
-        // let functionName
-        let value
 
-        /* Set seed. */
-// TODO Allow host to set their own seed.
-        const seed = '0'
-
-        /* Validate wallet connection. */
-        if (!isConnected || !address) {
-            return alert('Your wallet is NOT connected!')
-        }
-
-        /* Track buy-ins. */
-        plausible('buyIn', {
-            props: {
-                user: context?.user,
-                tableid,
-                seed,
-            },
-        })
-
-        if (typeof table === 'undefined') {
-            return alert('Error: Table data.')
-        }
-
-        /* Handle buy-in value. */
-        // NOTE: Only required for "native" asset buy-ins.
-        if (table.token === '0x0000000000000000000000000000000000000000') {
-            value = BigInt(table.buyin)
-        } else {
-            if (contractAllowance === 0n) {
-console.log('REQUEST AN ALLOWANCE TO CONTINUE', MAX_ALLOWANCE)
-                /* Set function name. */
-                // functionName = 'approve'
-
-                /* Make on-chain execution request. */
-                writeContract(
-                    {
-                        abi: erc20Abi,
-                        address: table.token,
-                        functionName: 'approve',
-                        args: [
-                            CAST_POKER_ADDRESS, // spender / contract
-                            MAX_ALLOWANCE,      // 2^256-1
-                        ],
-                        value,                  // undefined for ERC-20 tokens
-                    },
-                    {
-                        onSuccess: (hash) => {
-console.log('TRANSACTION SUCCESSFUL', hash)
-                            setTxHash(hash)
-                        },
-                    }
-                )
-return // FIXME Use useWaitForTransactionReceipt
-            } else {
-console.log('CONTRACT ALLOWANCE IS ' + contractAllowance)
-            }
-        }
-
-        /* Set function name. */
-        // functionName = 'buyIn'
-
-        /* Make on-chain execution request. */
-        writeContract(
-            {
-                abi: castPokerAbi,
-                address: CAST_POKER_ADDRESS,
-                functionName: 'buyIn',
-                args: [
-                    BigInt(tableid),    // table id
-                    BigInt(seed),       // seed
-                ],
-                value,                  // undefined for ERC-20 tokens
-            },
-            {
-                onSuccess: (hash) => {
-console.log('TRANSACTION SUCCESSFUL', hash)
-                    setTxHash(hash)
-                },
-            }
-        )
-    }, [
-        address,
-        context?.user,
-        contractAllowance,
-        isConnected,
-        plausible,
-        table,
-        tableid,
-        writeContract,
-    ])
 }

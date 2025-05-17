@@ -99,10 +99,12 @@ const props = defineProps({
     tableid: Number,
 })
 
+// const quotes = ref<Quotes>()
 const quotes = ref<Quotes>({
     ETH: { USD: { price: 0 }},
     DEGEN: { USD: { price: 0 }},
 })
+// const table = ref<Table>()
 const table = ref<Table>({
     token: '0x',
     host: '0x',
@@ -110,8 +112,8 @@ const table = ref<Table>({
     seats: 0,
     seated: [],
 })
-const potValueDollars = ref<string>('')
-const potValueCents = ref<string>('')
+const potValueDollars = ref<string>('0')
+const potValueCents = ref<string>('.00')
 
 // onMounted(() => {
 //     console.log('Mounted!')

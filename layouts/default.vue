@@ -4,19 +4,10 @@
 
         <section className="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
             <slot />
-            <!-- {screenid === 'agent' && <Agent tableid={tableid} />}
-            {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
-            {screenid === 'faq' && <Faq tableid={tableid} />}
-            {screenid === 'host' && <Host tableid={tableid} />}
-            {screenid === 'table' && <Table tableid={tableid} />}
-            {screenid === 'mysuite' && <MySuite tableid={tableid} />}
-            {screenid === 'lounge' && <Lounge tableid={tableid} />}
-            {screenid === 'share' && <Share tableid={tableid} />}
-            {screenid === 'concierge' && <Concierge tableid={tableid} />} -->
         </section>
 
         <section>
-            <!-- <Navbar :tableid="tableid" /> -->
+            <Navbar :tableid="tableid" />
             <Footer :tableid="tableid" />
         </section>
     </main>

@@ -69,15 +69,11 @@
             </div>
 
             <!-- Next Table Button -->
-            <button onClick={handleNextTable} class="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
+            <button @click="handleNextTable" class="group flex flex-row items-center gap-1 border-l-[3px] rounded-l-lg rounded-tl-none border-amber-400 bg-stone-900 hover:bg-stone-700">
                 <div class="pl-3 flex flex-col items-center justify-center">
                     <span class="text-xs sm:text-xl font-bold text-amber-100 tracking-tight">
                         Next Table
                     </span>
-
-                    <!-- <small class="-mt-1 text-[0.6em] font-medium italic text-amber-400 tracking-widest">
-                        # {{nextTableId}}
-                    </small> -->
 
                     <span class="text-xl sm:text-2xl font-bold text-amber-300 tracking-widest">
                         $ETH
@@ -127,6 +123,22 @@ const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 // const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
 // const MAX_ALLOWANCE = BigInt(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) // 2^256-1
 const MAX_ALLOWANCE = BigInt('115792089237316195423570985008687907853269984665640564039457584007913129639935') // 2^256-1
+
+// const quotes = ref<Quotes>({
+//     ETH: { USD: { price: 0 }},
+//     DEGEN: { USD: { price: 0 }},
+// })
+const txHash = ref<string | null>(null)
+const table = ref<Table>({
+    token: '0x',
+    buyin: '1.337',
+    tts: '10',
+    pot: '20',
+    createdAt: 1234567890,
+})
+const buyInValueDollars = ref<string>('0')
+const buyInValueCents = ref<string>('.00')
+
 
 const init = () => {
     //
