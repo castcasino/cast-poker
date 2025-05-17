@@ -38,33 +38,6 @@ const renderError = (error: Error | null) => {
     return <div class="text-red-500 text-xs mt-1">{error.message}</div>
 }
 
-type Table = {
-    token: `0x${string}`;
-    buyin: string;
-    tts: string;
-    pot: string;
-    createdAt: number;
-}
-
-type Quotes = {
-    ETH: Quote;
-    DEGEN: Quote;
-}
-
-type Quote = {
-    USD: Currency;
-}
-
-type Currency = {
-    price: number;
-}
-
-/* Set constants. */
-const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
-// const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
-// const MAX_ALLOWANCE = BigInt(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) // 2^256-1
-const MAX_ALLOWANCE = BigInt('115792089237316195423570985008687907853269984665640564039457584007913129639935') // 2^256-1
-
 export function Footer({ tableid }: { tableid: string }) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
@@ -280,8 +253,4 @@ console.log('TRANSACTION SUCCESSFUL', hash)
         tableid,
         writeContract,
     ])
-
-    return (
-
-    )
 }
