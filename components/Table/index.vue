@@ -1,17 +1,11 @@
 <template>
     <main class="w-full">
-        <Image
-            priority
-            src={mobileBanner}
-            width={0}
-            height={0}
+        <img
+            src="@/assets/banners/fairplay-gaming-mobile.jpg"
             alt="Fairplay Gaming (Mobile) Banner"
             class="sm:hidden w-full h-[80px] object-cover border-b-2 border-stone-500" />
-        <Image
-            priority
-            src={desktopBanner}
-            width={0}
-            height={0}
+        <img
+            src="@/assets/banners/fairplay-gaming-desktop.jpg"
             alt="Fairplay Gaming (Desktop) Banner"
             class="hidden sm:flex w-full h-[80px] object-cover border-b-2 border-stone-500" />
 

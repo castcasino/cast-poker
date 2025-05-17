@@ -2,7 +2,7 @@
     <main class="w-screen h-screen overflow-hidden flex flex-col justify-between bg-gradient-to-l from-slate-600 to-slate-800">
         <Header :tableid="tableid" />
 
-        <section class="w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
+        <section class="main-window w-full sm:w-[640px] mx-auto bg-gradient-to-r from-slate-50 to-slate-200 flex-1 overflow-y-scroll">
             <slot />
         </section>
 
@@ -19,3 +19,13 @@
 const tableid = ref<number>(4)
 
 </script>
+
+<style lang="css">
+.main-window {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.main-window::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+</style>
