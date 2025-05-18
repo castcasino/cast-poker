@@ -27,13 +27,13 @@ console.log('TABLE ID', tableid.value)
 
 const frame = {
     version: 'next',
-    imageUrl: `https://og-table.cast.poker/${tableid}`,
+    imageUrl: `https://og-table.cast.poker/${tableid.value}`,
     button: {
-        title: `Watch Table #${tableid}`,
+        title: `Watch Table #${tableid.value}`,
         action: {
             type: 'launch_frame',
-            name: `Table #${tableid} — Cast Poker`,
-            url: `https://cast.poker/${tableid}/`,
+            name: `Table #${tableid.value} — Cast Poker`,
+            url: `https://cast.poker/${tableid.value}/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
             splashBackgroundColor: '#35654d',
         },
