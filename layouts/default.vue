@@ -17,6 +17,15 @@
 /* Initialize table ID. */
 const tableid = ref<number>(4)
 
+onMounted(() => {
+    /* Initialize frame. */
+    globalThis.initFrame()
+})
+
+// onBeforeUnmount(() => {
+//     console.log('Before Unmount!')
+//     // Now is the time to perform all cleanup operations.
+// })
 </script>
 
 <style lang="css">
