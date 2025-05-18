@@ -3,7 +3,7 @@
  *
  * Will hide the Farcaster frame splash screen.
  */
-export default () => {
+const initFrame = () => {
     /* Generate a message id. */
     const generateMessageId = () => {
         return Array(4)
