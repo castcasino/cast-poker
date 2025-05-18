@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+/* Set constants. */
+const SPLASH_PAGE_DELAY = 1500
+
 /* Initialize table ID. */
 const tableid = ref<number>(4)
 
@@ -49,7 +52,7 @@ const tableid = ref<number>(4)
 
 onMounted(() => {
     /* Initialize frame. */
-    setTimeout(initFrame, 1500)
+    setTimeout(initFrame, SPLASH_PAGE_DELAY)
 })
 
 // onBeforeUnmount(() => {
