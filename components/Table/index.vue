@@ -117,12 +117,10 @@
 
                 <div v-for="seatid of Object.keys(table.seated)" :key="seatid" class="px-3 py-2 flex flex-col gap-2 bg-gradient-to-r from-amber-600 to-amber-800 border-2 border-amber-300 rounded-xl shadow">
                     <div class="flex flex-row items-center gap-2">
-                        <Image
+                        <img
                             src="https://assets.cast.casino/cards_01/covers/abstract.svg"
                             class="mr-5 w-12 border-2 border-slate-700"
                             alt="Card cover"
-                            width={0}
-                            height={0}
                         />
 
                         <div class="py-2 flex flex-col truncate">
@@ -137,12 +135,10 @@
                     </div>
 
                     <div class="flex flex-row items-center gap-2">
-                        <Image
+                        <img
                             src="https://assets.cast.casino/cards_01/covers/abstract.svg"
                             class="mr-5 w-12 border-2 border-slate-700"
                             alt="Card cover"
-                            width={0}
-                            height={0}
                         />
 
                         <div class="py-2 flex flex-col truncate">

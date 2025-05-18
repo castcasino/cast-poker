@@ -1,17 +1,10 @@
 <template>
     <main class="bg-white">
-        <Table v-if="screenid === 'table'" :tableid="tableid" />
-
-        <!--
-        {screenid === 'agent' && <Agent tableid={tableid} />}
-        {screenid === 'fairplay' && <Fairplay tableid={tableid} />}
-        {screenid === 'faq' && <Faq tableid={tableid} />}
-        {screenid === 'host' && <Host tableid={tableid} />}
-        {screenid === 'mysuite' && <MySuite tableid={tableid} />}
-        {screenid === 'lounge' && <Lounge tableid={tableid} />}
-        {screenid === 'share' && <Share tableid={tableid} />}
-        {screenid === 'concierge' && <Concierge tableid={tableid} />}
-        -->
+        <div class="w-full p-10 flex items-center justify-center">
+            <p class="text-2xl tracking-wider text-stone-500">
+                Redirecting you to a random table...
+            </p>
+        </div>
     </main>
 </template>
 
@@ -22,7 +15,4 @@ useHead({
         { name: 'description', content: 'Cast Poker offers a premium blockchain gaming experience for Players over 18+.' }
     ],
 })
-
-const screenid = ref<string>('table')
-const tableid = ref<number>(4)
 </script>
