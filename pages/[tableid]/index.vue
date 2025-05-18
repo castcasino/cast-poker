@@ -23,90 +23,80 @@
         <!-- <section class="w-full">
             <div class="w-full px-2 py-2 sm:px-5 sm:py-5 grid grid-cols-5 bg-gradient-to-b from-green-500 to-green-200 border-2 border-b-0 border-green-600">
                 <div class="flex justify-center">
-                    <Image
-                        src={`https://assets.cast.casino/cards_01/${table?.community.flop1.card || 'covers/' + CARD_COVER}.svg`}
-                        width={0}
-                        height={0}
+                    <img
+                        :src="`https://assets.cast.casino/cards_01/${table?.community.flop1.card || 'covers/' + CARD_COVER}.svg`"
                         class="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         alt="Flop card #1"
                     />
                 </div>
 
                 <div class="flex justify-center">
-                    <Image
-                        src={`https://assets.cast.casino/cards_01/${table?.community.flop2.card || 'covers/' + CARD_COVER}.svg`}
-                        width={0}
-                        height={0}
+                    <img
+                        :src="`https://assets.cast.casino/cards_01/${table?.community.flop2.card || 'covers/' + CARD_COVER}.svg`"
                         class="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         alt="Flop card #2"
                     />
                 </div>
 
                 <div class="flex justify-center">
-                    <Image
-                        src={`https://assets.cast.casino/cards_01/${table?.community.flop3.card || 'covers/' + CARD_COVER}.svg`}
-                        width={0}
-                        height={0}
+                    <img
+                        :src="`https://assets.cast.casino/cards_01/${table?.community.flop3.card || 'covers/' + CARD_COVER}.svg`"
                         class="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         alt="Flop card #3"
                     />
                 </div>
 
                 <div class="flex justify-center">
-                    <Image
-                        src={`https://assets.cast.casino/cards_01/${table?.community.turn.card || 'covers/' + CARD_COVER}.svg`}
-                        width={0}
-                        height={0}
+                    <img
+                        :src="`https://assets.cast.casino/cards_01/${table?.community.turn.card || 'covers/' + CARD_COVER}.svg`"
                         class="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         alt="Turn card"
                     />
                 </div>
 
                 <div class="flex justify-center">
-                    <Image
-                        src={`https://assets.cast.casino/cards_01/${table?.community.river.card || 'covers/' + CARD_COVER}.svg`}
-                        width={0}
-                        height={0}
+                    <img
+                        :src="`https://assets.cast.casino/cards_01/${table?.community.river.card || 'covers/' + CARD_COVER}.svg`"
                         class="w-16 sm:w-24 border sm:border-2 border-slate-700"
                         alt="River card"
                     />
                 </div>
             </div>
 
-            <Link href={`/${tableid}/fairplay`} class="w-full px-2 pb-3 flex flex-col gap-1 bg-gradient-to-b from-green-200 to-green-100 border-2 border-t-0 border-green-600 rounded-b-3xl">
+            <NuxtLink :href="`/${tableid}/fairplay`" class="w-full px-2 pb-3 flex flex-col gap-1 bg-gradient-to-b from-green-200 to-green-100 border-2 border-t-0 border-green-600 rounded-b-3xl">
                 <span class="text-lg font-bold text-center text-green-800 tracking-widest uppercase">
                     Fairplay Community Cards
                 </span>
 
                 <span class="-mt-2 text-base font-medium text-center text-green-600 tracking-wider uppercase">
-                    Blocks #{numeral(table?.community.flop1.blockIdx || 0).format('0,0')} - #{numeral(table?.community.river?.blockIdx || 0).format('0,0')}
+                    Blocks #{{numeral(table?.community.flop1.blockIdx || 0).format('0,0')} - #{numeral(table?.community.river?.blockIdx || 0).format('0,0')}}
                 </span>
 
                 <span class="flex flex-col items-center text-xs font-medium text-green-800 tracking-wider">
                     <pre class="block truncate">
-                        {table?.community?.flop1?.blockHash || BLANK_HASH}
+                        {{table?.community?.flop1?.blockHash || BLANK_HASH}}
                     </pre>
 
                     <pre class="block truncate">
-                        {table?.community?.flop2?.blockHash || BLANK_HASH}
+                        {{table?.community?.flop2?.blockHash || BLANK_HASH}}
                     </pre>
 
                     <pre class="block truncate">
-                        {table?.community?.flop3?.blockHash || BLANK_HASH}
+                        {{table?.community?.flop3?.blockHash || BLANK_HASH}}
                     </pre>
 
                     <pre class="block truncate">
-                        {table?.community?.turn?.blockHash || BLANK_HASH}
+                        {{table?.community?.turn?.blockHash || BLANK_HASH}}
                     </pre>
 
                     <pre class="block truncate">
-                        {table?.community?.river?.blockHash || BLANK_HASH}
+                        {{table?.community?.river?.blockHash || BLANK_HASH}}
                     </pre>
                 </span>
-            </Link>
+            </NuxtLink>
         </section> -->
 
-<!-- <pre class="font-bold text-xs text-slate-700">TABLE{JSON.stringify(table, null, 2)}</pre> -->
+<!-- <pre class="font-bold text-xs text-slate-700">TABLE{{JSON.stringify(table, null, 2)}}</pre> -->
 
         <section class="flex flex-col items-center px-2 py-5">
             <h2 class="text-2xl font-medium text-slate-700 tracking-widest">
@@ -191,28 +181,30 @@ useHead({
 })
 
 type Table = {
-    token: `0x${string}`;
-    host: `0x${string}`;
-    pot: string;
-    seats: number;
-    seated: Seat[];
+    community: Community;
+    seated: Player[];
 }
 
-type Seat = {
+type Player = {
     address: string;
 }
 
-/* Initialize stores. */
-// import { useSystemStore } from '@/stores/system'
+type Community = {
+    flop1: Deal;
+    flop2: Deal;
+    flop3: Deal;
+    turn: Deal;
+    river: Deal;
+}
 
-/* Initialize System. */
-// const System = useSystemStore()
+type Deal = {
+    card: string;
+    carIdx: number;
+    blockIdx: number;
+    blockHash: string;
+}
 
-const table = ref<Table>({
-    token: '0x',
-    host: '0x',
-    pot: '',
-    seats: 0,
-    seated: [],
-})
+const BLANK_HASH = '0x0000000000000000000000000000000000000000000000000000000000000000'
+
+const table = ref<Table>()
 </script>

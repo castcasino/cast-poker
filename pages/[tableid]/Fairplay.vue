@@ -31,7 +31,7 @@
 
                 <h3 class="mt-2 text-pretty text-base font-semibold tracking-tight text-slate-500 sm:text-2xl">
                     Provably Fair Report
-                    <span class="block text-xl">Table # {tableid}</span>
+                    <span class="block text-xl">Table # {{tableid}}</span>
                 </h3>
 
                 <p class="mt-6 text-xl/8">
@@ -47,7 +47,7 @@
                         Using the provably fair method, you can verify the results for yourself in real time.
                     </p>
 
-                    {/* <ul role="list" class="mt-8 max-w-xl space-y-8 text-gray-600">
+                    <!-- <ul role="list" class="mt-8 max-w-xl space-y-8 text-gray-600">
                         <li class="flex gap-x-3">
                             <svg class="mt-1 size-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
@@ -68,7 +68,7 @@
                             </svg>
                             <span><strong class="font-semibold text-gray-900">Events.</strong> Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</span>
                         </li>
-                    </ul> */}
+                    </ul> -->
 
                     <p class="mt-8">
                         But what exactly is provably fair gaming? How does it work? Why does it make Crypto gaming so transparent? We’re going to explore all of that here.
@@ -161,11 +161,9 @@
                         </blockquote>
 
                         <figcaption class="mt-6 flex gap-x-4">
-                            <Image
+                            <img
                                 class="size-6 flex-none rounded-full bg-gray-50"
                                 src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                width={0}
-                                height={0}
                                 alt=""
                             />
 
@@ -187,11 +185,9 @@
                 </div>
 
                 <figure class="mt-16">
-                    <Image
+                    <img
                         class="aspect-video rounded-xl bg-gray-50 object-cover border border-indigo-600 shadow"
                         src="https://wsrv.nl/?url=https://i.ibb.co/cXRjBc5/cGc.jpg"
-                        width={0}
-                        height={0}
                         alt=""
                     />
 
