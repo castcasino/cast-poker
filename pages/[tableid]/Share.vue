@@ -449,7 +449,7 @@ const frame = {
     version: 'next',
     imageUrl: `https://og-table.cast.poker/${tableid.value}`,
     button: {
-        title: `Share`,
+        title: `Sharing`,
         action: {
             type: 'launch_frame',
             name: `Share a Game of Poker`,
@@ -462,7 +462,7 @@ const frame = {
 
 /* Set page title + meta tags. */
 useHead({
-    title: 'Share — Cast Poker',
+    title: 'Sharing — Cast Poker',
     meta: [
         { name: 'description', content: 'Cast Poker offers a premium blockchain gaming experience for Players over 18+.' },
         { name: 'fc:frame', content: JSON.stringify(frame) },
@@ -472,8 +472,5 @@ useHead({
 type User = {
     displayName: string;
 }
-
-const isShowingQ1 = ref<boolean>(false)
-const isShowingQ2 = ref<boolean>(false)
 const user = ref<User>()
 </script>

@@ -179,7 +179,4 @@ useHead({
         { name: 'fc:frame', content: JSON.stringify(frame) },
     ],
 })
-
-const isShowingQ1 = ref<boolean>(false)
-const isShowingQ2 = ref<boolean>(false)
 </script>
