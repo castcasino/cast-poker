@@ -15,7 +15,7 @@ import {
     // useSwitchChain,
     // useChainId,
 } from 'wagmi'
-import { BaseError, UserRejectedRequestError } from 'viem'
+
 
 import castPokerAbi from '../../abi/CastPoker'
 
@@ -28,21 +28,9 @@ import { Network } from '../../components/ui/host/Network'
 // import { Optional } from '../../components/ui/host/Optional'
 import { Seating } from '../../components/ui/host/Seating'
 
-import { truncateAddress } from '../../lib/truncateAddress'
 
-const renderError = (error: Error | null) => {
-    if (!error) return null
 
-    if (error instanceof BaseError) {
-        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
 
-        if (isUserRejection) {
-            return <div class="text-red-500 text-xs mt-1">Rejected by user.</div>
-        }
-    }
-
-    return <div class="text-red-500 text-xs mt-1">{error.message}</div>
-}
 
 /* Set constants. */
 const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'

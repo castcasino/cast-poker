@@ -18,7 +18,8 @@
         <section class="my-5 px-3">
             <div class="w-full flex justify-center">
                 <h1 class="sm:px-10 text-4xl font-light text-rose-400 text-center italic leading-[55px]">
-                    {{context?.user.displayName || 'Guest'}}, Earn <span class="text-5xl font-bold">5%</span> Of ALL Table Buy-ins By Hosting
+                    {{user?.displayName || 'Guest'}}, Earn <span class="text-5xl font-bold">5%</span> Of
+                    <br />ALL Table Buy-ins By Hosting
                 </h1>
             </div>
 
@@ -87,33 +88,35 @@
                 Create My Table
             </Button>
 
-            {isConnected && <div>
+            <div v-if="isConnected">
                 My address is {address}
-            </div>}
+            </div>
 
-            {isSendTxError && renderError(sendTxError)}
+            {{isSendTxError && renderError(sendTxError)}}
 
-            {txHash && (
-                <div class="mt-2 text-xs">
-                    <div class="">
-                        Hash: {truncateAddress(txHash)}
-                    </div>
-
-                    <div class="">
-                        Status :&nbsp;
-                        {isConfirming
-                            ? 'Confirming...'
-                            : isConfirmed
-                                ? 'Confirmed!'
-                                : 'Pending'}
-                    </div>
+            <div v-if="txHash" class="mt-2 text-xs">
+                <div class="">
+                    Hash: {{truncateAddress(txHash)}}
                 </div>
-            )}
+
+                <div class="">
+                    Status :&nbsp;
+                    {{isConfirming
+                        ? 'Confirming...'
+                        : isConfirmed
+                            ? 'Confirmed!'
+                            : 'Pending'}}
+                </div>
+            </div>
         </section>
     </main>
 </template>
 
 <script setup lang="ts">
+/* Import modules. */
+import { BaseError, UserRejectedRequestError } from 'viem'
+import { truncateAddress } from '../../libs/truncateAddress'
+
 /* Initialize route. */
 const route = useRoute()
 
@@ -146,4 +149,31 @@ useHead({
         { name: 'fc:frame', content: JSON.stringify(frame) },
     ],
 })
+
+type User = {
+    displayName: string;
+}
+
+const isConfirming = ref<boolean>(false)
+const isConfirmed = ref<boolean>(false)
+const isConnected = ref<boolean>(false)
+const isSendTxError = ref<boolean>(false)
+
+const sendTxError = ref<Error | null>()
+const txHash = ref<string>()
+const user = ref<User>()
+
+const renderError = (error: Error | null | undefined) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return `<div class="text-red-500 text-xs mt-1">Rejected by user.</div>`
+        }
+    }
+
+    return `<div class="text-red-500 text-xs mt-1">${error.message}</div>`
+}
 </script>
