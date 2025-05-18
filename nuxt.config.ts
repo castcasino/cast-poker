@@ -1,3 +1,18 @@
+const frame = {
+    version: 'next',
+    imageUrl: `https://og-table.cast.poker/4`,
+    button: {
+        title: 'Watch Table #4',
+        action: {
+            type: 'launch_frame',
+            name: 'Table — Cast Poker',
+            url: `https://cast.poker/4/`,
+            splashImageUrl: `https://cast.poker/splash.gif`,
+            splashBackgroundColor: '#f7f7f7',
+        },
+    },
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     /* Application Settings */
@@ -9,6 +24,7 @@ export default defineNuxtConfig({
             title: 'Cast Poker with Your Friends',
             meta: [
                 { name: 'description', content: `Play Texas Hold'em poker in the ONLY provably fair casino built on Farcaster.` },
+                { name: 'fc:frame', content: JSON.stringify(frame) },
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
