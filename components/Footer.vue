@@ -96,6 +96,8 @@
 <script setup lang="ts">
 /* Import modules. */
 import moment from 'moment'
+import { truncateAddress } from '../libs/truncateAddress'
+import { BaseError, formatEther, UserRejectedRequestError } from 'viem'
 
 type Table = {
     token: `0x${string}`;
@@ -139,6 +141,34 @@ const table = ref<Table>({
 const buyInValueDollars = ref<string>('0')
 const buyInValueCents = ref<string>('.00')
 
+const isSendTxError = ref(false)
+const isSendTxPending = ref(false)
+const isConfirming = ref(false)
+const isConfirmed = ref(false)
+
+const sendTxError = ref<Error | null>(null)
+
+const renderError = (error: Error | null) => {
+    if (!error) return null
+
+    if (error instanceof BaseError) {
+        const isUserRejection = error.walk((e) => e instanceof UserRejectedRequestError)
+
+        if (isUserRejection) {
+            return `<div class="text-red-500 text-xs mt-1">Rejected by user.</div>`
+        }
+    }
+
+    return `<div class="text-red-500 text-xs mt-1">${error.message}</div>`
+}
+
+const buyIn = async () => {
+    alert('buying in!!')
+}
+
+const handleNextTable = async () => {
+    alert('moving to next table..')
+}
 
 const init = () => {
     //

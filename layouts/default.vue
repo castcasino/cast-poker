@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-
 /* Initialize table ID. */
 const tableid = ref<number>(4)
 

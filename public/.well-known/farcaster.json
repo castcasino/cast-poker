@@ -14,7 +14,7 @@
         "splashBackgroundColor": "#cd98f9",
         "homeUrl": "https://cast.poker",
         "webhookUrl": "https://cast.poker/api/webhook",
-        "imageUrl": "https://cast.poker/${tableid}/opengraph-image?${moment().unix()}",
-        "buttonTitle": "Watch Table",
-    },
+        "imageUrl": "https://og-table.cast.poker/4",
+        "buttonTitle": "Watch Table #4"
+    }
 }
