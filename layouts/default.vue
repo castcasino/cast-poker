@@ -49,7 +49,7 @@ const tableid = ref<number>(4)
 
 onMounted(() => {
     /* Initialize frame. */
-    initFrame()
+    setTimeout(initFrame, 3000)
 })
 
 // onBeforeUnmount(() => {
