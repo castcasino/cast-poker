@@ -35,7 +35,7 @@ const frame = {
             name: `Table #${tableid.value} — Cast Poker`,
             url: `https://cast.poker/${tableid.value}/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
-            splashBackgroundColor: '#35654d',
+            splashBackgroundColor: '#cd98f9',
         },
     },
 }

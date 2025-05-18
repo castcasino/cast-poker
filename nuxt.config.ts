@@ -8,7 +8,7 @@ const frame = {
             name: 'Table — Cast Poker',
             url: `https://cast.poker/4/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
-            splashBackgroundColor: '#35654d',
+            splashBackgroundColor: '#cd98f9',
         },
     },
 }
