@@ -1,6 +1,6 @@
 {
   "name": "cast-poker",
-  "version": "25.5.17",
+  "version": "25.5.24",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@neynar/nodejs-sdk": "2.41.0",
+    "@farcaster/frame-sdk": "0.0.51",
     "@nuxtjs/i18n": "8.3.3",
     "@nuxtjs/tailwindcss": "6.12.1",
     "@pinia/nuxt": "0.5.4",
