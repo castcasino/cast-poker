@@ -15,13 +15,13 @@
     "imageUrl": "https://og-table.cast.poker",
     "heroImageUrl": "https://cast.poker/poster.webp",
     "buttonTitle": "Watch and Play Poker w/ Frens",
-    "subtitle": "Watch and Play Poker w/ Frens",
-    "description": "Play on-chain Texas Holdem Poker w/ your Farcaster Frens.",
+    "subtitle": "Play Holdem Poker with Frens",
+    "description": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
     "primaryCategory": "games",
-    "tags": ["poker","texas holdem","bet","wager","earn"],
+    "tags": ["poker","holdem","bet","wager","earn"],
     "tagline": "Watch a Hand of Texas Holdem!",
-    "ogTitle": "Cast Poker – Play w/ Frens",
-    "ogDescription": "Play on-chain Texas Holdem Poker w/ your Farcaster Frens.",
+    "ogTitle": "Cast Poker – Play with Frens",
+    "ogDescription": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
     "ogImageUrl": "https://cast.poker/poster.webp"
   }
 }
