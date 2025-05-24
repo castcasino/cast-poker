@@ -87,7 +87,7 @@
                         </dd>
                     </div>
 
-                    {/* <!-- More questions... --> */}
+                    <!-- More questions... -->
                 </dl>
             </div>
         </div>

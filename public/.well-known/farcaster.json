@@ -13,8 +13,8 @@
         "splashImageUrl": "https://cast.poker/splash.gif",
         "splashBackgroundColor": "#cd98f9",
         "homeUrl": "https://cast.poker",
-        "webhookUrl": "https://cast.poker/api/webhook",
-        "imageUrl": "https://og-table.cast.poker/4",
-        "buttonTitle": "Watch Table #4"
+        "webhookUrl": "https://webhook.castr.guru/fed802d9-9e1b-4812-ae07-e20ffc21f0e1",
+        "imageUrl": "https://og-table.cast.poker",
+        "buttonTitle": "Watch a Hand of Texas Hold'em"
     }
 }
