@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@farcaster/frame-sdk':
-        specifier: ^0.0.51
+        specifier: 0.0.51
         version: 0.0.51(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.28)
       '@nuxtjs/i18n':
         specifier: 8.3.3
