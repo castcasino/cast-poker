@@ -1,20 +1,23 @@
 {
-    "accountAssociation": {
-        "header":
-            "eyJmaWQiOjg4MjA0MCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDdCZTRDNUMzZkY2M0RDRTMzODJFMjlCMWI4MTNFM2RjNDhhQWNERTEifQ",
-        "payload": "eyJkb21haW4iOiJjYXN0LnBva2VyIn0",
-        "signature":
-            "MHgwNDA4NmJjMTkxMDZiN2M0NTUzMzZmODliYTY0YzkzMThiYzE2NTMzMjJlZjFlZWVkODc1OWY1MzRjOTEyZmQxMmU4ZTA2MmJhYWJlZGI0MjZkZmFhMWZhMGQyNjZmNDQ2MTFhNzdlMjBiNjc4M2Q3OTM5ZTg5OWE3MjZhMTU2YjFj"
-    },
-    "frame": {
-        "version": "1",
-        "name": "Cast Poker",
-        "iconUrl": "https://cast.poker/logo.png",
-        "splashImageUrl": "https://cast.poker/splash.gif",
-        "splashBackgroundColor": "#cd98f9",
-        "homeUrl": "https://cast.poker",
-        "webhookUrl": "https://webhook.castr.guru/fed802d9-9e1b-4812-ae07-e20ffc21f0e1",
-        "imageUrl": "https://og-table.cast.poker",
-        "buttonTitle": "Watch 🃏 Texas Hold'em"
-    }
+  "accountAssociation": {
+    "header": "eyJmaWQiOjg4MjA0MCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDdCZTRDNUMzZkY2M0RDRTMzODJFMjlCMWI4MTNFM2RjNDhhQWNERTEifQ",
+    "payload": "eyJkb21haW4iOiJjYXN0LnBva2VyIn0",
+    "signature": "MHgwNDA4NmJjMTkxMDZiN2M0NTUzMzZmODliYTY0YzkzMThiYzE2NTMzMjJlZjFlZWVkODc1OWY1MzRjOTEyZmQxMmU4ZTA2MmJhYWJlZGI0MjZkZmFhMWZhMGQyNjZmNDQ2MTFhNzdlMjBiNjc4M2Q3OTM5ZTg5OWE3MjZhMTU2YjFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Cast Poker",
+    "iconUrl": "https://cast.poker/logo.png",
+    "splashImageUrl": "https://cast.poker/splash.gif",
+    "splashBackgroundColor": "#cd98f9",
+    "homeUrl": "https://cast.poker",
+    "webhookUrl": "https://webhook.castr.guru/fed802d9-9e1b-4812-ae07-e20ffc21f0e1",
+    "imageUrl": "https://og-table.cast.poker",
+    "buttonTitle": "Watch a Hand of Texas Holdem",
+    "subtitle": "Watch a Hand of Texas Holdem",
+    "description": "Play on-chain Texas Holdem with your Farcaster friends.",
+    "primaryCategory": "games",
+    "tags": ["poker","texas holdem","bet","wager","gambling"],
+    "tagline": "Watch a Hand of Texas Holdem"
+  }
 }
