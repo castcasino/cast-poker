@@ -1,8 +1,9 @@
+/* Initialize (default) frame embed. */
 const frame = {
     version: 'next',
     imageUrl: 'https://cast.poker/poster.webp',
     button: {
-        title: 'Watch and Play Poker w/ Frens',
+        title: 'Watch -n- Play Poker w/ Frens',
         action: {
             type: 'launch_frame',
             name: 'Cast Poker – Play with Frens',
