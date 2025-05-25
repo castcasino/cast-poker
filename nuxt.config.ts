@@ -1,12 +1,12 @@
 const frame = {
     version: 'next',
-    imageUrl: `https://og-table.cast.poker/4`,
+    imageUrl: 'https://cast.poker/poster.webp',
     button: {
-        title: 'Watch Table #4',
+        title: 'Watch and Play Poker w/ Frens',
         action: {
             type: 'launch_frame',
-            name: 'Table — Cast Poker',
-            url: `https://cast.poker/4/`,
+            name: 'Cast Poker – Play with Frens',
+            url: `https://cast.poker/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
             splashBackgroundColor: '#cd98f9',
         },

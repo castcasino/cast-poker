@@ -7,14 +7,12 @@
   "frame": {
     "version": "1",
     "name": "Cast Poker",
-    "iconUrl": "https://cast.poker/logo.png?1748108684",
-    "splashImageUrl": "https://cast.poker/splash.gif?1748108684",
+    "iconUrl": "https://cast.poker/logo.png",
+    "splashImageUrl": "https://cast.poker/splash.gif",
     "splashBackgroundColor": "#cd98f9",
     "homeUrl": "https://cast.poker",
     "webhookUrl": "https://webhook.castr.guru/fed802d9-9e1b-4812-ae07-e20ffc21f0e1",
-    "imageUrl": "https://og-table.cast.poker?1748108684",
-    "heroImageUrl": "https://cast.poker/poster.webp?1748108684",
-    "buttonTitle": "Watch and Play Poker w/ Frens",
+    "heroImageUrl": "https://cast.poker/poster.webp",
     "subtitle": "Play Holdem Poker with Frens",
     "description": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
     "primaryCategory": "games",
@@ -22,6 +20,6 @@
     "tagline": "Watch a Hand of Texas Holdem!",
     "ogTitle": "Cast Poker – Play with Frens",
     "ogDescription": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
-    "ogImageUrl": "https://cast.poker/poster.webp?1748108684"
+    "ogImageUrl": "https://cast.poker/poster.webp"
   }
 }
