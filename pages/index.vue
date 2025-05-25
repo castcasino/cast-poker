@@ -8,6 +8,14 @@
 
         <pre class="p-10">is this a Mini App? {{isMiniApp}}</pre>
 
+        <button @click="signin" class="p-5 bg-blue-100 border border-blue-300">
+            sign in
+        </button>
+
+        <button @click="auth" class="p-5 bg-blue-100 border border-blue-300">
+            quick auth
+        </button>
+
         <section class="p-10">
             <h2>App Context (delayed)</h2>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx)}}</pre>
@@ -44,6 +52,16 @@ console.log('isMiniApp', isMiniApp.value)
 console.log('MINI APP CONTEXT', ctx.value)
     }, 5000)
 
+}
+
+const auth = async () => {
+    const { token } = await sdk.experimental.quickAuth()
+console.log('AUTH TOKEN', token)
+}
+
+const signin = async () => {
+    const account = await sdk.actions.signIn()
+console.log('ACCOUNT', account)
 }
 
 onMounted(() => {
