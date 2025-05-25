@@ -8,26 +8,33 @@
                         Lounge
                     </NuxtLink>
 
-                    <NuxtLink :href="`/${tableid}/mysuite`" class="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                        My Suite
-                    </NuxtLink>
-
                     <NuxtLink :href="`/${tableid}/concierge`" class="w-1/3 border-b-2 border-indigo-500 px-1 py-4 text-center text-lg font-medium text-indigo-600" aria-current="page">
                         Concierge
+                    </NuxtLink>
+
+                    <NuxtLink :href="`/${tableid}/mysuite`" class="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        My Suite
                     </NuxtLink>
                 </nav>
             </div>
         </section>
 
         <div class="px-3 py-5">
-            <h1 class="text-2xl font-bold text-amber-600 text-center mb-4">
-                Concierge for Table # {{tableid}}
-            </h1>
+            <p class="px-10 text-lg text-slate-600 font-light text-pretty text-center italic">
+                Welcome to the Concierge Desk.
+                What would you like to do today?
+            </p>
 
             <div class="mb-4">
                 <h3 v-if="user" class="text-2xl font-medium text-slate-700">
                     {{user?.displayName}} check out our Tables!
                 </h3>
+            </div>
+
+            <div class="mb-4">
+                <button @click="launchTreasureIsland" class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
+                    Play Treasure Island
+                </button>
             </div>
 
             <div v-if="tables" class="grid grid-cols-1 gap-4">
@@ -107,4 +114,11 @@ type User = {
 
 const user = ref<User>()
 const tables = ref<Table[]>()
+
+const launchTreasureIsland = async () => {
+    alert(`
+Treasure Island
+Coming soon...
+    `)
+}
 </script>

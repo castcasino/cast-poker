@@ -8,12 +8,12 @@
                         Lounge
                     </NuxtLink>
 
-                    <NuxtLink :href="`/${tableid}/mysuite`" class="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-                        My Suite
-                    </NuxtLink>
-
                     <NuxtLink :href="`/${tableid}/concierge`" class="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                         Concierge
+                    </NuxtLink>
+
+                    <NuxtLink :href="`/${tableid}/mysuite`" class="w-1/3 border-b-2 border-transparent px-1 py-4 text-center text-lg font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        My Suite
                     </NuxtLink>
                 </nav>
             </div>
