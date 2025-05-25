@@ -13,13 +13,13 @@
     "homeUrl": "https://cast.poker",
     "webhookUrl": "https://webhook.castr.guru/fed802d9-9e1b-4812-ae07-e20ffc21f0e1",
     "heroImageUrl": "https://cast.poker/poster.webp",
-    "subtitle": "Play Holdem Poker with Frens",
-    "description": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
+    "subtitle": "Play Real Money Holdem w/ Frens",
+    "description": "Watch -n- Play on-chain hands of Texas Holdem Poker with your Farcaster frens.",
     "primaryCategory": "games",
     "tags": ["poker","holdem","casino","bet","earn"],
-    "tagline": "Watch a Hand of Texas Holdem!",
-    "ogTitle": "Cast Poker – Play with Frens",
-    "ogDescription": "Play on-chain Texas Holdem Poker with your Farcaster Frens.",
+    "tagline": "Play Real Money Holdem w/ Frens",
+    "ogTitle": "Cast Poker – Holdem with Frens",
+    "ogDescription": "Watch -n- Play on-chain hands of Texas Holdem Poker with your Farcaster frens.",
     "ogImageUrl": "https://cast.poker/poster.webp"
   }
 }
