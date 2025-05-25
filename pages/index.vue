@@ -7,10 +7,18 @@
         </div>
 
         <pre class="p-10">is this a Mini App? {{isMiniApp}}</pre>
+
+        <section class="p-10">
+            <h2>App Context</h2>
+            <pre class="bg-amber-100 border border-amber-300">{{ctx}}</pre>
+        </section>
     </main>
 </template>
 
 <script setup lang="ts">
+/* Import modules. */
+import { sdk } from '@farcaster/frame-sdk'
+
 useHead({
     title: 'Cast Poker — Casual Blockchain Gaming',
     meta: [
@@ -18,14 +26,18 @@ useHead({
     ],
 })
 
-import { sdk } from '@farcaster/frame-sdk'
-
+/* Initialize local handlers. */
+const ctx = ref(null)
 const isMiniApp = ref(null)
 
 const init = async () => {
     /* Request Mini App flag. */
     isMiniApp.value = await sdk.isInMiniApp()
 console.log('isMiniApp', isMiniApp.value)
+
+    /* Set app context. */
+    ctx.value = sdk.context
+console.log('MINI APP CONTEXT', ctx.value)
 }
 
 onMounted(() => {
