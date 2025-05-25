@@ -9,7 +9,7 @@
         <pre class="p-10">is this a Mini App? {{isMiniApp}}</pre>
 
         <section class="p-10">
-            <h2>App Context</h2>
+            <h2>App Context (delayed)</h2>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx)}}</pre>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.location, null, 2)}}</pre>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.user, null, 2)}}</pre>
@@ -38,9 +38,12 @@ const init = async () => {
     isMiniApp.value = await sdk.isInMiniApp()
 console.log('isMiniApp', isMiniApp.value)
 
-    /* Set app context. */
+    setTimeout(() => {
+        /* Set app context. */
     ctx.value = sdk.context
 console.log('MINI APP CONTEXT', ctx.value)
+    }, 5000)
+
 }
 
 onMounted(() => {
