@@ -24,7 +24,7 @@ export default defineNuxtConfig({
             viewport: 'width=device-width, initial-scale=1',
             title: 'Cast Poker – Play with Frens',
             meta: [
-                { name: 'description', content: `Play Texas Hold'em poker in the ONLY provably fair casino built on Farcaster.` },
+                { name: 'description', content: `Play Texas Hold'em poker with your frens — in the ONLY provably fair casino built on Farcaster.` },
                 { name: 'fc:frame', content: JSON.stringify(frame) },
             ],
             link: [
@@ -42,15 +42,6 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
     ],
 
-    /* Route Rules */
-    routeRules: {
-        /* Disable server-side rendering for Admin area. */
-        '/manager/**': { ssr: false },
-
-        /* Add CORS headers to API. */
-        '/v1/**': { cors: true },
-    },
-
     /* Set compatibility date. */
-    compatibilityDate: '2025-03-15',
+    compatibilityDate: '2025-05-25',
 })
