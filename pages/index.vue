@@ -22,6 +22,7 @@
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.location, null, 2)}}</pre>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.user, null, 2)}}</pre>
             <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.client, null, 2)}}</pre>
+            <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(jwt, null, 2)}}</pre>
         </section>
     </main>
 </template>
@@ -39,6 +40,7 @@ useHead({
 
 /* Initialize local handlers. */
 const ctx = ref(null)
+const jwt = ref(null)
 const isMiniApp = ref(null)
 
 const init = async () => {
@@ -57,6 +59,8 @@ console.log('MINI APP CONTEXT', ctx.value)
 const auth = async () => {
     const { token } = await sdk.experimental.quickAuth()
 console.log('AUTH TOKEN', token)
+
+    jwt.value = token
 }
 
 const signin = async () => {
