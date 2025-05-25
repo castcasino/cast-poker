@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            title: 'Cast Poker with Your Friends',
+            title: 'Cast Poker – Play with Frens',
             meta: [
                 { name: 'description', content: `Play Texas Hold'em poker in the ONLY provably fair casino built on Farcaster.` },
                 { name: 'fc:frame', content: JSON.stringify(frame) },
