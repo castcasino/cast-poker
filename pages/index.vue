@@ -8,10 +8,10 @@
 
         <pre class="p-10">is this a Mini App? {{isMiniApp}}</pre>
 
-        <section class="p-10">
+        <!-- <section class="p-10">
             <h2>App Context</h2>
             <pre class="bg-amber-100 border border-amber-300">{{ctx}}</pre>
-        </section>
+        </section> -->
     </main>
 </template>
 
@@ -36,8 +36,8 @@ const init = async () => {
 console.log('isMiniApp', isMiniApp.value)
 
     /* Set app context. */
-    ctx.value = sdk.context
-console.log('MINI APP CONTEXT', ctx.value)
+//     ctx.value = sdk.context
+// console.log('MINI APP CONTEXT', ctx.value)
 }
 
 onMounted(() => {
