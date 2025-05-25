@@ -23,13 +23,13 @@ const SPLASH_PAGE_DELAY = 1500
 /* Initialize table ID. */
 const tableid = ref<number>(4)
 
-// const init = async () => {
-
-// }
+const init = async () => {
+    /* Initialize Mini App. */
+    setTimeout(sdk.actions.ready, SPLASH_PAGE_DELAY)
+}
 
 onMounted(() => {
-    /* Initialize frame. */
-    setTimeout(sdk.actions.ready, SPLASH_PAGE_DELAY)
+    init()
 })
 
 // onBeforeUnmount(() => {
