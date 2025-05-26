@@ -6,7 +6,7 @@ const frame = {
         title: `Watch -n- Play Poker w/ Frens`,
         action: {
             type: 'launch_frame',
-            name: `Play Real Money Hold'em w/ Frens`,
+            name: `Play Real Money Hold'em w/ Frenss`,
             url: `https://cast.poker/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
             splashBackgroundColor: '#cd98f9',
