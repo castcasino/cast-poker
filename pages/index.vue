@@ -48,12 +48,8 @@ const init = async () => {
     isMiniApp.value = await sdk.isInMiniApp()
 console.log('isMiniApp', isMiniApp.value)
 
-    setTimeout(() => {
-        /* Set app context. */
-    ctx.value = sdk.context
-console.log('MINI APP CONTEXT', ctx.value)
-    }, 5000)
-
+    /* Set app context. */
+ctx.value = await sdk.context
 }
 
 const auth = async () => {
