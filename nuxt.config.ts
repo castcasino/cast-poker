@@ -6,7 +6,7 @@ const frame = {
         title: `Watch -n- Play Poker w/ Frens`,
         action: {
             type: 'launch_frame',
-            name: `Play Real Money Hold'em w/ Frenss`,
+            name: `Play Real Money Hold'em w/ Frens`,
             url: `https://cast.poker/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
             splashBackgroundColor: '#cd98f9',
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
             viewport: 'width=device-width, initial-scale=1',
             title: `Cast Poker – Real Money Texas Hold'em w/ Frens`,
             meta: [
-                { name: 'description', content: `Watch -n- Play on-chain hands of Texas Holdem Poker with your Farcaster frens.` },
+                { name: 'description', content: `Watch -n- Play on-chain hands of Texas Hold'em poker with your Farcaster frens.` },
                 { name: 'fc:frame', content: JSON.stringify(frame) },
             ],
             link: [
