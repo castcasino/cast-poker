@@ -3,10 +3,10 @@ const frame = {
     version: 'next',
     imageUrl: 'https://cast.poker/poster.webp',
     button: {
-        title: 'Watch -n- Play Poker w/ Frens',
+        title: `Watch -n- Play Poker w/ Frens`,
         action: {
             type: 'launch_frame',
-            name: 'Play Real Money Holdem w/ Frens',
+            name: `Play Real Money Hold'em w/ Frens`,
             url: `https://cast.poker/`,
             splashImageUrl: `https://cast.poker/splash.gif`,
             splashBackgroundColor: '#cd98f9',
