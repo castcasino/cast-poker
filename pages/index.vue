@@ -10,14 +10,11 @@
 
         <pre v-if="user" class="p-10">{{JSON.stringify(user, null, 2)}}</pre>
 
-        <pre v-if="jwt" class="text-xs">{{jwt}}</pre>
+        <pre v-if="location" class="p-10">{{JSON.stringify(location, null, 2)}}</pre>
 
-        <section class="p-10">
-            <h2>App Context</h2>
-            <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx)}}</pre>
-            <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.location, null, 2)}}</pre>
-            <pre class="p-5 bg-amber-100 border border-amber-300">{{JSON.stringify(ctx?.client, null, 2)}}</pre>
-        </section>
+        <pre v-if="client" class="p-10">{{JSON.stringify(client, null, 2)}}</pre>
+
+        <pre v-if="jwt" class="text-xs">{{jwt}}</pre>
     </main>
 </template>
 
@@ -36,6 +33,8 @@ useHead({
 const ctx = ref(null)
 const jwt = ref(null)
 const user = ref(null)
+const location = ref(null)
+const client = ref(null)
 
 const isMiniApp = ref(null)
 
@@ -53,6 +52,12 @@ ctx.value = context
 
         /* Assign user. */
         user.value = context.user
+
+        /* Assign location. */
+        location.value = context.location
+
+        /* Assign client. */
+        client.value = context.client
 
         /* Auto-authorize user. */
         await auth()
