@@ -76,7 +76,7 @@
                 </h2>
             </div>
 
-            <div v-if="Profile.session.createdAt">
+            <div v-if="Profile.session?.createdAt">
                 <h3 class="text-slate-500 font-medium tracking-widest uppercase">
                     Created
                 </h3>
@@ -86,7 +86,7 @@
                 </h2>
             </div>
 
-            <div v-if="typeof Profile.session.hasAuth !== 'undefined'">
+            <div v-if="typeof Profile.session?.hasAuth !== 'undefined'">
                 <h3 class="text-slate-500 font-medium tracking-widest uppercase">
                     Is Authorized?
                 </h3>
@@ -108,14 +108,14 @@
 
             <div v-if="addFrameResult" class="mb-2 text-slate-700 text-xs text-center">
                 Add frame result:
-                {addFrameResult}
+                {{addFrameResult}}
             </div>
 
             <div v-if="notificationDetails">
                 <h2 class="font-2xl font-bold">Notify</h2>
 
                 <div v-if="sendNotificationResult" class="mb-2">
-                    Send notification result: {sendNotificationResult}
+                    Send notification result: {{sendNotificationResult}}
                 </div>
 
                 <div class="mb-4">
@@ -134,11 +134,11 @@
             </div>
 
             <div v-if="address" class="my-2 text-xs">
-                Address: <pre class="inline">{truncateAddress(address)}</pre>
+                Address: <pre class="inline">{{truncateAddress(address)}}</pre>
             </div>
 
-            <div v-if="chainId" class="my-2 text-xs">
-                Chain ID: <pre class="inline">{chainId}</pre>
+            <div v-if="chainid" class="my-2 text-xs">
+                Chain ID: <pre class="inline">{chainid}</pre>
             </div>
         </section>
 
@@ -264,7 +264,7 @@
                             :disabled="isSwitchChainPending"
                             :isLoading="isSwitchChainPending"
                         >
-                            Switch to {{chainId === base.id ? 'Degen' : 'Base'}}
+                            Switch to {{chainid === base?.id ? 'Degen' : 'Base'}}
                         </button>
 
                         {{isSwitchChainError && renderError(switchChainError)}}
@@ -473,4 +473,38 @@ type User = {
 }
 
 const user = ref<User>()
+
+const address = ref(null)
+const base = ref({
+    id: null
+})
+const chainid = ref(null)
+const addFrameResult = ref(null)
+const notificationDetails = ref(null)
+const sendNotificationResult = ref(null)
+const switchChainError = ref(null)
+
+const isConnected = ref(false)
+const isSwitchChainError = ref(false)
+const isSwitchChainPending = ref(false)
+
+const handleSwitchChain = () => {
+    //
+}
+
+const sendNotification = () => {
+    //
+}
+
+const addFrame = () => {
+    // add sdk code
+}
+
+const renderError = (err) => {
+    // REPLACE WITH IMPORT
+}
+
+const truncateAddress = (addr) => {
+    // REPLACE WITH IMPORT
+}
 </script>
