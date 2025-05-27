@@ -61,6 +61,44 @@
             </NuxtLink>
         </section>
 
+        <section class="px-3 py-2 bg-slate-200 border-y-2 border-rose-300">
+            <h2 class="text-lg text-rose-500 font-medium tracking-widest uppercase">
+                Session Info
+            </h2>
+
+            <div>
+                <h3 class="text-slate-500 font-medium tracking-widest uppercase">
+                    Session ID
+                </h3>
+
+                <h2 class="text-sky-500 font-medium tracking-tighter">
+                    {{Profile.sessionid}}
+                </h2>
+            </div>
+
+            <div v-if="Profile.session.createdAt">
+                <h3 class="text-slate-500 font-medium tracking-widest uppercase">
+                    Created
+                </h3>
+
+                <h2 class="text-sky-500 font-medium tracking-tighter">
+                    {{moment.unix(Profile.session.createdAt).format('llll')}}
+                </h2>
+            </div>
+
+            <div v-if="typeof Profile.session.hasAuth !== 'undefined'">
+                <h3 class="text-slate-500 font-medium tracking-widest uppercase">
+                    Is Authorized?
+                </h3>
+
+                <h2 class="text-sky-500 font-medium tracking-tighter">
+                    {{Profile.session.hashAuth ? 'YES' : 'NO'}}
+                </h2>
+            </div>
+
+            <!-- <pre>{{JSON.stringify(Profile.session, null, 2)}}</pre> -->
+        </section>
+
         <div class="mt-5">
             <Button onClick={addFrame}>
                 <span class="font-bold text-xl">
@@ -398,6 +436,15 @@
 </template>
 
 <script setup lang="ts">
+/* Import modules. */
+import moment from 'moment'
+
+/* Initialize stores. */
+import { useProfileStore } from '@/stores/profile'
+import { useSystemStore } from '@/stores/system'
+const Profile = useProfileStore()
+const System = useSystemStore()
+
 /* Initialize route. */
 const route = useRoute()
 

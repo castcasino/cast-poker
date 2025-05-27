@@ -1,107 +1,149 @@
 /* Import modules. */
 import { defineStore } from 'pinia'
 
-/* Set constants. */
-const ENTROPY_BYTES_LENGTH = 32
-
 /**
  * Profile Store
  */
 export const useProfileStore = defineStore('profile', {
     state: () => ({
-        /* Initialize session. */
-        _session: null,
+            /* Initialize session. */
+            _session: null,
 
-        /* Initialize entropy (used for HD wallet). */
-        // NOTE: This is a cryptographically-secure "random" 32-byte (256-bit) value. */
-        _entropy: null,
-
-        /**
-         * Email
-         *
-         * This is a valid email address.
-         */
-        _email: null,
-
-        /**
-         * Master Seed
-         *
-         * A 32-byte seed, which can be generated randomly, or by importing
-         * from an existing wallet.
-         */
-        _masterSeed: null,
-
-        /**
-         * Metadata
-         *
-         * Used to store (user-defined) data for:
-         *     1. Individual accounts
-         *     2. Individual unspent transaction outputs (UXTOs)
-         *
-         * NOTE: Metadata MUST be used sparingly, to avoid data storage bloat;
-         *       and should be deleted when no longer needed.
-         *
-         * TODO: Allow this data to be stored on-chain using:
-         *       1. Bitcoin Files Protocol (BFP) (https://bitcoinfiles.com/)
-         *       2. Telr Locker (https://locker.telr.io)
-         */
-        _meta: null,
-
-        /**
-         * Nickname
-         *
-         * This is a public alias.
-         *
-         * NOTE: Only alpha-numeric characters are accepted.
-         *       Both upper and lower-case characters are accepted.
-         */
-        _nickname: null,
+            _apiKeys: {},
     }),
 
     getters: {
         session(_state) {
-            return _state._session
+            return _state._session || null
         },
 
         sessionid(_state) {
-            return _state._session?.id
+            return _state._session?.sessionid || null
         },
 
         challenge(_state) {
-            return _state._session?.challenge
+            return _state._session?.challenge || null
         },
 
-        mnemonic(_state) {
-            if (!_state._entropy) return null
-
-            return entropyToMnemonic(_state._entropy)
+        apiKey(_state) {
+            return (_exchangeid) => _state._apiKeys[_exchangeid] || null
         },
-
     },
 
     actions: {
-        async createWallet() {
-            /* Return random bytes (as hex string). */
-            const myBytes = binToHex(randomBytes(ENTROPY_BYTES_LENGTH))
-            console.log('CREATE WALLET (myBytes):', myBytes)
+        async init () {
+            /* Initialize locals. */
+            let response
+            let session
 
-            /* Generate (random) bytes from the hosting server. */
-            // TODO Find an alternative for client-ONLY builds.
-            const svrBytes = await $fetch('/api/entropy')
-                .catch(err => console.error(err))
-            console.log('SERVER BYTES', svrBytes)
+            /* Check for existing session. */
+            if (this._session && this._session.sessionid) {
+                /* Request new session. */
+                response = await $fetch('https://cast.casino/graphql', {
+                    method: 'POST',
+                    headers: {'content-type': 'application/json'},
+                    body: JSON.stringify({
+                        query: `mutation ManageSession {
+                          manageSession(sessionid: "${this._session.sessionid}") {
+                            sessionid
+                            nonce
+                            hasAuth
+                            createdAt
+                          }
+                        }`
+                    })
+                }).catch(err => console.error(err))
 
-            /* Create 32-bytes (256-bit) entropy.*/
-            const entropy = myBytes.slice(0, 32) + svrBytes.slice(-32)
-            console.log('FINAL ENTROPY', entropy)
+                if (response?.data?.manageSession?.sessionid === this._session.sessionid) {
+                    return this._session // FIXME We don't return to anyone?
+                } else {
+                    console.error('Oops! This session has expired.')
+                    this.deleteSession()
+                    // alert(`You've been signed out! Please re-signin to continue...`)
 
-            const hashed = sha256(hexToBin(entropy))
-            console.log('HASHED ENTROPY', binToHex(hashed))
+                    /* Re-start initialization. */
+                    setTimeout(this.init, 100)
+                    return
+                }
+            }
 
-            /* Set entropy. */
-            // NOTE: Serialize to a 16-byte (128-bit) Hex String.
-            // NOTE: We use 16-bytes to remain compatible with popular HD wallets.
-            this._entropy = binToHex(hashed).slice(0, 16) + binToHex(hashed).slice(-16)
+            /* Request new session. */
+            response = await $fetch('https://cast.casino/graphql', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify({
+                    query: `mutation ManageSession {
+                      manageSession {
+                        sessionid
+                        nonce
+                        hasAuth
+                        createdAt
+                      }
+                    }`
+                })
+            }).catch(err => console.error(err))
+
+            /* Validate response. */
+            if (typeof response !== 'undefined' && response !== null) {
+                session = response.data?.manageSession
+
+                /* Set session. */
+                this._setSession(session)
+            }
+console.log('SESSION', session)
+
+            /* Return session. */
+            return session
+        },
+
+        async register (_message, _signature) {
+// console.log('REGISTER SESSION', this._session)
+            /* Check for existing session. */
+            if (!this._session) {
+                throw new Error('Oops! You MUST already have an active session.')
+            }
+
+            /* Initialize locals. */
+            let message
+            let session
+
+            /* Sanitize message. */
+            message = _message.replace(/\n/g, '\\n')
+
+// TODO Validate message.
+
+            const body = JSON.stringify({
+                query: `mutation ManageSession {
+                  manageSession(
+                  sessionid: "${this.sessionid}",
+                  message: "${message}",
+                  signature: "${_signature}"
+                ) {
+                    sessionid
+                    nonce
+                    hasAuth
+                    createdAt
+                  }
+                }`
+            })
+
+            /* Request new session. */
+            const response = await $fetch('https://cast.casino/graphql', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body,
+            }).catch(err => console.error(err))
+
+            /* Validate response. */
+            if (typeof response !== 'undefined' && response !== null) {
+                session = response.data?.manageSession
+
+                /* Set session. */
+                this._setSession(session)
+            }
+
+            /* Return session. */
+            return session
         },
 
         deleteSession() {
@@ -110,7 +152,6 @@ export const useProfileStore = defineStore('profile', {
         },
 
         saveSession(_session) {
-            console.log('PROFILE SAVING SESSION', _session)
             /* Set session. */
             this._setSession(_session)
         },
@@ -123,9 +164,18 @@ export const useProfileStore = defineStore('profile', {
         _setSession (_session) {
             /* Set session. */
             this._session = _session
-            console.log('SET SESSION', this._session)
+            // console.log('SET SESSION', this._session)
+        },
+
+        /**
+         * Set API Key
+         *
+         * @param {Object} _key Information for the Exchange's API key.
+         */
+        setApiKey (_key: Object) {
+            /* Set session. */
+            this._apiKeys[_key.exchangeid] = _key
+            console.log('SET API KEY', this._apiKeys)
         },
     },
-
-    persist: true,
 })

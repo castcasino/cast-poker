@@ -72,8 +72,8 @@ export const useSystemStore = defineStore('system', {
          *
          * Performs startup activities.
          */
-        initApp(state) {
-            state.appStarts++
+        init() {
+            this.appStarts++
         },
     },
 
