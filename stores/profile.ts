@@ -7,13 +7,11 @@ import { defineStore } from 'pinia'
  */
 export const useProfileStore = defineStore('profile', {
     state: () => ({
-            /* Initialize session. */
-            _session: null,
+        /* Initialize session. */
+        _session: null,
 
-            /* Display name. */
-            _user: null,
-
-            _apiKeys: {},
+        /* Display name. */
+        _user: null,
     }),
 
     getters: {
@@ -48,10 +46,6 @@ export const useProfileStore = defineStore('profile', {
         pfpUrl(_state) {
             return _state._user?.pfpUrl
         },
-
-        apiKey(_state) {
-            return (_exchangeid) => _state._apiKeys[_exchangeid] || null
-        },
     },
 
     actions: {
@@ -72,9 +66,9 @@ console.log('MINI APP CONTEXT', context)
                 this._user = context.user
             }
 
-            /* Check for existing session. */
+            /* Validate an EXISTING session. */
             if (this._session && this._session.sessionid) {
-                /* Request new session. */
+                /* Manage EXISTING session. */
                 response = await $fetch('https://cast.casino/graphql', {
                     method: 'POST',
                     headers: {'content-type': 'application/json'},
@@ -90,6 +84,9 @@ console.log('MINI APP CONTEXT', context)
                     })
                 }).catch(err => console.error(err))
 
+// FIXME REFACTOR VALIDATION
+
+                /* Validate EXISTING session (remote) status. */
                 if (response?.data?.manageSession?.sessionid === this._session.sessionid) {
                     return this._session // FIXME We don't return to anyone?
                 } else {
@@ -103,7 +100,7 @@ console.log('MINI APP CONTEXT', context)
                 }
             }
 
-            /* Request new session. */
+            /* Request NEW session. */
             response = await $fetch('https://cast.casino/graphql', {
                 method: 'POST',
                 headers: {'content-type': 'application/json'},
@@ -119,7 +116,7 @@ console.log('MINI APP CONTEXT', context)
                 })
             }).catch(err => console.error(err))
 
-            /* Validate response. */
+            /* Validate (session) response. */
             if (typeof response !== 'undefined' && response !== null) {
                 session = response.data?.manageSession
 
@@ -201,17 +198,6 @@ console.log('SESSION', session)
             /* Set session. */
             this._session = _session
             // console.log('SET SESSION', this._session)
-        },
-
-        /**
-         * Set API Key
-         *
-         * @param {Object} _key Information for the Exchange's API key.
-         */
-        setApiKey (_key: Object) {
-            /* Set session. */
-            this._apiKeys[_key.exchangeid] = _key
-            console.log('SET API KEY', this._apiKeys)
         },
     },
 })
