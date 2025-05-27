@@ -67,7 +67,7 @@ export const useProfileStore = defineStore('profile', {
             if (isMiniApp) {
                 /* Request app context. */
                 const context = await sdk.context
-
+console.log('MINI APP CONTEXT', context)
                 /* Set user. */
                 this._user = context.user
             }
