@@ -1,53 +1,18 @@
-'use client'
-
-import { useEffect, useState, useCallback } from 'react'
-
-import Link from 'next/link'
-
-import { usePlausible } from 'next-plausible'
-
-import sdk, { type FrameContext } from '@farcaster/frame-sdk'
-
-import {
-    useAccount,
-    useWriteContract,
-    useWaitForTransactionReceipt,
-    // useSwitchChain,
-    // useChainId,
-} from 'wagmi'
 
 
-import castPokerAbi from '../../abi/CastPoker'
-
-import { Asset } from '../../components/ui/host/Asset'
-import { Button } from '../../components/ui/Button'
-import { BuyIn } from '../../components/ui/host/BuyIn'
-import { DeckType } from '../../components/ui/host/DeckType'
-import { GameType } from '../../components/ui/host/GameType'
-import { Network } from '../../components/ui/host/Network'
+// import { Asset } from '../../components/ui/host/Asset'
+// import { Button } from '../../components/ui/Button'
+// import { BuyIn } from '../../components/ui/host/BuyIn'
+// import { DeckType } from '../../components/ui/host/DeckType'
+// import { GameType } from '../../components/ui/host/GameType'
+// import { Network } from '../../components/ui/host/Network'
 // import { Optional } from '../../components/ui/host/Optional'
-import { Seating } from '../../components/ui/host/Seating'
+// import { Seating } from '../../components/ui/host/Seating'
 
-
-
-
-
-/* Set constants. */
-const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
 
 export default function Host({ tableid }: { tableid: string}) {
     const [isSDKLoaded, setIsSDKLoaded] = useState(false)
     const [context, setContext] = useState<FrameContext>()
-    const [txHash, setTxHash] = useState<string | null>(null)
-
-    const [asset, setAsset] = useState('eth')
-    const [buyIn, setBuyIn] = useState('100000000000000')
-    const [deckType, setDeckType] = useState('single')
-    const [gameType, setGameType] = useState('community')
-    const [network, setNetwork] = useState('base')
-    const [token, setToken] = useState<`0x${string}`>('0x0000000000000000000000000000000000000000')
-    const [timeToSit, setTimeToSit] = useState('86400')
-    // const [tableName, setTableName] = useState('')
 
     const plausible = usePlausible()
     const { address, isConnected } = useAccount()
@@ -58,33 +23,7 @@ export default function Host({ tableid }: { tableid: string}) {
 //         setTableName(event.target.value)
 //     }, [ tableName ])
 
-    const handleBuyIn = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setBuyIn(event.target.value)
-    }, [])
 
-    const handleAsset = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log('ASSET IS CURRENTLY RESTRICTED!')
-        setAsset(event.target.value)
-    }, [])
-
-    const handleDeckType = useCallback((event: string) => {
-        return console.log('DECK TYPE IS CURRENTLY RESTRICTED!')
-        setDeckType(event)
-    }, [])
-
-    const handleGameType = useCallback((event: string) => {
-        return console.log('GAME TYPE IS CURRENTLY RESTRICTED!')
-        setGameType(event)
-    }, [])
-
-    const handleNetwork = useCallback((event: string) => {
-        return console.log('NETWORK IS CURRENTLY RESTRICTED!')
-        setNetwork(event)
-    }, [])
-
-    const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setTimeToSit(event.target.value)
-    }, [])
 
     const {
         writeContract,
@@ -120,10 +59,6 @@ export default function Host({ tableid }: { tableid: string}) {
             setToken('0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed')
         }
     }, [ asset ])
-
-    if (!isSDKLoaded) {
-        return <div>Loading. Please wait...</div>
-    }
 
     /**
      * Create Venue
@@ -188,8 +123,4 @@ console.log('TRANSACTION SUCCESSFUL', hash)
             }
         )
     }
-
-    return (
-
-    )
 }

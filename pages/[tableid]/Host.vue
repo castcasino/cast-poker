@@ -114,7 +114,18 @@
 
 <script setup lang="ts">
 /* Import modules. */
+import sdk, { type FrameContext } from '@farcaster/frame-sdk'
 import { BaseError, UserRejectedRequestError } from 'viem'
+
+// import {
+//     useAccount,
+//     useWriteContract,
+//     useWaitForTransactionReceipt,
+//     // useSwitchChain,
+//     // useChainId,
+// } from 'wagmi'
+
+import castPokerAbi from '../../abi/CastPoker'
 import { truncateAddress } from '../../libs/truncateAddress'
 
 /* Initialize route. */
@@ -160,7 +171,7 @@ const isConnected = ref<boolean>(false)
 const isSendTxError = ref<boolean>(false)
 
 const sendTxError = ref<Error | null>()
-const txHash = ref<string>()
+// const txHash = ref<string>()
 const user = ref<User>()
 
 const renderError = (error: Error | null | undefined) => {
@@ -176,4 +187,47 @@ const renderError = (error: Error | null | undefined) => {
 
     return `<div class="text-red-500 text-xs mt-1">${error.message}</div>`
 }
+
+/* Set constants. */
+const CAST_POKER_ADDRESS = '0x3Dabb4d559C176ee7A149222404Af0deB7f8e889'
+
+const txHash = ref<string | null>(null)
+
+const asset = ref<string | null>('eth')
+const buyIn = ref<string | null>('100000000000000')
+const deckType = ref<string | null>('single')
+const gameType = ref<string | null>('community')
+const network = ref<string | null>('base')
+const token = ref<`0x${string}`>('0x0000000000000000000000000000000000000000')
+const timeToSit = ref<string | null>('86400')
+// const tableName = ref<string | null>('')
+
+// const handleBuyIn = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+//     setBuyIn(event.target.value)
+// }, [])
+
+// const handleAsset = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+//     console.log('ASSET IS CURRENTLY RESTRICTED!')
+//     setAsset(event.target.value)
+// }, [])
+
+// const handleDeckType = useCallback((event: string) => {
+//     return console.log('DECK TYPE IS CURRENTLY RESTRICTED!')
+//     setDeckType(event)
+// }, [])
+
+// const handleGameType = useCallback((event: string) => {
+//     return console.log('GAME TYPE IS CURRENTLY RESTRICTED!')
+//     setGameType(event)
+// }, [])
+
+// const handleNetwork = useCallback((event: string) => {
+//     return console.log('NETWORK IS CURRENTLY RESTRICTED!')
+//     setNetwork(event)
+// }, [])
+
+// const handleSeating = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+//     setTimeToSit(event.target.value)
+// }, [])
+
 </script>
