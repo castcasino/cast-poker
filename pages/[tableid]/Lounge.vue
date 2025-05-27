@@ -20,13 +20,30 @@
         </section>
 
         <div class="px-3 py-5">
-            <h1 class="text-2xl font-bold text-amber-600 text-center mb-4">
-                Lounge for Table # {{tableid}}
-            </h1>
+            <p class="px-10 text-lg text-slate-600 font-light text-pretty text-center italic">
+                Welcome to the Concierge Desk.
+                What would you like to do today?
+            </p>
 
             <div class="mb-4">
-                <h3 v-if="user" class="text-2xl font-medium text-slate-700">
-                    {{user?.displayName}} check out our Lounge!
+                <h3 v-if="Profile.displayName" class="text-2xl font-medium text-slate-700">
+                    {{Profile.displayName}} check out our Tables!
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <h3 class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
+                    Table # 888
+                </h3>
+
+                <h3 class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
+                    Table # 1337
+                </h3>
+            </div>
+
+            <div class="mb-4">
+                <h3 v-if="Profile.user" class="text-2xl font-medium text-slate-700">
+                    {{Profile.displayName}} check out our Lounge!
                 </h3>
             </div>
 
@@ -64,6 +81,12 @@
 import { formatEther } from 'viem'
 
 import { truncateAddress } from '../../libs/truncateAddress'
+
+/* Initialize stores. */
+import { useProfileStore } from '@/stores/profile'
+import { useSystemStore } from '@/stores/system'
+const Profile = useProfileStore()
+const System = useSystemStore()
 
 /* Initialize route. */
 const route = useRoute()
