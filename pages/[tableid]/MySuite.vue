@@ -42,10 +42,10 @@
 
             <NuxtLink v-if="user" :href="`/${tableid}/mysuite`" class="group block shrink-0">
                 <div class="flex items-center">
-                    <Image
+                    <img
                         class="inline-block size-12"
                         src="@/assets/icon.png"
-                        alt=""
+                        alt="Cast Poker icon"
                     />
 
                     <div class="ml-2">
@@ -100,59 +100,46 @@
         </section>
 
         <div class="mt-5">
-            <Button onClick={addFrame}>
+            <button @click="addFrame">
                 <span class="font-bold text-xl">
                     Add Cast Poker to Warpcast
                 </span>
-            </Button>
+            </button>
 
-            {addFrameResult && (
-                <div class="mb-2 text-slate-700 text-xs text-center">
-                    Add frame result:
-                    {addFrameResult}
+            <div v-if="addFrameResult" class="mb-2 text-slate-700 text-xs text-center">
+                Add frame result:
+                {addFrameResult}
+            </div>
+
+            <div v-if="notificationDetails">
+                <h2 class="font-2xl font-bold">Notify</h2>
+
+                <div v-if="sendNotificationResult" class="mb-2">
+                    Send notification result: {sendNotificationResult}
                 </div>
-            )}
 
-            {notificationDetails && (
-                <div>
-                    <h2 class="font-2xl font-bold">Notify</h2>
-
-                    {sendNotificationResult && (
-                        <div class="mb-2">
-                            Send notification result: {sendNotificationResult}
-                        </div>
-                    )}
-
-                    <div class="mb-4">
-                        <Button onClick={sendNotification}>Send notification</Button>
-                    </div>
+                <div class="mb-4">
+                    <button @click="sendNotification">Send notification</button>
                 </div>
-            )}
+            </div>
         </div>
 
-        <section class="py-10">
+        <!-- <section class="py-10">
             <SignIn />
-        </section>
+        </section> -->
 
         <section class="mt-3">
-            {isConnected && (
-                <div class="my-2 text-xs">
-                    IS CONNECTED!
-                </div>
-            )}
+            <div v-if="isConnected" class="my-2 text-xs">
+                IS CONNECTED!
+            </div>
 
-            {address && (
-                <div class="my-2 text-xs">
-                    Address: <pre class="inline">{truncateAddress(address)}</pre>
-                </div>
-            )}
+            <div v-if="address" class="my-2 text-xs">
+                Address: <pre class="inline">{truncateAddress(address)}</pre>
+            </div>
 
-            {chainId && (
-                <div class="my-2 text-xs">
-                    Chain ID: <pre class="inline">{chainId}</pre>
-                </div>
-            )}
-
+            <div v-if="chainId" class="my-2 text-xs">
+                Chain ID: <pre class="inline">{chainId}</pre>
+            </div>
         </section>
 
         <form class="px-3">
@@ -272,15 +259,15 @@
                     </p>
 
                     <div class="mb-4">
-                        <Button
-                            onClick={handleSwitchChain}
-                            disabled={isSwitchChainPending}
-                            isLoading={isSwitchChainPending}
+                        <button
+                            @click="handleSwitchChain"
+                            :disabled="isSwitchChainPending"
+                            :isLoading="isSwitchChainPending"
                         >
-                            Switch to {chainId === base.id ? 'Degen' : 'Base'}
-                        </Button>
+                            Switch to {{chainId === base.id ? 'Degen' : 'Base'}}
+                        </button>
 
-                        {isSwitchChainError && renderError(switchChainError)}
+                        {{isSwitchChainError && renderError(switchChainError)}}
                     </div>
 
                     <div class="mt-10 space-y-10">

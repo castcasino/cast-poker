@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 
 import { signIn, signOut, getCsrfToken } from 'next-auth/react'

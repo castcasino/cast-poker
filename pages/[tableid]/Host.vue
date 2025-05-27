@@ -45,30 +45,30 @@
 
         <div class="flex flex-col gap-2">
             <GameType
-                value={gameType}
-                onClick={handleGameType}
+                :value="gameType"
+                @click="handleGameType"
             />
 
             <DeckType
-                value={deckType}
-                onClick={handleDeckType} />
+                :value="deckType"
+                @click="handleDeckType" />
 
             <Network
-                value={network}
-                onClick={handleNetwork} />
+                :value="network"
+                @click="handleNetwork" />
 
             <Asset
-                value={asset}
-                onChange={handleAsset} />
+                :value="asset"
+                @change="handleAsset" />
 
             <BuyIn
-                token={token}
-                value={buyIn}
-                onChange={handleBuyIn} />
+                :token="token"
+                :value="buyIn"
+                @change="handleBuyIn" />
 
             <Seating
-                value={timeToSit}
-                onChange={handleSeating} />
+                :value="timeToSit"
+                @change="handleSeating" />
         </div>
 
         <!-- <div class="my-10 mx-10 border-t border-slate-300" /> -->
@@ -79,17 +79,17 @@
         /> -->
 
         <section class="mt-5 mb-10 text-center">
-            <Button
-                onClick={_handleCreateVenue}
-                disabled={isSendTxPending}
-                isLoading={isSendTxPending}
+            <button
+                @click="_handleCreateVenue"
+                :disabled="isSendTxPending"
+                :isLoading="isSendTxPending"
                 class="text-2xl font-bold tracking-wider"
             >
                 Create My Table
-            </Button>
+            </button>
 
             <div v-if="isConnected">
-                My address is {address}
+                My address is {{address}}
             </div>
 
             {{isSendTxError && renderError(sendTxError)}}

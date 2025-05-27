@@ -31,11 +31,11 @@
                 />
             </section>
 
-            <Button onClick={castPromo}>
+            <button @click="castPromo">
                 <span class="text-3xl font-bold tracking-wider">
                     CAST -n- EARN starting TODAY!
                 </span>
-            </Button>
+            </button>
 
             <section class="mt-5 rounded-md bg-gradient-to-r from-rose-50 to-rose-100 p-4 border-2 border-rose-300">
                 <div class="flex">
