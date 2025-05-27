@@ -20,21 +20,21 @@
         </section>
 
         <section class="p-3 flex flex-row">
-            <NuxtLink v-if="user" :href="`/${tableid}/mysuite`" class="group block shrink-0">
+            <NuxtLink v-if="Profile.user" :href="`/${tableid}/mysuite`" class="group block shrink-0">
                 <div class="flex items-center">
                     <img
                         class="inline-block size-12 rounded-full"
-                        :src="'https://wsrv.nl/?url=' + user?.pfpUrl || '@/assets/icon.png'"
-                        :alt="user?.displayName || ''"
+                        :src="'https://wsrv.nl/?url=' + Profile.pfpUrl || '@/assets/icon.png'"
+                        :alt="Profile.displayName || ''"
                     />
 
                     <div class="ml-2">
                         <p class="text-lg font-medium text-lime-600 tracking-wider group-hover:text-lime-500">
-                            {context.user.displayName}
+                            {{Profile.displayName}}
                         </p>
 
                         <p class="text-sm font-medium text-lime-800 tracking-wider group-hover:text-lime-600">
-                            {context.user.username}
+                            {{Profile.username}}
                         </p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
             </div>
 
             <div v-if="chainid" class="my-2 text-xs">
-                Chain ID: <pre class="inline">{chainid}</pre>
+                Chain ID: <pre class="inline">{{chainid}}</pre>
             </div>
         </section>
 
@@ -165,7 +165,7 @@
                                     <input
                                         type="text"
                                         class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
-                                        :placeholder="user?.username || 'guest_user'"
+                                        :placeholder="Profile.username || 'guest_user'"
                                         disabled
                                     />
                                 </div>
@@ -182,7 +182,7 @@
                                     type="text"
                                     autoComplete="given-name"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    :placeholder="user?.displayName || 'Guest User'"
+                                    :placeholder="Profile.displayName || 'Guest User'"
                                     disabled
                                 />
                             </div>
@@ -198,7 +198,7 @@
                                     type="text"
                                     autoComplete="postal-code"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    :placeholder="user?.fid.toString() || 'n/a'"
+                                    :placeholder="Profile.fid?.toString() || 'n/a'"
                                 />
                             </div>
                         </div>
@@ -426,6 +426,8 @@
 /* Import modules. */
 import moment from 'moment'
 
+import { truncateAddress } from '../../libs/truncateAddress'
+
 /* Initialize stores. */
 import { useProfileStore } from '@/stores/profile'
 import { useSystemStore } from '@/stores/system'
@@ -501,10 +503,6 @@ const addFrame = () => {
 }
 
 const renderError = (err) => {
-    // REPLACE WITH IMPORT
-}
-
-const truncateAddress = (addr) => {
     // REPLACE WITH IMPORT
 }
 </script>

@@ -26,15 +26,19 @@
             </p>
 
             <div class="mb-4">
-                <h3 v-if="user" class="text-2xl font-medium text-slate-700">
-                    {{user?.displayName}} check out our Tables!
+                <h3 v-if="Profile.displayName" class="text-2xl font-medium text-slate-700">
+                    {{Profile.displayName}} check out our Tables!
                 </h3>
             </div>
 
-            <div class="mb-4">
-                <button @click="launchTreasureIsland" class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
-                    Play Treasure Island
-                </button>
+            <div class="grid grid-cols-2 gap-3">
+                <h3 class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
+                    My $COMPS
+                </h3>
+
+                <h3 class="p-5 bg-sky-200 text-xl font-bold text-sky-800 uppercase border border-sky-400 rounded-md shadow hover:bg-sky-700 hover:text-sky-100">
+                    My Earnings
+                </h3>
             </div>
 
             <div v-if="tables" class="grid grid-cols-1 gap-4">
@@ -69,6 +73,12 @@
 <script setup lang="ts">
 /* Import modules. */
 import { truncateAddress } from '../../libs/truncateAddress'
+
+/* Initialize stores. */
+import { useProfileStore } from '@/stores/profile'
+import { useSystemStore } from '@/stores/system'
+const Profile = useProfileStore()
+const System = useSystemStore()
 
 /* Initialize route. */
 const route = useRoute()
